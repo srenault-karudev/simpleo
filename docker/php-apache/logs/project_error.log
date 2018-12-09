@@ -1,0 +1,2 @@
+[Sun Dec 09 16:40:15.307406 2018] [authz_core:error] [pid 10] [client 192.168.33.1:57454] AH01630: client denied by server configuration: /home/vagrant
+[Sun Dec 09 16:40:15.367289 2018] [authz_core:error] [pid 10] [client 192.168.33.1:57454] AH01630: client denied by server configuration: /home/vagrant, referer: http://simpleo.local/
