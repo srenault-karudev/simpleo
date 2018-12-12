@@ -21,16 +21,17 @@ Parfait vous avez bien cloner le dépot, suivez maintenant les instructions.
 
 3 - docker ps
 
-*Pour entrer dans un contenaire
-ex : php-apache
+*Pour entrer dans le contenaire "php-apache"
 *
 
-4 - docker exec -it `nom du contenaire` bash 
+4 - docker exec -it php-apache bash 
 
-*Maintenant vous etes entré dans le contenaire, dans le contenaire php-apache c'est ici on fera des commandes 
+*Maintenant vous etes entré dans le contenaire, dans le contenaire php-apache c'est ici on fera des commandes , en l'occurence ici on installe le composer.
 *
 
-5 - exit ( sortir d'un contenaire)
+5- php bin/console composer install
+
+6- exit ( sortir d'un contenaire)
 
 
 ## Informations
@@ -44,3 +45,5 @@ http://simpleo.local/
 
 *Pour accéder a Phpmyadmin*
 http://simpleo.local:8080/
+
+
