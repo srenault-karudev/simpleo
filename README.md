@@ -1,3 +1,15 @@
+## Reverse engineering
+
+```bash
+docker exec -it php-apache php bin/console doctrine:mapping:import 'App\Entity' annotation --path=src/Entity
+```
+
+## make entity
+
+```bash
+docker exec -it php-apache php bin/console  make:entity --regenerate App
+```
+
 ## Descriptions
 
 Ce dépot contient le projet Symfony Simpleo,on appliquera nos modifications sur le projet ici.
