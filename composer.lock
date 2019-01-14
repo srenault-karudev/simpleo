@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae582772f14929d4866831ce7f332637",
+    "content-hash": "62284f1217f066dd0ca008f930af6461",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -846,12 +846,12 @@
             "version": "v2.5.14",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "shasum": ""
             },
@@ -1793,16 +1793,16 @@
         },
         {
             "name": "symfony/asset",
-            "version": "v3.4.20",
+            "version": "v3.4.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/asset.git",
-                "reference": "97ecc6b36cee6ba62d55cf984670a73991d4ae03"
+                "reference": "d4058253a58993747dfd2d8c8a41a061d78ceb03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/asset/zipball/97ecc6b36cee6ba62d55cf984670a73991d4ae03",
-                "reference": "97ecc6b36cee6ba62d55cf984670a73991d4ae03",
+                "url": "https://api.github.com/repos/symfony/asset/zipball/d4058253a58993747dfd2d8c8a41a061d78ceb03",
+                "reference": "d4058253a58993747dfd2d8c8a41a061d78ceb03",
                 "shasum": ""
             },
             "require": {
@@ -1845,7 +1845,7 @@
             ],
             "description": "Symfony Asset Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-11T19:48:54+00:00"
+            "time": "2019-01-01T13:45:19+00:00"
         },
         {
             "name": "symfony/cache",
@@ -4483,6 +4483,53 @@
             "time": "2018-11-11T19:48:54+00:00"
         },
         {
+            "name": "symfony/webpack-encore-bundle",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/webpack-encore-bundle.git",
+                "reference": "ebe7747897d664ff06fe6845bf2ce94f7a60513f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/ebe7747897d664ff06fe6845bf2ce94f7a60513f",
+                "reference": "ebe7747897d664ff06fe6845bf2ce94f7a60513f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/asset": "^3.4 || ^4.0",
+                "symfony/config": "^3.4 || ^4.0",
+                "symfony/dependency-injection": "^3.4 || ^4.0",
+                "symfony/http-kernel": "^3.4 || ^4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.13",
+                "symfony/framework-bundle": "^3.4 || ^4.0",
+                "symfony/phpunit-bridge": "^3.4 || ^4.1",
+                "symfony/twig-bundle": "^3.4 || ^4.0",
+                "twig/twig": "^1.35 || ^2.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\WebpackEncoreBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Integration with your Symfony app & Webpack Encore!",
+            "time": "2018-11-03T19:31:51+00:00"
+        },
+        {
             "name": "symfony/yaml",
             "version": "v3.4.20",
             "source": {
@@ -4540,6 +4587,57 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2018-11-11T19:48:54+00:00"
+        },
+        {
+            "name": "twbs/bootstrap",
+            "version": "v4.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "9e4e94747bd698f4f61d48ed54c9c6d4d199bd32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/9e4e94747bd698f4f61d48ed54c9c6d4d199bd32",
+                "reference": "9e4e94747bd698f4f61d48ed54c9c6d4d199bd32",
+                "shasum": ""
+            },
+            "replace": {
+                "twitter/bootstrap": "self.version"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jacob Thornton",
+                    "email": "jacobthornton@gmail.com"
+                },
+                {
+                    "name": "Mark Otto",
+                    "email": "markdotto@gmail.com"
+                }
+            ],
+            "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+            "homepage": "https://getbootstrap.com/",
+            "keywords": [
+                "JS",
+                "css",
+                "framework",
+                "front-end",
+                "mobile-first",
+                "responsive",
+                "sass",
+                "web"
+            ],
+            "time": "2018-12-21T18:55:28+00:00"
         },
         {
             "name": "twig/twig",

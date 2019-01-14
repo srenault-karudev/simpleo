@@ -23,7 +23,9 @@
         "symfony/twig-bundle": "3.4.*",
         "symfony/validator": "3.4.*",
         "symfony/web-link": "3.4.*",
-        "symfony/yaml": "3.4.*"
+        "symfony/webpack-encore-bundle": "^1.0",
+        "symfony/yaml": "3.4.*",
+        "twbs/bootstrap": "4.2.1"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
