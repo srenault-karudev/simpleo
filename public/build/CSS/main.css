@@ -1,0 +1,36 @@
+.navColor {
+    background-image: radial-gradient(circle, purple, rebeccapurple, purple);
+}
+
+.Simple-logo{
+    width: 15%;
+}
+
+.headerNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.active-link{
+    background-color: grey;
+    opacity: 0.6;
+}
+
+.nav-item{
+    float: left;
+}
+
+.nav-link{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-item:hover{
+    background-color: grey;
+    opacity: 0.4;
+}
