@@ -2,6 +2,7 @@
 
 namespace App;
 
+use FOS\UserBundle\FOSUserBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -33,6 +34,13 @@ class Kernel extends BaseKernel
                 yield new $class();
             }
         }
+
+        $bundles = array(
+            // ...
+            new FOSUserBundle(),
+            // ...
+        );
+        return $bundles;
     }
 
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader)
