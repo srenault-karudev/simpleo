@@ -7,13 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Customer
  *
- * @ORM\Table(name="customer", indexes={@ORM\Index(name="constraint_customer_person", columns={"id"})})
+ * @ORM\Table(name="customer")
  * @ORM\Entity
  */
 class Customer
 {
-
-
     /**
      * @var string
      *
@@ -24,14 +22,14 @@ class Customer
     /**
      * @var \Person
      *
-     * @ORM\ManyToOne(targetEntity="Person")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Person")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
     private $id;
-
-
 
     public function getJob(): ?string
     {

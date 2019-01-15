@@ -7,20 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Provider
  *
- * @ORM\Table(name="provider", indexes={@ORM\Index(name="constraint_provider_person", columns={"id"})})
+ * @ORM\Table(name="provider")
  * @ORM\Entity
  */
 class Provider
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="cle", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $cle;
-
     /**
      * @var string
      *
@@ -31,17 +22,14 @@ class Provider
     /**
      * @var \Person
      *
-     * @ORM\ManyToOne(targetEntity="Person")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Person")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
     private $id;
-
-    public function getCle(): ?int
-    {
-        return $this->cle;
-    }
 
     public function getCategoryname(): ?string
     {

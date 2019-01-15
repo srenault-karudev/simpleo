@@ -15,15 +15,6 @@ class Commercial
     /**
      * @var string
      *
-     * @ORM\Column(name="cle", type="string", length=255, nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $cle;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="salary", type="string", length=255, nullable=true)
      */
     private $salary;
@@ -31,17 +22,14 @@ class Commercial
     /**
      * @var \Person
      *
-     * @ORM\ManyToOne(targetEntity="Person")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Person")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
     private $id;
-
-    public function getCle(): ?string
-    {
-        return $this->cle;
-    }
 
     public function getSalary(): ?string
     {
