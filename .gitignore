@@ -29,3 +29,7 @@ yarn-error.log
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-pack ###
+
+/docker/mysql/db/
+/docker/php-apache/logs
+
