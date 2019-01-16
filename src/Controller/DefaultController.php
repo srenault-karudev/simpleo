@@ -24,7 +24,7 @@ class DefaultController
 
     public function index(Request $request): Response
     {
-        return new Response($this->twig->render('layout.html.twig', [
+        return new Response($this->twig->render('menu.html.twig', [
                 'name' => $request->get("name", 'World')
             ]
         ));
