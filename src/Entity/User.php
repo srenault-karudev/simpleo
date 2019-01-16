@@ -25,12 +25,7 @@ class User extends BaseUser
     protected $id;
 
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="login", type="string", length=255, nullable=false)
-     */
-    private $login;
+
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -103,19 +98,6 @@ class User extends BaseUser
         $this->report = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
-
-    public function getLogin(): ?string
-    {
-        return $this->login;
-    }
-
-    public function setLogin(string $login): self
-    {
-        $this->login = $login;
-
-        return $this;
-    }
 
 
 
@@ -223,6 +205,13 @@ class User extends BaseUser
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
 
 

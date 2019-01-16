@@ -27,7 +27,7 @@ yarn-error.log
 /node_modules/
 npm-debug.log
 yarn-error.log
-/docker/mysql/db/
+/docker/mysql/db
 /docker/php-apache/logs
 ###< symfony/webpack-encore-pack ###
 
