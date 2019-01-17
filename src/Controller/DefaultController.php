@@ -9,24 +9,21 @@
 namespace App\Controller;
 
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Twig\Environment;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class DefaultController
+
+
+class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Controller
 {
-    private $twig;
 
-    public function __construct(Environment $twig)
+    /**
+     * @Route("/", name="login")
+     */
+    public function index()
     {
-        $this->twig = $twig;
-    }
 
-    public function index(Request $request): Response
-    {
-        return new Response($this->twig->render('menu.html.twig', [
-                'name' => $request->get("name", 'World')
-            ]
-        ));
+        return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+
     }
 }

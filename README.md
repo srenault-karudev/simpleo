@@ -1,3 +1,11 @@
+## Show router
+
+```bash
+php bin/console debug:router
+
+```
+
+
 ## Reverse engineering
 
 ```bash

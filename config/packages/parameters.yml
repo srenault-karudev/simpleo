@@ -1,0 +1,16 @@
+# This file is auto-generated during the composer install
+parameters:
+  database_host: 127.0.0.1
+  database_port: null
+  database_name: madb
+  database_user: userroot
+  database_password: password
+  mailer_transport: smtp
+  mailer_host: 127.0.0.1
+  mailer_user: 'monadresse@mail.fr'
+  mailer_password: null
+  secret: pleindecaracteressecrets
+
+framework:
+  templating:
+      engines: ['twig']
