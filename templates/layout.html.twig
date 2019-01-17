@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <title>Title</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{{ asset('build/css/main.css') }}">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/main.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     {% endblock  %}
 </head>
 
+<nav class="navColor">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Simpleo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" class="Simple-logo" alt="Simpleo logo">
 
-    <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Tableau de bord</a>
+    <div class="" id="">
+        <ul class="headerNav">
+            <li class="nav-item active-link">
+                <a class="nav-link active-link" href="#">Tableau de bord</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Clients</a>
@@ -58,11 +52,19 @@
 </nav>
 
 
+<<<<<<< HEAD
 <body>
 {% block body %}
 
 {% endblock %}
 </body>
+=======
+
+{% block content %}
+<body></body>
+{% endblock  %}
+
+>>>>>>> develop
 
 
 {% block javascripts %}
@@ -70,7 +72,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 {% endblock  %}
+<<<<<<< HEAD
 
 
+=======
+<!-- </body> -->
+
+
+<footer>
+    <div class="w3-container w3-dark-gray">
+        <h5>IUT Sénart-Fontainebleau</h5>
+        <p>SevenAccounting</p>
+    </div>
+</footer>
+>>>>>>> develop
 
 </html>
