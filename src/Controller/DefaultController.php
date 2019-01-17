@@ -24,9 +24,7 @@ class DefaultController
 
     public function index(Request $request): Response
     {
-        return new Response($this->twig->render('login.html.twig', [
-                'name' => $request->get("name", 'World')
-            ]
+        return new Response($this->twig->render('layout.html.twig'
         ));
     }
 }
