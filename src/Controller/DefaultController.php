@@ -21,6 +21,9 @@ class DefaultController extends \Symfony\Bundle\FrameworkBundle\Controller\Contr
      */
     public function index()
     {
+
         return $this->redirect($this->generateUrl('fos_user_security_login'));
+
+
     }
 }

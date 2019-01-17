@@ -24,12 +24,12 @@ class DashboardController
     }
 
     /**
-     * @Route("/dashboard", name="dashboard")
+     * @Route("/menu", name="menu")
      */
 
     public function index(Request $request): Response
     {
-        return new Response($this->twig->render('layout.html.twig'));
+        return new Response($this->twig->render('menu.html.twig'));
     }
 
 }
