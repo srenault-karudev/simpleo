@@ -15,12 +15,14 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
+                login_path: /
                 csrf_token_generator: security.csrf.token_manager
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
+                success_handler: redirect.after.login
 
-            logout: ~
-            anonymous: ~
+            logout: true
+            anonymous: true
             remember_me:
                 secret: '%secret'
 
