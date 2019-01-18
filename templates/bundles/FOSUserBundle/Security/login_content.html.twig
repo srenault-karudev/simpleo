@@ -30,20 +30,23 @@
             {% endif %}
 
             {#<label for="username">{{ 'security.login.username'|trans }}</label>#}
-            <input class="fadeIn second" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" placeholder="username" />
+            <input class="fadeIn second" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" placeholder="Identifiant" />
 
             {#<label for="password">{{ 'security.login.password'|trans }}</label>#}
-            <input class="fadeIn third" type="password" id="password" name="_password" required="required" autocomplete="current-password" placeholder="password" />
+            <input class="fadeIn third" type="password" id="password" name="_password" required="required" autocomplete="current-password" placeholder="Mot de passe" />
 
-            {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />#}
-            {#<label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>#}
+            <div class="fadeIn fourth ">
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <label class="remember" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+            </div>
 
             <input class="fadeIn fourth" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
         </form>
 
         <!-- Remind Passowrd -->
         <div id="formFooter">
-            <a class="underlineHover test " href="{{ path('register') }}">S'inscrire</a>
+            <a class="underlineHover " href="{{ path('register') }}">Créer un compte</a>
         </div>
 
     </div>
