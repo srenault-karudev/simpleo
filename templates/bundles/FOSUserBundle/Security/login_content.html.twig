@@ -6,8 +6,7 @@
     <title>Title</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" type="text/css" href="{{ asset('build/css/login.css') }}">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -35,11 +34,11 @@
             {#<label for="password">{{ 'security.login.password'|trans }}</label>#}
             <input class="fadeIn third" type="password" id="password" name="_password" required="required" autocomplete="current-password" placeholder="Mot de passe" />
 
-            <div class="fadeIn fourth ">
-                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                <label class="remember" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+            {#<div class="fadeIn fourth ">#}
+                {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />#}
+                {#<label class="remember" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>#}
 
-            </div>
+            {#</div>#}
 
             <input class="fadeIn fourth" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
         </form>
@@ -52,4 +51,6 @@
     </div>
 </div>
 </body>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </html>
