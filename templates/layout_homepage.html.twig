@@ -16,30 +16,7 @@
 
     <div class="" id="">
         <ul class="headerNav">
-            <li class="nav-item active-link">
-                <a class="nav-link active-link" href="#">Tableau de bord</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Clients</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Fournisseurs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Facture et Devis</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Comptabilité</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Stockage</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Rapport</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Equipes</a>
-            </li>
+            <di>WELCOME TO SIMPLEO</di>
 
             {% if is_granted('ROLE_USER') %}
                 <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></li>
