@@ -13,7 +13,7 @@ use Twig\Environment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class DashboardController extends Controller
+class HomePageController extends Controller
 {
 
     private $twig;
@@ -24,11 +24,11 @@ class DashboardController extends Controller
     }
 
     /**
-     * @Route("/dashboard", name="dashboard")
+     * @Route("/homepage", name="homepage")
      */
 
     public function index()
     {
-        return $this->render('dashboard.html.twig');
+        return $this->render('homepage.html.twig');
     }
 }
