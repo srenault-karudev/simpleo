@@ -1,0 +1,98 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+
+    <div class="colonne1">
+        <h1>Votre Tableau de Bord</h1>
+        <br>
+    </div>
+
+    <div class="colonne2">
+        <button class="w3-button w3-round-xlarge w3-border w3-border-purple">Ajouter un indicateur</button>
+    </div>
+
+    <div class="w3-row-padding">
+
+        <div class="w3-third">
+            <div class="w3-card-4">
+                <header class="w3-container">
+                    <h2>Chiffre d'affaires mensuel</h2>
+                </header>
+
+                <div class="w3-container">
+                    <p>O €</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4">
+                <header class="w3-container">
+                    <h2>Chiffre d'affaires annuel</h2>
+                </header>
+
+                <div class="w3-container">
+                    <p>99 897 €</p>
+                </div>
+            </div>
+
+            <div class="w3-card-4">
+                <header class="w3-container">
+                    <h2>En attente de paiement : 6 factures</h2>
+                </header>
+
+                <div class="w3-container">
+                    <p>2869 €</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="w3-third">
+            <div class="w3-card-4">
+                <div class="w3-container w3-center">
+                    <h2>Evolution du chiffre d'affaires</h2>
+                </div>
+                <br>
+                <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Capture%20d%e2%80%99%c3%a9cran%202018-12-20%20%c3%a0%2017.09.17.png" style="width: 100%;padding-bottom: 87px;" class="Graphique-CA" alt="Evolution-CA">
+            </div>
+        </div>
+
+
+        <div class="w3-third">
+            <div class="w3-card-4">
+
+                <header class="w3-container">
+                    <h2>Dépenses du mois dernier</h2>
+                </header>
+
+                <div class="w3-container">
+                    <p>12 367 €</p>
+                </div>
+                <header class="w3-container">
+                    <h2>Chiffre d'affaires du mois dernier</h2>
+                </header>
+
+                <div class="w3-container">
+                    <p>47 694 €</p>
+                </div>
+                <header class="w3-container">
+                    <h2>Résultat net du mois dernier</h2>
+                </header>
+
+                <div class="w3-container">
+                    <p>35 327 €</p>
+                </div>
+                <header class="w3-container">
+                    <h2>Evolution du chiffre d'affaires</h2>
+                </header>
+
+                <div class="w3-container">
+                    <p>44 %</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

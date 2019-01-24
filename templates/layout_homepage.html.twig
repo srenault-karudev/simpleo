@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/main.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    {% endblock  %}
+</head>
+
+<nav class="navColor">
+
+    <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" class="Simple-logo" alt="Simpleo logo">
+
+    <div class="" id="">
+        <ul class="headerNav">
+            <li class="nav-item active-link">
+                <a class="nav-link active-link" href="#">Tableau de bord</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Clients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Fournisseurs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Facture et Devis</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Comptabilité</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Stockage</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Rapport</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Equipes</a>
+            </li>
+
+            {% if is_granted('ROLE_USER') %}
+                <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></li>
+
+            {% else %}
+                <li class="nav-link" ><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+
+            {% endif %}
+
+        </ul>
+    </div>
+</nav>
+
+
+
+{% block content %}
+    <body></body>
+{% endblock  %}
+
+
+
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+{% endblock  %}
+
+<!-- </body> -->
+
+
+<footer>
+    <div class="w3-container w3-dark-gray">
+        <h5>IUT Sénart-Fontainebleau</h5>
+        <p>SevenAccounting</p>
+    </div>
+</footer>
+
+</html>
