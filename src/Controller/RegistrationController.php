@@ -21,4 +21,12 @@ class RegistrationController extends Controller
     {
         return $this->redirect($this->generateUrl('fos_user_registration_register'));
     }
+
+
+    protected function setFlash($action, $value)
+    {
+        $value = $this->container->get('translator')->trans($value, array(), 'FOSUserBundle');
+        $this->container->get('session')->setFlash($action, $value);
+    }
+
 }

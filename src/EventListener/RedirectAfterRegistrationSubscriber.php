@@ -31,6 +31,8 @@ class RedirectAfterRegistrationSubscriber implements EventSubscriberInterface
         $event->setResponse($response);
     }
 
+
+
     public static function getSubscribedEvents()
     {
         return [
