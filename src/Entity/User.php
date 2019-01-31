@@ -33,7 +33,47 @@ class User extends BaseUser
         return $this->id;
     }
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Person", mappedBy="user")
+     */
+    private $person;
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->person = new ArrayCollection();
+
+    }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getPerson(): Collection
+    {
+        return $this->person;
+    }
+
+    public function addPerson(Person $person): self
+    {
+        if (!$this->person->contains($person)) {
+            $this->person[] = $person;
+            $person->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePerson(Person $person): self
+    {
+        if ($this->person->contains($person)) {
+            $this->person->removeElement($person);
+            $person->removeUser($this);
+        }
+
+        return $this;
+    }
 
 
 }

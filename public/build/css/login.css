@@ -288,4 +288,5 @@ h1{
 .underlineHover{
     margin-top: -20px;
     padding: 5px;
+    text-decoration: none;
 }
