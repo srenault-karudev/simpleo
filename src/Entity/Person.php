@@ -75,7 +75,15 @@ class Person
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="person")
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="person")
+     * @ORM\JoinTable(name="user_person",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     *   }
+     * )
      */
     private $user;
 
@@ -205,7 +213,6 @@ class Person
     {
         if (!$this->user->contains($user)) {
             $this->user[] = $user;
-            $user->addPerson($this);
         }
 
         return $this;
@@ -215,11 +222,11 @@ class Person
     {
         if ($this->user->contains($user)) {
             $this->user->removeElement($user);
-            $user->removePerson($this);
         }
 
         return $this;
     }
+
 
 }
 
