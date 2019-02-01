@@ -10,22 +10,17 @@
     {% endblock  %}
 </head>
 
-<nav class="navColor">
+<nav class="navColor" id="headerSize">
 
-    <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" class="Simpleo-logo" alt="Simpleo logo">
 
     <div class="" id="">
+        <ul class="headerNav"><img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" class="Simpleo-logo" alt="Simpleo logo"></ul>
         <ul class="headerNav">
-            <di>WELCOME TO SIMPLEO</di>
-
             {% if is_granted('ROLE_USER') %}
                 <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></li>
-
             {% else %}
                 <li class="nav-link" ><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
-
             {% endif %}
-
         </ul>
     </div>
 </nav>
