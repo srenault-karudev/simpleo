@@ -1,9 +1,26 @@
 {% extends 'layout_homepage.html.twig' %}
-
 {% block title %}{% endblock %}
-{% block head %}{% endblock %}
-{% block content %}
+{% block head %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/homePage.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    {% endblock  %}
+{% endblock %}
 
-    <p>Devellopement front end de la home Page en cours. Kam</p>
+    {% block javascripts %}
+        <script src="{{ asset('build/js/homePage.js') }}"></script>
+    {% endblock %}
+
+{% block content %}
+    <body>
+    {% block body %} {% endblock %}
+    <div id="first-view-js">
+        <div class="">
+            <span class="welcome">Bienvenue.</span>
+        </div>
+    </div>
+    </body>
 
 {% endblock %}
