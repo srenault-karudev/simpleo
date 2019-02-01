@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% include 'layout.html.twig' %}
 
 {% block title %}{% endblock %}
 {% block head %}{% endblock %}
@@ -54,7 +54,8 @@
                     <h2>Evolution du chiffre d'affaires</h2>
                 </div>
                 <br>
-                <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Capture%20d%e2%80%99%c3%a9cran%202018-12-20%20%c3%a0%2017.09.17.png" style="width: 100%;padding-bottom: 87px;" class="Graphique-CA" alt="Evolution-CA">
+                <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Capture%20d%e2%80%99%c3%a9cran%202018-12-20%20%c3%a0%2017.09.17.png"
+                     style="width: 100%;padding-bottom: 87px;" class="Graphique-CA" alt="Evolution-CA">
             </div>
         </div>
 
@@ -95,4 +96,6 @@
         </div>
     </div>
 
+    
+    {% include 'footer.html.twig' %}
 {% endblock %}
