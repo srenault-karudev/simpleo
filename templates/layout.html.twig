@@ -5,29 +5,50 @@
     <title>Title</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/dashboard.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% endblock  %}
 </head>
 
 <nav class="navColor">
 
-    <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" class="Simpleo-logo" alt="Simpleo">
 
-        Bonjour {{ app.user.username }}
+    <div class="bienvenue">
+        <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" class="Simpleo-logo" alt="Simpleo">
+    <p>
+        Bonjour, <em>{{ app.user.username }}</em>
+    </p>
+        </div>
 
-
-    <div class="" id="">
+    <div class="barrenav" id="">
         <ul class="headerNav">
             <li class="nav-item active-link">
                 <a class="nav-link active-link" href="#">Tableau de bord</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Clients</a>
+                <div class="dropdown">
+                    <a class="nav-link">Achats</a>
+                    <div class="dropdown-content w3-bar-block w3-border">
+                        <a href="#" class="w3-bar-item w3-button">Achats comptants</a>
+                        <a href="#" class="w3-bar-item w3-button">Enregistrer une facture</a>
+                        <a href="#" class="w3-bar-item w3-button">Fournisseurs</a>
+                    </div>
+                </div>
             </li>
+
+
             <li class="nav-item">
-                <a class="nav-link" href="#">Fournisseurs</a>
+                <div class="dropdown">
+                    <a class="nav-link">Ventes</a>
+                    <div class="dropdown-content w3-bar-block w3-border">
+                        <a href="#" class="w3-bar-item w3-button">Il y aura</a>
+                        <a href="#" class="w3-bar-item w3-button">Peut être</a>
+                        <a href="#" class="w3-bar-item w3-button">Quelque chose ..'</a>
+                    </div>
+                </div>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="#">Facture et Devis</a>
             </li>
@@ -43,6 +64,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Equipes</a>
             </li>
+
+
 
             {% if is_granted('ROLE_USER') %}
                 <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></li>
@@ -74,11 +97,18 @@
 <!-- </body> -->
 
 
-<footer>
-    <div class="w3-container w3-dark-gray">
-        <h5>IUT Sénart-Fontainebleau</h5>
-        <p>SevenAccounting</p>
+<!-- Footer -->
+<footer class="w3-center w3-dark-grey w3-padding-64">
+    <a href="#" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut de page</a>
+    <div class="w3-xlarge w3-section">
+        <i class="fa fa-facebook-official w3-hover-opacity"></i>
+        <i class="fa fa-instagram w3-hover-opacity"></i>
+        <i class="fa fa-snapchat w3-hover-opacity"></i>
+        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+        <i class="fa fa-twitter w3-hover-opacity"></i>
+        <i class="fa fa-linkedin w3-hover-opacity"></i>
     </div>
+    <p>SimpleoTeam : les bests <3</p>
 </footer>
 
 </html>
