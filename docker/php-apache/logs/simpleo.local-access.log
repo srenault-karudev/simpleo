@@ -1224,3 +1224,5 @@
 192.168.33.1 - - [04/Feb/2019:22:26:01 +0000] "GET /favicon.ico HTTP/1.1" 404 69504 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko/20100101 Firefox/64.0"
 192.168.33.1 - - [04/Feb/2019:22:26:44 +0000] "POST /customer HTTP/1.1" 200 10573 "http://simpleo.local/customer" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko/20100101 Firefox/64.0"
 192.168.33.1 - - [04/Feb/2019:22:26:45 +0000] "GET /build/CSS/main.css HTTP/1.1" 200 761 "http://simpleo.local/customer" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko/20100101 Firefox/64.0"
+192.168.33.1 - - [04/Feb/2019:22:32:48 +0000] "POST /customer HTTP/1.1" 200 10576 "http://simpleo.local/customer" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko/20100101 Firefox/64.0"
+192.168.33.1 - - [04/Feb/2019:22:32:51 +0000] "GET /build/CSS/main.css HTTP/1.1" 200 761 "http://simpleo.local/customer" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:64.0) Gecko/20100101 Firefox/64.0"
