@@ -9,6 +9,10 @@
 namespace App\Controller;
 
 
+use App\Entity\Person;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,8 +31,31 @@ class CustomerController extends Controller
      * @Route("/customer", name="customer")
      */
 
-    public function index()
+//    public function index()
+//    {
+//        return $this->render('customer.html.twig');
+//    }
+
+    public function index(Request $request)
     {
-        return $this->render('customer.html.twig');
+        $person = new Person();
+        $form = $this->createForm('App\Form\CustomerType',$person);
+
+
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $form = $form->getData();
+
+
+            return $this->redirectToRoute('dashboard');
+        }
+
+        return $this->render('customer.html.twig', [
+            'form' => $form->createView(),
+            'test' => 'wsh',
+        ]);
     }
 }
