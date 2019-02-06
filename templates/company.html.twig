@@ -1,0 +1,89 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" type="text/css" href="{{ asset('build/css/company.css') }}">
+
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 ">
+            <div class="well well-sm text-center">
+                {#<form class="form-horizontal" action="" method="post">#}
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+                    <div class="fadeIn first text-center">
+                        <img class ="logo" src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" id="icon" alt="User Icon" />
+
+                    </div>
+                    <fieldset>
+                        <legend class=" text-center">Bienvenue sur Simpleo</legend>
+                        <h5 class=" text-center">Pour poursuivre, merci de compléter les informations suivantes :</h5>
+
+                        <div class="form-group">
+                            {{ form_label(form.socialReason, null, { 'label': 'Raison Social','label_attr': {'class': '  col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.socialReason, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            {{ form_label(form.legalForm, null, { 'label': 'Forme juridique','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.legalForm, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.siren, null, { 'label': 'Siren','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.siren, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            {{ form_label(form.tva, null, { 'label': 'Régime de TVA','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.tva, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.declaration, null, { 'label': 'Déclaration','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.declaration, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.startDateSocialYear, null, { 'label': 'Début de votre exercice social','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-5">
+                                {{ form_widget(form.startDateSocialYear, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.endDateSocialYear, null, { 'label': 'Fin de votre exercice social','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-5">
+                                {{ form_widget(form.endDateSocialYear, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+                        {{ form_rest(form) }}
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button type="submit" class="btn btn-primary btn-lg">Confirmer</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+</body>

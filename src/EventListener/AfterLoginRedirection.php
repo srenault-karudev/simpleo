@@ -28,7 +28,7 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
     }
 
     /**
-     * @param Request        $request
+     * @param Request $request
      *
      * @param TokenInterface $token
      *
@@ -37,14 +37,17 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
         $roles = $token->getRoles();
+        $user = $token->getUser();
+        $company = $user->getCompany();
+
 
         $rolesTab = array_map(function ($role) {
             return $role->getRole();
         }, $roles);
 
-        if (in_array('ROLE_ADMIN', $rolesTab, true) ) {
+        if (in_array('ROLE_ADMIN', $rolesTab, true)||(in_array('ROLE_USER', $rolesTab, true)) && !$company ) {
             // c'est un aministrateur : on le rediriger vers l'espace admin
-            $redirection = new RedirectResponse($this->router->generate('dashboard'));
+            $redirection = new RedirectResponse($this->router->generate('new_company'));
         } else {
             // c'est un utilisaeur lambda : on le rediriger vers l'accueil
             $redirection = new RedirectResponse($this->router->generate('dashboard'));

@@ -44,6 +44,15 @@ class Company
      */
     private $tva;
 
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="siren", type="integer", length=255, nullable=false)
+     */
+    private $siren;
+
+
     /**
      * @var string
      *
@@ -90,7 +99,7 @@ class Company
     /**
      * @return string
      */
-    public function getSocialReason(): string
+    public function getSocialReason(): ?string
     {
         return $this->socialReason;
     }
@@ -106,7 +115,7 @@ class Company
     /**
      * @return string
      */
-    public function getLegalForm(): string
+    public function getLegalForm(): ?string
     {
         return $this->legalForm;
     }
@@ -122,7 +131,7 @@ class Company
     /**
      * @return string
      */
-    public function getTva(): string
+    public function getTva(): ?string
     {
         return $this->tva;
     }
@@ -138,7 +147,7 @@ class Company
     /**
      * @return string
      */
-    public function getDeclaration(): string
+    public function getDeclaration(): ?string
     {
         return $this->declaration;
     }
@@ -154,7 +163,7 @@ class Company
     /**
      * @return \DateTime
      */
-    public function getStartDateSocialYear(): \DateTime
+    public function getStartDateSocialYear(): ?\DateTime
     {
         return $this->startDateSocialYear;
     }
@@ -170,7 +179,7 @@ class Company
     /**
      * @return \DateTime
      */
-    public function getEndDateSocialYear(): \DateTime
+    public function getEndDateSocialYear(): ?\DateTime
     {
         return $this->endDateSocialYear;
     }
@@ -191,6 +200,18 @@ class Company
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getSiren(): ?int
+    {
+        return $this->siren;
+    }
+
+    public function setSiren(int $siren): self
+    {
+        $this->siren = $siren;
 
         return $this;
     }
