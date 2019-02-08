@@ -19,6 +19,7 @@ class RegistrationController extends Controller
      */
     public function index()
     {
+
         return $this->redirect($this->generateUrl('fos_user_registration_register'));
     }
 

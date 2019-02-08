@@ -40,6 +40,12 @@ class User extends BaseUser
      */
     private $person;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Company", mappedBy="user")
+     *
+     */
+    private $company;
+
     public function __construct()
     {
         parent::__construct();
@@ -70,6 +76,24 @@ class User extends BaseUser
         if ($this->person->contains($person)) {
             $this->person->removeElement($person);
             $person->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Company $company): self
+    {
+        $this->company = $company;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = $company === null ? null : $this;
+        if ($newUser !== $company->getUser()) {
+            $company->setUser($newUser);
         }
 
         return $this;
