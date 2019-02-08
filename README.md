@@ -1,11 +1,3 @@
-## Show router
-
-```bash
-php bin/console debug:router
-
-```
-
-
 ## Reverse engineering
 
 ```bash
@@ -17,6 +9,19 @@ docker exec -it php-apache php bin/console doctrine:mapping:import 'App\Entity' 
 ```bash
 docker exec -it php-apache php bin/console  make:entity --regenerate App
 ```
+
+## drop database
+
+```bash
+docker exec -it php-apache php bin/console d:s:d --force
+```
+
+## update database
+
+```bash
+docker exec -it php-apache php bin/console d:s:u --force
+```
+
 
 ## Descriptions
 

@@ -7,8 +7,9 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/dashboard.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/main.css') }}">
     {% endblock %}
 </head>
 
@@ -26,9 +27,10 @@
     <div class="barrenav" id="">
         <ul class="headerNav">
             <li class="nav-item active-link">
-                <a class="nav-link active-link" href="#">Tableau de bord</a>
+                <a class="nav-link active-link" href="{{ path('dashboard') }}">Tableau de bord</a>
             </li>
             <li class="nav-item">
+
                 <div class="dropdown">
                     <a class="nav-link">Achats <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
@@ -37,6 +39,8 @@
                         <a href="#" class="w3-bar-item w3-button">Fournisseurs</a>
                     </div>
                 </div>
+
+
             </li>
 
 
@@ -49,6 +53,10 @@
                         <a href="#" class="w3-bar-item w3-button">Quelque chose ..</a>
                     </div>
                 </div>
+            </li>
+
+            <li class="nav-item">
+            <a class="nav-link" href="{{ path('newcustomer') }}">Clients</a>
             </li>
 
             <li class="nav-item">
