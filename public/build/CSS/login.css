@@ -8,7 +8,7 @@ html {
 body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
-    background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
+    background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
 }
 
 a {
@@ -79,11 +79,10 @@ h2 {
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
 }
+
 #formFooter a{
     text-decoration: none;
 }
-
-
 
 
 /* TABS */
@@ -273,7 +272,7 @@ input[type=text]:placeholder,input[type=email]::placeholder,input[type=password]
 }
 
 h1{
-    color:#60a0ff;
+    color:purple;
 }
 
 /* OTHERS */
@@ -296,3 +295,4 @@ h1{
     padding: 5px;
     text-decoration: none;
 }
+
