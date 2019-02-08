@@ -8,12 +8,8 @@
     {% endblock %}
 {% endblock %}
 
-    {% block javascripts %}
-        <script src="{{ asset('build/js/homePage.js') }}"></script>
-    {% endblock %}
-
 {% block content %}
-    <body>
+    <body class="mainblock">
     {% block body %} {% endblock %}
     <div id="first-view-js">
         <div class="welcome">
@@ -25,18 +21,87 @@
         </div>
     </div>
 
-    <div class="w3-row">
-        <div class="w3-third w3-container w3-green">
-            <h2>w3-third</h2>
-        </div>
-        <div class="w3-third w3-container w3-yellow">
-            <h2>w3-third</h2>
-        </div>
-        <div class="w3-third w3-container w3-red">
-            <h2>w3-third</h2>
-        </div>
+    <div class="ourPrices">
+        <table class="table1">
+            <tr>
+                <td>
+                    <h1>Vivez Simpleo</h1>
+                    <p>Que vous soyez particulier ou auto Entrpreneurs</p>
+                    <p>Gérez l'integralité de votre comptabilité de façon très simpliste</p>
+                </td>
+                <td>
+                    <h1 class="price">69 €</h1>
+                    <p>/mois</p>
+                    <p>*3 mois offerts</p>
+                </td>
+                <td>
+                    <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/DomergueHomePage/images/screen.png"
+                         class="photoScreen" alt="nasta">
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="blockthird">
+        <table class="table2">
+            <tr class="blockthirdson">
+                <td class="tdblock">
+                    <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/DomergueHomePage/images/incon-female.png"
+                         class="icon" alt="women">
+                    <h1 class="titretab">Votre Espace Client</h1>
+                    <p class="worder">Stockez vos fichiers dans un espace dédié.
+                        Notamment vos factures ou d'autres documents que vous pourrez partager et/ou récupérer
+                        facilement.</p>
+                </td>
+                <td class="tdblock">
+                    <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/DomergueHomePage/images/incon-facture.png"
+                         class="icon" alt="fact">
+                    <h1 class="titretab">Vos Factures et Devis</h1>
+                    <p class="worder">Vous pourrez facilement créer des factures et des devis formalisés grâce
+                        à un système pré-remplis de générations de factures. Cette fonction servira notamment à
+                        alimenter les informations chiffrés du Tableau de Bord ainsi que la comptabilité.</p>
+                </td>
+                <td class="tdblock">
+                    <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/DomergueHomePage/images/incon-courbe.png"
+                         class="icon" alt="courbe">
+                    <h1 class="titretab">Une Comptabilité Guidée</h1>
+                    <p class="worder">Probablement la fonction la plus conséquente de Simpleo. Un système de
+                        comptabilité intégré répondant aux normes et aux législations en vigueur. Ce système de
+                        comptabilité guidé permet à l'utilisateur réaliser sa comptabilité sans comptable et sans
+                        connaissances particulières.
+
+                        En effet, avec la fonction « Guidée » vous n'aurez qu'à suivre les indications
+                        fournies par Simpleo, sous forme de questions/réponses, pour qu'il soit en mesure de classer et
+                        comptabiliser ces écritures de manière ludique et facile. La comptabilité en partie double sera
+                        réalisée en amont par le logiciel en fonction des vos réponses fournis. Pour les
+                        utilisateurs ayant des bases en comptabilités une fonction sera mise en place pour lui laisser
+                        le choix d'une comptabilité guidé ou non.</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="who">
+        <table>
+            <tr>
+                <td>
+                    <img class="photo-test hoverOp"
+                         src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/DomergueHomePage/images/nasta_homepage-min.jpg"
+                </td>
+                <td>
+                    <img class="photo-test"
+                         src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Capture%20d%e2%80%99%c3%a9cran%202018-12-20%20%c3%a0%2017.08.52.png"
+                </td>
+            </tr>
+        </table>
     </div>
 
     </body>
+
+    {% block javascripts %}
+        <script src="{{ asset('build/js/homePage.js') }}"></script>
+    {% endblock %}
+
 {% endblock %}
  {% include 'footer.html.twig' %}
