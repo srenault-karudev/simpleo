@@ -31,6 +31,23 @@ class Customer
      */
     private $id;
 
+    /**
+     * @return \Person
+     */
+    public function getId(): \Person
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param \Person $id
+     */
+    public function setId(\Person $id)
+    {
+        $this->id = $id;
+    }
+
+
     public function getJob(): ?string
     {
         return $this->job;
@@ -42,19 +59,6 @@ class Customer
 
         return $this;
     }
-
-    public function getId(): ?Person
-    {
-        return $this->id;
-    }
-
-    public function setId(?Person $id): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
 
 }
 

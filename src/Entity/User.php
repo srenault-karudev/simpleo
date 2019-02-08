@@ -24,7 +24,6 @@ class User extends BaseUser
      */
     protected $id;
 
-
     /**
      * @return int
      */
@@ -34,6 +33,7 @@ class User extends BaseUser
     }
 
     /**
+
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Person", mappedBy="user")
@@ -61,6 +61,8 @@ class User extends BaseUser
         return $this->person;
     }
 
+
+
     public function addPerson(Person $person): self
     {
         if (!$this->person->contains($person)) {
@@ -80,6 +82,7 @@ class User extends BaseUser
 
         return $this;
     }
+
 
     public function getCompany(): ?Company
     {

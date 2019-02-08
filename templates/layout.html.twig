@@ -2,33 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Simpleo</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/dashboard.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        {#<link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/main.css') }}">#}
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no, maximum-scale=5.0">
     {% endblock %}
 </head>
 
 <nav class="navColor">
+    <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+    <div class="w3-sidebar w3-bar-block w3-animate-left" style="display:none;z-index:4" id="mySidebar">
+        <button style="font-size: 130%;" class="w3-bar-item" onclick="w3_close()">Fermer &times;</button>
+        <br>
+        <a href="{{ path('dashboard') }}" class="w3-bar-item active-link-bar">Tableau de bord</a>
+        <div class="dropdown" style="width: 100%;">
+            <a class="w3-bar-item">Achats <i class="fa fa-caret-down"></i></a>
+            <div class="dropdown-content w3-bar-block w3-animate-left w3-border-purple" style="width: 25%;">
+                <a href="#" class="w3-bar-item">Achats comptants</a>
+                <a href="#" class="w3-bar-item">Enregistrer une facture</a>
+                <a href="#" class="w3-bar-item">Fournisseurs</a>
+            </div>
+        </div>
+        <a href="#" class="w3-bar-item">Ventes</a>
+        <a href="{{ path('facturedevis') }}" class="w3-bar-item">Factures et Devis</a>
+        <a href="{{ path('comptabilite') }}" class="w3-bar-item">Comptabilité</a>
+        <a href="{{ path('stockage') }}" class="w3-bar-item">Stockage</a>
+        <a href="{{ path('rapport') }}" class="w3-bar-item">Rapport</a>
+        <a href="{{ path('equipes') }}" class="w3-bar-item">Equipes</a>
+        <br>
+        <a href="{{ path('fos_user_security_logout') }}" class="w3-bar-item">Se deconnecter</a>
 
+    </div>
 
     <div class="bienvenue">
-        <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" class="Simpleo-logo"
-             alt="Simpleo">
-        <p>
+        <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" id="Simpleologo" class="Simpleo-logo"
+             alt="Simpleo"/>
+        <p class="bienvenue2">
             Bonjour, <em>{{ app.user.username }}</em>
         </p>
     </div>
 
-    <div class="barrenav" id="">
+    <div class="barrenav" id="test">
         <ul class="headerNav">
-            <li class="nav-item active-link">
-                <a class="nav-link active-link" href="#">Tableau de bord</a>
-            </li>
+
             <li class="nav-item">
+                <a href="javascript:void(0);" class="icon" onclick="w3_open()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            <li>
+
+
+            <li class="nav-item active-link">
+                <a class="nav-link" href="{{ path('dashboard') }}">Tableau de bord</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('newcustomer') }}">Clients</a>
+            </li>
+
+            <li class="nav-item">
+
                 <div class="dropdown">
                     <a class="nav-link">Achats <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
@@ -37,6 +78,8 @@
                         <a href="#" class="w3-bar-item w3-button">Fournisseurs</a>
                     </div>
                 </div>
+
+
             </li>
 
 
@@ -51,20 +94,22 @@
                 </div>
             </li>
 
+
+
             <li class="nav-item">
-                <a class="nav-link" href="#">Facture et Devis</a>
+                <a class="nav-link" href="{{ path('facturedevis') }}">Facture et Devis</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Comptabilité</a>
+                <a class="nav-link" href="{{ path('comptabilite') }}">Comptabilité</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Stockage</a>
+                <a class="nav-link" href="{{ path('stockage') }}">Stockage</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Rapport</a>
+                <a class="nav-link" href="{{ path('rapport') }}">Rapport</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Equipes</a>
+                <a class="nav-link" href="{{ path('equipes') }}">Equipes</a>
             </li>
 
 
@@ -94,6 +139,50 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
             integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
             crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+        function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("myOverlay").style.display = "none";
+        }
+    </script>
+
+    <script>$(document).ready(function () {
+            $(window).scroll(function () {
+                var top =  $(".goto-top");
+                if ( $('body').height() <= (    $(window).height() + $(window).scrollTop() + 200 )) {
+                    top.animate({"margin-left": "0px"},1500);
+                }
+            });
+
+            $(".goto-top").on('click', function () {
+                $("html, body").animate({scrollTop: 0}, 400);
+            });
+        });</script>
+
+    <script type="text/javascript">
+        $(function(){
+            $('.barrenav a').filter(function(){return this.href==location.href}).parent().addClass('active-link').siblings().removeClass('active-link')
+            $('.barrenav a').click(function(){
+                $(this).parent().addClass('active-link').siblings().removeClass('active-link')
+            })
+        })
+    </script>
+
+    <script type="text/javascript">
+        $(function(){
+            $('.w3-sidebar a').filter(function(){return this.href==location.href}).addClass('active-link-bar').siblings().removeClass('active-link-bar')
+            $('.w3-sidebar a').click(function(){
+                $(this).parent().addClass('active-link-bar').siblings().removeClass('active-link-bar')
+            })
+        })
+    </script>
 {% endblock %}
 
 </html>

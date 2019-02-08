@@ -8,7 +8,7 @@ html {
 body {
     font-family: "Poppins", sans-serif;
     height: 100vh;
-    background-image: radial-gradient(circle, purple, rebeccapurple, purple);
+    background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
 }
 
 a {
@@ -74,10 +74,15 @@ h2 {
     background-color: #f6f6f6;
     border-top: 1px solid #dce8f1;
     padding: 25px;
+    padding-top: 10%;
     text-align: center;
     -webkit-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px;
 }
+#formFooter a{
+    text-decoration: none;
+}
+
 
 
 
@@ -241,6 +246,7 @@ input[type=text]:placeholder,input[type=email]::placeholder,input[type=password]
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
     animation-delay: 1s;
+    margin-top: 7%;
 }
 
 /* Simple CSS3 Fade-in Animation */
