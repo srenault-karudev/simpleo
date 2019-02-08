@@ -92,6 +92,16 @@ td{
     top: 0.2em;
 }
 
+.blocImage h2{
+    position: absolute;
+    z-index: 2;
+    font-size: 300%;
+    font-family:'Montserrat', sans-serif;
+    color: black;
+    left: 60px;
+    top: 0.2em;
+}
+
 .textWho{
     font-size: 200%;
     color: white;
