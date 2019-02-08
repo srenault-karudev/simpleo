@@ -1,3 +1,7 @@
+body {
+    min-width: 320px;
+}
+
 .navColor {
     background-image: radial-gradient(circle, rgb(109,104,189), rgb(141,86,141), rgb(109,104,189));
 }
@@ -56,6 +60,20 @@ h2{
     font-size: 140%;
 }
 
+.smallhead{
+    font-size: 139.8%;
+}
+
+.w3-row-padding p{
+    text-align: center;
+    font-size: 130%;
+}
+
+.w3-row-padding{
+    position:relative;
+}
+
+
 .colonne1 {
     float:left;
     margin-left: 20px;
@@ -67,9 +85,24 @@ h2{
     float: right;
 }
 
+.row1{
+    width: 30%;
+    padding-bottom: 20%;
+}
+
+.row2{
+    width: 40%;
+    display: inline-block;
+}
+
+.row3{
+    width: 30%;
+    display: inline-block;
+}
+
 .w3-card-4{
     margin-right: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 49px;
     padding-bottom: 10px;
 }
 
@@ -89,7 +122,13 @@ li.nav-link a{
     text-decoration: none;
 }
 
+.icon{
+    display: none;
+}
 
+.w3-animate-left{
+    animation-duration: 0.5s;
+}
 
 
 
@@ -120,3 +159,127 @@ li.nav-link a{
     text-decoration: none;
     display: block;
 }
+
+
+
+
+@media (max-width: 1024px ) {
+    .row1{
+        width: 70%;
+        margin-left: 15%;
+
+    }
+
+    .row2{
+        width: 70%;
+        margin-left: 15%;
+
+    }
+
+    .row3{
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    .bienvenue p {
+        color: white;
+        font-size: 130%;
+        font-family: 'Montserrat', sans-serif;
+        float: right;
+        top: 10%;
+    }
+
+    .nav-link{
+        font-size: 80%;
+        display: none;
+    }
+
+
+    .icon{
+        float: left;
+        display: block;
+        margin-left: 20px;
+        margin-right: 20px;
+        font-size: 290%;
+        color: white;
+    }
+
+    .w3-sidebar{
+        background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
+        color: white;
+    }
+    .w3-sidebar a{
+        background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
+        color: white;
+    }
+    .w3-sidebar button{
+        background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
+        color: white;
+    }
+    .w3-bar-item{
+        text-decoration: none;
+    }
+    .w3-bar-item:hover{
+        color: rebeccapurple;
+        background-image: linear-gradient(to right, rgb(255,255,255), rgb(255,255,255));
+    }
+
+    .w3-bar-item.active-link-bar{
+        background-image: linear-gradient(to right, rgb(255,255,255), rgb(255,255,255));
+        color: rebeccapurple;
+    }
+
+    .dropdown-content{
+        width: 25%;
+    }
+
+    .bienvenue img{
+        display: none;
+    }
+}
+
+
+
+
+/* Mise en page pour tablettes */
+@media (max-width: 767px) {
+    .row1{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .row2{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .row3{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .colonne2 {
+        float:right;
+        margin-right: 20px;
+        margin-bottom: 10%;
+    }
+
+}
+
+
+
+
+/* Mise en page pour mobile */
+@media (max-width: 480px) {
+    .colonne2 {
+        float:right;
+        margin-right: 20px;
+        margin-bottom: 10%;
+    }
+
+
+}
+
+
+/* Mise en page pour les grands écrans */
+@media (min-width: 1200px) { ... }
