@@ -6,7 +6,7 @@ legend{
 body{
      color :#82427E;
     padding-top:20px;
-    background-image: radial-gradient(circle, purple, rebeccapurple, purple);
+    background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
 }
 h5{
     color :#82427E;

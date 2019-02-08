@@ -3,7 +3,7 @@ body {
 }
 
 .navColor {
-    background-image: radial-gradient(circle, rgb(109,104,189), rgb(141,86,141), rgb(109,104,189));
+    background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
 }
 
 .Simpleo-logo{
