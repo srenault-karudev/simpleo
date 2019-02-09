@@ -1,75 +1,83 @@
-.mainblock{
+.mainblock {
     background-color: #F5F5F5;
 }
 
-
-.welcome{
+.welcome {
     color: white;
     font-size: 2.8em;
 }
 
-.Simpleo-logodeux{
+.Simpleo-logodeux {
     width: 27%;
 }
 
-.ourPrices{
+.ourPrices {
     margin: 10px 10px 0px 10px;
     background-color: white;
 }
 
-.price{
+.price {
     font-size: 500%;
 }
 
-.table1{
+.table1 {
     text-align: center;
     padding-right: 180px;
     padding-left: 180px;
 }
 
-.table2{
+.table2 {
     border-spacing: 10px;
 }
 
-.blockthird{
+.blockthird {
     text-align: center;
     background-color: #F5F5F5;
 }
 
-.blockthirdson{
+.blockthirdson {
     background-color: white;
 }
 
-td{
+td {
     width: 10%;
 }
 
-.tdblock{
+.tdblock {
     padding: 20px 20px 20px 20px;
+    position: relative;
 }
 
-.worder{
+.worder {
     font-size: 80%;
 }
 
-.photoScreen{
+.photoScreen {
     width: 100%;
 }
 
-.titretab{
+.titretab {
     color: rebeccapurple;
     font-family: 'Montserrat', sans-serif;
     font-size: large;
 }
 
-.icon{
-    width: 10%;
+/*.divicon{
+    position: absolute;
+    top: 2em;
+    left: 14em;
+}
+Pour alligner les icon*/
+
+.iconsize {
+    width: 50px;
 }
 
-.who{
+.who {
     margin: 0px 8px 10px 8px;
 }
-.photo-test{
+
+.photo-test {
     width: 100%;
     height: 500px;
 }
@@ -81,34 +89,43 @@ td{
 }
 
 
-
-.blocImage h1{
+.blocImage h1 {
     position: absolute;
     z-index: 2;
-    font-size: 300%;
-    font-family:'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: white;
-    left: 60px;
-    top: 0.2em;
+    top: 40%;
+    width: 55%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
 }
 
-.blocImage h2{
+.blocImage h2 {
     position: absolute;
     z-index: 2;
-    font-size: 300%;
-    font-family:'Montserrat', sans-serif;
+    font-size: 200%;
+    font-family: 'Montserrat', sans-serif;
     color: black;
     left: 60px;
     top: 0.2em;
 }
 
-.textWho{
+.textWho {
     font-size: 200%;
     color: white;
 }
 
-.hoverOp:hover{
-    opacity: 0.6;
-    transition-duration: 0.5s;
+.hoverOp:hover {
+    opacity: 0.4;
+    transition-duration: 0.7s;
+}
+
+.blocImage h2:hover {
+    text-decoration: underline;
+}
+
+.blocImage h1:hover {
+    text-decoration: underline;
 }
 
