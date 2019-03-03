@@ -47,7 +47,7 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
 
         if (in_array('ROLE_ADMIN', $rolesTab, true)||(in_array('ROLE_USER', $rolesTab, true)) && !$company ) {
             // c'est un aministrateur : on le rediriger vers l'espace admin
-            $redirection = new RedirectResponse($this->router->generate('new_company'));
+            $redirection = new RedirectResponse($this->router->generate('form_company'));
         } else {
             // c'est un utilisaeur lambda : on le rediriger vers l'accueil
             $redirection = new RedirectResponse($this->router->generate('dashboard'));

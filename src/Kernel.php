@@ -38,6 +38,7 @@ class Kernel extends BaseKernel
         $bundles = array(
             // ...
             new FOSUserBundle(),
+
             // ...
         );
         return $bundles;

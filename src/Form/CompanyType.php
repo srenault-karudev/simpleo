@@ -11,6 +11,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -25,10 +26,29 @@ class CompanyType extends AbstractType
              ->add('socialReason', TextType::class)
              ->add('legalForm',TextType::class)
              ->add('tva',TextType::class)
-            ->add('siren',TextType::class)
+            ->add('siren',NumberType::class)
              ->add('declaration',TextType::class)
-             ->add('startDateSocialYear',DateType::class)
-             ->add('endDateSocialYear',DateType::class);
 
+            ->add('startDateSocialYear', DateType::class, array(
+                'required' => false,
+                'widget' => 'single_text',
+
+                // prevents rendering it as type="date", to avoid HTML5 date pickers
+                'html5' => false,
+
+                // adds a class that can be selected in JavaScript
+                'attr' => ['class' => 'js-datepicker'],
+            ))
+
+             ->add('endDateSocialYear', DateType::class, array(
+            'required' => false,
+            'widget' => 'single_text',
+
+            // prevents rendering it as type="date", to avoid HTML5 date pickers
+            'html5' => false,
+
+            // adds a class that can be selected in JavaScript
+            'attr' => ['class' => 'js-datepicker'],
+        ));
     }
 }

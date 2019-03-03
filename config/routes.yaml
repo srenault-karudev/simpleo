@@ -8,3 +8,8 @@ index:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+# app/config/routing.yml
+blog:
+    path:      /form_company/{id}
+    defaults: {_controller: 'App\Controller\CompanyController:companyForm' }
+
