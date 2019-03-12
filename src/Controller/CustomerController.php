@@ -17,7 +17,7 @@ use Twig\Environment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class NewCustomerController extends Controller
+class CustomerController extends Controller
 {
 
     private $twig;
@@ -27,33 +27,37 @@ class NewCustomerController extends Controller
         $this->twig = $twig;
     }
 
-    /**
-     * @Route("/newcustomer", name="newcustomer")
-     */
+
 
 //    public function index()
 //    {
 //        return $this->render('newcustomer.html.twig');
 //    }
 
-    public function index(Request $request)
+    /**
+     * @Route("/newcustomer", name="new_customer")
+     */
+
+    public function newCustomer(Request $request)
     {
         $person = new Person();
         $form = $this->createForm('App\Form\CustomerType',$person);
 
-
+        $person->setFirstname("steven");
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $form = $form->getData();
-
+            $person->setFirstname("steven");
+            $em =  $this->getDoctrine()->getManager();
+            $em->persist($person);
+            $em->flush();
 
             return $this->redirectToRoute('dashboard');
         }
 
-        return $this->render('newcustomer.html.twig', [
+        return $this->render('customer.html.twig', [
             'form' => $form->createView(),
         ]);
     }

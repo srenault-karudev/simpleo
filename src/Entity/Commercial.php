@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="commercial", indexes={@ORM\Index(name="id_idx", columns={"id"})})
  * @ORM\Entity
  */
-class Commercial
+class Commercial extends Person
 {
     /**
      * @var string
@@ -19,17 +19,6 @@ class Commercial
      */
     private $salary;
 
-    /**
-     * @var \Person
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Person")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id", referencedColumnName="id")
-     * })
-     */
-    private $id;
 
     public function getSalary(): ?string
     {
@@ -43,17 +32,6 @@ class Commercial
         return $this;
     }
 
-    public function getId(): ?Person
-    {
-        return $this->id;
-    }
-
-    public function setId(?Person $id): self
-    {
-        $this->id = $id;
-
-        return $this;
-    }
 
 
 }

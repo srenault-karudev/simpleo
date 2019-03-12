@@ -11,9 +11,20 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="person")
  * @ORM\Entity
+ * @ORMInheritanceType("SINGLE_TABLE")
+ * @ORMDiscriminatorColumn(name="type", type="string")
+ * @ORMDiscriminatorMap( {
+ *     "customer" = "App/Entity/Customer",
+ *      "provider" = "App/Entity/Provider",
+ *     "commercial" = "App/Entity/Commercial"
+ * } )
  */
 class Person
 {
+
+    const TYPE_CUSTOMER = "customer";
+    const TYPE_PROVIDER = "fournisseur";
+    const TYPE_COMMERCIAL = "commercial";
     /**
      * @var integer
      *
