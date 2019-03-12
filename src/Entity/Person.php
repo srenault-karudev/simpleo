@@ -11,20 +11,19 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="person")
  * @ORM\Entity
- * @ORMInheritanceType("SINGLE_TABLE")
- * @ORMDiscriminatorColumn(name="type", type="string")
- * @ORMDiscriminatorMap( {
- *     "customer" = "App/Entity/Customer",
- *      "provider" = "App/Entity/Provider",
- *     "commercial" = "App/Entity/Commercial"
- * } )
+* @ORM\InheritanceType("SINGLE_TABLE")
+* @ORM\DiscriminatorColumn(name="type", type="string")
+*  @ORM\DiscriminatorMap( {
+*      "customer" = "Customer",
+*      "provider" = "Provider",
+*     "commercial" = "Commercial"
+*  } )
  */
-class Person
+
+
+abstract class Person
 {
 
-    const TYPE_CUSTOMER = "customer";
-    const TYPE_PROVIDER = "fournisseur";
-    const TYPE_COMMERCIAL = "commercial";
     /**
      * @var integer
      *
@@ -32,49 +31,36 @@ class Person
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="lastName", type="string", length=255, nullable=false)
      */
-    private $lastname;
+    protected $lastname;
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstName", type="string", length=255, nullable=false)
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string
      *
      * @ORM\Column(name="adress", type="string", length=255, nullable=false)
      */
-    private $adress;
+    protected $adress;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mobilePhone", type="string", length=255, nullable=false)
      */
-    private $mobilephone;
+    protected $mobilephone;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=255, nullable=false)
-     */
-    private $type;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -83,28 +69,31 @@ class Person
      */
     private $team;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     */
+    protected $email;
+
+
+
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="User", inversedBy="person")
-     * @ORM\JoinTable(name="user_person",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="person_id", referencedColumnName="id")
-     *   }
-     * )
+     * @ORM\ManyToMany(targetEntity="Team", mappedBy="person")
      */
-    private $user;
+
+    protected $user;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->team = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->team = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -172,17 +161,7 @@ class Person
         return $this;
     }
 
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
 
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Team[]
@@ -237,6 +216,8 @@ class Person
 
         return $this;
     }
+
+
 
 
 }

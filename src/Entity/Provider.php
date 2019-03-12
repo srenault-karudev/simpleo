@@ -13,22 +13,18 @@ use Doctrine\ORM\Mapping as ORM;
 class Provider extends Person
 {
     /**
-     * @var string
-     *
-     * @ORM\Column(name="categoryName", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string")
      */
-    private $categoryname;
+    protected $personType;
 
-
-
-    public function getCategoryname(): ?string
+    public function getPersonType(): ?string
     {
-        return $this->categoryname;
+        return $this->personType;
     }
 
-    public function setCategoryname(string $categoryname): self
+    public function setPersonType(string $type): self
     {
-        $this->categoryname = $categoryname;
+        $this->personType = $type;
 
         return $this;
     }

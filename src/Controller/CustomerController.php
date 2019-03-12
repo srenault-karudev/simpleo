@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Customer;
 use App\Entity\Person;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -40,18 +41,17 @@ class CustomerController extends Controller
 
     public function newCustomer(Request $request)
     {
-        $person = new Person();
-        $form = $this->createForm('App\Form\CustomerType',$person);
+        $customer = new Customer();
+        $form = $this->createForm('App\Form\CustomerType',$customer);
 
-        $person->setFirstname("steven");
+        //$customer->setPersonType("customer");
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $person->setFirstname("steven");
-            $em =  $this->getDoctrine()->getManager();
-            $em->persist($person);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($customer);
             $em->flush();
 
             return $this->redirectToRoute('dashboard');

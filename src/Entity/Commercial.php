@@ -7,31 +7,27 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Commercial
  *
- * @ORM\Table(name="commercial", indexes={@ORM\Index(name="id_idx", columns={"id"})})
+ * @ORM\Table(name="commercial")
  * @ORM\Entity
  */
 class Commercial extends Person
 {
     /**
-     * @var string
-     *
-     * @ORM\Column(name="salary", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string")
      */
-    private $salary;
+    protected $personType;
 
-
-    public function getSalary(): ?string
+    public function getPersonType(): ?string
     {
-        return $this->salary;
+        return $this->personType;
     }
 
-    public function setSalary(?string $salary): self
+    public function setPersonType(string $type): self
     {
-        $this->salary = $salary;
+        $this->personType = $type;
 
         return $this;
     }
-
 
 
 }

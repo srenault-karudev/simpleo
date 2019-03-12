@@ -13,7 +13,7 @@
             <div class="">
                 <fieldset class="scheduler-border">
                     <legend>Nouveau Client</legend>
-                    <form>
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                         <div class="form-group">
                             {{ form_label(form.firstname, null, { 'label': 'Nom*','label_attr': {'class': 'col-sm-2 control-label'} }) }}
                             <div class="col-sm-12">
@@ -44,13 +44,17 @@
                                 {{ form_widget(form.adress, {'attr': {'class': 'form-control'}} ) }}
                             </div>
                         </div>
+
+
+                    {{ form_rest(form) }}
+
                         <div class="form-group">
                             <div class="text-center">
                                 <button href="#" type="submit" class="btn btn-primary">Enregistrer</button>
                             </div>
                         </div>
 
-                    </form>
+                    {{ form_end(form) }}
                 </fieldset>
 
 
