@@ -10,9 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  * Person
  *
  * @ORM\Table(name="person")
- * @ORM\Entity
-* @ORM\InheritanceType("SINGLE_TABLE")
-* @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\Entity(repositoryClass="App\Repository\PersonRepository")
+*  @ORM\InheritanceType("SINGLE_TABLE")
+*  @ORM\DiscriminatorColumn(name="type", type="string")
 *  @ORM\DiscriminatorMap( {
 *      "customer" = "Customer",
 *      "provider" = "Provider",
@@ -82,7 +82,7 @@ abstract class Person
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Team", mappedBy="person")
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="person")
      */
 
     protected $user;

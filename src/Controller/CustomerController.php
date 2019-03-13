@@ -41,10 +41,14 @@ class CustomerController extends Controller
 
     public function newCustomer(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $customer = $em->getRepository('App:Person')->getCustomers();
+
+        dump($customer);
+
         $customer = new Customer();
         $form = $this->createForm('App\Form\CustomerType',$customer);
 
-        //$customer->setPersonType("customer");
 
         $form->handleRequest($request);
 
