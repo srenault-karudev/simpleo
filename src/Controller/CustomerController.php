@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Entity\Person;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,25 +29,40 @@ class CustomerController extends Controller
         $this->twig = $twig;
     }
 
-
-
-//    public function index()
-//    {
-//        return $this->render('newcustomer.html.twig');
-//    }
-
     /**
-     * @Route("/newcustomer", name="new_customer")
+     * @Route("/index_customer", name="index_customer")
      */
 
-    public function newCustomer(Request $request)
+    public function indexAction(Request $request)
     {
+
+
+
         $em = $this->getDoctrine()->getManager();
-        $customer = $em->getRepository('App:Person')->getCustomers();
+        $customers = $em->getRepository('App:Person')->getCustomers();
 
-        dump($customer);
 
-        $customer = new Customer();
+        $reservations  = $this->get('knp_paginator')->paginate(
+            $customers,
+            $request->query->get('page', 1)/*le numéro de la page à afficher*/,
+            6/*nbre d'éléments par page*/
+        );
+        return $this->render('customer/index.html.twig', array(
+            'customers' => $customers,));
+    }
+
+    /**
+     * @Route("/form_customer/{id}", name="form_customer",defaults={"id"=""})
+     * @Method({"GET", "POST"})
+     */
+
+    public function customerForm (Request $request,Customer $customer = null)
+    {
+
+        if($customer == null){
+            $customer = new Customer();
+
+        }
         $form = $this->createForm('App\Form\CustomerType',$customer);
 
 
@@ -58,10 +74,10 @@ class CustomerController extends Controller
             $em->persist($customer);
             $em->flush();
 
-            return $this->redirectToRoute('dashboard');
+            return $this->redirectToRoute('index_customer');
         }
 
-        return $this->render('customer.html.twig', [
+        return $this->render('customer/form.html.twig', [
             'form' => $form->createView(),
         ]);
     }

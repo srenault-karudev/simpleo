@@ -1,0 +1,63 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+
+    <body>
+    <div class="heading header-fixed">
+        <!--  .heading-->
+        <h3 class="panel-title"> Liste des clients </h3>
+        <div class="heading-height"></div>
+        <div class="resBtnSearch">
+            <a href="#"><span class="s16 icomoon-icon-search-3"></span></a>
+        </div>
+    </div>
+    <div class="col-md-12 form-group">
+        <a href="{{ path('form_customer') }}">
+            <button class="btn btn-success">
+                + Nouveau Client
+            </button>
+        </a>
+    </div>
+
+    <div class ="idtable">
+
+
+    </div>
+    <table class="table reservations" cellspacing="0"
+           width="80%">
+        <thead>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Télephone</th>
+            <th>Email</th>
+            <th>Adresse</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+            <tr>
+                {#<td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>#}
+                <td>{{ customer.firstname }}</td>
+                <td>{{ customer.lastname }}</td>
+                <td>{{ customer.getMobilephone() }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.adress }}</td>
+                <td >
+                    <a href="#" title=""
+                       class="tip" data-original-title="Voir"><i
+                                class="fa fa-eye"></i></a>
+                    <a href="{{ path('form_customer', { 'id': customer.id }) }}"
+                       title=""
+                       class="tip" data-original-title="Modifier"><i
+                                class="fa fa-pencil"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    </body>
+
+    {% include 'footer.html.twig' %}
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% extends '/layout.html.twig' %}
 
 {% block title %}{% endblock %}
 {% block head %}{% endblock %}
@@ -10,9 +10,12 @@
 <body>
     <div class="container">
         <div class="jumbotron">
+            <a href="{{path('index_customer')}}"><button class="btn btn-success">Retour</button></a>
             <div class="">
+
                 <fieldset class="scheduler-border">
-                    <legend>Nouveau Client</legend>
+
+                    <legend>{{ form.vars.data.id is null ? 'Nouveau':'Modifier' }} Client</legend>
                     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                         <div class="form-group">
                             {{ form_label(form.firstname, null, { 'label': 'Nom*','label_attr': {'class': 'col-sm-2 control-label'} }) }}
@@ -69,5 +72,5 @@
 
 
 </body>
-
+    {% include 'footer.html.twig' %}
 {% endblock %}
