@@ -3,7 +3,7 @@ body {
 }
 
 .navColor {
-    background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
+    background-image: radial-gradient(circle, rgb(109,104,189), rgb(141,86,141), rgb(109,104,189));
 }
 
 .Simpleo-logo{
@@ -44,6 +44,11 @@ body {
 }
 
 .nav-item:hover a{
+    color: rebeccapurple;
+    transition-duration: 0.2s;
+}
+
+.nav-color:hover a{
     color: rebeccapurple;
     transition-duration: 0.2s;
 }
