@@ -45,7 +45,10 @@
         <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" id="Simpleologo" class="Simpleo-logo"
              alt="Simpleo"/>
         <p class="bienvenue2">
+
+            {% if app.user is not null  %}
              Bonjour, <em>{{ app.user.username }}</em>
+            {% endif %}
         </p>
     </div>
 
@@ -112,13 +115,24 @@
             </li>
 
 
-            {% if is_granted('ROLE_USER') %}
+
+
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
                 <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></li>
 
             {% else %}
                 <li class="nav-link"><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
 
             {% endif %}
+
+        {% if app.user is not null  %}
+        {% if app.user.company  is not null%}
+            <li class="nav-link"><a href="{{ path('form_company',{'id': app.user.company.id}) }}"><span
+                            class="txt">Mon entreprise</span><i style="margin-left: 10px;" class="fa fa-navicon"></i></a>
+            </li>
+         {% endif %}
+            {% endif %}
+
 
         </ul>
     </div>
