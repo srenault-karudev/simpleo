@@ -3,5 +3,14 @@ legend{
 }
 
 .container{
-    width: 99%;
+    width: 60%;
+
+    margin-top: 20px;
 }
+
+legend{
+    text-align: center;
+}
+/*.jumbotron{*/
+    /*height: 50%;*/
+/*}*/

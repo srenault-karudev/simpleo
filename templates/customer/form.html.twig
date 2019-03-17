@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% extends '/layout.html.twig' %}
 
 {% block title %}{% endblock %}
 {% block head %}{% endblock %}
@@ -7,13 +7,16 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/newcustomer.css') }}">
 
-
+<body>
     <div class="container">
         <div class="jumbotron">
+            <a href="{{path('index_customer')}}"><button class="btn btn-success">Retour</button></a>
             <div class="">
+
                 <fieldset class="scheduler-border">
-                    <legend>Nouveau Client</legend>
-                    <form>
+
+                    <legend>{{ form.vars.data.id is null ? 'Nouveau':'Modifier' }} Client</legend>
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
                         <div class="form-group">
                             {{ form_label(form.firstname, null, { 'label': 'Nom*','label_attr': {'class': 'col-sm-2 control-label'} }) }}
                             <div class="col-sm-12">
@@ -44,13 +47,17 @@
                                 {{ form_widget(form.adress, {'attr': {'class': 'form-control'}} ) }}
                             </div>
                         </div>
+
+
+                    {{ form_rest(form) }}
+
                         <div class="form-group">
                             <div class="text-center">
                                 <button href="#" type="submit" class="btn btn-primary">Enregistrer</button>
                             </div>
                         </div>
 
-                    </form>
+                    {{ form_end(form) }}
                 </fieldset>
 
 
@@ -64,6 +71,6 @@
     </div>
 
 
-
-
+</body>
+    {% include 'footer.html.twig' %}
 {% endblock %}
