@@ -17,7 +17,7 @@ class PersonRepository extends \Doctrine\ORM\EntityRepository
     public function getCustomers()
     {
         $qb = $this->createQueryBuilder('p')
-           // ->where('p.user =   :user')
+            //->where('p.user = :user')
 
             //->where('p.type = :type')
            // ->setParameter('type','customer')

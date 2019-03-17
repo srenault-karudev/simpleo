@@ -35,8 +35,7 @@ class CustomerController extends Controller
 
     public function indexAction(Request $request)
     {
-
-
+        
 
         $em = $this->getDoctrine()->getManager();
         $customers = $em->getRepository('App:Person')->getCustomers();
