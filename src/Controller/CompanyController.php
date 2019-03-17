@@ -35,7 +35,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * @Route("/form_company/{id}", name="form_company",defaults={"id"=""})
+     * @Route("/form_company/{id}", name="company_form",defaults={"id"=""})
      * @Method({"GET", "POST"})
      */
 

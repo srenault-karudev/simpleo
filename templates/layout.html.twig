@@ -127,7 +127,7 @@
 
         {% if app.user is not null  %}
         {% if app.user.company  is not null%}
-            <li class="nav-link"><a href="{{ path('form_company',{'id': app.user.company.id}) }}"><span
+            <li class="nav-link"><a href="{{ path('company_form',{'id': app.user.company.id}) }}"><span
                             class="txt">Mon entreprise</span><i style="margin-left: 10px;" class="fa fa-navicon"></i></a>
             </li>
          {% endif %}
