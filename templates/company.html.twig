@@ -1,9 +1,11 @@
 
+
 {% block stylesheets %}
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/company.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
+
 
 <body>
 <div class="container">
@@ -19,12 +21,14 @@
                     </div>
                     <fieldset>
 
+
                         {% if form.vars.data is not null  %}
                             <legend class=" text-center">Modifier Entreprise</legend>
 
                         {% else %}
                         <legend class=" text-center">Bienvenue sur Simpleo</legend>
                         {% endif %}
+
                         <h5 class=" text-center">Pour poursuivre, merci de compléter les informations suivantes :</h5>
 
                         <div class="form-group">
@@ -66,6 +70,7 @@
 
                         <div class="form-group">
                             {{ form_label(form.startDateSocialYear, null, { 'label': 'Début de votre exercice social','label_attr': {'class': 'col-md-3 control-label'} }) }}
+
                             <div class="col-md-4">
                                 <div class ="input-group">
                                      <span class="input-group-addon"> <i
@@ -73,11 +78,13 @@
                                     {{ form_widget(form.startDateSocialYear, {'attr': {'class': 'form-control js-datepicker '}} ) }}
                                 </div>
 
+
                             </div>
                         </div>
 
                         <div class="form-group">
                             {{ form_label(form.endDateSocialYear, null, { 'label': 'Fin de votre exercice social','label_attr': {'class': 'col-md-3 control-label'} }) }}
+
                             <div class="col-md-4">
                                 <div class ="input-group">
                                     <span class="input-group-addon"> <i
@@ -103,6 +110,7 @@
         </div>
     </div>
 </div>
+
 </body>
 
 {% block extendJavascript %}
@@ -117,3 +125,4 @@
 
 
 {% endblock extendJavascript %}
+
