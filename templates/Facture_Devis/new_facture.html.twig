@@ -1,22 +1,17 @@
-{% include 'layout.html.twig' %}
+{% include '/layout.html.twig' %}
 
 {% block title %}{% endblock %}
 {% block head %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/facture-devis.css') }}">
+    {% endblock %}
 {% block content %}
-
-    <div class="colonne1">
-        <h1>Facture & Devis (page à faire)</h1>
-        <br>
-    </div>
 
     <div class="colonne2">
         <button class="w3-button w3-round-xlarge w3-border w3-border-purple">Ajouter un indicateur</button>
     </div>
 
-    <div class="w3-row-padding w3-center">
+    a faire.
 
-    </div>
-
-
-    {% include 'footer.html.twig' %}
+    {% include '/footer.html.twig' %}
 {% endblock %}

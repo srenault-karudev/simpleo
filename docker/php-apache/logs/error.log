@@ -111,3 +111,19 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.20.0.4. Set the 'ServerName' directive globally to suppress this message
 [Mon Mar 11 14:00:41.135911 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
 [Mon Mar 11 14:00:41.135985 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Mon Mar 11 15:16:59.495643 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Tue Mar 12 10:26:16.815419 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Tue Mar 12 10:26:16.815487 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Mar 12 11:21:49.783669 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Wed Mar 13 15:22:05.733907 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Wed Mar 13 15:22:05.733968 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Wed Mar 13 17:25:45.837912 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Thu Mar 14 20:41:47.324417 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Thu Mar 14 20:41:47.324477 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Thu Mar 14 21:42:05.360441 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Mon Mar 18 15:20:58.358327 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Mon Mar 18 15:20:58.358388 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
