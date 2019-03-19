@@ -37,16 +37,19 @@
         <a href="{{ path('rapport') }}" class="w3-bar-item">Rapport</a>
         <a href="{{ path('equipes') }}" class="w3-bar-item">Equipes</a>
         <br>
-        <a href="{{ path('fos_user_security_logout') }}" class="w3-bar-item">Se deconnecter</a>
+        <a id="boutonlogout" href="{{ path('fos_user_security_logout') }}" class="w3-button w3-round-xlarge w3-border w3-border-purple">Se deconnecter</a>
 
     </div>
 
     <div class="bienvenue">
-        <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" id="Simpleologo" class="Simpleo-logo"
+        <a href="{{ path('homepage') }}">
+            <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" id="Simpleologo" class="Simpleo-logo"
              alt="Simpleo"/>
+        </a>
         <p class="bienvenue2">
              Bonjour, <em>{{ app.user.username }}</em>
         </p>
+
     </div>
 
     <div class="barrenav" id="test">
@@ -113,10 +116,10 @@
 
 
             {% if is_granted('ROLE_USER') %}
-                <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></li>
+                <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}" class="w3-button w3-round-xlarge w3-border w3-border-white">Se deconnecter</a></li>
 
             {% else %}
-                <li class="nav-link"><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+                <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}" class="w3-button w3-round-xlarge w3-border w3-border-white">Se connecter</a></li>
 
             {% endif %}
 
