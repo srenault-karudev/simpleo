@@ -13,7 +13,7 @@ use Twig\Environment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class FactureDevisController extends Controller
+class SetNewFactureController extends Controller
 {
 
     private $twig;
@@ -24,13 +24,13 @@ class FactureDevisController extends Controller
     }
 
     /**
-     * @Route("/facture_devis", name="facturedevis")
+     * @Route("/new_facture", name="new_facture")
      */
 
     public function index()
     {
 
-        return $this->render('Facture_Devis/facture_devis.html.twig');
+        return $this->render('Facture_Devis/new_facture.html.twig');
 
     }
 }
