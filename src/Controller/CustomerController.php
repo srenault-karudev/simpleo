@@ -80,4 +80,37 @@ class CustomerController extends Controller
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+
+       * @Route("/show_customer/{id}", name="customers_show")
+        * @Method("GET")
+         */
+public function show(Customer $customer){
+        return $this->render('customer/show.html.twig',array(
+            'customer' => $customer,
+        ));
+}
+
+
+
+    /**
+     * Deletes a customers entity.
+     *
+     * @Route("/customer_delete{id}/delete", name="customers_delete")
+     * Method({"GET"})
+     */
+    public function deleteAction(Request $request, Customer $customer)
+    {
+       // $this->denyAccessUnlessGranted(Customer::DELETE,$customers);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($customer);
+        $em->flush();
+        return $this->redirectToRoute('index_customer');
+    }
+
+
+
+
 }

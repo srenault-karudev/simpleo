@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/newcustomer.css') }}">
+
+    <body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <a href="{{path('index_customer')}}"><button class="btn btn-success">Retour</button></a>
+
+            <legend>Client n° {{ customer.id }}</legend>
+            {#<a href="{{path('index_customer')}}"><button class="btn btn-success">Retour</button></a>#}
+            <div class="row">
+                <!-- Start .row -->
+                <div class="col-md-12">
+                    <dl class="mt20">
+                        <dt class="text-muted">Prenom</dt>
+                        <dd>{{ customer.firstname }}</dd>
+
+                        <dt class="text-muted">Nom</dt>
+                        <dd>{{ customer.lastname }}</dd>
+
+                        <dt class="text-muted">Télephone </dt>
+                        <dd>{{ customer.mobilephone }}</dd>
+
+                        <dt class="text-muted">Email</dt>
+                        <dd>{{ customer.email }}</dd>
+
+                        <dt class="text-muted">Adresse</dt>
+                        <dd>{{ customer.adress }}</dd>
+
+                    </dl>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    </body>
+
+{% include 'footer.html.twig' %}
+{% endblock %}
