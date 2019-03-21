@@ -85,6 +85,18 @@ abstract class Person
      * @ORM\ManyToMany(targetEntity="User", mappedBy="person")
      */
 
+
+
+
+    /**
+     * @var \Person
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="persons")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     * })
+     */
+
     protected $user;
 
     /**
@@ -93,7 +105,6 @@ abstract class Person
     public function __construct()
     {
         $this->team = new ArrayCollection();
-        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -191,31 +202,18 @@ abstract class Person
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getUser(): Collection
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function addUser(User $user): self
+    public function setUser(?User $user): self
     {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-        }
+        $this->user = $user;
 
         return $this;
     }
 
-    public function removeUser(User $user): self
-    {
-        if ($this->user->contains($user)) {
-            $this->user->removeElement($user);
-        }
-
-        return $this;
-    }
 
 
 

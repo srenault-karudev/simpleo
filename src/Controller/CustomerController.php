@@ -38,7 +38,7 @@ class CustomerController extends Controller
         
 
         $em = $this->getDoctrine()->getManager();
-        $customers = $em->getRepository('App:Person')->getCustomers();
+        $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
 
 
         $reservations  = $this->get('knp_paginator')->paginate(
@@ -62,6 +62,8 @@ class CustomerController extends Controller
             $customer = new Customer();
 
         }
+
+        $customer->setUser($this->getUser());
         $form = $this->createForm('App\Form\CustomerType',$customer);
 
 

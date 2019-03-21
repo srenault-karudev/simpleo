@@ -32,13 +32,12 @@ class User extends BaseUser
         return $this->id;
     }
 
-    /**
 
-     * @var \Doctrine\Common\Collections\Collection
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Person", mappedBy="user")
      *
-     * @ORM\ManyToMany(targetEntity="Person", mappedBy="user")
      */
-    private $person;
+    private $persons;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Company", mappedBy="user")
@@ -49,39 +48,10 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->person = new ArrayCollection();
-
-    }
-
-    /**
-     * @return Collection|Person[]
-     */
-    public function getPerson(): Collection
-    {
-        return $this->person;
+        $this->persons = new ArrayCollection();
     }
 
 
-
-    public function addPerson(Person $person): self
-    {
-        if (!$this->person->contains($person)) {
-            $this->person[] = $person;
-            $person->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removePerson(Person $person): self
-    {
-        if ($this->person->contains($person)) {
-            $this->person->removeElement($person);
-            $person->removeUser($this);
-        }
-
-        return $this;
-    }
 
 
     public function getCompany(): ?Company
@@ -97,6 +67,37 @@ class User extends BaseUser
         $newUser = $company === null ? null : $this;
         if ($newUser !== $company->getUser()) {
             $company->setUser($newUser);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Person[]
+     */
+    public function getPersons(): Collection
+    {
+        return $this->persons;
+    }
+
+    public function addPerson(Person $person): self
+    {
+        if (!$this->persons->contains($person)) {
+            $this->persons[] = $person;
+            $person->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removePerson(Person $person): self
+    {
+        if ($this->persons->contains($person)) {
+            $this->persons->removeElement($person);
+            // set the owning side to null (unless already changed)
+            if ($person->getUser() === $this) {
+                $person->setUser(null);
+            }
         }
 
         return $this;

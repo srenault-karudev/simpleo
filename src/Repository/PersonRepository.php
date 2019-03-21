@@ -14,15 +14,17 @@ use App\Entity\User;
 
 class PersonRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getCustomers()
+    public function getCustomers(User $user)
     {
         $qb = $this->createQueryBuilder('p')
-            //->where('p.user = :user')
+            ->where('p.user = :user')
 
             //->where('p.type = :type')
-           // ->setParameter('type','customer')
-            //->setParameter('user', $user->getId())
+            //->setParameter('type','customer')
+            ->setParameter('user', $user->getId())
             ->orderBy('p.lastname', 'desc');
         return $qb->getQuery()->getResult();
     }
+
+
 }
