@@ -12,6 +12,7 @@ namespace App\Controller;
 use App\Entity\Customer;
 use App\Entity\Person;
 use App\Entity\Provider;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -34,21 +35,28 @@ class CustomerController extends Controller
      * @Route("/index_customer", name="index_customer")
      */
 
-    public function indexAction(Request $request)
+    public function indexAction(PaginatorInterface $paginator,Request $request)
     {
 
+//
+       $em = $this->getDoctrine()->getManager();
+       $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
+//        $query = $em->createQuery($customers);
+//
+//        $paginations  = $this->get('knp_paginator')->paginate(
+//            $query,
+//            $request->query->getInt('page', 1), /*page number*/
+//            10 /*limit per page*/
+//        );
 
-        $em = $this->getDoctrine()->getManager();
-        $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
-
-
-        $reservations  = $this->get('knp_paginator')->paginate(
+        $properties = $paginator->paginate(
             $customers,
-            $request->query->get('page', 1)/*le numéro de la page à afficher*/,
-            6/*nbre d'éléments par page*/
+            $request->query->getInt('page', 1),6
         );
+        $properties->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
         return $this->render('customer/index.html.twig', array(
-            'customers' => $customers,));
+            'properties' => $properties
+        ));
     }
 
     /**
