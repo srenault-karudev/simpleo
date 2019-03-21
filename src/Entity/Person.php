@@ -78,16 +78,6 @@ abstract class Person
     protected $email;
 
 
-
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="person")
-     */
-
-
-
-
     /**
      * @var \Person
      *
@@ -98,6 +88,14 @@ abstract class Person
      */
 
     protected $user;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="person_type", type="string", length=255, nullable=true)
+     */
+    protected $personType;
 
     /**
      * Constructor
@@ -210,6 +208,18 @@ abstract class Person
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPersonType(): ?string
+    {
+        return $this->personType;
+    }
+
+    public function setPersonType(?string $personType): self
+    {
+        $this->personType = $personType;
 
         return $this;
     }

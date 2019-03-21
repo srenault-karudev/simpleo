@@ -2,10 +2,9 @@
 {% block content %}
 
 
-
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Customer/index.css') }}">
-
+<body>
     <div class="container">
         <div class="row">
 
@@ -33,8 +32,8 @@
                         <table class="table table-striped table-bordered table-list">
                             <thead>
                             <tr>
-                                <th>Prénom</th>
                                 <th>Nom</th>
+                                <th>Prénom</th>
                                 <th>Télephone</th>
                                 <th>Email</th>
                                 <th>Adresse</th>
@@ -92,7 +91,7 @@
             </div>
         </div>
     </div>
-
+</body>
 
     {% include 'footer.html.twig' %}
 {% endblock %}

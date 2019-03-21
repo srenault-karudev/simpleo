@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Entity\Person;
+use App\Entity\Provider;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -35,7 +36,7 @@ class CustomerController extends Controller
 
     public function indexAction(Request $request)
     {
-        
+
 
         $em = $this->getDoctrine()->getManager();
         $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
@@ -62,6 +63,7 @@ class CustomerController extends Controller
             $customer = new Customer();
 
         }
+        $customer->setPersonType('customer');
 
         $customer->setUser($this->getUser());
         $form = $this->createForm('App\Form\CustomerType',$customer);
