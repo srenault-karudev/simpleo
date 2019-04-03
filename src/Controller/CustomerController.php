@@ -51,7 +51,7 @@ class CustomerController extends Controller
 
         $properties = $paginator->paginate(
             $customers,
-            $request->query->getInt('page', 1),6
+            $request->query->getInt('page', 1),5
         );
         $properties->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
         return $this->render('customer/index.html.twig', array(
