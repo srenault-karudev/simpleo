@@ -11,6 +11,8 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Entity\Person;
+use App\Entity\Provider;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -33,21 +35,28 @@ class CustomerController extends Controller
      * @Route("/index_customer", name="index_customer")
      */
 
-    public function indexAction(Request $request)
+    public function indexAction(PaginatorInterface $paginator,Request $request)
     {
-        
 
-        $em = $this->getDoctrine()->getManager();
-        $customers = $em->getRepository('App:Person')->getCustomers();
+//
+       $em = $this->getDoctrine()->getManager();
+       $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
+//        $query = $em->createQuery($customers);
+//
+//        $paginations  = $this->get('knp_paginator')->paginate(
+//            $query,
+//            $request->query->getInt('page', 1), /*page number*/
+//            10 /*limit per page*/
+//        );
 
-
-        $reservations  = $this->get('knp_paginator')->paginate(
+        $properties = $paginator->paginate(
             $customers,
-            $request->query->get('page', 1)/*le numéro de la page à afficher*/,
-            6/*nbre d'éléments par page*/
+            $request->query->getInt('page', 1),5
         );
+        $properties->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
         return $this->render('customer/index.html.twig', array(
-            'customers' => $customers,));
+            'properties' => $properties
+        ));
     }
 
     /**
@@ -62,6 +71,9 @@ class CustomerController extends Controller
             $customer = new Customer();
 
         }
+        $customer->setPersonType('customer');
+
+        $customer->setUser($this->getUser());
         $form = $this->createForm('App\Form\CustomerType',$customer);
 
 
@@ -80,4 +92,37 @@ class CustomerController extends Controller
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+
+       * @Route("/show_customer/{id}", name="customers_show")
+        * @Method("GET")
+         */
+public function show(Customer $customer){
+        return $this->render('customer/show.html.twig',array(
+            'customer' => $customer,
+        ));
+}
+
+
+
+    /**
+     * Deletes a customers entity.
+     *
+     * @Route("/customer_delete{id}/delete", name="customers_delete")
+     * Method({"GET"})
+     */
+    public function deleteAction(Request $request, Customer $customer)
+    {
+       // $this->denyAccessUnlessGranted(Customer::DELETE,$customers);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($customer);
+        $em->flush();
+        return $this->redirectToRoute('index_customer');
+    }
+
+
+
+
 }
