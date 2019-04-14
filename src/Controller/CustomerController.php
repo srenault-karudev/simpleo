@@ -38,8 +38,9 @@ class CustomerController extends Controller
     public function indexAction(PaginatorInterface $paginator,Request $request)
     {
 
-//
+
        $em = $this->getDoctrine()->getManager();
+       dump(app);
        $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
 //        $query = $em->createQuery($customers);
 //
@@ -66,6 +67,7 @@ class CustomerController extends Controller
 
     public function customerForm (Request $request,Customer $customer = null)
     {
+
 
         if($customer == null){
             $customer = new Customer();
