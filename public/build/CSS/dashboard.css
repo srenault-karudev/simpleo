@@ -3,7 +3,7 @@ body {
 }
 
 .navColor {
-    background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
+    background-image: radial-gradient(circle, rgb(109,104,189), rgb(141,86,141), rgb(109,104,189));
 }
 
 .Simpleo-logo{
@@ -24,6 +24,24 @@ body {
 .active-link a{
     color: rebeccapurple;
 }
+
+
+.achatsDropdown{
+    color: white;
+}
+
+.achatsDropdown:hover{
+    color: rebeccapurple;
+}
+
+.ventesDropdown{
+    color: white;
+}
+
+.ventesDropdown:hover{
+    color: rebeccapurple;
+}
+
 
 .nav-item{
     float: left;
@@ -48,13 +66,8 @@ body {
     transition-duration: 0.2s;
 }
 
-.nav-color:hover a{
-    color: rebeccapurple;
-    transition-duration: 0.2s;
-}
-
 h1{
-    color: rebeccapurple;
+   color: rebeccapurple;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -197,12 +210,6 @@ li.nav-link a{
     .nav-link{
         font-size: 80%;
         display: none;
-    }
-
-    .nav-link.BoutonLogin,.nav-link.BoutonLogout {
-        display: grid;
-        float: right;
-        margin-top: -10px;
     }
 
 
