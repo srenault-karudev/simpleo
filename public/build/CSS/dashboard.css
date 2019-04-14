@@ -3,7 +3,7 @@ body {
 }
 
 .navColor {
-    background-image: radial-gradient(circle, rgb(109,104,189), rgb(141,86,141), rgb(109,104,189));
+    background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
 }
 
 .Simpleo-logo{
@@ -49,7 +49,7 @@ body {
 }
 
 h1{
-   color: rebeccapurple;
+    color: rebeccapurple;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -194,6 +194,12 @@ li.nav-link a{
         display: none;
     }
 
+    .nav-link.BoutonLogin,.nav-link.BoutonLogout {
+        display: grid;
+        float: right;
+        margin-top: -10px;
+    }
+
 
     .icon{
         float: left;
@@ -281,5 +287,4 @@ li.nav-link a{
 }
 
 
-/* Mise en page pour les grands écrans */
-@media (min-width: 1200px) { ... }
+

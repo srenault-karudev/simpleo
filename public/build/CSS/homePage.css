@@ -1,8 +1,225 @@
-.welcome{
+.mainblock {
+    background-color: #F5F5F5;
+}
+
+.welcome {
     color: white;
     font-size: 2.8em;
 }
 
-.Simpleo-logodeux{
+.Simpleo-logodeux {
     width: 27%;
 }
+
+.ourPrices {
+    margin: 10px 10px 0px 10px;
+    background-color: white;
+}
+
+.price {
+    font-size: 500%;
+}
+
+.table1 {
+    text-align: center;
+    padding-right: 180px;
+    padding-left: 180px;
+}
+
+.table2 {
+    border-spacing: 10px;
+}
+
+.blockthird {
+    text-align: center;
+    background-color: #F5F5F5;
+}
+
+.blockthirdson {
+    background-color: white;
+}
+
+td {
+    width: 10%;
+}
+
+.tdblock1 {
+    padding: 20px 20px 20px 20px;
+    position: relative;
+}
+.tdblock2 {
+    padding: 20px 20px 20px 20px;
+    position: relative;
+}
+.tdblock3 {
+    padding: 20px 20px 20px 20px;
+    position: relative;
+}
+
+.worder {
+    font-size: 80%;
+}
+
+.photoScreen {
+    width: 100%;
+}
+
+.titretab {
+    color: rebeccapurple;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+}
+
+/*.divicon{
+    position: absolute;
+    top: 2em;
+    left: 14em;
+}
+Pour alligner les icon*/
+
+.iconsize {
+    width: 50px;
+}
+
+.who {
+    margin: 0px 8px 10px 8px;
+}
+
+.photo-test {
+    width: 100%;
+    height: 500px;
+}
+
+
+.blocImage {
+    position: relative;
+    width: 100%;
+}
+
+
+.blocImage h1 {
+    position: absolute;
+    z-index: 2;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    top: 40%;
+    width: 55%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+}
+
+.blocImage h2 {
+    position: absolute;
+    z-index: 2;
+    font-size: 200%;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    left: 60px;
+    top: 0.2em;
+}
+
+.textWho {
+    font-size: 200%;
+    color: white;
+}
+
+.hoverOp:hover {
+    opacity: 0.4;
+    transition-duration: 0.7s;
+}
+
+.blocImage h2:hover {
+    text-decoration: underline;
+}
+
+.blocImage h1:hover {
+    text-decoration: underline;
+}
+
+.blockthird2{
+    display: none;
+}
+
+.who2{
+    display: none;
+}
+
+.material-icons{
+    color: white;
+}
+
+
+@media (max-width: 1024px ) {
+    .table2{
+        display: none;
+    }
+
+    .table1 {
+        text-align: center;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .blockthird2{
+        display: grid;
+        text-align: center;
+    }
+
+    .who{
+        display: none;
+    }
+
+    .who2{
+        display: grid;
+    }
+
+    .divresp1{
+        margin: 10px 10px 10px 10px;
+        background-color: white;
+        padding-top: 10px;
+    }
+    .divresp2{
+        margin: 0px 10px 10px 10px;
+        background-color: white;
+        padding-top: 10px;
+
+    }
+    .divresp3{
+        margin: 0px 10px 20px 10px;
+        background-color: white;
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 768px ) {
+    .ourPrices, .divresp1, .divresp2, .divresp3 {
+        margin-right: 25px;
+        margin-left: 25px;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    .ourPrices{
+        font-size: 70%;
+    }
+
+    .leftPart{
+        width: 1%;
+    }
+
+    .middlePart{
+        width: 10%;
+        padding-left: 7%;
+    }
+
+    .rightPart{
+        width: 10%;
+        padding-left: 5%;
+    }
+    .mainblock {
+        background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
+    }
+
+}
+
