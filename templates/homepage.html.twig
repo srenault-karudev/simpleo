@@ -5,38 +5,37 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/homePage.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
     {% endblock %}
 {% endblock %}
 
 {% block content %}
     <body class="mainblock">
     {% block body %} {% endblock %}
-    <div id="first-view-js">
-        <div class="welcome">
-            <img src="http://37.187.127.4/images/Logo.png"
-                 class="Simpleo-logodeux" alt="Simpleo">
-        </div>
+
+    <div id="first-view-js" style="background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));">
         <div class="">
-            <span class="welcome">Bienvenue.</span>
+            <span class="welcome">Bienvenue sur Simpleo</span><br><br>
+            <a href="#ourPrices"> <span  <i class="material-icons" style="font-size: 100px;"> keyboard_arrow_down </i> </span></a>
         </div>
     </div>
 
     <div class="ourPrices">
         <table class="table1">
             <tr>
-                <td>
+                <td class="leftPart">
                     <h1>Vivez Simpleo</h1>
-                    <p>Que vous soyez particulier ou auto Entrepreneurs</p>
+                    <p>Que vous soyez particulier ou auto Entrpreneurs</p>
                     <p>Gérez l'integralité de votre comptabilité de façon très simpliste</p>
                 </td>
-                <td>
+                <td class="middlePart">
                     <h1 class="price">69 €</h1>
                     <p>/mois</p>
                     <p>*3 mois offerts</p>
                 </td>
-                <td>
-                    <img src="http://37.187.127.4/images/screen.png"
-                         class="photoScreen" alt="nasta">
+                <td class="rightPart">
+                    <img src="http://37.187.127.4/images/screen.png" class="photoScreen" alt="nasta">
                 </td>
             </tr>
         </table>
@@ -45,7 +44,7 @@
     <div class="blockthird">
         <table class="table2">
             <tr class="blockthirdson">
-                <td class="tdblock">
+                <td class="tdblock1">
                     <div class="">
                         <img src="http://37.187.127.4/images/incon-female.png"
                              class="iconsize" alt=""></div>
@@ -55,7 +54,7 @@
                         Notamment vos factures ou d'autres documents que vous pourrez partager et/ou récupérer
                         facilement.</p>
                 </td>
-                <td class="tdblock">
+                <td class="tdblock2">
                     <div class="">
                         <img src="http://37.187.127.4/images/incon-facture.png"
                              class="iconsize" alt=""></div>
@@ -64,7 +63,7 @@
                         à un système pré-remplis de générations de factures. Cette fonction servira notamment à
                         alimenter les informations chiffrés du Tableau de Bord ainsi que la comptabilité.</p>
                 </td>
-                <td class="tdblock">
+                <td class="tdblock3">
                     <div class="">
                         <img src="http://37.187.127.4/images/incon-courbe.png"
                              class="iconsize" alt=""></div>
@@ -83,6 +82,42 @@
                 </td>
             </tr>
         </table>
+    </div>
+
+    <div class="blockthird2">
+        <div class="divresp1">
+            <img src="http://37.187.127.4/images/incon-female.png"
+                 class="iconsize" alt="">
+
+            <h1 class="titretab">Votre Espace Client</h1>
+            <p class="worder">Stockez vos fichiers dans un espace dédié.
+                Notamment vos factures ou d'autres documents que vous pourrez partager et/ou récupérer
+                facilement.</p></div>
+
+        <div class="divresp2">
+            <img src="http://37.187.127.4/images/incon-facture.png"
+                 class="iconsize" alt="">
+            <h1 class="titretab">Vos Factures et Devis</h1>
+            <p class="worder">Vous pourrez facilement créer des factures et des devis formalisés grâce
+                à un système pré-remplis de générations de factures. Cette fonction servira notamment à
+                alimenter les informations chiffrés du Tableau de Bord ainsi que la comptabilité.</p></div>
+
+        <div class="divresp3">
+            <img src="http://37.187.127.4/images/incon-courbe.png"
+                 class="iconsize" alt="">
+            <h1 class="titretab">Une Comptabilité Guidée</h1>
+            <p class="worder">Probablement la fonction la plus conséquente de Simpleo. Un système de
+                comptabilité intégré répondant aux normes et aux législations en vigueur. Ce système de
+                comptabilité guidé permet à l'utilisateur réaliser sa comptabilité sans comptable et sans
+                connaissances particulières.
+
+                En effet, avec la fonction « Guidée » vous n'aurez qu'à suivre les indications
+                fournies par Simpleo, sous forme de questions/réponses, pour qu'il soit en mesure de classer et
+                comptabiliser ces écritures de manière ludique et facile. La comptabilité en partie double sera
+                réalisée en amont par le logiciel en fonction des vos réponses fournis. Pour les
+                utilisateurs ayant des bases en comptabilités une fonction sera mise en place pour lui laisser
+                le choix d'une comptabilité guidé ou non.</p></div>
+
     </div>
 
 
@@ -105,6 +140,23 @@
                 </td>
             </tr>
         </table>
+
+    </div>
+
+    <div class="who2">
+
+        <div class="blocImage hoverOp">
+            <img class="photo-test"
+                 src="http://37.187.127.4/images/nasta_homepage-min.jpg">
+            <h1>Qui Sommes-nous ?</h1>
+        </div>
+
+        <div class="blocImage hoverOp">
+            <img class="photo-test"
+                 src="http://37.187.127.4/images/contactus.png">
+            <h2>Nous Contacter</h2>
+        </div>
+
     </div>
 
     </body>

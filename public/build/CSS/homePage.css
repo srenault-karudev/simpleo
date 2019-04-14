@@ -43,7 +43,15 @@ td {
     width: 10%;
 }
 
-.tdblock {
+.tdblock1 {
+    padding: 20px 20px 20px 20px;
+    position: relative;
+}
+.tdblock2 {
+    padding: 20px 20px 20px 20px;
+    position: relative;
+}
+.tdblock3 {
     padding: 20px 20px 20px 20px;
     position: relative;
 }
@@ -127,5 +135,91 @@ Pour alligner les icon*/
 
 .blocImage h1:hover {
     text-decoration: underline;
+}
+
+.blockthird2{
+    display: none;
+}
+
+.who2{
+    display: none;
+}
+
+.material-icons{
+    color: white;
+}
+
+
+@media (max-width: 1024px ) {
+    .table2{
+        display: none;
+    }
+
+    .table1 {
+        text-align: center;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .blockthird2{
+        display: grid;
+        text-align: center;
+    }
+
+    .who{
+        display: none;
+    }
+
+    .who2{
+        display: grid;
+    }
+
+    .divresp1{
+        margin: 10px 10px 10px 10px;
+        background-color: white;
+        padding-top: 10px;
+    }
+    .divresp2{
+        margin: 0px 10px 10px 10px;
+        background-color: white;
+        padding-top: 10px;
+
+    }
+    .divresp3{
+        margin: 0px 10px 20px 10px;
+        background-color: white;
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 768px ) {
+    .ourPrices, .divresp1, .divresp2, .divresp3 {
+        margin-right: 25px;
+        margin-left: 25px;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    .ourPrices{
+        font-size: 70%;
+    }
+
+    .leftPart{
+        width: 1%;
+    }
+
+    .middlePart{
+        width: 10%;
+        padding-left: 7%;
+    }
+
+    .rightPart{
+        width: 10%;
+        padding-left: 5%;
+    }
+    .mainblock {
+        background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
+    }
+
 }
 
