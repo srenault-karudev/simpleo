@@ -160,15 +160,15 @@ li.nav-link a{
     display: block;
 }
 
-#boutonlogout:hover{
+#butlogout:hover{
     background-color: #fff !important;
     color: rebeccapurple !important;
 
 }
 
-#boutonlogout{
+#butlogout{
     color: #FFFFFF;
-    margin-top: -50px;
+    margin-top: -10px;
 }
 
 #butconnect:hover{
@@ -179,7 +179,7 @@ li.nav-link a{
 
 #butconnect{
     color: #FFFFFF;
-    margin-left: 74%;
+    margin-left:72%;
 }
 
 

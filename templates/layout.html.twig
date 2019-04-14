@@ -37,7 +37,7 @@
         <a href="{{ path('rapport') }}" class="w3-bar-item">Rapport</a>
         <a href="{{ path('equipes') }}" class="w3-bar-item">Equipes</a>
         <br>
-        <a id="boutonlogout" href="{{ path('fos_user_security_logout') }}" class="w3-button w3-round-xlarge w3-border w3-border-purple">Se deconnecter</a>
+        <a  href="{{ path('fos_user_security_logout') }}" class="w3-button w3-round-xlarge w3-border w3-border-white">Se deconnecter</a>
 
     </div>
 
@@ -116,10 +116,10 @@
 
 
             {% if is_granted('ROLE_USER') %}
-                <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}" class="w3-button w3-round-xlarge w3-border w3-border-white">Se deconnecter</a></li>
+                <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}" id="butlogout" class="w3-button w3-round-xlarge w3-border w3-border-white">Se deconnecter</a></li>
 
             {% else %}
-                <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}" class="w3-button w3-round-xlarge w3-border w3-border-white">Se connecter</a></li>
+                <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}" id="butlogout" class="w3-button w3-round-xlarge w3-border w3-border-white">Se connecter</a></li>
 
             {% endif %}
 
