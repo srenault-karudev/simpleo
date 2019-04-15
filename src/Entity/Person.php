@@ -57,7 +57,7 @@ abstract class Person
     /**
      * @var string
      *
-     * @ORM\Column(name="mobilePhone", type="string", length=255, nullable=false)
+     * @ORM\Column(name="mobilePhone", type="string", length=10, nullable=false)
      */
     protected $mobilephone;
 
@@ -76,6 +76,30 @@ abstract class Person
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     protected $email;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="siren", type="string", length=9, nullable=false)
+     */
+    protected $siren;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="siret", type="string", length=14, nullable=false)
+     */
+    protected $siret;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numtva", type="string", length=20, nullable=false)
+     */
+    protected $numtva;
 
 
     /**
@@ -169,6 +193,55 @@ abstract class Person
 
         return $this;
     }
+    /**
+     * @return string
+     */
+    public function getSiren(): ?string
+    {
+        return $this->siren;
+    }
+
+    /**
+     * @param string $siren
+     */
+    public function setSiren(string $siren)
+    {
+        $this->siren = $siren;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSiret(): ?string
+    {
+        return $this->siret;
+    }
+
+    /**
+     * @param string $siret
+     */
+    public function setSiret(string $siret)
+    {
+        $this->siret = $siret;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumtva(): ?string
+    {
+        return $this->numtva;
+    }
+
+    /**
+     * @param string $numtva
+     */
+    public function setNumtva(string $numtva)
+    {
+        $this->numtva = $numtva;
+    }
+
+
 
 
 
