@@ -133,9 +133,13 @@
                 </td>
                 <td>
                     <div class="blocImage hoverOp">
-                        <img class="photo-test"
-                             src="http://37.187.127.4/images/contactus.png">
-                        <h2>Nous Contacter</h2>
+                        <a class="liens_contact" href="{{ path('contactus') }}">
+                            <img class="photo-test"
+                                 src="http://37.187.127.4/images/contactus.png"
+                                 href="{{ path('contactus') }}">
+                            <h2>Nous Contacter</h2>
+                        </a>
+
                     </div>
                 </td>
             </tr>

@@ -165,6 +165,28 @@ li.nav-link a{
     display: block;
 }
 
+#butlogout:hover{
+    background-color: #fff !important;
+    color: rebeccapurple !important;
+
+}
+
+#butlogout{
+    color: #FFFFFF;
+    margin-top: -10px;
+}
+
+#butconnect:hover{
+    background-color: #fff !important;
+    color: rebeccapurple !important;
+
+}
+
+#butconnect{
+    color: #FFFFFF;
+    margin-left:72%;
+}
+
 
 
 
