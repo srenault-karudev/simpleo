@@ -25,15 +25,15 @@ class Action
     private $id;
 
     /**
-     * @var Collection
-     *
-     * @ORM\ManytoOne(targetEntity="Invoice", inversedBy="actions")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="action_id", referencedColumnName="id")
-     * })
-     */
-    private $invoice;
 
+* @var Collection
+*
+* @ORM\ManytoOne(targetEntity="Invoice", inversedBy="actions")
+* @ORM\JoinColumns({
+*   @ORM\JoinColumn(name="action_id", referencedColumnName="id")
+* })
+*/
+private $invoice;
     /**
      * @var integer
      *
