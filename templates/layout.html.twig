@@ -26,17 +26,24 @@
         <div class="dropdown" style="width: 100%;">
             <a class="w3-bar-item">Achats <i class="fa fa-caret-down"></i></a>
             <div class="dropdown-content w3-bar-block w3-animate-left w3-border-purple" style="width: 25%;">
-                <a href="#" class="w3-bar-item">Achats comptants</a>
-                <a href="#" class="w3-bar-item">Enregistrer une facture</a>
-                <a href="#" class="w3-bar-item">Fournisseurs</a>
+                <a href="#" class="w3-bar-item">Achats</a>
+                <a href="#" class="w3-bar-item">Enregistrer un Achat</a>
+                <a href="#" class="w3-bar-item">Journal</a>
             </div>
         </div>
-        <a href="#" class="w3-bar-item">Ventes</a>
-        <a href="{{ path('new_invoice_buy') }}" class="w3-bar-item">Factures et Devis</a>
-        <a href="{{ path('comptabilite') }}" class="w3-bar-item">Comptabilité</a>
-        <a href="{{ path('stockage') }}" class="w3-bar-item">Stockage</a>
-        <a href="{{ path('rapport') }}" class="w3-bar-item">Rapport</a>
-        <a href="{{ path('equipes') }}" class="w3-bar-item">Equipes</a>
+
+        <div class="dropdown" style="width: 100%;">
+            <a class="w3-bar-item">Ventes <i class="fa fa-caret-down"></i></a>
+            <div class="dropdown-content w3-bar-block w3-animate-left w3-border-purple" style="width: 25%;">
+                <a href="#" class="w3-bar-item">Vente</a>
+                <a href="#" class="w3-bar-item">Enregistrer une Vente</a>
+                <a href="#" class="w3-bar-item">Créer une facture</a>
+                <a href="#" class="w3-bar-item">Journal</a>
+            </div>
+        </div>
+        <a href="#" class="w3-bar-item">Cients</a>
+        <a href="#" class="w3-bar-item">Rapport</a>
+        <a href="#" class="w3-bar-item">Equipes</a>
         <br>
         <a  href="{{ path('fos_user_security_logout') }}" class="w3-button w3-round-xlarge w3-border w3-border-white">Se deconnecter</a>
 
@@ -107,30 +114,22 @@
             </li>
 
 
-
-
-
-            {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')%}
-                <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></li>
-
-
-
-            {% else %}
-                <li class="nav-link"><a href="{{ path('fos_user_security_logout') }}" id="butlogout" class="w3-button w3-round-xlarge w3-border w3-border-white">Se connecter</a></li>
-
-            {% endif %}
-
-            {% if app.user is not null  %}
-                {% if app.user.company  is not null%}
-                    <li class="nav-link"><a href="{{ path('company_form',{'id': app.user.company.id}) }}"><span
-                                    class="txt">Mon entreprise</span><i style="margin-left: 10px;" class="fa fa-navicon"></i></a>
-                    </li>
-                {% endif %}
-            {% endif %}
-
-
         </ul>
     </div>
+</nav>
+
+<nav>
+    <ul>
+        <li class="nav-link"><a style="color: #6f2190" href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></li>
+        {% if app.user is not null %}
+            {% if app.user.company  is not null %}
+                <li class="nav-link"><a style="color: #6f2190" href="{{ path('company_form',{'id': app.user.company.id}) }}"><span
+                                class="txt">Mon entreprise</span><i style="margin-left: 10px;"
+                                                                    class="fa fa-navicon"></i></a>
+                </li>
+            {% endif %}
+        {% endif %}
+    </ul>
 </nav>
 
 {% block content %}

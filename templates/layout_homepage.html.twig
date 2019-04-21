@@ -31,7 +31,7 @@
                                    class="Simpleo-logo" alt="Simpleo logo"></ul>
         <ul class="headerNav">
             {% if is_granted('ROLE_USER') %}
-                <li class="nav-link BoutonLogout"><a href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></li>
+                <li class="nav-link BoutonLogout"><a href="{{ path('dashboard') }}">Mon Compte</a></li>
             {% else %}
                 <li class="nav-link BoutonLogin"><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
             {% endif %}
