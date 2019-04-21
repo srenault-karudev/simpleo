@@ -27,7 +27,7 @@ class DashboardController extends Controller
      * @Route("/dashboard", name="dashboard")
      */
 
-    public function index()
+    public function index(\Symfony\Component\HttpFoundation\Request $request)
     {
 
         return $this->render('dashboard.html.twig');

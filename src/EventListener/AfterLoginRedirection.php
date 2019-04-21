@@ -40,6 +40,10 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
         $user = $token->getUser();
         $company = $user->getCompany();
 
+        $dateToday = new \DateTime();
+
+       // dump($dateToday);
+       $user->setDateOfTrialPeriod($dateToday->format('Y-m-d'));
 
         $rolesTab = array_map(function ($role) {
             return $role->getRole();

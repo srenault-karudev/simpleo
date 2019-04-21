@@ -37,20 +37,14 @@ class HomePageController extends Controller
         $form = $this->createForm('App\Form\HomePageType');
         $form->handleRequest($request);
 
+
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $trialEmail = $form->get('trialEmail')->getData();
 
-$email = $request->get('trialEmail');
+            //return $this->redirectToRoute('dashboard');
+            return $this->redirectToRoute('fos_user_registration_register',array('trialPeriod' => true, 'trialEmail'=>$trialEmail));
 
-
-//          $user = new User();
-//          $user->setUsername('UtilisateurEssai');
-//          $user->setUsernameCanonical('UtilisateurEssai');
-//          $user->setEmail($email);
-//          $user->setEnabled(1);
-//          $user->setPassword('123456');
-
-
-            return $this->redirectToRoute('fos_user_security_login');
         }
 
 

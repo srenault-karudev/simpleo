@@ -40,7 +40,7 @@ class CustomerController extends Controller
 
 
        $em = $this->getDoctrine()->getManager();
-       dump(app);
+
        $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
 //        $query = $em->createQuery($customers);
 //

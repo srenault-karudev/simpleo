@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * User
@@ -44,6 +45,23 @@ class User extends BaseUser
      *
      */
     private $company;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="trial_period", type="boolean")
+     */
+    private $trialPeriod = false ;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_of_trial_period", type="datetime",nullable=true)
+     */
+    private $dateOfTrialPeriod;
+
+
+
 
     public function __construct()
     {
@@ -101,6 +119,38 @@ class User extends BaseUser
         }
 
         return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateOfTrialPeriod(): DateTime
+    {
+        return $this->dateOfTrialPeriod;
+    }
+
+    /**
+     * @param \DateTime $dateOfTrialPeriod
+     */
+    public function setDateOfTrialPeriod(DateTime $dateOfTrialPeriod)
+    {
+        $this->dateOfTrialPeriod = $dateOfTrialPeriod;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTrialPeriod(): bool
+    {
+        return $this->trialPeriod;
+    }
+
+    /**
+     * @param bool $trialPeriod
+     */
+    public function setTrialPeriod(bool $trialPeriod)
+    {
+        $this->trialPeriod = $trialPeriod;
     }
 
 
