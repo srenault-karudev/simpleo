@@ -29,7 +29,7 @@ class Action
      *
      * @ORM\ManytoOne(targetEntity="Invoice", inversedBy="actions")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="action_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="invoice_id", referencedColumnName="id")
      * })
      */
     private $invoice;

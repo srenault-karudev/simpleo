@@ -59,7 +59,7 @@ class Invoice
      *
      * @ORM\ManytoOne(targetEntity="User", inversedBy="invoices")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="invoice_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
      */
     private $user;
