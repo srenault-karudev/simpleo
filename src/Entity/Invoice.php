@@ -57,7 +57,8 @@ class Invoice
     /**
      * @var Collection
      *
-     * @ORM\ManytoOne(targetEntity="User", inversedBy="invoices")
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="invoices")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
