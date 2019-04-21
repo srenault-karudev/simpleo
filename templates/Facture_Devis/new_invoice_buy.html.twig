@@ -11,7 +11,15 @@
         <button class="w3-button w3-round-xlarge w3-border w3-border-purple">Ajouter un indicateur</button>
     </div>
 
-    page a faire.
+    <div class="main_new_invoice">
+        <div class="leftside">
+            {% include '/Facture_Devis/new_invoice_left.html.twig' %}
+        </div>
+
+        <div class="rightside">
+            {% include '/Facture_Devis/new_invoice_right.html.twig' %}
+        </div>
+    </div>
 
     {% include '/footer.html.twig' %}
 {% endblock %}
