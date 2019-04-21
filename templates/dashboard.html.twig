@@ -9,6 +9,15 @@
         <br>
     </div>
 
+
+
+{#{{ if trialPeriod == true }}#}
+    <div class="colonne1">
+        <button class="w3-button w3-round-xlarge w3-border w3-border-purple">{{ interval}} jours d'essaie restant</button>
+    </div>
+{#{% endif %}#}
+
+{{ dump(endPeriod) }}
     <div class="colonne2">
         <button class="w3-button w3-round-xlarge w3-border w3-border-purple">Ajouter un indicateur</button>
     </div>

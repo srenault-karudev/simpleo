@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Class AfterLoginRedirection
@@ -40,11 +41,11 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
         $user = $token->getUser();
         $company = $user->getCompany();
 
-        $dateToday = new \DateTime();
-
-       // dump($dateToday);
-       $user->setDateOfTrialPeriod($dateToday->format('Y-m-d'));
-
+//        $dateToday = new \DateTime();
+//
+//       dump($dateToday);
+//       $user->setDateOfTrialPeriod($dateToday);
+//        dump($user);
         $rolesTab = array_map(function ($role) {
             return $role->getRole();
         }, $roles);

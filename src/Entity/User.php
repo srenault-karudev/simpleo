@@ -56,10 +56,9 @@ class User extends BaseUser
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_of_trial_period", type="datetime",nullable=true)
+     * @ORM\Column(name="date_of_trial_period", type="datetime",nullable=false)
      */
     private $dateOfTrialPeriod;
-
 
 
 
@@ -67,6 +66,8 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->persons = new ArrayCollection();
+        $this->dateOfTrialPeriod = new \DateTime();
+
     }
 
 
@@ -124,7 +125,7 @@ class User extends BaseUser
     /**
      * @return \DateTime
      */
-    public function getDateOfTrialPeriod(): DateTime
+    public function getDateOfTrialPeriod(): \DateTime
     {
         return $this->dateOfTrialPeriod;
     }
@@ -132,7 +133,7 @@ class User extends BaseUser
     /**
      * @param \DateTime $dateOfTrialPeriod
      */
-    public function setDateOfTrialPeriod(DateTime $dateOfTrialPeriod)
+    public function setDateOfTrialPeriod(\DateTime $dateOfTrialPeriod)
     {
         $this->dateOfTrialPeriod = $dateOfTrialPeriod;
     }

@@ -27,10 +27,33 @@ class DashboardController extends Controller
      * @Route("/dashboard", name="dashboard")
      */
 
-    public function index(\Symfony\Component\HttpFoundation\Request $request)
+    public function index()
     {
+        $user = $this->getUser();
+        $endPeriod = false;
+        $trialPeriod = $user->isTrialPeriod();
+        if($trialPeriod == 1 ){
 
-        return $this->render('dashboard.html.twig');
+            //$dateOfTrialPeriod = $user->getDateOfTrialPeriod()->format('Y-m-d');
+            $dateOfEndPeriod = $user->getDateOfTrialPeriod()->modify('+5 day');
+            $dateOfEndPeriod->format('Y-m-d');
+            $today = new \DateTime();
+            $today->format('Y-m-d');
+
+
+          if($today == $dateOfEndPeriod){
+              $endPeriod = true;
+          }
+            $interval= date_diff($today, $dateOfEndPeriod);
+            $interval = $interval->format('%d');
+            
+        }
+
+        return $this->render('dashboard.html.twig',array(
+            'endPeriod' => $endPeriod,
+            'interval' => $interval,
+            'trialPeriod' => $trialPeriod
+            ));
 
     }
 }
