@@ -21,7 +21,7 @@
 .left_block{
     display: grid;
     grid-template-columns: 40% 30% 30%;
-    grid-template-rows: 400px;
+    grid-template-rows: 600px;
 }
 
 .left_one{
@@ -48,3 +48,30 @@
     text-align: center;
     background-color: darkslategray;
 }
+
+.right_block{
+    display: grid;
+    grid-template-rows: 400px 122px 122px;
+}
+
+.right-one{
+    grid-row: 1;
+    background-color: aqua;
+    border-radius:10px 10px 0px 0px;
+}
+
+.right-two{
+    grid-row: 2;
+    background-color: #92badd;
+}
+
+.right-tree{
+    grid-row: 3;
+    background-color: #8959A8;
+    border-radius:0px 0px 10px 10px;
+}
+
+
+
+
+
