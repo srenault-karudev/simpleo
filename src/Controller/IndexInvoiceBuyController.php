@@ -12,6 +12,7 @@ namespace App\Controller;
 use App\Entity\Invoice;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Twig\Environment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -50,7 +51,15 @@ class IndexInvoiceBuyController extends Controller
      * @Route("/new_invoice_buy", name="new_invoice_buy")
      */
     public function newInvoice(){
+        $this->left_sideData();
         return $this->render('Facture_Devis/new_invoice_buy.html.twig');
+    }
+
+    public function left_sideData(){
+        $now= new DateTime();
+        return $this->render('Facture_Devis/new_invoice_left.html.twig',array(
+            'date' => $now,
+        ));
     }
 
 }
