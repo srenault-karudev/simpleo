@@ -33,7 +33,6 @@ class CompanyType extends AbstractType
             ->add('startDateSocialYear', DateType::class, array(
                 'required' => false,
                 'widget' => 'single_text',
-
                 // prevents rendering it as type="date", to avoid HTML5 date pickers
                 'html5' => false,
 
@@ -43,10 +42,8 @@ class CompanyType extends AbstractType
             ->add('endDateSocialYear', DateType::class, array(
                 'required' => false,
                 'widget' => 'single_text',
-
                 // prevents rendering it as type="date", to avoid HTML5 date pickers
                 'html5' => false,
-
                 // adds a class that can be selected in JavaScript
                 'attr' => ['class' => 'js-datepicker'],
             ));

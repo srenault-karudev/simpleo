@@ -34,6 +34,14 @@ class User extends BaseUser
 
 
     /**
+     * @var Collection
+     *
+     * @ORM\OneToMany(targetEntity="Invoice", mappedBy="user")
+     */
+    private $invoices;
+
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Person", mappedBy="user")
      *
      */
@@ -49,6 +57,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->persons = new ArrayCollection();
+        $this->invoices = new ArrayCollection();
     }
 
 
@@ -97,6 +106,37 @@ class User extends BaseUser
             // set the owning side to null (unless already changed)
             if ($person->getUser() === $this) {
                 $person->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Invoice[]
+     */
+    public function getInvoices(): Collection
+    {
+        return $this->invoices;
+    }
+
+    public function addInvoice(Invoice $invoice): self
+    {
+        if (!$this->invoices->contains($invoice)) {
+            $this->invoices[] = $invoice;
+            $invoice->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice): self
+    {
+        if ($this->invoices->contains($invoice)) {
+            $this->invoices->removeElement($invoice);
+            // set the owning side to null (unless already changed)
+            if ($invoice->getUser() === $this) {
+                $invoice->setUser(null);
             }
         }
 

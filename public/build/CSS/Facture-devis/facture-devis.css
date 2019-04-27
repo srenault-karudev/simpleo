@@ -1,39 +1,5 @@
-.firstpossibilies {
-    margin: 100px 50px 50px 50px;
+.main_new_invoice{
+    display: grid;
+    grid-template-columns: 50% 100%;
+    grid-template-rows: 100px 300px;
 }
-
-.facdev{
-    padding: 0px 5px 0px 5px;
-}
-
-.facedev-inside{
-    text-align: center;
-    padding-top: calc(125px/2);
-    background-color: mediumpurple;
-    opacity: 0.4;
-    height: 150px;
-}
-
-.facedev-inside:hover {
-    opacity: 0.7;
-    transition-duration: 0.4s;
-    text-decoration: none;
-}
-
-.facdev:hover {
-    text-decoration: none;
-}
-
-.textfacedev{
-    font-size: medium;
-    color: white;
-}
-
-
-@media (max-width: 480px) {
-    .facdev{
-        padding: 5px 0px 5px 0px;
-    }
-
-}
-

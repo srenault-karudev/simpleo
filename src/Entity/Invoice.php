@@ -5,12 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * Invoice
  *
  * @ORM\Table(name="Invoice")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
  */
 class Invoice
 {
@@ -24,32 +25,66 @@ class Invoice
     private $id;
 
     /**
-     * @var string
+     * @var Date
      *
-     * @ORM\Column(name="reference", type="string", length=45, nullable=false)
+     * @ORM\Column(name="invoice_date", type="date", nullable=false)
      */
-    private $reference;
+    private $date;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="invoice_type", type="boolean")
+     */
+    private $invoice_type;
+
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="ht_price", type="float", nullable=false)
+     */
+    private $price_Ht;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="tt_price", type="float", nullable=false)
+     */
+    private $price_tt;
+
+
+    /**
+     * @var Collection
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="invoices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+    /**
+     * @var Collection
+     *
+     * @ORM\OnetoMany(targetEntity="Action", mappedBy="invoice")
+     */
+    private $actions;
+
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="registre_id", type="integer", nullable=false)
+     * @ORM\Column(name="interlocutor", type="integer", nullable=false)
      */
-    private $registreId;
+    private $interlocutor_id;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="invoice")
-     */
-    private $user;
-
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user = new ArrayCollection();
+        $this->actions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -57,57 +92,111 @@ class Invoice
         return $this->id;
     }
 
-    public function getReference(): ?string
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->reference;
+        return $this->date;
     }
 
-    public function setReference(string $reference): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->reference = $reference;
+        $this->date = $date;
 
         return $this;
     }
 
-    public function getRegistreId(): ?int
+    public function getInvoiceType(): ?bool
     {
-        return $this->registreId;
+        return $this->invoice_type;
     }
 
-    public function setRegistreId(int $registreId): self
+    public function setInvoiceType(bool $invoice_type): self
     {
-        $this->registreId = $registreId;
+        $this->invoice_type = $invoice_type;
 
         return $this;
     }
+
+    public function getPriceHt()
+    {
+        return $this->price_Ht;
+    }
+
+    public function setPriceHt($price_Ht): self
+    {
+        $this->price_Ht = $price_Ht;
+
+        return $this;
+    }
+
+    public function getPriceTt()
+    {
+        return $this->price_tt;
+    }
+
+    public function setPriceTt($price_tt): self
+    {
+        $this->price_tt = $price_tt;
+
+        return $this;
+    }
+
+    public function getInterlocutorId(): ?int
+    {
+        return $this->interlocutor_id;
+    }
+
+    public function setInterlocutorId(int $interlocutor_id): self
+    {
+        $this->interlocutor_id = $interlocutor_id;
+
+        return $this;
+    }
+
+
 
     /**
-     * @return Collection|User[]
+     * @return Collection|action[]
      */
-    public function getUser(): Collection
+    public function getActions(): Collection
+    {
+        return $this->actions;
+    }
+
+    public function addAction(action $action): self
+    {
+        if (!$this->actions->contains($action)) {
+            $this->actions[] = $action;
+            $action->setInvoice($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAction(action $action): self
+    {
+        if ($this->actions->contains($action)) {
+            $this->actions->removeElement($action);
+            // set the owning side to null (unless already changed)
+            if ($action->getInvoice() === $this) {
+                $action->setInvoice(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function addUser(User $user): self
+    public function setUser(?User $user): self
     {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-            $user->addInvoice($this);
-        }
+        $this->user = $user;
 
         return $this;
     }
 
-    public function removeUser(User $user): self
-    {
-        if ($this->user->contains($user)) {
-            $this->user->removeElement($user);
-            $user->removeInvoice($this);
-        }
-
-        return $this;
-    }
 
 }
 
