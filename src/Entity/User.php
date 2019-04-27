@@ -16,6 +16,10 @@ use Symfony\Component\Validator\Constraints\DateTime;
  */
 class User extends BaseUser
 {
+    const SIMPLE_ID = 'simple';
+    const COMPLETE_ID = 'complete';
+    const TRIAL_PEREIOD = 'essai';
+
     /**
      * @var integer
      *
@@ -59,6 +63,13 @@ class User extends BaseUser
      * @ORM\Column(name="date_of_trial_period", type="datetime",nullable=false)
      */
     private $dateOfTrialPeriod;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="formula", type="string", length=255, nullable=true)
+     */
+    private $formula;
 
 
 
@@ -154,6 +165,21 @@ class User extends BaseUser
         $this->trialPeriod = $trialPeriod;
     }
 
+    /**
+     * @return string
+     */
+    public function getFormula(): ?string
+    {
+        return $this->formula;
+    }
+
+    /**
+     * @param string $formula
+     */
+    public function setFormula(?string $formula)
+    {
+        $this->formula = $formula;
+    }
 
 }
 

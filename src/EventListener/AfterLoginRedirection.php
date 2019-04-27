@@ -2,6 +2,8 @@
 
 namespace App\EventListener;
 
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
@@ -17,6 +19,8 @@ use Symfony\Component\Validator\Constraints\DateTime;
 class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
 {
     private $router;
+
+
 
     /**
      * AfterLoginRedirection constructor.
@@ -40,12 +44,11 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
         $roles = $token->getRoles();
         $user = $token->getUser();
         $company = $user->getCompany();
+        $formula = $user->getFormula();
+//        $dateOfEndPeriod = $user->getDateOfTrialPeriod();
+//        $today = new \DateTime();
+//        $today->format('Y-m-d');
 
-//        $dateToday = new \DateTime();
-//
-//       dump($dateToday);
-//       $user->setDateOfTrialPeriod($dateToday);
-//        dump($user);
         $rolesTab = array_map(function ($role) {
             return $role->getRole();
         }, $roles);
@@ -54,8 +57,20 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
             // c'est un aministrateur : on le rediriger vers l'espace admin
             $redirection = new RedirectResponse($this->router->generate('company_form'));
         } else {
-            // c'est un utilisaeur lambda : on le rediriger vers l'accueil
-            $redirection = new RedirectResponse($this->router->generate('dashboard'));
+
+
+//          if($today == $today){
+//              $user->setEnabled(false);
+//              $this->em->persist($user);
+//              $this->em->flush();
+//          }
+            if($user->getFormula() == null){
+                $redirection = new RedirectResponse($this->router->generate('choiceMode'));
+            }
+            else{
+                $redirection = new RedirectResponse($this->router->generate('dashboard',array("formula" => $formula)));
+            }
+
         }
 
         return $redirection;

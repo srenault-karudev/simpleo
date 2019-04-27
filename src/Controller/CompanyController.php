@@ -45,6 +45,7 @@ class CompanyController extends Controller
             $company->setUser($user);
         }
 
+
         $form = $this->createForm('App\Form\CompanyType', $company);
 
         $user = $this->getUser();
@@ -59,14 +60,18 @@ class CompanyController extends Controller
                 $em->persist($company);
                 $em->flush();
 
-                return $this->redirectToRoute('dashboard');
+                if ($user->getFormula() == null) {
+                    return $this->redirectToRoute('choiceMode');
+                } else {
+                    return $this->redirectToRoute('dashboard');
+                }
             }
         }
 
-            return $this->render('company.html.twig', [
-                'form' => $form->createView(),
-            ]);
-        }
+        return $this->render('company.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 
 
 }
