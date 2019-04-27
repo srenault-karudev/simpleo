@@ -1,5 +1,77 @@
 .main_new_invoice{
+    margin-top: 80px;
     display: grid;
-    grid-template-columns: 50% 100%;
-    grid-template-rows: 100px 300px;
+    grid-template-columns: 60% 40%;
 }
+
+.leftside{
+    grid-column: 1;
+    grid-row: 1;
+    margin: 5px;
+}
+
+.rightside{
+    grid-column: 2;
+    grid-row: 1;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 12px #555;
+}
+
+.left_block{
+    display: grid;
+    grid-template-columns: 40% 30% 30%;
+    grid-template-rows: 600px;
+}
+
+.left_one{
+    grid-column: 1;
+    grid-row: 1;
+    background-color: #5eb5e0;
+}
+.left_two{
+    grid-column: 2;
+    grid-row: 1;
+    background-color: #6f2190;
+}
+.left_tree{
+    grid-column: 3;
+    grid-row: 1;
+    background-color: #AAAAAA;
+}
+
+.left_four {
+    text-align: center;
+    background-color: #dce8f1;
+}
+.left_five{
+    text-align: center;
+    background-color: darkslategray;
+}
+
+.right_block{
+    display: grid;
+    grid-template-rows: 400px 122px 122px;
+}
+
+.right-one{
+    grid-row: 1;
+    background-color: aqua;
+    border-radius:10px 10px 0px 0px;
+}
+
+.right-two{
+    grid-row: 2;
+    background-color: #92badd;
+}
+
+.right-tree{
+    grid-row: 3;
+    background-color: #8959A8;
+    border-radius:0px 0px 10px 10px;
+}
+
+
+
+
+
