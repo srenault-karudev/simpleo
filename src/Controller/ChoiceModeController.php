@@ -20,7 +20,12 @@ class ChoiceModeController extends Controller
      */
     public function index()
     {
-        return $this->render('choiceMode.html.twig');
+
+         $user = $this->getUser();
+         dump($user);
+         $state = $user->isState();
+
+        return $this->render('choiceMode.html.twig',array("state" => $state));
     }
 
 }

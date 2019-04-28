@@ -35,12 +35,13 @@ class DashboardController extends Controller
 
         $formula = $request->attributes->get('formula');
         $user = $this->getUser();
-        //dump($user);
+        dump($user);
         $state = $user->isState();
         $user->setFormula($formula);
         $interval = 0;
 //        $endPeriod = false;
 //        $trialPeriod = $user->isTrialPeriod();
+
 
         if($formula == User::TRIAL_PEREIOD ){
             //$dateOfTrialPeriod = $user->getDateOfTrialPeriod()->format('Y-m-d');
@@ -50,7 +51,7 @@ class DashboardController extends Controller
             $today->format('Y-m-d');
 
           if($today == $today){
-              $user->setState(true);
+              $user->setState(false);
           }
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
@@ -58,8 +59,13 @@ class DashboardController extends Controller
             $interval= date_diff($today, $dateOfEndPeriod);
             $interval = $interval->format('%d');
 
-
         }
+        if ($formula == User::SIMPLE_ID){
+            if($state == false){
+                $user->setState(true);
+            }
+        }
+
 
         return $this->render('dashboard.html.twig',array(
             'state' => $state,

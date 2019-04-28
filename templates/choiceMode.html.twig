@@ -17,6 +17,7 @@
             <fieldset>
                 <legend class=" text-center">Abonnements</legend>
 
+                {% if state == true  %}
                 <!-- Periode d'essai -->
                 <div class ="border displayDiv">
                     <h5><strong>PERIODE D'ESSAI</strong></h5>
@@ -27,6 +28,7 @@
                     <p class ="prix">Gratuit</p>
                     <a href="{{path('dashboard', {'formula' : 'essai'})}}"><button type="submit" class="btn btn-primary btn-lg">Accéder au site</button></a>
                 </div>
+                {%  endif %}
 
                 <div class ="border displayDiv">
                     <h5><strong>FORMULE SIMPLE</strong></h5>
