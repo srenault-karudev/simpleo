@@ -53,9 +53,10 @@ class User extends BaseUser
     /**
      * @var boolean
      *
-     * @ORM\Column(name="trial_period", type="boolean")
+     * @ORM\Column(name="state", type="boolean")
      */
-    private $trialPeriod = false ;
+    private $state = true ;
+
 
     /**
      * @var \DateTime
@@ -149,21 +150,6 @@ class User extends BaseUser
         $this->dateOfTrialPeriod = $dateOfTrialPeriod;
     }
 
-    /**
-     * @return bool
-     */
-    public function isTrialPeriod(): bool
-    {
-        return $this->trialPeriod;
-    }
-
-    /**
-     * @param bool $trialPeriod
-     */
-    public function setTrialPeriod(bool $trialPeriod)
-    {
-        $this->trialPeriod = $trialPeriod;
-    }
 
     /**
      * @return string
@@ -179,6 +165,21 @@ class User extends BaseUser
     public function setFormula(?string $formula)
     {
         $this->formula = $formula;
+    }
+    /**
+     * @return bool
+     */
+    public function isState(): bool
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param bool $state
+     */
+    public function setState(bool $state)
+    {
+        $this->state = $state;
     }
 
 }

@@ -18,7 +18,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DashboardController extends Controller
 {
-
     private $twig;
 
     public function __construct(Environment $twig)
@@ -37,42 +36,36 @@ class DashboardController extends Controller
         $formula = $request->attributes->get('formula');
         $user = $this->getUser();
         //dump($user);
-        //dump($request);
-       // $enabled = $user->getEnabled();
+        $state = $user->isState();
         $user->setFormula($formula);
-
-
-
+        $interval = 0;
 //        $endPeriod = false;
 //        $trialPeriod = $user->isTrialPeriod();
-        if($formula == User::TRIAL_PEREIOD ){
 
+        if($formula == User::TRIAL_PEREIOD ){
             //$dateOfTrialPeriod = $user->getDateOfTrialPeriod()->format('Y-m-d');
             $dateOfEndPeriod = $user->getDateOfTrialPeriod()->modify('+30 day');
             $dateOfEndPeriod->format('Y-m-d');
             $today = new \DateTime();
             $today->format('Y-m-d');
 
-
-//          if($today == $today){
-//              $user->setEnabled(false);
-//          }
-
-
+          if($today == $today){
+              $user->setState(true);
+          }
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
             $interval= date_diff($today, $dateOfEndPeriod);
             $interval = $interval->format('%d');
+
 
         }
 
         return $this->render('dashboard.html.twig',array(
-           // 'enabled' => $enabled,
+            'state' => $state,
             'interval' => $interval,
             'formula' => $formula,
-             'bool' => false
+            'bool' => false
             ));
 
     }

@@ -3,7 +3,7 @@
 {% block title %}{% endblock %}
 {% block head %}{% endblock %}
 {% block content %}
-    {% if bool == false %}
+    {% if state == true %}
         {% include 'layout.html.twig' %}
         {% if formula == 'essai' %}
             <div style="width: 700px; margin-left: auto; margin-right: auto"
