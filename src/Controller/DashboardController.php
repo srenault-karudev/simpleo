@@ -36,43 +36,55 @@ class DashboardController extends Controller
         $formula = $request->attributes->get('formula');
         $user = $this->getUser();
         dump($user);
+        dump($formula);
         $state = $user->isState();
-        $user->setFormula($formula);
+//        $user->setFormula($formula);
         $interval = 0;
 //        $endPeriod = false;
 //        $trialPeriod = $user->isTrialPeriod();
 
 
-        if($formula == User::TRIAL_PEREIOD ){
+        if ($formula == User::TRIAL_PEREIOD) {
             //$dateOfTrialPeriod = $user->getDateOfTrialPeriod()->format('Y-m-d');
             $dateOfEndPeriod = $user->getDateOfTrialPeriod()->modify('+30 day');
             $dateOfEndPeriod->format('Y-m-d');
             $today = new \DateTime();
             $today->format('Y-m-d');
 
-          if($today == $today){
-              $user->setState(false);
-          }
+            if ($today == $dateOfEndPeriod) {
+                $user->setState(false);
+
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            $interval= date_diff($today, $dateOfEndPeriod);
+            $interval = date_diff($today, $dateOfEndPeriod);
             $interval = $interval->format('%d');
 
         }
-        if ($formula == User::SIMPLE_ID){
-            if($state == false){
-                $user->setState(true);
-            }
-        }
+//        if($formula == User::SIMPLE_ID){
+//          //  $user->setFormula($formula);
+//            $user->setState(true);
+//
+//        }
+//
+//        if($formula == User::COMPLETE_ID) {
+//           // $user->setFormula($formula);
+//            $user->setState(true);
+//        }
 
 
-        return $this->render('dashboard.html.twig',array(
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+
+        return $this->render('dashboard.html.twig', array(
             'state' => $state,
             'interval' => $interval,
             'formula' => $formula,
             'bool' => false
-            ));
+        ));
 
     }
 }

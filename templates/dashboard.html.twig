@@ -3,6 +3,7 @@
 {% block title %}{% endblock %}
 {% block head %}{% endblock %}
 {% block content %}
+
     {% if state == true %}
         {% include 'layout.html.twig' %}
         {% if formula == 'essai' %}
@@ -11,6 +12,18 @@
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 Vous êtes actuellement en Période d'essai, il vous reste <strong> {{ interval }} jours </strong>
                 d'utilisation
+            </div>
+        {% elseif formula == 'simple' %}
+            <div style="width: 490px; margin-left: auto; margin-right: auto"
+                 class="alert alert-dismissible alert-info ">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                Vous bénéficié actuellement de la formule <strong> simple </strong>
+            </div>
+        {% elseif formula == 'complete' %}
+            <div style="width: 490px; margin-left: auto; margin-right: auto"
+                 class="alert alert-dismissible alert-info ">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                Vous bénéficié actuellement de la formule <strong> complete </strong>
             </div>
         {% endif %}
         <div class="colonne1">
@@ -105,7 +118,8 @@
             </div>
         </div>
         {% include 'footer.html.twig' %}
-    {% else %}
+
+    {% elseif state != "true" and formula == 'essai' %}
         {{ include('dasboardOff.html.twig') }}
     {% endif %}
 {% endblock %}
