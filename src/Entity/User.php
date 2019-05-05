@@ -30,12 +30,10 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @return int
+     * @ORM\Column(type="string", unique=true, nullable=true)
      */
-    public function getId(): int
-    {
-        return $this->id;
-    }
+    private $stripeCustomerId;
+
 
 
     /**
@@ -83,6 +81,14 @@ class User extends BaseUser
     }
 
 
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
 
     public function getCompany(): ?Company
@@ -180,6 +186,22 @@ class User extends BaseUser
     public function setState(bool $state)
     {
         $this->state = $state;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStripeCustomerId()
+    {
+        return $this->stripeCustomerId;
+    }
+
+    /**
+     * @param mixed $stripeCustomerId
+     */
+    public function setStripeCustomerId($stripeCustomerId)
+    {
+        $this->stripeCustomerId = $stripeCustomerId;
     }
 
 }

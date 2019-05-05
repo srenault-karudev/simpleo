@@ -51,7 +51,7 @@ class DashboardController extends Controller
             $today = new \DateTime();
             $today->format('Y-m-d');
 
-            if ($today == $dateOfEndPeriod) {
+            if ($today == $today) {
                 $user->setState(false);
 
             }

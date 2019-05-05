@@ -180,3 +180,15 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
 [Tue Apr 30 18:59:16.363504 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
 [Tue Apr 30 18:59:16.363668 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Apr 30 20:20:16.328568 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Tue Apr 30 21:12:11.111654 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Tue Apr 30 21:12:11.111806 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Tue Apr 30 22:22:09.998191 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Wed May 01 09:47:27.056185 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Wed May 01 09:47:27.056262 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+[Wed May 01 18:05:57.284156 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Sun May 05 15:49:22.828944 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Sun May 05 15:49:22.829567 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
