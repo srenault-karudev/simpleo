@@ -22,10 +22,11 @@ class PaymentController extends Controller
      * @Route("/{formula}/payement", name = "payement", defaults={"formula"=""}, schemes={"%secure_channel%"})
      * @Method({"GET", "POST"})
      */
-    public function index(Request $request)
+    public function index(Request $request,\Swift_Mailer $mailer)
     {
         $formula = $request->attributes->get('formula');
         $user = $this->getUser();
+        $email = $user->getEmail();
         $user->setFormula($formula);
         $user->setState(true);
         $em = $this->getDoctrine()->getManager();
@@ -55,8 +56,21 @@ class PaymentController extends Controller
             $stripeClient->createInvoice($user,true);
 
 
+            //envoie Mail
+
+            $message = (new \Swift_Message('Try to send a mail'))
+                ->setFrom($this->getParameter('mailer_sender'))
+                ->setCc($this->getParameter('mailer_sender'))
+                ->setTo($email)
+                ->setBody('hello',
+                    'text/html'
+                );
+            $mailer->send($message);
+
             //$this->addFlash('success', 'Order Complete! Yay!');
-            return $this->redirectToRoute('dashboard', array('formula' => $formula));
+            //return $this->redirectToRoute('dashboard', array('formula' => $formula));
+
+
 
         }
 

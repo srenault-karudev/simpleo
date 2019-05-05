@@ -6,13 +6,17 @@ parameters:
   database_user: userroot
   database_password: password
   mailer_transport: smtp
-  mailer_host: 127.0.0.1
-  mailer_user: 'monadresse@mail.fr'
-  mailer_password: null
+  mailer_host: ssl0.ovh.net
+  mailer_user: s.renault@karudev-informatique.fr
+  mailer_password: steven971
+  mailer_port: 587
+  mailer_sender: s.renault@karudev-informatique.fr
+
   secret: pleindecaracteressecrets
 
   stripe_secret_key: sk_test_ebdtAfLHVAtGpV4aCvsL8wgh00Oxj4pzJc
   stripe_public_key: pk_test_2w31WZP6TkjlieqjHx1Uj9V700WcGUyQAm
+
 
   # set to https on production
   secure_channel: http
