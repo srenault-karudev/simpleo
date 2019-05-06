@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Company
  *
@@ -48,7 +49,11 @@ class Company
     /**
      * @var integer
      *
-     * @ORM\Column(name="siren", type="integer", length=255, nullable=false)
+     * @ORM\Column(name="siren", type="integer", length=9, nullable=false)
+     * @Assert\Length(
+     *     max=9,
+     *     maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $siren;
 

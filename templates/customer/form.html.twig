@@ -14,7 +14,12 @@
             <div class="">
                 <legend>{{ form.vars.data.id is null ? 'Nouveau':'Modifier' }} Client</legend>
                 {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
-                <div class="form-group">
+
+                {{ form_errors(form.siren) }}
+
+                {{ form_row(form.date) }}
+
+                    <div class="form-group">
                     {{ form_label(form.firstname, null, { 'label': 'Nom','label_attr': {'class': ' col-sm-3 label-control'} }) }}
                     <div class="col-sm-12 col-md-12">
                         {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}} ) }}
@@ -62,7 +67,6 @@
                         {{ form_widget(form.numtva, {'attr': {'class': 'form-control'}} ) }}
                     </div>
                 </div>
-
 
                 {{ form_rest(form) }}
                 <div class="form-group">
