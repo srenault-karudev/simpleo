@@ -1,0 +1,35 @@
+.wrapper{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+
+
+}
+.element{
+    background-color: white;
+    margin: 3px;
+}
+.template1{
+
+    width:100% ;
+}
+.template2{
+
+
+    width: 100% ;
+
+}
+.template3{
+
+
+    width: 100% ;
+
+}
+p{
+    margin-top: 20px;
+    text-align: center;
+
+}
+h1{
+    text-align: center;
+
+}

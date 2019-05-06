@@ -2,6 +2,7 @@
 {% block title %}{% endblock %}
 {% block head %}
     {% block stylesheets %}
+
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/homePage.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -17,11 +18,11 @@
     <div id="first-view-js" style="background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));">
         <div class="">
             <span class="welcome">Bienvenue sur Simpleo</span><br><br>
-            <a href="#ourPrices"> <span  <i class="material-icons" style="font-size: 100px;"> keyboard_arrow_down </i> </span></a>
+            <a onclick="scrollWin()"> <span  <i   class="material-icons" style="font-size: 100px;"> keyboard_arrow_down </i> </span></a>
         </div>
     </div>
 
-    <div class="ourPrices">
+    <div class="ourPrices" id="prices">
         <table class="table1">
             <tr>
                 <td class="leftPart">
@@ -126,9 +127,12 @@
             <tr>
                 <td>
                     <div class="blocImage hoverOp">
+                        <a href="{{ path('WhoAreWe') }}">
                         <img class="photo-test"
                              src="http://37.187.127.4/images/nasta_homepage-min.jpg">
                         <h1>Qui Sommes-nous ?</h1>
+                        </a>
+
                     </div>
                 </td>
                 <td>
@@ -167,6 +171,8 @@
 
     {% block javascripts %}
         <script src="{{ asset('build/js/homePage.js') }}"></script>
+        <script src="{{ asset('build/js/arrowHomePage.js') }}"></script>
+
     {% endblock %}
 
 {% endblock %}

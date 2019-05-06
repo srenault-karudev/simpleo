@@ -68,7 +68,7 @@ class Invoice
     /**
      * @var Collection
      *
-     * @ORM\OnetoMany(targetEntity="Action", mappedBy="invoice")
+     * @ORM\OneToMany(targetEntity="Action", mappedBy="invoice")
      */
     private $actions;
 
