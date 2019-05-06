@@ -37,7 +37,11 @@
                                         <script
                                                 src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                                                 data-key= "{{ stripe_public_key }}"
-                                                data-amount="3000"
+                                                {% if formula == 'simple' %}
+                                                    data-amount="3000"
+                                                    {% elseif(formula == 'complete')%}
+                                                        data-amount="5000"
+                                                {% endif %}
                                                 data-name="Paiement"
                                                 {#data-description="Widget"#}
                                                 data-image="{{ asset('build/img/logo.png') }}"
