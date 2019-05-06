@@ -58,11 +58,19 @@ class PaymentController extends Controller
 
             //envoie Mail
 
+            $username = $user->getUsername();
+            $formulaMail = $user->getFormula();
+
+
             $message = (new \Swift_Message('Try to send a mail'))
                 ->setFrom($this->getParameter('mailer_sender'))
                 ->setCc($this->getParameter('mailer_sender'))
                 ->setTo($email)
-                ->setBody('hello',
+                ->setBody(
+                    $this->renderView('email/emailPayement.html.twig',array(
+                        'username' => $username,
+                        'formulaMail' => $formulaMail
+                    )),
                     'text/html'
                 );
             $mailer->send($message);
