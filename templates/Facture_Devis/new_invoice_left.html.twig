@@ -5,38 +5,44 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/facture-devis.css') }}">
     {% endblock %}
 {% block content %}
-<form>
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
     <div class="left_block">
         <div class="left_one">
             <p class="title_left">De quelle nature est votre achat ?</p>
+
         </div>
         <div class="left_two">
             <p class="title_left">Le taux de TVA ?</p>
-            <button class="tva_button" value="0">0%</button>
-            <button class="tva_button" value="0">2.10%</button>
-            <button class="tva_button" value="0">5.5%</button>
-            <button class="tva_button" value="0">10%</button>
-            <button class="tva_button" value="0">20%</button>
-            <button class="tva_button" value="0">+</button>
+            <div class="funkyradio">
+
+                {% for child in form.tva %}
+                    <div class="funkyradio-warning">{{ form_widget(child) }} {{ form_label(child) }}</div>
+                {% endfor %}
+
+                <button type=button class="tva_button" value="0">+</button>
+            </div>
         </div>
+
         <div class="left_tree">
-            <div>
-                <p class="title_left">Montant total</p>
-                <input type="text" class="input_amount" id="name" name="montantTT" required>
+
+            <div class="form_group">
+                <p class="title_left">Quantité</p>
+                {{ form_widget(form.quantity, {'attr': {'class': 'input_amount_qtt form-control'}} ) }}
             </div>
-            <div>
+
+            <div class="form_group">
+                <p class="title_left">Montant Total</p>
+                    {{ form_widget(form.unit_amount, {'attr': {'class': ' input_amount form-control'}} ) }}
+            </div>
+
+            <div class="form_group">
                 <p class="title_left">Montant TVA</p>
-                <input type="text" class="input_amount" id="name" name="montantTVA" required>
+                    {{ form_widget(form.tva_amount, {'attr': {'class': ' input_amount form-control'}} ) }}
             </div>
+
         </div>
     </div>
     <div class="left_four">
-        <img src="http://37.187.127.4/images/calendar.png"  style="width: 7%" alt="cal">
-
-        <input type="date" id="start" name="date"
-               min="" max="">
-    </div>
-    <div class="left_five">
         <button class="confirmation_action_button">Je Valide Ma Saisie</button>
     </div>
 </form>
