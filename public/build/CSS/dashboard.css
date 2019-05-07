@@ -25,7 +25,6 @@ body {
     color: rebeccapurple;
 }
 
-
 .achatsDropdown{
     color: white;
 }
@@ -176,28 +175,6 @@ li.nav-link a{
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-}
-
-#butlogout:hover{
-    background-color: #fff !important;
-    color: rebeccapurple !important;
-
-}
-
-#butlogout{
-    color: #FFFFFF;
-    margin-top: -10px;
-}
-
-#butconnect:hover{
-    background-color: #fff !important;
-    color: rebeccapurple !important;
-
-}
-
-#butconnect{
-    color: #FFFFFF;
-    margin-left:72%;
 }
 
 
