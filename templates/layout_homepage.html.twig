@@ -27,8 +27,13 @@
 
 <nav class="navColor" id="headerSize">
     <div class="" id="">
-        <ul class="headerNav"><a href="{{ path('homepage') }}"><img src="http://37.187.127.4/images/Logo.png"
-                                                                    class="Simpleo-logo" alt="Simpleo logo"></a></ul>
+
+        <ul class="headerNav">
+            <a href="{{ path('homepage') }}">
+                <img src="http://37.187.127.4/images/Logo.png"
+                     class="Simpleo-logo" alt="Simpleo logo">
+            </a>
+        </ul>
         <ul class="headerNav">
             {% if is_granted('ROLE_USER') %}
                 <li class="nav-link BoutonLogout"><a href="{{ path('dashboard') }}">Mon Compte</a></li>

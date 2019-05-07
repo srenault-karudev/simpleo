@@ -33,10 +33,11 @@ class ContactUsController extends Controller
         return $this->render('contactus.html.twig');
     }*/
 
-    public function index (\Symfony\Component\HttpFoundation\Request $request)
+    public function index (\Symfony\Component\HttpFoundation\Request $request,\Swift_Mailer $mailer)
     {
         $contact = new ContactUs();
         $form = $this->createForm('App\Form\ContactUsType',$contact);
+
 
         $form->handleRequest($request);
 
@@ -44,6 +45,21 @@ class ContactUsController extends Controller
             $em =  $this->getDoctrine()->getManager();
             $em->persist($contact);
             $em->flush();
+
+            $contactUS = $request->request->get('contact_us');
+            dump($contactUS['email']);
+            $user = $this->getUser();
+
+            $message = (new \Swift_Message('Try to send a mail'))
+                ->setFrom($contactUS['email'])
+                ->setTo($this->getParameter('mailer_sender'))
+                ->setBody($contactUS['message'],
+                    'text/html'
+                )
+                ->setSubject($contactUS['object'])
+            ;
+
+            $mailer->send($message);
 
             return $this->redirectToRoute('homepage');
         }
@@ -53,4 +69,5 @@ class ContactUsController extends Controller
             'form' => $form->createView(),
         ]);
     }
+
 }

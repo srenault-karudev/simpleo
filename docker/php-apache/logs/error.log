@@ -195,9 +195,15 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Sun Apr 14 12:05:48.499967 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
 [Sun Apr 14 12:05:48.500037 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
 >>>>>>> nasta-contact
+<<<<<<< HEAD
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
 [Sat Apr 27 11:20:04.876062 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
 [Sat Apr 27 11:20:04.876141 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
 [Mon May 06 12:25:33.976157 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
 [Mon May 06 12:25:33.976290 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+=======
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.4. Set the 'ServerName' directive globally to suppress this message
+[Sat Apr 27 12:42:34.724988 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Sat Apr 27 12:42:34.725049 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+>>>>>>> wow

@@ -27,7 +27,7 @@ class Action
     /**
      * @var Collection
      *
-     * @ORM\ManytoOne(targetEntity="Invoice", inversedBy="actions")
+     * @ORM\ManyToOne(targetEntity="Invoice", inversedBy="actions")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="invoice_id", referencedColumnName="id")
      * })
