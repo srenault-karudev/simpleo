@@ -223,3 +223,7 @@ Pour alligner les icon*/
 
 }
 
+.material-icons:hover
+{
+    color: #6f2190;
+}
