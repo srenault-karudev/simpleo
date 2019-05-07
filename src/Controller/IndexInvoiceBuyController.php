@@ -9,12 +9,17 @@
 namespace App\Controller;
 
 
+use App\Entity\Action;
 use App\Entity\Invoice;
+use App\Entity\Record;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Twig\Environment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Serializer\Serializer;
 
 class IndexInvoiceBuyController extends Controller
 {
@@ -49,8 +54,10 @@ class IndexInvoiceBuyController extends Controller
     /**
      * @Route("/new_invoice_buy", name="new_invoice_buy")
      */
-    public function newInvoice(){
-        return $this->render('Facture_Devis/new_invoice_buy.html.twig');
+    public function newInvoice(Request $request, Action $action = null){
+        $form = $this->createForm('App\Form\Action_buyType', $action);
+        return $this->render('Facture_Devis/new_invoice_buy.html.twig',[
+        'form' => $form->createView(),
+            ]);
     }
-
 }

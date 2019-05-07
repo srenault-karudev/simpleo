@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/facture-devis.css') }}">
     {% endblock %}
 {% block content %}
-
+    <form>
     <div class="right_block">
         <div class="right-one">
             <p>Récapitulatif</p>
@@ -12,8 +12,15 @@
         <div class="right-two">
             <p>Qui a payé ?</p>
         </div>
-        <div class="right-tree">
-            <p>Je valide définitivement ma saisie</p>
+        <div class="right_tree">
+            <img src="http://37.187.127.4/images/calendar.png"  style="width: 7%" alt="cal">
+            <input type="date" class="date_invoice" name="date_invoice"
+                   min="" max="" required>
+        </div>
+        <div class="right-four">
+            <button class="confirmation_Def_action_button">Je Valide Ma Facture Définitiveme</button>
         </div>
     </div>
+
+    </form>
 {% endblock %}

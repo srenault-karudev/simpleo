@@ -35,9 +35,9 @@ class Action
     private $invoice;
 
     /**
-     * @var integer
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Record", mappedBy="action")
      *
-     * @ORM\Column(name="record", type="integer", nullable=false)
      */
     private $record;
 
@@ -79,17 +79,7 @@ class Action
         return $this->id;
     }
 
-    public function getRecord(): ?int
-    {
-        return $this->record;
-    }
-
-    public function setRecord(int $record): self
-    {
-        $this->record = $record;
-
-        return $this;
-    }
+  
 
     public function getTva(): ?float
     {
@@ -173,6 +163,24 @@ class Action
     public function setInvoice(?Invoice $invoice): self
     {
         $this->invoice = $invoice;
+
+        return $this;
+    }
+
+    public function getRecord(): ?Record
+    {
+        return $this->record;
+    }
+
+    public function setRecord(?Record $record): self
+    {
+        $this->record = $record;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newAction = $record === null ? null : $this;
+        if ($newAction !== $record->getAction()) {
+            $record->setAction($newAction);
+        }
 
         return $this;
     }
