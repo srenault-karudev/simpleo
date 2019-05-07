@@ -218,7 +218,7 @@ Pour alligner les icon*/
         padding-left: 5%;
     }
     .mainblock {
-        background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
+        background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
     }
 
 }
