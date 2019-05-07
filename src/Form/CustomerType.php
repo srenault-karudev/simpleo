@@ -31,7 +31,7 @@ class CustomerType extends AbstractType
             ->add('email', EmailType::class)
             ->add('mobilephone', TelType::class)
             ->add('siren', TextType::class,array(
-                'constraints' => [new Length(['max' => 3])]))
+                'constraints' => [new Length(['max' => 4])]))
             ->add('siret', TextType::class)
             ->add('numtva', TextType::class);
     }
