@@ -1,0 +1,80 @@
+{% extends '/layout.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block head %}{% endblock %}
+{% block content %}
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/newcustomer.css') }}">
+
+    <body>
+    <div class="container">
+        <div class="jumbotron">
+            <a href="{{path('index_devis')}}"><button class="btn btn-success">Retour</button></a>
+            <div class="">
+                <legend>{{ form.vars.data.id is null ? 'Nouveau':'Modifier' }} Client</legend>
+                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                <div class="form-group">
+                    {{ form_label(form.firstname, null, { 'label': 'Nom','label_attr': {'class': ' col-sm-3 label-control'} }) }}
+                    <div class="col-sm-12 col-md-12">
+                        {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}} ) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.lastname, null, { 'label': 'Prenom','label_attr': {'class': 'col-sm-3 label-control'} }) }}
+                    <div class="col-sm-12">
+                        {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}} ) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.email, null, { 'label': 'Email','label_attr': {'class': 'col-sm-3 label-control'} }) }}
+                    <div class="col-sm-12">
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control'}} ) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.mobilephone, null, { 'label': 'Téléphone','label_attr': {'class': 'col-sm-3 label-control'} }) }}
+                    <div class="col-sm-12">
+                        {{ form_widget(form.mobilephone, {'attr': {'class': 'form-control'}} ) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.adress, null, { 'label': 'Adresse','label_attr': {'class': 'col-sm-3 label-control'} }) }}
+                    <div class="col-sm-12">
+                        {{ form_widget(form.adress, {'attr': {'class': 'form-control'}} ) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.siren, null, { 'label': 'N° SIREN','label_attr': {'class': 'col-sm-4 label-control'} }) }}
+                    <div class="col-sm-12">
+                        {{ form_widget(form.siren, {'attr': {'class': 'form-control'}} ) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.siret, null, { 'label': 'N° SIRET','label_attr': {'class': 'col-sm-4 label-control'} }) }}
+                    <div class="col-sm-12">
+                        {{ form_widget(form.siret, {'attr': {'class': 'form-control'}} ) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.numtva, null, { 'label': 'N° TVA Intracommunautaire','label_attr': {'class': 'col-sm-6 label-control'} }) }}
+                    <div class="col-sm-12">
+                        {{ form_widget(form.numtva, {'attr': {'class': 'form-control'}} ) }}
+                    </div>
+                </div>
+
+
+                {{ form_rest(form) }}
+                <div class="form-group">
+                    <div class="text-center">
+                        <button href="#" type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+
+            </div>
+        </div>
+    </div>
+    </body>
+    {% include 'footer.html.twig' %}
+{% endblock %}
