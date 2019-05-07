@@ -226,3 +226,62 @@ Pour alligner les icon*/
     }
 
 }
+
+
+legend {
+    color: #82427E;
+    font-size: 35px;
+}
+h5{
+    color :#82427E;
+    padding: 10px;
+}
+
+.logo{
+
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.border{
+    width: 300px;
+    height: 300px;
+    border: 1px solid purple;
+    border-radius: 8px;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
+
+}
+
+.displayDiv{
+    display: inline-block;
+
+}
+.gratuit{
+    color : purple;
+    font-size: 15px;
+}
+.prix{
+    color : purple;
+    font-size: 40px;
+}
+.mois{
+    font-size: 20px;
+}
+.vertical-center {
+    /*margin-top: 50vh; !* poussé de la moitié de hauteur de viewport *!*/
+    /*transform: translateY(-50%); !* tiré de la moitié de sa propre hauteur *!*/
+    /*min-height: 100vh; !* These two lines are counted as one :-)       *!*/
+    /*align-items: center;*/
+}
+
+.div-info{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+h1{
+    text-align: center;
+}

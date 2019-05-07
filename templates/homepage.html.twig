@@ -15,7 +15,6 @@
     <body class="mainblock">
     {% block body %} {% endblock %}
 
-
     <div id="first-view-js" style="background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));">
         <div class="">
             <span class="welcome">Bienvenue sur Simpleo</span><br><br>
@@ -24,47 +23,44 @@
     </div>
 
     <div class="ourPrices" id="prices">
-{#=======#}
-    {#<div id="first-view-js">#}
-        {#<div class="welcome">#}
-            {#<img src="http://37.187.127.4/images/Logo.png"#}
-                 {#class="Simpleo-logodeux" alt="Simpleo">#}
-        {#</div>#}
-    {#</div>#}
-    {#{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}#}
-    {#<div class="form-group">#}
-        {#{{ form_label(form.trialEmail, null, { 'label': ' Email','label_attr': {'class': '  col-md-3 control-label'} }) }}#}
-        {#<div class="col-md-9">#}
-            {#{{ form_widget(form.trialEmail, {'attr': {'class': 'form-control'}} ) }}#}
-        {#</div>#}
-    {#</div>#}
-    {#{{ form_rest(form) }}#}
-    {#<div class="form-group">#}
-        {#<div class="text-center">#}
-            {#<button href="#" type="submit" class="btn btn-primary">Enregistrer</button>#}
-        {#</div>#}
-    {#</div>#}
-
-    {#{{ form_end(form) }}#}
-
-    {#</div>#}
-
-    {#<div class="ourPrices">#}
-{#>>>>>>> feature/periodeEssai#}
+        <h1> Abonnements</h1>
         <table class="table1">
             <tr>
                 <td class="leftPart">
-                    <h1>Vivez Simpleo</h1>
-                    <p>Que vous soyez particulier ou auto Entrpreneurs</p>
-                    <p>Gérez l'integralité de votre comptabilité de façon très simpliste</p>
-                </td>
+                    <div class ="border displayDiv">
+                    <h5><strong>PERIODE D'ESSAI</strong></h5>
+                    <p>
+                        Beneficier  d'une periode d'essai de 30 jours
+                        pour découvrir les fonctionnalités de l'application
+                    </p>
+                    <p class ="prix">Gratuit</p>
+                    <a href="{{path('dashboard', {'formula' : 'essai'})}}"></a>
+    </div>
                 <td class="middlePart">
-                    <h1 class="price">69 €</h1>
-                    <p>/mois</p>
-                    <p>*3 mois offerts</p>
+                    <div class ="border displayDiv">
+                        <h5><strong>FORMULE SIMPLE</strong></h5>
+                        <p>
+                            Beneficier  d'une periode d'essai de 30 jours
+                            pour découvrir les fonctionnalités de l'application
+                        </p>
+                        <p class ="prix">30 € <span class="mois">/mois</span></p>
+
+                        <a href="{{path('payement', {'formula' : 'simple'})}}"></a>
+
+
+                    </div>
                 </td>
                 <td class="rightPart">
-                    <img src="http://37.187.127.4/images/screen.png" class="photoScreen" alt="nasta">
+                    <div class ="border displayDiv">
+                        <h5><strong>FORMULE COMPLETE</strong></h5>
+                        <p>
+                            Beneficier  d'une periode d'essai de 30 jours
+                            pour découvrir les fonctionnalités de l'application
+                        </p>
+                        <p class ="prix">50 € <span class="mois">/mois</span></p>
+                        <a href="{{path('payement', {'formula' : 'complete'})}}"></a>
+                        </p>
+                    </div>
                 </td>
             </tr>
         </table>
