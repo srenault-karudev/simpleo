@@ -3,7 +3,8 @@ body {
 }
 
 .navColor {
-    background-image: radial-gradient(circle, rgb(109,104,189), rgb(141,86,141), rgb(109,104,189));
+    background-image: linear-gradient(to right, rgb(141, 86, 139), rgb(102, 104, 210));
+    color: white;
 }
 
 .Simpleo-logo{
@@ -24,23 +25,6 @@ body {
 .active-link a{
     color: rebeccapurple;
 }
-
-.achatsDropdown{
-    color: white;
-}
-
-.achatsDropdown:hover{
-    color: rebeccapurple;
-}
-
-.ventesDropdown{
-    color: white;
-}
-
-.ventesDropdown:hover{
-    color: rebeccapurple;
-}
-
 
 .nav-item{
     float: left;

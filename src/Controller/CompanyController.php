@@ -39,9 +39,10 @@ class CompanyController extends Controller
 
     public function companyForm(Request $request, Company $company = null)
     {
+        $user = $this->getUser();
+        $formula = $user->getFormula();
         if ($company == null) {
             $company = new Company();
-            $user = $this->getUser();
             $company->setUser($user);
         }
 
@@ -63,7 +64,7 @@ class CompanyController extends Controller
                 if ($user->getFormula() == null) {
                     return $this->redirectToRoute('choiceMode');
                 } else {
-                    return $this->redirectToRoute('dashboard');
+                    return $this->redirectToRoute('dashboard',array('formula'=>$formula));
                 }
             }
         }
