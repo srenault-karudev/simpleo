@@ -38,7 +38,6 @@ class HomePageController extends Controller
         $form->handleRequest($request);
 
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             $trialEmail = $form->get('trialEmail')->getData();
 
@@ -46,8 +45,6 @@ class HomePageController extends Controller
             return $this->redirectToRoute('fos_user_registration_register',array('trialPeriod' => true, 'trialEmail'=>$trialEmail));
 
         }
-
-
 
         return $this->render('/homepage.html.twig', [
             'form' => $form->createView(),

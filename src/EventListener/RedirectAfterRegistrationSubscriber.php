@@ -24,8 +24,9 @@ class RedirectAfterRegistrationSubscriber implements EventSubscriberInterface
         $this->router = $router;
     }
 
-    public function onRegistrationSuccess(FormEvent $event)
+    public function onRegistrationSuccess(FormEvent $event, Request $request)
     {
+        dump($request);
 
         $url = $this->router->generate('fos_user_security_login');
         $response = new RedirectResponse($url);
