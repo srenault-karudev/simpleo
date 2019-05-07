@@ -8,6 +8,7 @@
         "friendsofsymfony/user-bundle": "~2.0",
         "knplabs/knp-paginator-bundle": "^3.0",
         "sensio/framework-extra-bundle": "^5.2",
+        "stripe/stripe-php": "^6.34",
         "symfony/asset": "3.4.*",
         "symfony/console": "3.4.*",
         "symfony/dotenv": "3.4.*",

@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * User
@@ -15,6 +16,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User extends BaseUser
 {
+    const SIMPLE_ID = 'simple';
+    const COMPLETE_ID = 'complete';
+    const TRIAL_PEREIOD = 'essai';
+
     /**
      * @var integer
      *
@@ -25,12 +30,10 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @return int
+     * @ORM\Column(type="string", unique=true, nullable=true)
      */
-    public function getId(): int
-    {
-        return $this->id;
-    }
+    private $stripeCustomerId;
+
 
 
     /**
@@ -53,14 +56,50 @@ class User extends BaseUser
      */
     private $company;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="state", type="boolean")
+     */
+    private $state = true ;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_of_trial_period", type="datetime",nullable=false)
+     */
+    private $dateOfTrialPeriod;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="formula", type="string", length=255, nullable=true)
+     */
+    private $formula;
+
+
+
     public function __construct()
     {
         parent::__construct();
         $this->persons = new ArrayCollection();
+
         $this->invoices = new ArrayCollection();
+
+        $this->dateOfTrialPeriod = new \DateTime();
+
     }
 
 
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
 
     public function getCompany(): ?Company
@@ -141,6 +180,70 @@ class User extends BaseUser
         }
 
         return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateOfTrialPeriod(): \DateTime
+    {
+        return $this->dateOfTrialPeriod;
+    }
+
+    /**
+     * @param \DateTime $dateOfTrialPeriod
+     */
+    public function setDateOfTrialPeriod(\DateTime $dateOfTrialPeriod)
+    {
+        $this->dateOfTrialPeriod = $dateOfTrialPeriod;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getFormula(): ?string
+    {
+        return $this->formula;
+    }
+
+    /**
+     * @param string $formula
+     */
+    public function setFormula(?string $formula)
+    {
+        $this->formula = $formula;
+    }
+    /**
+     * @return bool
+     */
+    public function isState(): bool
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param bool $state
+     */
+    public function setState(bool $state)
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStripeCustomerId()
+    {
+        return $this->stripeCustomerId;
+    }
+
+    /**
+     * @param mixed $stripeCustomerId
+     */
+    public function setStripeCustomerId($stripeCustomerId)
+    {
+        $this->stripeCustomerId = $stripeCustomerId;
     }
 
 

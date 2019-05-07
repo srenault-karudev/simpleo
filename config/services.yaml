@@ -39,3 +39,14 @@ services:
     redirect.after.login:
         class: App\EventListener\AfterLoginRedirection
         arguments: ['@router']
+
+#    app.form.registration:
+#        class : App\Form\RegistrationType
+#        tags:
+#            - { name: form.type, alias: app_user_registration }
+
+    stripe_client:
+        autowire: true
+        class: App\StripeClient
+        arguments: ['%stripe_secret_key%']
+        public: true

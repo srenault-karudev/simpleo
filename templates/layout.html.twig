@@ -22,7 +22,12 @@
     <div class="w3-sidebar w3-bar-block w3-animate-left" style="display:none;z-index:4" id="mySidebar">
         <button style="font-size: 130%;" class="w3-bar-item" onclick="w3_close()">Fermer &times;</button>
         <br>
-        <a href="{{ path('dashboard') }}" class="w3-bar-item active-link-bar">Tableau de bord</a>
+        {%  if app.user.formula is not null %}
+        {% set formula  = app.user.formula %}
+        {% else %}
+        {% set formula  = formula %}
+        {% endif %}
+        <a href="{{ path('dashboard', {'formula' : formula}) }}" class="w3-bar-item active-link-bar">Tableau de bord</a>
         <div class="dropdown" style="width: 100%;">
             <a class="w3-bar-item">Achats <i class="fa fa-caret-down"></i></a>
             <div class="dropdown-content w3-bar-block w3-animate-left w3-border-purple" style="width: 25%;">
@@ -74,7 +79,7 @@
 
 
             <li class="nav-item active-link">
-                <a class="nav-link" href="{{ path('dashboard') }}">Tableau de bord</a>
+                <a class="nav-link" href="{{ path('dashboard', {'formula' : formula}) }}">Tableau de bord</a>
             </li>
 
 
