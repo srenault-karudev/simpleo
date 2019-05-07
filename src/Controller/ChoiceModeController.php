@@ -22,7 +22,6 @@ class ChoiceModeController extends Controller
     {
 
          $user = $this->getUser();
-         dump($user);
          $state = $user->isState();
 
         return $this->render('choiceMode.html.twig',array("state" => $state));

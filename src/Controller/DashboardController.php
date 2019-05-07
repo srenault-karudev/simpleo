@@ -35,8 +35,7 @@ class DashboardController extends Controller
 
         $formula = $request->attributes->get('formula');
         $user = $this->getUser();
-        dump($user);
-        dump($formula);
+
         $state = $user->isState();
 //        $user->setFormula($formula);
         $interval = 0;
@@ -51,7 +50,7 @@ class DashboardController extends Controller
             $today = new \DateTime();
             $today->format('Y-m-d');
 
-            if ($today == $today) {
+            if ($today == $dateOfEndPeriod) {
                 $user->setState(false);
 
             }

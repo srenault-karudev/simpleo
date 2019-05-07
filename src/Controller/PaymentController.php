@@ -33,7 +33,7 @@ class PaymentController extends Controller
         $em->persist($user);
         $em->flush();
 
-        dump($request);
+
         if ($request->isMethod('POST')) {
 
             $token = $request->request->get('stripeToken');
