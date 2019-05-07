@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Length;
 
 class CustomerType extends AbstractType
 {
@@ -29,7 +30,8 @@ class CustomerType extends AbstractType
             ->add('adress', TextType::class)
             ->add('email', EmailType::class)
             ->add('mobilephone', TelType::class)
-            ->add('siren', TextType::class)
+            ->add('siren', TextType::class,array(
+                'constraints' => [new Length(['max' => 3])]))
             ->add('siret', TextType::class)
             ->add('numtva', TextType::class);
     }

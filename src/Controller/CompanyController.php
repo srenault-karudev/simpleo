@@ -11,12 +11,11 @@ namespace App\Controller;
 
 use App\Entity\Company;
 use App\Entity\User;
-
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 
 class CompanyController extends Controller
@@ -37,15 +36,18 @@ class CompanyController extends Controller
      * @Method({"GET", "POST"})
      */
 
-    public function companyForm(Request $request, Company $company = null)
+    public function companyForm( AuthenticationUtils $authenticationUtils = null, Request $request, Company $company = null)
     {
+        $user = $this->getUser();
+        $formula = $user->getFormula();
         if ($company == null) {
             $company = new Company();
-            $user = $this->getUser();
             $company->setUser($user);
         }
 
-
+        if ($authenticationUtils != null) {
+            $error = $authenticationUtils->getLastAuthenticationError();
+        }
         $form = $this->createForm('App\Form\CompanyType', $company);
 
         $user = $this->getUser();
@@ -63,13 +65,14 @@ class CompanyController extends Controller
                 if ($user->getFormula() == null) {
                     return $this->redirectToRoute('choiceMode');
                 } else {
-                    return $this->redirectToRoute('dashboard');
+                    return $this->redirectToRoute('dashboard',array('formula'=>$formula));
                 }
             }
         }
 
         return $this->render('company.html.twig', [
             'form' => $form->createView(),
+            'error' => $error
         ]);
     }
 
