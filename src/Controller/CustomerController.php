@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Entity\Customer;
+use App\Entity\CustomerCompany;
 use App\Entity\Person;
 use App\Entity\Provider;
 use Knp\Component\Pager\PaginatorInterface;
@@ -38,9 +39,8 @@ class CustomerController extends Controller
     public function indexAction(PaginatorInterface $paginator,Request $request)
     {
 
-
+//
        $em = $this->getDoctrine()->getManager();
-
        $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
 //        $query = $em->createQuery($customers);
 //
@@ -65,17 +65,18 @@ class CustomerController extends Controller
      * @Method({"GET", "POST"})
      */
 
-    public function customerForm (Request $request,Customer $customer = null)
+    public function customerForm (Request $request,Customer $customer = null, CustomerCompany $customerCompany = null)
     {
-
 
         if($customer == null){
             $customer = new Customer();
 
         }
+
         $customer->setPersonType('customer');
 
         $customer->setUser($this->getUser());
+
         $form = $this->createForm('App\Form\CustomerType',$customer);
 
 
@@ -90,10 +91,61 @@ class CustomerController extends Controller
             return $this->redirectToRoute('index_customer');
         }
 
+        if($customerCompany == null){
+            $customerCompany = new CustomerCompany();
+        }
+
+        $customerCompany->setPersonType('customerCompany');
+
+        $customerCompany->setUser($this->getUser());
+
+        $formcompany = $this->createForm('App\Form\CustomerCompanyType', $customerCompany);
+
+        $formcompany->handleRequest($request);
+
+        if ($formcompany->isSubmitted() && $formcompany->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($customerCompany);
+            $em->flush();
+
+            return $this->redirectToRoute('index_customer');
+        }
+
         return $this->render('customer/form.html.twig', [
             'form' => $form->createView(),
+            'formcompany' => $formcompany->createView(),
         ]);
     }
+
+
+   /* public function customerCompanyForm (Request $request, CustomerCompany $customerCompany = null)
+    {
+        if($customerCompany == null){
+            $customerCompany = new CustomerCompany();
+        }
+
+        $customerCompany->setPersonType('customerCompany');
+
+        $customerCompany->setUser($this->getUser());
+
+        $formcompany = $this->createForm('App\Form\CustomerCompanyType', $customerCompany);
+
+        $formcompany->handleRequest($request);
+
+        if ($formcompany->isSubmitted() && $formcompany->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($customerCompany);
+            $em->flush();
+
+            return $this->redirectToRoute('index_customer');
+        }
+        return $this->render('customer/form.html.twig', [
+            'formcompany' => $formcompany->createView(),
+        ]);
+    }*/
+
 
     /**
 

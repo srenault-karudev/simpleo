@@ -12,6 +12,31 @@ legend{
 legend{
     text-align: center;
 }
+
+#customer_personType{
+    color: white;
+    background-color: #a876c7;
+    margin: 20px 20px 20px 20px;
+
+}
+#customer_personType:hover{
+    color: white;
+    background-color: #6f2190;
+}
+#customer_company_personType{
+    color: white;
+    background-color: #a876c7;
+    margin: 20px 20px 20px 20px;
+
+}
+#customer_company_personType:hover{
+    color: white;
+    background-color: #6f2190;
+}
+
+#leschamps{
+    display: none;
+}
 /*.jumbotron{*/
     /*height: 50%;*/
 /*}*/

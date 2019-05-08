@@ -50,7 +50,7 @@ class Record
 
     public function __construct()
     {
-    
+        $this->actions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,6 +90,37 @@ class Record
     public function setAction(Action $action): self
     {
         $this->action = $action;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Action[]
+     */
+    public function getActions(): Collection
+    {
+        return $this->actions;
+    }
+
+    public function addAction(Action $action): self
+    {
+        if (!$this->actions->contains($action)) {
+            $this->actions[] = $action;
+            $action->setRecord($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAction(Action $action): self
+    {
+        if ($this->actions->contains($action)) {
+            $this->actions->removeElement($action);
+            // set the owning side to null (unless already changed)
+            if ($action->getRecord() === $this) {
+                $action->setRecord(null);
+            }
+        }
 
         return $this;
     }
