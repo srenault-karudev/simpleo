@@ -2,8 +2,6 @@
 {% block title %}{% endblock %}
 {% block head %}
     {% block stylesheets %}
-
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/homePage.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -16,9 +14,40 @@
     {% block body %} {% endblock %}
 
 
-    <div id="first-view-js" style="background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));">
+    <div id="first-view-js" style="background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210)); margin-top: -25px;">
         <div class="">
-            <span class="welcome">Bienvenue sur Simpleo</span><br><br>
+
+
+            <span style ="margin-top: -30px;" class="welcome">Bienvenue sur Simpleo</span><br><br>
+            <p style="color: white">Faites un essai gratuit 30 jours et démarrez votre comptabilité</p>
+
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            <div class="form-group ">
+                {{ form_label(form.trialEmail, null, { 'label': ' Email','label_attr': {'class': '  col-md-3 control-label' ,'style':'color:purple'} }) }}
+                <div style="margin-top: 5px;"  class="col-md-3">
+                    {{ form_widget(form.trialEmail, {'attr': {'class': 'form-control'}} ) }}
+                    <label class="help-block">  {{ form_errors(form.trialEmail ) }}</label>
+                </div>
+            </div>
+            {{ form_rest(form) }}
+            <div class="form-group">
+                <div style="margin-top: 20px;"class="text-center">
+                    <button style="background-color: #2dabf9;
+       border-radius:3px;
+	border:1px solid #2dabf9;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 13px;
+        margin: 4px 2px;
+        cursor: pointer;" href="#"  type="submit" class="myButton">DEMARRER VOTRE ESSAI GRATUIT</button>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+
             <a onclick="scrollWin()"> <span  <i   class="material-icons" style="font-size: 100px;"> keyboard_arrow_down </i> </span></a>
         </div>
     </div>

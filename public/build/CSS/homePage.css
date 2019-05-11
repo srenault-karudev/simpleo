@@ -225,4 +225,18 @@ Pour alligner les icon*/
         background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
     }
 
+
+    .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
 }

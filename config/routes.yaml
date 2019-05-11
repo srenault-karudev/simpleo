@@ -14,6 +14,23 @@ blog:
     path:      /form_company/{id}
     defaults: {_controller: 'App\Controller\CompanyController:companyForm' }
 
+#
+#App\Controller\RegistrationController:
+#    arguments:
+#        $eventDispatcher: '@event_dispatcher'
+#            $formFactory: '@fos_user.registration.form.factory'
+#            $userManager: '@fos_user.user_manager'
+#            $tokenStorage: 'security.token_storage'
+#            calls:
+#                - method: setContainer
+#                  arguments:
+#                      - '@service_container'
+#            public: true
+#
+#FOS\UserBundle\Form\Factory\FactoryInterface:
+#    alias: 'fos_user.registration.form.factory'
+#    public: true
+
 
 #dashboard:
 #    path:      /

@@ -45,7 +45,7 @@ class DashboardController extends Controller
 
         if ($formula == User::TRIAL_PEREIOD) {
             //$dateOfTrialPeriod = $user->getDateOfTrialPeriod()->format('Y-m-d');
-            $dateOfEndPeriod = $user->getDateOfTrialPeriod()->modify('+30 day');
+            $dateOfEndPeriod = $user->getDateOfTrialPeriod()->modify('+31 day');
             $dateOfEndPeriod->format('Y-m-d');
             $today = new \DateTime();
             $today->format('Y-m-d');

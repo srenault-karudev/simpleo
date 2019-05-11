@@ -62,7 +62,7 @@ class PaymentController extends Controller
             $formulaMail = $user->getFormula();
 
 
-            $message = (new \Swift_Message('Try to send a mail'))
+            $message = (new \Swift_Message('Abonnement Simpleo'))
                 ->setFrom($this->getParameter('mailer_sender'))
                 ->setCc($this->getParameter('mailer_sender'))
                 ->setTo($email)
@@ -76,7 +76,7 @@ class PaymentController extends Controller
             $mailer->send($message);
 
             //$this->addFlash('success', 'Order Complete! Yay!');
-            //return $this->redirectToRoute('dashboard', array('formula' => $formula));
+            return $this->redirectToRoute('dashboard', array('formula' => $formula));
 
 
 

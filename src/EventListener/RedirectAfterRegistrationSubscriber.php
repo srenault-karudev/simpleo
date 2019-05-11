@@ -9,8 +9,10 @@
 namespace App\EventListener;
 
 
+use App\Entity\User;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\FOSUserEvents;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\RouterInterface;
@@ -33,13 +35,27 @@ class RedirectAfterRegistrationSubscriber implements EventSubscriberInterface
         $event->setResponse($response);
     }
 
+    /**
+     * @Method({"GET"})
+     */
+    public function onRegistrationCompleted(\FOS\UserBundle\Event\FilterUserResponseEvent $event)
+    {
+        $trialPeriod = $event->getRequest()->get('trialPeriod');
+        $user = $event->getUser();
 
+        if ($trialPeriod == 1) {
+            $user->setFormula(User::TRIAL_PEREIOD);
+        }
+    }
 
     public static function getSubscribedEvents()
     {
         return [
-            FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationSuccess'
+            FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationSuccess',
+            FOSUserEvents::REGISTRATION_COMPLETED => 'onRegistrationCompleted',
+
         ];
     }
+
 
 }
