@@ -42,6 +42,7 @@ class CustomerController extends Controller
 //
        $em = $this->getDoctrine()->getManager();
        $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
+       //dump($customers); die();
 //        $query = $em->createQuery($customers);
 //
 //        $paginations  = $this->get('knp_paginator')->paginate(
@@ -65,25 +66,23 @@ class CustomerController extends Controller
      * @Method({"GET", "POST"})
      */
 
-    public function customerForm (Request $request,Customer $customer = null, CustomerCompany $customerCompany = null)
+    public function customerForm (Request $request,Customer $customer = null)
     {
 
         if($customer == null){
             $customer = new Customer();
-
         }
 
-        $customer->setPersonType('customer');
-
-        $customer->setUser($this->getUser());
+            //$request->request->get();
+            $customer->setPersonType('customer');
+            $customer->setUser($this->getUser());
 
         $form = $this->createForm('App\Form\CustomerType',$customer);
-
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+           // dump($request->request->get('custo'));
             $em = $this->getDoctrine()->getManager();
             $em->persist($customer);
             $em->flush();
@@ -91,30 +90,8 @@ class CustomerController extends Controller
             return $this->redirectToRoute('index_customer');
         }
 
-        if($customerCompany == null){
-            $customerCompany = new CustomerCompany();
-        }
-
-        $customerCompany->setPersonType('customerCompany');
-
-        $customerCompany->setUser($this->getUser());
-
-        $formcompany = $this->createForm('App\Form\CustomerCompanyType', $customerCompany);
-
-        $formcompany->handleRequest($request);
-
-        if ($formcompany->isSubmitted() && $formcompany->isValid()) {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($customerCompany);
-            $em->flush();
-
-            return $this->redirectToRoute('index_customer');
-        }
-
         return $this->render('customer/form.html.twig', [
             'form' => $form->createView(),
-            'formcompany' => $formcompany->createView(),
         ]);
     }
 

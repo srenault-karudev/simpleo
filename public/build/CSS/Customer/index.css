@@ -51,3 +51,7 @@ used to vertically center elements, may need modification if you're not using de
     line-height: 34px;
 }
 
+th{
+    text-align: center;
+}
+

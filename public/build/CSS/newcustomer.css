@@ -13,25 +13,22 @@ legend{
     text-align: center;
 }
 
-#customer_personType{
+#customer_personType_0{
     color: white;
-    background-color: #a876c7;
     margin: 20px 20px 20px 20px;
 
 }
-#customer_personType:hover{
+#customer_personType_0:hover{
     color: white;
-    background-color: #6f2190;
 }
-#customer_company_personType{
+#customer_personType_1{
     color: white;
-    background-color: #a876c7;
     margin: 20px 20px 20px 20px;
 
 }
-#customer_company_personType:hover{
+#customer_personType_1:hover{
     color: white;
-    background-color: #6f2190;
+
 }
 
 #leschamps{

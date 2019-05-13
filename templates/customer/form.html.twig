@@ -12,13 +12,11 @@
             document.getElementById(id).style.display = 'block';
         }
         $(document).ready(function(){
-            $("#customer_personType").click(function(){
-
+            $("#customer_personType_0").on('click',function(){
                 $('div[id="formCompany"]').hide();
                 $('div[id="formIndividual"]').show();
-
             });
-            $("#customer_company_personType").click(function(){
+            $("#customer_personType_1").on('click',function(){
                 $('div[id="formIndividual"]').hide();
                 $('div[id="formCompany"]').show();
             });
@@ -34,9 +32,10 @@
                 {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 
                 <div>
-                    {{ form_widget(form.personType, { 'label': 'Particulier' }) }}
-                    {{ form_widget(formcompany.personType, { 'label': 'Entreprise' }) }}
+                    {{ form_widget(form.personType)}}
+
                 </div>
+
                 <div id="leschamps">
                     <div class="form-group" id="formIndividual">
                         {{ form_label(form.firstname, null, { 'label': 'Nom','label_attr': {'class': ' col-sm-3 label-control'} }) }}
@@ -53,10 +52,10 @@
                         </div>
                     </div>
                     <div class="form-group" id="formCompany">
-                        {{ form_label(formcompany.companyname, null, { 'label': 'Nom de l\'entreprise','label_attr': {'class': ' col-sm-4 label-control'} }) }}
+                        {{ form_label(form.companyname, null, { 'label': 'Nom de la société','label_attr': {'class': ' col-sm-4 label-control'} }) }}
                         <div class="col-sm-12 col-md-12">
-                            {{ form_widget(formcompany.companyname, {'attr': {'class': 'form-control'}} ) }}
-                            {{ form_errors(formcompany.companyname) }}
+                            {{ form_widget(form.companyname, {'attr': {'class': 'form-control'}} ) }}
+                            {{ form_errors(form.companyname) }}
                         </div>
                     </div>
                     <div class="form-group">
@@ -86,29 +85,36 @@
                             {{ form_errors(form.postcode) }}
                         </div>
                     </div>
-                    <div class="form-group" id="formCompany">
-                        {{ form_label(formcompany.siren, null, { 'label': 'N° SIREN','label_attr': {'class': 'col-sm-4 label-control'} }) }}
+                    <div class="form-group">
+                        {{ form_label(form.country, null, { 'label': 'Pays','label_attr': {'class': 'col-sm-3 label-control'} }) }}
                         <div class="col-sm-12">
-                            {{ form_widget(formcompany.siren, {'attr': {'class': 'form-control'}} ) }}
-                            {{ form_errors(formcompany.siren) }}
+                            {{ form_widget(form.country, {'attr': {'class': 'form-control'}} ) }}
+                            {{ form_errors(form.country) }}
                         </div>
                     </div>
                     <div class="form-group" id="formCompany">
-                        {{ form_label(formcompany.siret, null, { 'label': 'N° SIRET','label_attr': {'class': 'col-sm-4 label-control'} }) }}
+                        {{ form_label(form.siren, null, { 'label': 'N° SIREN','label_attr': {'class': 'col-sm-4 label-control'} }) }}
                         <div class="col-sm-12">
-                            {{ form_widget(formcompany.siret, {'attr': {'class': 'form-control'}} ) }}
-                            {{ form_errors(formcompany.siret) }}
+                            {{ form_widget(form.siren, {'attr': {'class': 'form-control'}} ) }}
+                            {{ form_errors(form.siren) }}
                         </div>
                     </div>
                     <div class="form-group" id="formCompany">
-                        {{ form_label(formcompany.numtva, null, { 'label': 'N° TVA Intracommunautaire','label_attr': {'class': 'col-sm-6 label-control'} }) }}
+                        {{ form_label(form.siret, null, { 'label': 'N° SIRET','label_attr': {'class': 'col-sm-4 label-control'} }) }}
                         <div class="col-sm-12">
-                            {{ form_widget(formcompany.numtva, {'attr': {'class': 'form-control'}} ) }}
-                            {{ form_errors(formcompany.numtva) }}
+                            {{ form_widget(form.siret, {'attr': {'class': 'form-control'}} ) }}
+                            {{ form_errors(form.siret) }}
+                        </div>
+                    </div>
+                    <div class="form-group" id="formCompany">
+                        {{ form_label(form.numtva, null, { 'label': 'N° TVA Intracommunautaire','label_attr': {'class': 'col-sm-6 label-control'} }) }}
+                        <div class="col-sm-12">
+                            {{ form_widget(form.numtva, {'attr': {'class': 'form-control'}} ) }}
+                            {{ form_errors(form.numtva) }}
                         </div>
                     </div>
                 </div>
-
+            </div>
                 {{ form_rest(form) }}
                 <div class="form-group">
                     <div class="text-center">
@@ -119,7 +125,7 @@
 
             </div>
         </div>
-    </div>
+
 </body>
     {% include 'footer.html.twig' %}
 {% endblock %}
