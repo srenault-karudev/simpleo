@@ -37,7 +37,7 @@ class DashboardController extends Controller
         $user = $this->getUser();
 
         $state = $user->isState();
-          $user->setFormula($formula);
+        $user->setFormula($formula);
         $interval = 0;
 //        $endPeriod = false;
 //        $trialPeriod = $user->isTrialPeriod();

@@ -36,6 +36,12 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
+    app.register_listener:
+        class: App\EventListener\RegisterListener
+        autowire: true
+        tags:
+            - { name: kernel.event_subscriber }
+
     redirect.after.login:
         class: App\EventListener\AfterLoginRedirection
         arguments: ['@router']

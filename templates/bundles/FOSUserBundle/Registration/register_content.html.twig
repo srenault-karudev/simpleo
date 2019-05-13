@@ -47,8 +47,8 @@
 
 
         {#{{ form_widget(form.plainPassword, {'attr': {'class': ' form-control'}} ) }}#}
-
-       <input type="hidden" name="trialPeriod" value="1" >
+        {% set value = app.request.query.get('trialPeriod') %}
+       <input type="hidden" name="trialPeriod" value={{ value }} >
 
         <div>
             <input class="btn-primary" type="submit" value="{{ 'registration.submit'|trans }}"/>

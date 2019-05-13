@@ -33,6 +33,7 @@ class RedirectAfterRegistrationSubscriber implements EventSubscriberInterface
         $url = $this->router->generate('fos_user_security_login');
         $response = new RedirectResponse($url);
         $event->setResponse($response);
+
     }
 
     /**
@@ -43,7 +44,7 @@ class RedirectAfterRegistrationSubscriber implements EventSubscriberInterface
         $trialPeriod = $event->getRequest()->get('trialPeriod');
         $user = $event->getUser();
 
-        if ($trialPeriod == 1) {
+        if ($trialPeriod != null or $trialPeriod != 0) {
             $user->setFormula(User::TRIAL_PEREIOD);
         }
     }

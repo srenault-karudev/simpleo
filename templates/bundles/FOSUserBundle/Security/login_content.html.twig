@@ -45,11 +45,15 @@
 
             <input class="fadeIn fourth" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
         </form>
-
+        {#{{ dump(app.session.flashbag.all()) }};#}
         {% for type, messages in app.session.flashbag.all() %}
+
             {% for message in messages %}
                 <div class="flash-{{ type }} alert-{{ type }}">
+                    {% if message == "L''utilisateur a été créé avec succès." %}
                     {{ message }}
+                    {% endif %}
+
                 </div>
             {% endfor %}
         {% endfor %}
