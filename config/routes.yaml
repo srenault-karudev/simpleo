@@ -2,20 +2,23 @@
 # Files in the routes/ subdirectory configure the routes for your dependencies.
 
 index:
-    path: /
-    defaults: { _controller: 'App\Controller\DefaultController::index' }
+  path: /
+  defaults: { _controller: 'App\Controller\DefaultController::index' }
 
 fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+  resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
 
 # app/config/routing.yml
 blog:
-    path:      /form_company/{id}
-    defaults: {_controller: 'App\Controller\CompanyController:companyForm' }
+  path:      /form_company/{id}
+  defaults: {_controller: 'App\Controller\CompanyController:companyForm' }
 
 
-#dashboard:
-#    path:      /
-#    defaults: {_controller: 'App\Controller\DashboardController:index' }
+  #dashboard:
+  #    path:      /
+  #    defaults: {_controller: 'App\Controller\DashboardController:index' }
 
+#ajaxInvoiceBuyRoute:
+#    path:    /new_invoice_buy/ajax/test
+#    defaults: {_controller: 'App\Controller\IndexInvoiceBuyController:firstAjax' }

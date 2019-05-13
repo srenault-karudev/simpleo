@@ -246,6 +246,11 @@ class User extends BaseUser
         $this->stripeCustomerId = $stripeCustomerId;
     }
 
+    public function getState(): ?bool
+    {
+        return $this->state;
+    }
+
 
 }
 

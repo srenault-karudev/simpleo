@@ -1,0 +1,1 @@
+[Sun May 12 20:11:04.678104 2019] [negotiation:error] [pid 22] [client 192.168.33.1:59665] AH00687: Negotiation: discovered file(s) matching request: /var/www/html/public/index (None could be negotiated).

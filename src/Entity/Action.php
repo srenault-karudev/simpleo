@@ -34,12 +34,17 @@ class Action
      */
     private $invoice;
 
+
     /**
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Record", mappedBy="action")
+     * @var Collection
      *
+     * @ORM\ManyToOne(targetEntity="Record", inversedBy="actions")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="record_id", referencedColumnName="id")
+     * })
      */
     private $record;
+
 
     /**
      * @var float
