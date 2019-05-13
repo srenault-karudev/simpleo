@@ -34,7 +34,6 @@ class CustomerType extends AbstractType
                     ],
                 'expanded' => true,
                 'multiple' => false,
-                'attr' => ['onclick' => 'Afficher("leschamps")'],
             ))
             ->add('lastname', TextType::class, array(
                 'required' => false))
@@ -42,16 +41,13 @@ class CustomerType extends AbstractType
                 'required' => false))
             ->add('companyname', TextType::class, array(
                 'required' => false))
-            ->add('adress', TextType::class, array(
-                'required' => false))
-            ->add('postcode', NumberType::class, array(
-                'required' => false))
-            ->add('email', EmailType::class, array(
-                'required' => false))
+            ->add('adress', TextType::class)
+            ->add('city', TextType::class)
+            ->add('postcode', NumberType::class)
+            ->add('email', EmailType::class)
             ->add('mobilephone', TelType::class, array(
                 'required' => false))
-            ->add('country', TextType::class, array(
-                'required' => false))
+            ->add('country', TextType::class)
             ->add('siren', TextType::class, array(
                 'constraints' => [new Length(['max' => 9])],
                 'required' => false))

@@ -58,28 +58,35 @@ abstract class Person
     /**
      * @var string
      *
-     * @ORM\Column(name="adress", type="string", length=255, nullable=false)
+     * @ORM\Column(name="adress", type="string", length=255, nullable=true)
      */
     protected $adress;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     */
+    protected $city;
+
+    /**
      * @var integer
      *
-     * @ORM\Column(name="postcode", type="integer", length=255, nullable=false)
+     * @ORM\Column(name="postcode", type="integer", length=255, nullable=true)
      */
     protected $postcode;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=255, nullable=false)
+     * @ORM\Column(name="country", type="string", length=255, nullable=true)
      */
     protected $country;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mobilePhone", type="string", length=10, nullable=false)
+     * @ORM\Column(name="mobilePhone", type="string", length=10, nullable=true)
      */
     protected $mobilephone;
 
@@ -319,6 +326,24 @@ abstract class Person
     public function setCountry(string $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }
