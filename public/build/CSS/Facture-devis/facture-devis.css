@@ -21,8 +21,8 @@
 .funkyradio input[type="radio"]:empty ~ label{
     position: relative;
     line-height: 2.5em;
-    text-indent: 3.25em;
     margin-top: 10px;
+    padding-left: 50px;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -67,11 +67,6 @@
     box-shadow: 0 0 0 3px #999;
 }
 
-.funkyradio-default input[type="radio"]:checked ~ label:before{
-    color: #333;
-    background-color: #ccc;
-}
-
 .funkyradio-warning input[type="radio"]:checked ~ label:before {
     color: #fff;
     background-color: #6f2190;
@@ -82,11 +77,17 @@
 
 /* FIN DE LA CONFIG DES RADIOBUTTON*/
 
+/*CONFIG SELECT*/
+
+.select_style{
+
+}
 
 
+/* FIN DE LA CONFIG DU SELECT*/
 
 .main_new_invoice{
-    margin-top: 80px;
+    margin-top: 50px;
     display: grid;
     grid-template-columns: 60% 40%;
 }
@@ -120,7 +121,11 @@
     padding: 10px;
     grid-column: 1;
     grid-row: 1;
-    background-color: lightgrey;
+}
+
+.scroll{
+    overflow: scroll;
+    height: 500px;
 }
 .left_two{
     padding: 10px;

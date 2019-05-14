@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\Collection;
  * Provider
  *
  * @ORM\Table(name="record")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\RecordRepository")
  */
 class Record
 {
@@ -123,6 +123,10 @@ class Record
         }
 
         return $this;
+    }
+
+    public function __toString(){
+        return $this->id." ".$this->Nom;
     }
 
 

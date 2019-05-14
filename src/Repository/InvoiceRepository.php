@@ -5,7 +5,6 @@
  * Date: 2019-03-12
  * Time: 19:30
  */
-
 namespace App\Repository;
 
 
@@ -22,6 +21,4 @@ class InvoiceRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('i.date', 'asc');
         return $qb->getQuery()->getResult();
     }
-
-
 }

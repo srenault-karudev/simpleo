@@ -149,6 +149,10 @@ Pour alligner les icon*/
     color: white;
 }
 
+.material-icons:hover{
+    color: purple;
+}
+
 
 @media (max-width: 1024px ) {
     .table2{
@@ -218,8 +222,7 @@ Pour alligner les icon*/
         padding-left: 5%;
     }
     .mainblock {
-        background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
+        background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
     }
 
 }
-
