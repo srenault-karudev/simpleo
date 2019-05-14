@@ -18,12 +18,10 @@ class PersonRepository extends \Doctrine\ORM\EntityRepository
     {
         $qb = $this->createQueryBuilder('p')
             ->where('p.user = :user')
-           ->setParameter('user', $user->getId())
-            ->andwhere('p.personType = :type')
-            ->setParameter('type', 'customer')
-            ->orderBy('p.lastname', 'asc');
+            ->setParameter('user', $user->getId());
         return $qb->getQuery()->getResult();
     }
+
 
 
 }

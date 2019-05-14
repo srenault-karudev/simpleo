@@ -15,20 +15,38 @@
                 <!-- Start .row -->
                 <div class="col-md-12">
                     <dl class="mt20">
-                        <dt class="text-muted">Prenom</dt>
-                        <dd>{{ customer.firstname }}</dd>
 
-                        <dt class="text-muted">Nom</dt>
-                        <dd>{{ customer.lastname }}</dd>
+                        {% if customer.personType == 'particulier' %}
+                            <dt class="text-muted">Nom</dt>
+                            <dd>{{ customer.lastname }}</dd>
 
-                        <dt class="text-muted">Télephone </dt>
+                            <dt class="text-muted">Prénom</dt>
+                            <dd>{{ customer.firstname }}</dd>
+
+                        {% endif %}
+                        {% if customer.personType == 'entreprise' %}
+                            <dt class="text-muted">Nom de la société</dt>
+                            <dd>{{ customer.companyname }}</dd>
+                        {% endif %}
+                        <dt class="text-muted">Téléphone </dt>
                         <dd>{{ customer.mobilephone }}</dd>
 
                         <dt class="text-muted">Email</dt>
                         <dd>{{ customer.email }}</dd>
 
                         <dt class="text-muted">Adresse</dt>
-                        <dd>{{ customer.adress }}</dd>
+                        <dd>{{ customer.adress }} {{ customer.city }} {{ customer.postcode }} {{ customer.country }}</dd>
+
+                        {% if customer.personType == 'entreprise' %}
+                            <dt class="text-muted">N° SIREN</dt>
+                            <dd>{{ customer.siren }}</dd>
+
+                            <dt class="text-muted">N° SIRET</dt>
+                            <dd>{{ customer.siret }}</dd>
+
+                            <dt class="text-muted">N° TVA Intercommunautaire</dt>
+                            <dd>{{ customer.numtva }}</dd>
+                        {% endif %}
 
                     </dl>
                 </div>

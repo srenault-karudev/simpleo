@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,7 +16,8 @@ use Doctrine\ORM\Mapping as ORM;
 *  @ORM\DiscriminatorMap( {
 *      "customer" = "Customer",
 *      "provider" = "Provider",
-*     "commercial" = "Commercial"
+*      "commercial" = "Commercial",
+ *     "customerCompany" = "CustomerCompany"
 *  } )
  */
 
@@ -37,28 +37,56 @@ abstract class Person
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=255, nullable=false)
+     * @ORM\Column(name="lastName", type="string", length=255, nullable=true)
      */
     protected $lastname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=255, nullable=false)
+     * @ORM\Column(name="firstName", type="string", length=255, nullable=true)
      */
     protected $firstname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adress", type="string", length=255, nullable=false)
+     * @ORM\Column(name="companyName", type="string", length=255, nullable=true)
+     */
+    protected $companyname;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adress", type="string", length=255, nullable=true)
      */
     protected $adress;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mobilePhone", type="string", length=10, nullable=false)
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     */
+    protected $city;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="postcode", type="integer", length=255, nullable=true)
+     */
+    protected $postcode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255, nullable=true)
+     */
+    protected $country;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mobilePhone", type="string", length=10, nullable=true)
      */
     protected $mobilephone;
 
@@ -82,7 +110,7 @@ abstract class Person
     /**
      * @var string
      *
-     * @ORM\Column(name="siren", type="string", length=9, nullable=false)
+     * @ORM\Column(name="siren", type="string", length=9, nullable=true)
      */
     protected $siren;
 
@@ -90,7 +118,7 @@ abstract class Person
     /**
      * @var string
      *
-     * @ORM\Column(name="siret", type="string", length=14, nullable=false)
+     * @ORM\Column(name="siret", type="string", length=14, nullable=true)
      */
     protected $siret;
 
@@ -98,7 +126,7 @@ abstract class Person
     /**
      * @var string
      *
-     * @ORM\Column(name="numtva", type="string", length=20, nullable=false)
+     * @ORM\Column(name="numtva", type="string", length=20, nullable=true)
      */
     protected $numtva;
 
@@ -205,9 +233,11 @@ abstract class Person
     /**
      * @param string $siren
      */
-    public function setSiren(string $siren)
+    public function setSiren(string $siren): self
     {
         $this->siren = $siren;
+
+        return $this;
     }
 
     /**
@@ -221,9 +251,11 @@ abstract class Person
     /**
      * @param string $siret
      */
-    public function setSiret(string $siret)
+    public function setSiret(string $siret): self
     {
         $this->siret = $siret;
+
+        return $this;
     }
 
     /**
@@ -237,9 +269,83 @@ abstract class Person
     /**
      * @param string $numtva
      */
-    public function setNumtva(string $numtva)
+    public function setNumtva(string $numtva): self
     {
         $this->numtva = $numtva;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCompanyname(): ?string
+    {
+        return $this->companyname;
+    }
+
+    /**
+     * @param string $companyname
+     */
+    public function setCompanyname(string $companyname): self
+    {
+        $this->companyname = $companyname;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPostcode(): ?int
+    {
+        return $this->postcode;
+    }
+
+    /**
+     * @param int $postcode
+     */
+    public function setPostcode(int $postcode): self
+    {
+        $this->postcode = $postcode;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     */
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
     }
 
 
@@ -297,10 +403,6 @@ abstract class Person
 
         return $this;
     }
-
-
-
-
 
 }
 

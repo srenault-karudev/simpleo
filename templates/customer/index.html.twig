@@ -32,8 +32,8 @@
                     <table class="table table-striped table-bordered table-list">
                         <thead>
                         <tr>
-                            <th>Nom</th>
-                            <th>Prénom</th>
+                            <th>Type</th>
+                            <th>Client</th>
                             <th>Télephone</th>
                             <th>Email</th>
                             <th>Adresse</th>
@@ -43,13 +43,17 @@
                         <tbody>
                         {% for customer in properties %}
                             <tr>
-                                <td>{{ customer.firstname }}</td>
-                                <td>{{ customer.lastname }}</td>
+                                <td>{{ customer.personType }}</td>
+                                {% if customer.personType == 'particulier' %}
+                                    <td>{{ customer.firstname }} {{ customer.lastname }} </td>
+                                {% endif %}
+                                {% if customer.personType == 'entreprise' %}
+                                    <td>{{ customer.companyname }}</td>
+                                {% endif %}
                                 <td>{{ customer.getMobilephone() }}</td>
                                 <td>{{ customer.email }}</td>
-                                <td>{{ customer.adress }}</td>
-                                <td>
-
+                                <td>{{ customer.adress }} {{ customer.city }} {{ customer.postcode }} {{ customer.country }}</td>
+                                <td class="action">
                                     <a class="btn btn-default"
                                        href="{{ path('form_customer', { 'id': customer.id }) }}"><em
                                                 class="fa fa-pencil"></em></a>
@@ -59,7 +63,6 @@
                                     <a class="btn btn-danger"
                                        href="{{ path('customers_delete', { 'id': customer.id }) }}"><em
                                                 class="fa fa-trash"></em></a>
-
                                 </td>
                             </tr>
                         {% endfor %}

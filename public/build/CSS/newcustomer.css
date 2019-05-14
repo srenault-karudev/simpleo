@@ -12,6 +12,28 @@ legend{
 legend{
     text-align: center;
 }
+
+#customer_personType_0{
+    color: white;
+    margin: 20px 20px 20px 20px;
+
+}
+#customer_personType_0:hover{
+    color: white;
+}
+#customer_personType_1{
+    color: white;
+    margin: 20px 20px 20px 20px;
+
+}
+#customer_personType_1:hover{
+    color: white;
+
+}
+
+#leschamps{
+    display: none;
+}
 /*.jumbotron{*/
     /*height: 50%;*/
 /*}*/

@@ -1,3 +1,7 @@
+.panel-body {
+
+}
+
 .panel-table .panel-body{
     padding:0;
 }
@@ -9,7 +13,7 @@
 
 .panel-table .panel-body .table-bordered > thead > tr > th:first-of-type {
     text-align:center;
-    width: 100px;
+
 }
 
 .panel-table .panel-body .table-bordered > thead > tr > th:last-of-type,
@@ -49,5 +53,9 @@ used to vertically center elements, may need modification if you're not using de
 
 .panel-table .panel-body .table-bordered > tbody > tr > td{
     line-height: 34px;
+}
+
+th, .action{
+    text-align: center;
 }
 
