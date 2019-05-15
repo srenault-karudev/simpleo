@@ -45,8 +45,7 @@ class CustomerType extends AbstractType
             ->add('city', TextType::class)
             ->add('postcode', NumberType::class)
             ->add('email', EmailType::class)
-            ->add('mobilephone', TelType::class, array(
-                'required' => false))
+            ->add('mobilephone', TelType::class)
             ->add('country', TextType::class)
             ->add('siren', TextType::class, array(
                 'constraints' => [new Length(['max' => 9])],
