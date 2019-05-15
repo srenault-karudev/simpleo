@@ -133,7 +133,7 @@ class Record
     }
 
     public function __toString(){
-        return $this->Num." ".$this->Nom;
+        return $this->Num." - ".$this->Nom;
     }
 
     public function getNum(): ?int
