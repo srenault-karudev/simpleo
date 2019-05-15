@@ -41,7 +41,6 @@ class HomePageController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $trialEmail = $form->get('trialEmail')->getData();
 
-            //return $this->redirectToRoute('dashboard');
             return $this->redirectToRoute('fos_user_registration_register',array('trialPeriod' => true, 'trialEmail'=>$trialEmail));
 
         }

@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <title>Simpleo</title>
     {% block stylesheets %}
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
+              id="bootstrap-css">
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/dashboard.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no, maximum-scale=5.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+              integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no, maximum-scale=5.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no, maximum-scale=5.0">
     {% endblock %}
 </head>
 
@@ -23,10 +28,10 @@
     <div class="w3-sidebar w3-bar-block w3-animate-left" style="display:none;z-index:4" id="mySidebar">
         <button style="font-size: 130%;" class="w3-bar-item" onclick="w3_close()">Fermer &times;</button>
         <br>
-        {%  if app.user.formula is not null %}
-        {% set formula  = app.user.formula %}
+        {% if app.user.formula is not null %}
+            {% set formula  = app.user.formula %}
         {% else %}
-        {% set formula  = formula %}
+            {% set formula  = formula %}
         {% endif %}
         <a href="{{ path('dashboard', {'formula' : formula}) }}" class="w3-bar-item active-link-bar">Tableau de bord</a>
         <div class="dropdown" style="width: 100%;">
@@ -51,18 +56,20 @@
         <a href="#" class="w3-bar-item">Rapport</a>
         <a href="#" class="w3-bar-item">Equipes</a>
         <br>
-        <a  href="{{ path('fos_user_security_logout') }}" class="w3-button w3-round-xlarge w3-border w3-border-white">Se deconnecter</a>
+        <a href="{{ path('fos_user_security_logout') }}" class="w3-button w3-round-xlarge w3-border w3-border-white">Se
+            deconnecter</a>
 
     </div>
 
     <div class="bienvenue">
         <a href="{{ path('homepage') }}">
-            <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" id="Simpleologo" class="Simpleo-logo"
-             alt="Simpleo"/>
+            <img src="https://dwarves.iut-fbleau.fr/git/renaults/Simpleo/raw/master/images/Logo.png" id="Simpleologo"
+                 class="Simpleo-logo"
+                 alt="Simpleo"/>
         </a>
         <p class="bienvenue2">
 
-            {% if app.user is not null  %}
+            {% if app.user is not null %}
                 Bonjour, <em>{{ app.user.username }}</em>
             {% endif %}
         </p>
@@ -87,7 +94,7 @@
 
             <li class="nav-item achatsDropdown">
                 <div class="dropdown">
-                    <a class="nav-link" > Achats <i class="fa fa-caret-down"></i></a>
+                    <a class="nav-link"> Achats <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
                         <a href="#" class="w3-bar-item w3-button">Achats</a>
                         <a href="{{ path('new_invoice_buy') }}" class="w3-bar-item w3-button">Enregistrer un achat</a>
@@ -124,24 +131,45 @@
                 <a class="nav-link" href="{{ path('rapport') }}">Rapport</a>
             </li>
 
+            <li style="float: right;margin-right: 20px" class="nav-item ">
+                <div class="dropdown">
+                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Mon Compte<i
+                                class="fa fa-caret-down" style='margin-left: 7px;'></i></a>
+                    <div class="dropdown-content w3-bar-block w3-border">
+                        <a class="w3-bar-item w3-button" href="{{ path('fos_user_profile_edit') }}">Profil</a>
+                        {% if app.user is not null %}
+                            {% if app.user.company  is not null %}
+                                <a class="w3-bar-item w3-button"
+                                   href="{{ path('company_form',{'id': app.user.company.id}) }}"><span
+                                            class="txt">Mon entreprise</span></a>
+                                <a class="w3-bar-item w3-button" href="{{ path('choiceMode') }}">Changer de formule</a>
+                            {% endif %}
+                        {% endif %}
+                        <a class="w3-bar-item w3-button" href="{{ path('fos_user_security_logout') }}">Se
+                            deconnecter</a>
+                    </div>
+                </div>
+            </li>
+
 
         </ul>
     </div>
 </nav>
 
-<nav>
-    <ul>
-        <li class="nav-link"><a style="color: #6f2190" href="{{ path('fos_user_security_logout') }}">Se deconnecter</a></li>
-        {% if app.user is not null %}
-            {% if app.user.company  is not null %}
-                <li class="nav-link"><a style="color: #6f2190" href="{{ path('company_form',{'id': app.user.company.id}) }}"><span
-                                class="txt">Mon entreprise</span><i style="margin-left: 10px;"
-                                                                    class="fa fa-navicon"></i></a>
-                </li>
-            {% endif %}
-        {% endif %}
-    </ul>
-</nav>
+{#<nav>#}
+{#<ul>#}
+{#<li class="nav-link"><a style="color: #6f2190" href="{{ path('fos_user_security_logout') }}">Se deconnecter</a>#}
+{#</li>#}
+{#{% if app.user is not null %}#}
+{#{% if app.user.company  is not null %}#}
+{#<li class="nav-link"><a style="color: #6f2190"#}
+{#href="{{ path('company_form',{'id': app.user.company.id}) }}"><span#}
+{#class="txt">Mon entreprise</span><i style="margin-left: 10px;" class="fa fa-navicon"></i></a>#}
+{#</li>#}
+{#{% endif %}#}
+{#{% endif %}#}
+{#</ul>#}
+{#</nav>#}
 
 {% block content %}
     <body></body>
@@ -178,9 +206,9 @@
 
     <script>$(document).ready(function () {
             $(window).scroll(function () {
-                var top =  $(".goto-top");
-                if ( $('body').height() <= (    $(window).height() + $(window).scrollTop() + 200 )) {
-                    top.animate({"margin-left": "0px"},1500);
+                var top = $(".goto-top");
+                if ($('body').height() <= ($(window).height() + $(window).scrollTop() + 200)) {
+                    top.animate({"margin-left": "0px"}, 1500);
                 }
             });
 
@@ -190,18 +218,22 @@
         });</script>
 
     <script type="text/javascript">
-        $(function(){
-            $('.barrenav a').filter(function(){return this.href==location.href}).parent().addClass('active-link').siblings().removeClass('active-link')
-            $('.barrenav a').click(function(){
+        $(function () {
+            $('.barrenav a').filter(function () {
+                return this.href == location.href
+            }).parent().addClass('active-link').siblings().removeClass('active-link')
+            $('.barrenav a').click(function () {
                 $(this).parent().addClass('active-link').siblings().removeClass('active-link')
             })
         })
     </script>
 
     <script type="text/javascript">
-        $(function(){
-            $('.w3-sidebar a').filter(function(){return this.href==location.href}).addClass('active-link-bar').siblings().removeClass('active-link-bar')
-            $('.w3-sidebar a').click(function(){
+        $(function () {
+            $('.w3-sidebar a').filter(function () {
+                return this.href == location.href
+            }).addClass('active-link-bar').siblings().removeClass('active-link-bar')
+            $('.w3-sidebar a').click(function () {
                 $(this).parent().addClass('active-link-bar').siblings().removeClass('active-link-bar')
             })
         })

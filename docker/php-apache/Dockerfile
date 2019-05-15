@@ -72,3 +72,6 @@ RUN wget https://phar.phpunit.de/phpunit-6.1.phar \
 #    && apt-get install -y openjdk-7-jdk --fix-missing \ 
 #    && apt-get install libmysql-java --fix-missing
 #RUN export CLASSPATH=$CLASSPATH:/usr/share/java/mysql.jar
+
+# Pdf
+RUN apt-get install xvfb libfontconfig wkhtmltopdf -y
