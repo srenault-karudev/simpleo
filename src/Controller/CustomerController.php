@@ -10,7 +10,9 @@ namespace App\Controller;
 
 
 use App\Entity\Customer;
+use App\Form\PropretySearchType;
 use App\Entity\Person;
+use App\Entity\PropertySearch;
 use App\Entity\Provider;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -35,13 +37,15 @@ class CustomerController extends Controller
      * @Route("/index_customer", name="index_customer")
      */
 
+
+
     public function indexAction(PaginatorInterface $paginator,Request $request)
     {
 
 
        $em = $this->getDoctrine()->getManager();
-
-       $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
+        $search= new PropertySearch();
+       $customers = $em->getRepository('App:Person')->getCustomers($this->getUser(),$search);
 //        $query = $em->createQuery($customers);
 //
 //        $paginations  = $this->get('knp_paginator')->paginate(
@@ -50,13 +54,17 @@ class CustomerController extends Controller
 //            10 /*limit per page*/
 //        );
 
+        $form=$this->createForm(PropretySearchType::class,$search);
+        $form->handleRequest($request);
         $properties = $paginator->paginate(
             $customers,
+
             $request->query->getInt('page', 1),5
         );
         $properties->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
         return $this->render('customer/index.html.twig', array(
-            'properties' => $properties
+            'properties' => $properties,
+            'form'=> $form->createView()
         ));
     }
 
