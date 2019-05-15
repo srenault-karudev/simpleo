@@ -14,7 +14,7 @@
     {% endblock %}
 </head>
 
-<footer class="w3-center w3-dark-grey w3-padding-64">
+<footer class="w3-center  w3-padding-64">
     <p class="goto-top w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut de page</p>
     <div class="w3-xlarge w3-section">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -24,6 +24,10 @@
         <i class="fa fa-twitter w3-hover-opacity"></i>
         <i class="fa fa-linkedin w3-hover-opacity"></i>
     </div>
+
+    <p>© Copyright Simpleo 2019</p>
+
+    <p class="liensFooter"><a href="{{ asset('') }}">Conditions d'utilisation</a> | <a href="{{ asset('') }}">Confidentialité</a> | <a href="{{ asset('') }}">Mentions légales</a></p>
 </footer>
 
 {% block javascripts %}
@@ -41,9 +45,9 @@
 
     <script>$(document).ready(function () {
             $(window).scroll(function () {
-                var top =  $(".goto-top");
-                if ( $('body').height() <= (    $(window).height() + $(window).scrollTop() + 200 )) {
-                    top.animate({"margin-left": "0px"},1500);
+                var top = $(".goto-top");
+                if ($('body').height() <= ($(window).height() + $(window).scrollTop() + 200)) {
+                    top.animate({"margin-left": "0px"}, 1500);
                 }
             });
 

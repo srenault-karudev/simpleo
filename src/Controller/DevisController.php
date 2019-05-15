@@ -40,7 +40,7 @@ class DevisController extends Controller
 
 //
         $em = $this->getDoctrine()->getManager();
-        $devis = $em->getRepository('App:Person')->getCustomers($this->getUser());
+        $devis = $em->getRepository('App:Devis')->getDevis($this->getUser());
 //        $query = $em->createQuery($devis);
 //
 //        $paginations  = $this->get('knp_paginator')->paginate(
@@ -72,7 +72,8 @@ class DevisController extends Controller
             $devis = new Devis();
 
         }
-        $devis->setPersonType('devis');
+
+        /*$devis->setPersonType('devis');
 
         $devis->setUser($this->getUser());
         $form = $this->createForm('App\Form\DevisType',$devis);
@@ -87,10 +88,10 @@ class DevisController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('index_devis');
-        }
+        }*/
 
         return $this->render('devis/form.html.twig', [
-            'form' => $form->createView(),
+            //'form' => $form->createView(),
         ]);
     }
 

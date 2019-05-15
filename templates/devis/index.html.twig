@@ -3,15 +3,17 @@
 
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Customer/index.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Devis/index.css') }}">
     <body>
+
+    <div style="margin-left: 15px;">
+        <h1>Tous vos devis</h1>
+        <br>
+    </div>
 
     <div class="row">
 
-        <div></div>
-
-
-        <div style="margin-top: 50px;" class="col-md-10 col-md-offset-1">
+        <div style="margin-bottom: 50px;" class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default panel-table">
                 <div class="panel-heading">
@@ -20,8 +22,7 @@
                             <a href="{{ path('form_devis') }}">
                                 <button class="btn btn-success">
                                     + Créer un nouveau devis
-                                </button>
-                            </a>
+                                </butt
                         </div>
                         {#<div class="col col-xs-6 text-right">#}
                         {#<button type="button-success" class="btn btn-sm btn-primary btn-create">Nouveau client</button>#}
@@ -42,16 +43,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        {% for customer in properties %}
+                        {% for devis in properties %}
                             <tr>
-                                <td>{{ customer.firstname }}</td>
-                                <td>{{ customer.lastname }}</td>
-                                <td>{{ customer.getMobilephone() }}</td>
-                                <td>{{ customer.email }}</td>
-                                <td>{{ customer.adress }}</td>
-                                <td>
+                                <td>{{ devis.id }}</td>
+                                <td>{{ devis.reference}}</td>
+                                <td>{{ devis.dateCreation | date("d/m/Y")}}</td>
+                                <td>{{ devis.client }}</td>
+                                <td>{{ devis.telephone }}</td>
+                                <td>{{ devis.etat }}</td>
+                                <td>{{ devis.montant }}</td>
 
-                                    <a class="btn btn-default"
+                                  {#  <a class="btn btn-default"
                                        href="{{ path('form_customer', { 'id': customer.id }) }}"><em
                                                 class="fa fa-pencil"></em></a>
                                     <a class="btn btn-default"
@@ -59,7 +61,7 @@
                                                 class="fa fa-eye"></em></a>
                                     <a class="btn btn-danger"
                                        href="{{ path('customers_delete', { 'id': customer.id }) }}"><em
-                                                class="fa fa-trash"></em></a>
+                                                class="fa fa-trash"></em></a> #}
 
                                 </td>
                             </tr>
