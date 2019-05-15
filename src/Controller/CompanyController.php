@@ -22,7 +22,7 @@ class CompanyController extends Controller
 {
 
     /**
-     * @Route("/company", name="company")
+     * @Route("/company",name="company")
      */
     public function index()
     {
