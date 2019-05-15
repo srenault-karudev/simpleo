@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Devis
  *
  * @ORM\Table(name="devis")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\DevisRepository")
  */
 class Devis
 {
@@ -24,18 +24,71 @@ class Devis
     private $id;
 
     /**
+     * @var Collection
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="devis")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="reference", type="string", length=45, nullable=true)
      */
     private $reference;
 
+
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \DateTime
      *
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="devis")
+     * @ORM\Column(name="date_creation", type="date", nullable=false)
      */
-    private $user;
+    private $dateCreation;
+
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_expiration", type="date", nullable=false)
+     */
+    private $dateExpiration;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="client", type="string", length=40, nullable=true)
+     */
+    private $client;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=40, nullable=true)
+     */
+    private $telephone;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat", type="string", length=40, nullable=true)
+     */
+    private $etat;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="montant", type="float", nullable=true)
+     */
+    private $montant;
+
+
 
     /**
      * Constructor
@@ -74,7 +127,7 @@ class Devis
     {
         if (!$this->user->contains($user)) {
             $this->user[] = $user;
-            $user->addDevi($this);
+            $user->addDevis($this);
         }
 
         return $this;
@@ -84,10 +137,113 @@ class Devis
     {
         if ($this->user->contains($user)) {
             $this->user->removeElement($user);
-            $user->removeDevi($this);
+            $user->removeDevis($this);
         }
 
         return $this;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateCreation(): \DateTime
+    {
+        return $this->dateCreation;
+    }
+
+    /**
+     * @param \DateTime $dateCreation
+     */
+    public function setDateCreation(\DateTime $dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateExpiration(): \DateTime
+    {
+        return $this->dateExpiration;
+    }
+
+    /**
+     * @param \DateTime $dateExpiration
+     */
+    public function setDateExpiration(\DateTime $dateExpiration)
+    {
+        $this->dateExpiration = $dateExpiration;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClient(): string
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param string $client
+     */
+    public function setClient(string $client)
+    {
+        $this->client = $client;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTelephone(): string
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param string $telephone
+     */
+    public function setTelephone(string $telephone)
+    {
+        $this->telephone = $telephone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEtat(): string
+    {
+        return $this->etat;
+    }
+
+    /**
+     * @param string $etat
+     */
+    public function setEtat(string $etat)
+    {
+        $this->etat = $etat;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMontant(): float
+    {
+        return $this->montant;
+    }
+
+    /**
+     * @param float $montant
+     */
+    public function setMontant(float $montant)
+    {
+        $this->montant = $montant;
     }
 
 }

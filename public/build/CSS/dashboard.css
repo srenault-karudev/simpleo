@@ -2,6 +2,39 @@ body {
     min-width: 320px;
 }
 
+.liensFooter a{
+    text-decoration: none;
+}
+
+.liensFooter a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+footer{
+    background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
+    color:white;
+}
+
+.achatsDropdown{
+    color: white;
+}
+
+.ventesDropdown{
+    color: white;
+}
+
+.achatsDropdown:hover{
+    color: rebeccapurple;
+    background-color: white;
+}
+
+.ventesDropdown:hover{
+    color: rebeccapurple;
+    background-color: white;
+}
+
+
 .navColor {
     background-image: linear-gradient(to right, rgb(141, 86, 139), rgb(102, 104, 210));
     color: white;
@@ -42,11 +75,11 @@ body {
     background-color: white;
     opacity: 1;
     transition-duration: 0.2s;
+    color: rebeccapurple;
 }
 
 .nav-item:hover a{
     color: rebeccapurple;
-    transition-duration: 0.2s;
 }
 
 h1{

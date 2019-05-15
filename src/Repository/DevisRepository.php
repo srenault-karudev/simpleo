@@ -10,9 +10,13 @@ namespace App\Repository;
 
 use App\Entity\User;
 
-class DevisRepository
+class DevisRepository extends \Doctrine\ORM\EntityRepository
 {
     public function getDevis(User $user)
     {
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.user = :user')
+            ->setParameter('user', $user->getId());
+        return $qb->getQuery()->getResult();
     }
 }

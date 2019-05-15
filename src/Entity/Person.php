@@ -15,9 +15,6 @@ use Doctrine\ORM\Mapping as ORM;
 *  @ORM\DiscriminatorColumn(name="type", type="string")
 *  @ORM\DiscriminatorMap( {
 *      "customer" = "Customer",
-*      "provider" = "Provider",
-*      "commercial" = "Commercial",
- *     "customerCompany" = "CustomerCompany"
 *  } )
  */
 
