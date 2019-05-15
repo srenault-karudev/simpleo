@@ -14,15 +14,22 @@ use Doctrine\Common\Collections\Collection;
 class Record
 {
 
+/**
+ * @var integer
+ *
+ * @ORM\Column(name="id", type="integer", nullable=false)
+ * @ORM\Id
+ * @ORM\GeneratedValue(strategy="AUTO")
+ */
+    private $id;
+
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
+     * @ORM\Column(name="num", type="integer", nullable=false)
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
-
+    private $Num;
 
     /**
      * @var String
@@ -126,7 +133,19 @@ class Record
     }
 
     public function __toString(){
-        return $this->id." ".$this->Nom;
+        return $this->Num." ".$this->Nom;
+    }
+
+    public function getNum(): ?int
+    {
+        return $this->Num;
+    }
+
+    public function setNum(int $Num): self
+    {
+        $this->Num = $Num;
+
+        return $this;
     }
 
 

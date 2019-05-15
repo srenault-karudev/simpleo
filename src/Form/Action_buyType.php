@@ -45,7 +45,7 @@ class Action_buyType extends AbstractType
         $builder
             ->add('record_id', EntityType::class, [
                 'class' => Record::class,
-                'mapped' => false,
+                'choice_value' => 'Num',
                 'expanded' => true,
                 'multiple' => false
 
