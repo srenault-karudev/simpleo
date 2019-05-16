@@ -2,55 +2,48 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+
+
 
 class PropertySearch{
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('value', new Assert\NotBlank());;
+       // die();
+
+    }
     /**
      * @var string|null
      */
 
-    private $firstName;
+    private $value;
 
-    /**
-     * @var string|null
-     */
 
-    private $lastName;
 
 
     /**
      * @return null|string
      */
-    public function getFirstName(): ?string
+    public function getValue(): ?string
     {
-        return $this->firstName;
+        return $this->value;
     }
 
     /**
-     * @param null|string $firstname
+     * @param null|string $value
      * @return PropertySearch
      */
-    public function setFirstName(string $firstName): PropertySearch
+    public function setValue(string $value): PropertySearch
     {
-        $this->firstName = $firstName;
+        $this->value = $value;
         return $this;
     }
 
-    /**
-     * @return null|string
-     */
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
 
-    /**
-     * @param null|string $lastname
-     * @return PropertySearch
-     */
-    public function setLastName(string $lastName): PropertySearch
-    {
-        $this->lastName = $lastName;
-        return $this;
-    }
+
+
 
 }

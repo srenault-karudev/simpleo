@@ -8,7 +8,7 @@
 
 namespace App\Controller;
 
-
+use App\Repository\PersonRepository;
 use App\Entity\Customer;
 use App\Form\PropretySearchType;
 use App\Entity\Person;
@@ -42,10 +42,10 @@ class CustomerController extends Controller
     public function indexAction(PaginatorInterface $paginator,Request $request)
     {
 
-
        $em = $this->getDoctrine()->getManager();
         $search= new PropertySearch();
-       $customers = $em->getRepository('App:Person')->getCustomers($this->getUser(),$search);
+            $customers = $em->getRepository('App:Person')->getCustomers();
+
 //        $query = $em->createQuery($customers);
 //
 //        $paginations  = $this->get('knp_paginator')->paginate(

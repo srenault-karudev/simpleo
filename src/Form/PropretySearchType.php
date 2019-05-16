@@ -16,20 +16,14 @@ class PropretySearchType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstName',TextType::class,[
+            ->add('value',TextType::class,[
                 'required' => false,
                 'label' => false,
                 'attr'=> [
-                    'placeholder'=> 'Prenom'
+                    'placeholder'=> 'Mot clé'
                 ]
-            ])
-             ->add('lastName',TextType::class,[
-                'required' => false,
-                'label' => false,
-                'attr'=> [
-                    'placeholder'=> 'Nom'
-                ]
-             ]);
+            ]);
+
 
 
      }

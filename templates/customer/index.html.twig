@@ -6,6 +6,22 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Customer/index.css') }}">
     <body>
 
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="form-row">
+                <div class="col">
+                    {{ form_row(form.value) }}
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary"> Rechercher</button>
+                </div>
+
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
     <div class="row">
 
         <div></div>
@@ -76,7 +92,7 @@
         </div>
     </div>
     </div>
-    </body>
+</body>
 
     {% include 'footer.html.twig' %}
 {% endblock %}
