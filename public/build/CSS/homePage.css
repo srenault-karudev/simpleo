@@ -299,3 +299,12 @@ h5{
 h1{
     text-align: center;
 }
+
+#home_page_trialEmail{
+    padding: 5px;
+    width: 250px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
