@@ -9,19 +9,28 @@
 namespace App\Repository;
 
 
-
+use App\Entity\Person;
 use App\Entity\User;
 
 class PersonRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getCustomers(User $user)
+
+    public function GetCustomers()
     {
-        $qb = $this->createQueryBuilder('p')
-            ->where('p.user = :user')
-            ->setParameter('user', $user->getId());
-        return $qb->getQuery()->getResult();
+
+        if( empty($_GET['value']) )
+        {
+            $qb = $this->createQueryBuilder('p')
+                ->orderBy('p.lastname', 'desc');
+            return $qb->getQuery()->getResult();
+        }
+        else
+        {
+            $qb = $this->createQueryBuilder('p')
+                ->where('p.adress like :value OR p.lastname like :value or p.firstname like :value or p.mobilephone like :value or p.email like :value ')
+                ->setParameter('value', '%'.$_GET['value'].'%');
+            return $qb->getQuery()->getResult();
+        }
     }
-
-
 
 }
