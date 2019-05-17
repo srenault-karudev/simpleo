@@ -20,7 +20,7 @@ class PropretySearchType extends AbstractType {
                 'required' => false,
                 'label' => false,
                 'attr'=> [
-                    'placeholder'=> 'Mot clé'
+                    'placeholder'=> 'recherche'
                 ]
             ]);
 

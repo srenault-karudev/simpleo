@@ -11,8 +11,6 @@ class PropertySearch{
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        $metadata->addPropertyConstraint('value', new Assert\NotBlank());;
-       // die();
 
     }
     /**
