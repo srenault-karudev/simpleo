@@ -27,7 +27,18 @@ class PersonRepository extends \Doctrine\ORM\EntityRepository
         else
         {
             $qb = $this->createQueryBuilder('p')
-                ->where('p.adress like :value OR p.lastname like :value or p.firstname like :value or p.mobilephone like :value or p.email like :value ')
+                ->where('p.siren like :value 
+                OR p.personType like :value
+                OR p.siret like :value 
+                OR p.numtva like :value 
+                OR p.country like :value 
+                OR p.companyname like :value 
+                OR p.postcode like :value 
+                OR p.adress like :value 
+                OR p.lastname like :value 
+                OR p.firstname like :value 
+                OR p.mobilephone like :value 
+                OR p.email like :value ')
                 ->setParameter('value', '%'.$_GET['value'].'%');
             return $qb->getQuery()->getResult();
         }
