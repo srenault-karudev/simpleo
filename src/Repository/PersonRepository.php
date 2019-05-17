@@ -15,17 +15,16 @@ use App\Entity\User;
 class PersonRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function GetCustomers()
+    public function getCustomers(User $user)
     {
 
-        if( empty($_GET['value']) )
-        {
+        if (empty($_GET['value'])) {
             $qb = $this->createQueryBuilder('p')
+                ->where('p.user = :user')
+                ->setParameter('user', $user->getId())
                 ->orderBy('p.lastname', 'desc');
             return $qb->getQuery()->getResult();
-        }
-        else
-        {
+        } else {
             $qb = $this->createQueryBuilder('p')
                 ->where('p.siren like :value 
                 OR p.personType like :value
@@ -39,7 +38,9 @@ class PersonRepository extends \Doctrine\ORM\EntityRepository
                 OR p.firstname like :value 
                 OR p.mobilephone like :value 
                 OR p.email like :value ')
-                ->setParameter('value', '%'.$_GET['value'].'%');
+                ->andWhere('p.user = :user')
+                ->setParameter('user', $user->getId())
+                ->setParameter('value', '%' . $_GET['value'] . '%');
             return $qb->getQuery()->getResult();
         }
     }
