@@ -1,6 +1,25 @@
 window.onload=(()=>{
 
 
+
+    // $.ajax({
+    //
+    //     url: Routing.generate(
+    //         'customers_infos', {
+    //
+    //         }),
+    // }).success(function (data) {
+    //
+    //     console.log(data);
+    //     if (data.isCompany) {
+    //  console.log("true")
+    //     } else {
+    //
+    //     }
+    // });
+
+
+
     function automatOne() {
         var $e = $("#erreur_form_number_one");
         var $b = $("#erreur_form_number_two");

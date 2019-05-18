@@ -47,7 +47,10 @@ class Action_buyType extends AbstractType
                 'class' => Record::class,
                 'choice_value' => 'Num',
                 'expanded' => true,
-                'multiple' => false
+                'multiple' => false,
+                'query_builder' => function(RecordRepository $er){
+                return $er->getRecords();
+                 }
 
             ])
             ->add('tva', ChoiceType::class, array(
@@ -57,16 +60,20 @@ class Action_buyType extends AbstractType
             ))
             ->add('tva_amount', NumberType::class, array(
                 'attr'=>array(
-                    'min'=>'0'
+                    'min'=>'0',
+                    'required'=>false
                 )
             ))
             ->add('quantity', IntegerType::class, array(
                 'attr' => array(
-                    'min' => '0'
+                    'min' => '0',
+
                 )
+
             ))
             ->add('unit_amount', NumberType::class, array(
                 'attr' => array(
+                    'required'=>false,
                     'min' => '0'
                 )
             ));
