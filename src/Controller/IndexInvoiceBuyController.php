@@ -57,7 +57,7 @@ class IndexInvoiceBuyController extends Controller
         dump($request);
         return $this->render('Facture_Devis/new_invoice_buy.html.twig',array(
             'form' => $form->createView(),
-            'form2'=> $form->createView()
+            'form2'=> $form2->createView()
         ));
 
 
