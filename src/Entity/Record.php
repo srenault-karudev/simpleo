@@ -54,6 +54,13 @@ class Record
      */
     private $actions;
 
+    /**
+     * @var Collection
+     *
+     * @ORM\OnetoMany(targetEntity="Invoice", mappedBy="record")
+     */
+    private $invoices;
+
 
     public function __construct()
     {

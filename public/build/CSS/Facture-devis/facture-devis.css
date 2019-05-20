@@ -190,7 +190,7 @@
 
 .right_block{
     display: grid;
-    grid-template-rows: 400px 300px 60px 100px;
+    grid-template-rows: 400px 300px 150px 170px;
 }
 
 .right-one{
@@ -209,15 +209,26 @@
     grid-row: 3;
     margin-top: 10px;
     text-align: center;
+    border-top:1px solid grey;
 }
 
 .right-four{
     grid-row: 4;
+    display: inline-block;
+    border-top:1px solid grey;
     padding: 10px 30px 10px 30px;
-    border-radius:0px 0px 10px 10px;
+}
+
+.input-group-addon{
+    padding-right: 25px;
+}
+
+#invoice_buy_invoice_date{
+    width: 100px;
 }
 
 .confirmation_Def_action_button{
+    margin-top: 40px;
     width:100%;
     height: 70px;
     padding:6px 6px 6px 6px;
@@ -258,6 +269,8 @@
 }
 
 .table-right tr:nth-child(even) {background-color: #f2f2f2;}
+
+
 
 
 

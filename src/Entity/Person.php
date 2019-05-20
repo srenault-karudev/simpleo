@@ -140,6 +140,15 @@ abstract class Person
     protected $user;
 
 
+
+    /**
+     * @var Collection
+     *
+     * @ORM\OneToMany(targetEntity="Invoice", mappedBy="person")
+     */
+    private $invoice;
+
+
     /**
      * @var string
      *
@@ -401,5 +410,9 @@ abstract class Person
         return $this;
     }
 
-}
 
+    public function __toString(){
+        return $this->getLastname()." - ".$this->getFirstname();
+    }
+
+}
