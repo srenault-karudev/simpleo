@@ -51,12 +51,14 @@ class IndexInvoiceBuyController extends Controller
     /**
      * @Route("/new_invoice_buy", name="new_invoice_buy")
      */
-    public function newInvoice(Request $request, Action $action = null){
+    public function newInvoice(Request $request, Action $action = null, Invoice $invoice = null){
         $form = $this->createForm('App\Form\Action_buyType', $action);
+        $form2 = $this->createForm('App\Form\Invoice_BuyType', $action);
         dump($request);
-        return $this->render('Facture_Devis/new_invoice_buy.html.twig',[
-        'form' => $form->createView(),
-            ]);
+        return $this->render('Facture_Devis/new_invoice_buy.html.twig',array(
+            'form' => $form->createView(),
+            'form2'=> $form->createView()
+        ));
 
 
     }
