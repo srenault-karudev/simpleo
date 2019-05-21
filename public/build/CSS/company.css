@@ -4,9 +4,9 @@ legend{
 
 }
 body{
-    color :#82427E;
+     color :#82427E;
     padding-top:20px;
-    background-image: linear-gradient(to right, rgb(141,86,139), rgb(102,104,210));
+    background-image: radial-gradient(circle, purple, rebeccapurple, purple);
 }
 h5{
     color :#82427E;

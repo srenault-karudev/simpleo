@@ -140,6 +140,15 @@ abstract class Person
     protected $user;
 
 
+
+    /**
+     * @var Collection
+     *
+     * @ORM\OneToMany(targetEntity="Invoice", mappedBy="person")
+     */
+    private $invoice;
+
+
     /**
      * @var string
      *
@@ -153,6 +162,7 @@ abstract class Person
     public function __construct()
     {
         $this->team = new ArrayCollection();
+        $this->invoice = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -401,5 +411,45 @@ abstract class Person
         return $this;
     }
 
-}
 
+    /**
+     * @return Collection|Invoice[]
+     */
+    public function getInvoice(): Collection
+    {
+        return $this->invoice;
+    }
+
+    public function addInvoice(Invoice $invoice): self
+    {
+        if (!$this->invoice->contains($invoice)) {
+            $this->invoice[] = $invoice;
+            $invoice->setPerson($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice): self
+    {
+        if ($this->invoice->contains($invoice)) {
+            $this->invoice->removeElement($invoice);
+            // set the owning side to null (unless already changed)
+            if ($invoice->getPerson() === $this) {
+                $invoice->setPerson(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function __toString(){
+        if ($this->getFirstname() != null){
+            return $this->getLastname()." ".$this->getFirstname();
+        }else{
+            return (string)$this->getCompanyname();
+        }
+    }
+
+}

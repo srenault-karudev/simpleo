@@ -19,3 +19,11 @@
 
     {% include '/footer.html.twig' %}
 {% endblock %}
+
+{% block extendJavascript %}
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('build/js/form.js') }}"></script>
+    <script src="{{ asset('build/js/company/form.js') }}"></script>
+{% endblock extendJavascript %}

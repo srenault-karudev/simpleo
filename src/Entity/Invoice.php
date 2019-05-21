@@ -75,11 +75,29 @@ class Invoice
 
 
     /**
-     * @var integer
+     * @var Collection
      *
-     * @ORM\Column(name="interlocutor", type="integer", nullable=false)
+     *
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="invoices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     * })
      */
-    private $interlocutor_id;
+    private $client;
+
+
+    /**
+     * @var Collection
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="Record", inversedBy="invoices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="paiement_id", referencedColumnName="id")
+     * })
+     */
+    private $paiement;
+
+
 
     public function __construct()
     {
@@ -193,6 +211,30 @@ class Invoice
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getClient(): ?Person
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Person $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getPaiement(): ?Record
+    {
+        return $this->paiement;
+    }
+
+    public function setPaiement(?Record $paiement): self
+    {
+        $this->paiement = $paiement;
 
         return $this;
     }
