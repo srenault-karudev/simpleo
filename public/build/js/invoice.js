@@ -1,25 +1,6 @@
 window.onload=(()=>{
 
 
-
-    // $.ajax({
-    //
-    //     url: Routing.generate(
-    //         'customers_infos', {
-    //
-    //         }),
-    // }).success(function (data) {
-    //
-    //     console.log(data);
-    //     if (data.isCompany) {
-    //  console.log("true")
-    //     } else {
-    //
-    //     }
-    // });
-
-
-
     function automatOne() {
         var $e = $("#erreur_form_number_one");
         var $b = $("#erreur_form_number_two");
@@ -102,7 +83,7 @@ window.onload=(()=>{
         $qtt=$("#action_buy_quantity").val();
         $action_buy_unit_amount=$("#action_buy_unit_amount").val();
         $action_buy_tva_amount=$("#action_buy_tva_amount").val();
-        $registre=$('input[type=radio][name="action_buy[record_id]"]:checked').attr('value');
+        $registre=$('#recordsId').val();
         $tva=$('input[type=radio][name="action_buy[tva]"]:checked').attr('value');
         if(($registre==undefined) || ($tva==undefined) || ($qtt=='') || ($action_buy_unit_amount=='') ||($action_buy_tva_amount=='') || (testIsNotANumber($action_buy_unit_amount)) || (testIsNotANumber($action_buy_tva_amount))){
             $b.text("! ERREUR, Nous rappelons que tous les champs sont obligatoires").show();
@@ -119,7 +100,7 @@ window.onload=(()=>{
         $qtt=$("#action_buy_quantity").val();
         $action_buy_unit_amount=$("#action_buy_unit_amount").val();
         $action_buy_tva_amount=$("#action_buy_tva_amount").val();
-        $registre=$('input[type=radio][name="action_buy[record_id]"]:checked').attr('value');
+        $registre=$('#recordsId').val();
         $tva=$('input[type=radio][name="action_buy[tva]"]:checked').attr('value');
         var data=new Array();
         data.push($registre);

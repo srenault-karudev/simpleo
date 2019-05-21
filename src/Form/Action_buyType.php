@@ -21,6 +21,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class Action_buyType extends AbstractType
 {
@@ -31,6 +32,7 @@ class Action_buyType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
 
         $choices = [
             '0' => 0,
@@ -46,7 +48,7 @@ class Action_buyType extends AbstractType
             ->add('record_id', EntityType::class, [
                 'class' => Record::class,
                 'choice_value' => 'Num',
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => false,
                 'query_builder' => function(RecordRepository $er){
                 return $er->getRecords();

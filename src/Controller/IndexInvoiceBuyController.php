@@ -53,17 +53,19 @@ class IndexInvoiceBuyController extends Controller
 
     /**
      * @Route("/new_invoice_buy", name="new_invoice_buy")
+     * @Method({"GET"})
      */
     public function newInvoice(Request $request, Action $action = null){
 
         $form = $this->createForm('App\Form\Action_buyType', $action);
 
         $em = $this->getDoctrine()->getManager();
-        $records = $em->getRepository('App:Record')->getRecords();
+        //$records = $em->getRepository('App:Record')->getRecords();
 
-//        dump($records);die();
 
-        $search= new PropertySearch();
+       //dump($request->query->get('value'));
+
+        $search = new PropertySearch();
         $formSearch = $this->createForm(PropretySearchType::class,$search);
 
         return $this->render('Facture_Devis/new_invoice_buy.html.twig',[
