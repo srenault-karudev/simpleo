@@ -37,7 +37,6 @@
         <div class="left_two">
             <p class="title_left">Le taux de TVA ?</p>
             <div class="funkyradio">
-
                 {% for child in form.tva %}
                     <div class="funkyradio-warning">{{ form_widget(child) }} {{ form_label(child) }}</div>
                 {% endfor %}

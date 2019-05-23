@@ -12,7 +12,9 @@ namespace App\Form;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -43,10 +45,10 @@ class CustomerType extends AbstractType
                 'required' => false))
             ->add('adress', TextType::class)
             ->add('city', TextType::class)
-            ->add('postcode', NumberType::class)
+            ->add('postcode', IntegerType::class)
             ->add('email', EmailType::class)
             ->add('mobilephone', TelType::class)
-            ->add('country', TextType::class)
+            ->add('country', CountryType::class)
             ->add('siren', TextType::class, array(
                 'constraints' => [new Length(['max' => 9])],
                 'required' => false))
