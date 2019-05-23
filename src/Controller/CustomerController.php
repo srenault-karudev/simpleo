@@ -49,7 +49,7 @@ class CustomerController extends Controller
        $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
        //dump($customers); die();
        $search= new PropertySearch();
-
+    dump($customers);
 //        $query = $em->createQuery($customers);
 //
 //        $paginations  = $this->get('knp_paginator')->paginate(

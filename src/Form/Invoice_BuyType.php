@@ -36,9 +36,16 @@ class Invoice_BuyType extends AbstractType
     {
 
         $builder
+
             ->add('record_id', EntityType::class, [
                 'class' => Record::class,
                 'choice_value' => 'Num',
+                'expanded' => true,
+                'multiple' => false,
+                'query_builder' => function(RecordRepository $er){
+                    return $er->getRecords(true);
+                }
+
             ])
 
             ->add('person_id', EntityType::class, array(

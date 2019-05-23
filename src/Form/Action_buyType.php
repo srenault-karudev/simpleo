@@ -51,10 +51,11 @@ class Action_buyType extends AbstractType
                 'expanded' => false,
                 'multiple' => false,
                 'query_builder' => function(RecordRepository $er){
-                return $er->getRecords();
+                return $er->getRecords(false);
                  }
 
             ])
+
             ->add('tva', ChoiceType::class, array(
                 'choices' => $choices,
                 'expanded' => true,
