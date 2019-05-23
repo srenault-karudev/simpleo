@@ -22,16 +22,6 @@
                 </datalist>
             {% endblock %}
 
-            {#<div class="form-error">#}
-            {#</div>#}
-            {#<div class="scroll">#}
-            {#<div class="funkyradio">#}
-            {#{% for children in form.record_id %}#}
-            {#<div class="funkyradio-warning">{{ form_widget(children) }} {{ form_label(children) }}</div>#}
-            {#{% endfor %}#}
-            {#</div>#}
-            {#</div>#}
-
 
         </div>
         <div class="left_two">
@@ -70,6 +60,19 @@
         <div id="erreur_form" style="color: red"></div>
         <button type="button" class="confirmation_action_button">Je Valide Ma Saisie</button>
     </div>
+<p></p>
+
+    <div class=" blockFile col-md-12 ">
+        <p class="title_left" style="margin-bottom: 60px"> VOUS SOUHAITEZ AJOUTER UN FICHIER ?</p>
+        <label class="col-lg-2 col-md-3 text-right">
+            {{ form_label(form.imageFile, null, { 'label': 'Fichier','label_attr': {'class': ' control-label'} }) }}
+        </label>
+        <div class="col-lg-9 col-md-5">
+            {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}} ) }}
+            <label class="help-block">  {{ form_errors(form.imageFile ) }}</label>
+        </div>
+    </div>
+
     {{ form_end(form) }}
 
 {% endblock %}

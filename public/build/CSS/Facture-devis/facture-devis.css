@@ -317,5 +317,23 @@
 }
 
 
+.blockFile{
+
+
+
+    margin-left: 150px;
+
+    width:70%;
+    height: 200px;
+    margin-top: 200px;
+    padding:6px 6px 6px 6px;
+    border-radius:8px;
+    background:white;
+
+
+    box-shadow: 1px 1px 5px grey;
+}
+
+
 
 
