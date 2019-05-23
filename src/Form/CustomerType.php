@@ -49,13 +49,13 @@ class CustomerType extends AbstractType
             ->add('email', EmailType::class)
             ->add('mobilephone', TelType::class)
             ->add('country', CountryType::class)
-            ->add('siren', TextType::class, array(
+            ->add('siren', IntegerType::class, array(
                 'constraints' => [new Length(['max' => 9])],
                 'required' => false))
-            ->add('siret', TextType::class, array(
+            ->add('siret', IntegerType::class, array(
                 'constraints' => [new Length(['max' => 14])],
                 'required' => false))
-            ->add('numtva', TextType::class, array(
+            ->add('numtva', IntegerType::class, array(
                 'required' => false));
 
     }
