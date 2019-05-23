@@ -163,8 +163,7 @@ window.onload=(()=>{
            $ligne.push($(this).find(".mont-unit").html());
            actions.push($ligne);
         });
-        $paiement=$('#invoice_buy_record_id option:selected').val();
-
+        $paiement=$('input[type=radio][name="invoice_buy[record_id]"]:checked').attr('value');
         $client=$('input[type=radio][name="invoice_buy[person_id]"]:checked').attr('value');
         $date=$('#invoice_buy_invoice_date').val();
         var data2=new Array();
@@ -183,7 +182,7 @@ window.onload=(()=>{
 
     function validation2(data){
         var $b = $("#erreur_form_two");
-        if((data[2]==undefined) || (data[3]=="")){
+        if((data[2]==undefined) || (data[3]=="") || (data[1]==undefined)){
             $b.text("Nous rappelons que tous les champs sont obligatoires").show();
             return false
         }else if(data[0].length==0){

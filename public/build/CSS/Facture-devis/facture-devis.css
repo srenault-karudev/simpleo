@@ -128,7 +128,7 @@
 .left_block{
     display: grid;
     grid-template-columns: 40% 30% 30%;
-    grid-template-rows: 600px;
+    grid-template-rows: 500px;
 }
 .title_left{
     text-align: center;

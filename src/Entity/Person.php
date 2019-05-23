@@ -448,7 +448,9 @@ abstract class Person
         if ($this->getFirstname() != null){
             return $this->getLastname()." ".$this->getFirstname();
         }else{
+
             return (string)" 🏠 ".$this->getCompanyname();
+
         }
     }
 
