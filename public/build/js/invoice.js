@@ -184,9 +184,24 @@ window.onload=(()=>{
 
             console.log("ok");
 
+
+
+            /* Ici on fait l'envoie ajax vers le controller  */
+
+            /*
+             voici comment recuperer le compte de charge de chaque logne
+
+            // console.log(data2[0].forEach(function (el) {
+            //     console.log(el[0]);
+            //
+            }));*/
+
         }
 
     });
+
+
+
 
 
     function validation2(data){
