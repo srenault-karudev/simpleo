@@ -8,29 +8,56 @@
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
     <div class="left_block">
         <div class="left_one">
-            <p class="title_left">De quelle nature est votre achat ?</p>
-            <div class="form-error">
-            </div>
-            <div class="scroll">
-                <div class="funkyradio">
-                    {% for children in form.record_id %}
-                        <div class="funkyradio-warning">{{ form_widget(children) }} {{ form_label(children) }}</div>
-                    {% endfor %}
+            <p class="title_left">De quelle nature est votre achat ?
+
+
+
+                <div class="form-error">
                 </div>
-            </div>
+                {% block datalist_widget %}
+                    <input style="margin-top: 25px" class="form-control" list="records" name="record" id="recordsId">
+                    <datalist id="records">
+                        <option class ="funkyradio-warning"  value= " {{ form_widget(form.record_id) }} "></option>
+
+                </datalist>
+                {% endblock %}
+
+            {#<div class="form-error">#}
+            {#</div>#}
+            {#<div class="scroll">#}
+                {#<div class="funkyradio">#}
+                    {#{% for children in form.record_id %}#}
+                        {#<div class="funkyradio-warning">{{ form_widget(children) }} {{ form_label(children) }}</div>#}
+                    {#{% endfor %}#}
+                {#</div>#}
+            {#</div>#}
 
 
         </div>
         <div class="left_two">
             <p class="title_left">Le taux de TVA ?</p>
             <div class="funkyradio">
-
                 {% for child in form.tva %}
                     <div class="funkyradio-warning">{{ form_widget(child) }} {{ form_label(child) }}</div>
                 {% endfor %}
                 <button type=button class="tva_button" value="0">+</button>
             </div>
         </div>
+
+
+
+        <div class="form-group {% if form.imageFile.vars.errors | length %} has-error {% endif %} ">
+            <label class="col-lg-3 col-md-3 text-right">
+                {{ form_label(form.imageFile, null, { 'label': 'Fichier','label_attr': {'class': ' control-label'} }) }}
+            </label>
+            <div class="col-lg-9 col-md-9">
+                {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}} ) }}
+                <label class="help-block">  {{ form_errors(form.imageFile ) }}</label>
+            </div>
+        </div>
+
+
+
 
         <div class="left_tree">
 
@@ -59,6 +86,37 @@
         <button type="button" class="confirmation_action_button">Je Valide Ma Saisie</button>
     </div>
     {{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/js/action.js') }}"></script>
+
+
+    {#<script>#}
+
+    {#$(document).on('click', "#search", function(){#}
+    {#var texte =  $("#value").val();#}
+    {#console.log(texte);#}
+    {#that = $(this);#}
+    {#$.ajax({#}
+    {#url:'{{ (path('new_invoice_buy')) }}',#}
+    {#type: "GET",#}
+    {#dataType: "json",#}
+    {#data: {#}
+    {#"value": ''+texte+''#}
+    {#},#}
+    {#async: true,#}
+    {#success: function (data)#}
+    {#{#}
+    {#console.log(data)#}
+
+    {#}#}
+    {#});#}
+    {#return false;#}
+
+    {#});#}
+    {#</script>#}
 
 {% endblock %}
 

@@ -11,8 +11,11 @@ namespace App\Controller;
 
 use App\Entity\Action;
 use App\Entity\Invoice;
+use App\Entity\PropertySearch;
 use App\Entity\Record;
+use App\Form\PropretySearchType;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -50,13 +53,28 @@ class IndexInvoiceBuyController extends Controller
 
     /**
      * @Route("/new_invoice_buy", name="new_invoice_buy")
+     * @Method({"GET"})
      */
+
     public function newInvoice(Request $request, Action $action = null){
+
         $form = $this->createForm('App\Form\Action_buyType', $action);
-        dump($request);
-        return $this->render('Facture_Devis/new_invoice_buy.html.twig',[
-        'form' => $form->createView(),
-            ]);
+        $form2 = $this->createForm('App\Form\Invoice_BuyType', $action);
+
+        //$em = $this->getDoctrine()->getManager();
+        //$records = $em->getRepository('App:Record')->getRecords();
+
+
+       //dump($request->query->get('value'));
+
+
+        return $this->render('Facture_Devis/new_invoice_buy.html.twig',array(
+            'form' => $form->createView(),
+            'form2'=> $form2->createView()
+        ));
+
+
+
 
 
     }
@@ -78,4 +96,18 @@ class IndexInvoiceBuyController extends Controller
         return $this->render('Facture_Devis/new_invoice_buy.html.twig');
 
     }
+//    /**
+//     *
+//     *
+//     * @Route("/infos", name="customers_infos", options = {"expose" : true})
+//     * @Method("GET")
+//     * @return JsonResponse
+//     */
+//
+//    public function infoAction()
+//    {
+//        return new JsonResponse([
+//            'isCompany' => true,
+//        ]);
+//    }
 }

@@ -5,13 +5,18 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Validator\Constraints\Date;
+use Vich\UploaderBundle\Entity\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * Invoice
  *
  * @ORM\Table(name="Invoice")
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
+ * @Vich\Uploadable
  */
 class Invoice
 {
@@ -75,11 +80,43 @@ class Invoice
 
 
     /**
-     * @var integer
+     * @var Collection
      *
-     * @ORM\Column(name="interlocutor", type="integer", nullable=false)
+     *
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="invoices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="person_id", referencedColumnName="id")
+     * })
      */
-    private $interlocutor_id;
+    private $client;
+
+
+    /**
+     * @var Collection
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="Record", inversedBy="invoices")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="paiement_id", referencedColumnName="id")
+     * })
+     */
+    private $paiement;
+
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+
+
 
     public function __construct()
     {
@@ -197,6 +234,60 @@ class Invoice
         return $this;
     }
 
+    public function getClient(): ?Person
+    {
+        return $this->client;
+    }
+
+    public function setClient(?Person $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getPaiement(): ?Record
+    {
+        return $this->paiement;
+    }
+
+    public function setPaiement(?Record $paiement): self
+    {
+        $this->paiement = $paiement;
+
+        return $this;
+    }
+
+    public function htPrice($qtte,$unitAmount){
+
+        return $qtte * $unitAmount;
+    }
+
+    public function TtcPrice($htPrice,$tvaAmount){
+        return $htPrice + $tvaAmount;
+    }
+
+
+    public function setImageFile(\Symfony\Component\HttpFoundation\File\File $image = null)
+    {
+        $this->imageFile = $image;
+
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
 
 }
 

@@ -4,16 +4,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/facture-devis.css') }}">
     {% endblock %}
 {% block content %}
-    <form>
+    {{ form_start(form2, {'attr': {'class': 'form-horizontal'}}) }}
     <div class="right_block">
         <div class="right-one scroll-two">
             <table class="table-right">
                 <thead>
-                    <th>Compte charge</th>
-                    <th>Taux Tva</th>
-                    <th>QTT</th>
-                    <th>Tva</th>
-                    <th>Montant</th>
+                <th>Compte charge</th>
+                <th>Taux Tva</th>
+                <th>QTT</th>
+                <th>Tva</th>
+                <th>Montant Unit</th>
                 </thead>
                 <tbody>
 
@@ -21,17 +21,55 @@
             </table>
         </div>
         <div class="right-two">
-            <p>Qui a payé ?</p>
+
+            <h5 class="title_left" style="text-align: center;margin-top: 10px ">Moyens de Paiment</h5>
+
+
+            <div class="form-error">
+            </div>
+            <div class="scroll">
+                <div class="funkyradio">
+                    {% for children in form2.record_id %}
+                        <div class="funkyradio-warning col-md-8">{{ form_widget(children) }} {{ form_label(children) }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            {#{{ form_widget(form2.record_id, {'attr': {'class': 'input_amount_qtt form-control'}} ) }}#}
+
         </div>
-        <div class="right_tree">
-            <img src="http://37.187.127.4/images/calendar.png"  style="width: 7%" alt="cal">
-            <input type="date" class="date_invoice" name="date_invoice"
-                   min="" max="" required>
+
+        <div class="right-tree">
+            <p class="title_left"> QUI EST VOTRE FOURNISSEUR ?</p>
+            <div class="scroll-two col-sm-8">
+                <div class="funkyradio2 funkyradio">
+                    {% for child in form2.person_id %}
+                        <div class="funkyradio-warning-2 col-md-12">{{ form_widget(child) }} {{ form_label(child) }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <button type=button class="new_client" value="0">+</button>
+            </div>
         </div>
+
+
         <div class="right-four">
-            <button class="confirmation_Def_action_button">Je Valide Ma Facture Définitiveme</button>
+            {{ form_label(form2.invoice_date, null, { 'label': 'Date de la Facture :','label_attr': {'class': 'title_left col-md-5 control-label'} }) }}
+            <div class="col-md-5">
+                <div class="input-group">
+                                    <span class="input-group-addon"> <i
+                                                class="fa fa-calendar"> </i></span>
+                    {{ form_widget(form2.invoice_date, {'attr': {'class': 'js-datepicker form-control'}} ) }}
+                </div>
+
+            </div>
+            <div id="erreur_form_two" class="col-md-12" style="color: red; margin-top: 30px"></div>
+            <button type="button" class="confirmation_Def_action_button">Je Valide Ma Facture Définitiveme</button>
         </div>
     </div>
 
-    </form>
+    {{ form_end(form2) }}
 {% endblock %}
+
+

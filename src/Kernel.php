@@ -5,12 +5,14 @@ namespace App;
 use FOS\UserBundle\FOSUserBundle;
 use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 use Stripe\Stripe;
+use FOS\JsRoutingBundle\FOSJsRoutingBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\RouteCollectionBuilder;
+use Vich\UploaderBundle\VichUploaderBundle;
 
 class Kernel extends BaseKernel
 {
@@ -42,6 +44,8 @@ class Kernel extends BaseKernel
             new FOSUserBundle(),
             new KnpPaginatorBundle(),
             new Stripe(),
+            new FOSJsRoutingBundle(),
+            new VichUploaderBundle(),
 
 
 

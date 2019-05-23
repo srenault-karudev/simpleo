@@ -6,12 +6,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Finder\Comparator\NumberComparator;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Action
  *
  * @ORM\Table(name="Action")
  * @ORM\Entity
+ * @Vich\Uploadable
  */
 class Action
 {
@@ -73,6 +75,21 @@ class Action
      * @ORM\Column(name="unit_amount", type="float", nullable=false)
      */
     private $unit_amount;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+
+
 
     public function __construct()
     {
@@ -188,6 +205,28 @@ class Action
         }
 
         return $this;
+    }
+
+
+    public function setImageFile(\Symfony\Component\HttpFoundation\File\File $image = null)
+    {
+        $this->imageFile = $image;
+
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
     }
 
 
