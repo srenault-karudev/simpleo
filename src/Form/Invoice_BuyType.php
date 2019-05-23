@@ -50,6 +50,8 @@ class Invoice_BuyType extends AbstractType
 
             ->add('person_id', EntityType::class, array(
                 'class' => Person::class,
+                'expanded' => true,
+                'multiple' => false,
             ))
 
             ->add('invoice_date', DateType::class, array(

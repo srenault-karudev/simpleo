@@ -7,12 +7,16 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Validator\Constraints\Date;
+use Vich\UploaderBundle\Entity\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * Invoice
  *
  * @ORM\Table(name="Invoice")
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
+ * @Vich\Uploadable
  */
 class Invoice
 {
@@ -97,6 +101,20 @@ class Invoice
      * })
      */
     private $paiement;
+
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
 
 
 
@@ -239,7 +257,37 @@ class Invoice
 
         return $this;
     }
-    
+
+    public function htPrice($qtte,$unitAmount){
+
+        return $qtte * $unitAmount;
+    }
+
+    public function TtcPrice($htPrice,$tvaAmount){
+        return $htPrice + $tvaAmount;
+    }
+
+
+    public function setImageFile(\Symfony\Component\HttpFoundation\File\File $image = null)
+    {
+        $this->imageFile = $image;
+
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
 
 }
 

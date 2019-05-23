@@ -105,25 +105,25 @@ abstract class Person
 
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="siren", type="string", length=9, nullable=true)
+     * @ORM\Column(name="siren", type="integer", length=9, nullable=true)
      */
     protected $siren;
 
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="siret", type="string", length=14, nullable=true)
+     * @ORM\Column(name="siret", type="integer", length=14, nullable=true)
      */
     protected $siret;
 
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="numtva", type="string", length=20, nullable=true)
+     * @ORM\Column(name="numtva", type="integer", length=20, nullable=true)
      */
     protected $numtva;
 
@@ -448,7 +448,7 @@ abstract class Person
         if ($this->getFirstname() != null){
             return $this->getLastname()." ".$this->getFirstname();
         }else{
-            return (string)$this->getCompanyname();
+            return (string)" 🏠 ".$this->getCompanyname();
         }
     }
 
