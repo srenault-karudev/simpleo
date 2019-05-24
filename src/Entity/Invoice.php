@@ -83,7 +83,7 @@ class Invoice
      * @var Collection
      *
      *
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="invoices")
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="invoices",cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="person_id", referencedColumnName="id")
      * })
@@ -103,17 +103,6 @@ class Invoice
     private $paiement;
 
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @var string
-     */
-    private $image;
-
-    /**
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
-     * @var File
-     */
-    private $imageFile;
 
 
 
@@ -258,36 +247,32 @@ class Invoice
         return $this;
     }
 
-    public function htPrice($qtte,$unitAmount){
+    public function calcultHtPrice($datas){
+        $htPrice = 0;
+        //return $qtte * $unitAmount;
 
-        return $qtte * $unitAmount;
+        foreach ($datas as $data){
+            $qtte = $data[2];
+            $unitAmount =  $data[4];
+
+            $htPrice += $qtte *$unitAmount;
+
+        }
+        return $htPrice;
     }
 
-    public function TtcPrice($htPrice,$tvaAmount){
-        return $htPrice + $tvaAmount;
+    public function calculTtcPrice($datas){
+        //return $htPrice + $tvaAmount;
+
+        $ttcPrie = 0;
+        foreach ($datas as $data){
+            $qtte = $data[2];
+            $unitAmount =  $data[4];
+            $ttcPrie += $qtte *$unitAmount+$data[3];
+        }
+        return $ttcPrie;
     }
 
-
-    public function setImageFile(\Symfony\Component\HttpFoundation\File\File $image = null)
-    {
-        $this->imageFile = $image;
-
-    }
-
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-
-    public function getImage()
-    {
-        return $this->image;
-    }
 
 }
 

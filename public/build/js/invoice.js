@@ -1,9 +1,6 @@
 window.onload=(()=>{
 
 
-    $paiement= $('#invoice_buy_record_id option:selected').val();
-    console.log($paiement);
-
     function automatOne() {
         var $e = $("#erreur_form_number_one");
         var $b = $("#erreur_form_number_two");
@@ -107,7 +104,8 @@ window.onload=(()=>{
 
     $('.confirmation_action_button').click( function(){
 
-
+        // $registre=$('input[type=radio][name="action_buy[record_id]"]:checked').attr('value');
+        // console.log('registre :' +$registre);
         $qtt=$("#action_buy_quantity").val();
         $action_buy_unit_amount=$("#action_buy_unit_amount").val();
         $action_buy_tva_amount=$("#action_buy_tva_amount").val();
@@ -175,16 +173,38 @@ window.onload=(()=>{
         data2.push($paiement);
         data2.push($client);
         data2.push($date);
-        if($file != null){
-            data2.push($file);
-        }
+        data2.push($file);
         console.log(data2);
 
         if (validation2(data2)){
 
             console.log("ok");
 
+            $.ajax({
 
+                url: Routing.generate(
+                    'ajaxInvoiceBuyRoute',
+                    {
+
+                        'data': data2
+                    }),
+                    type : 'GET',
+                    dataType : 'json',
+            }).success(function (data) {
+                console.log(data);
+            });
+
+            // $.ajax({
+            //
+            //     url: Routing.generate(
+            //         'index_journal_facture_achat', {}),
+            //     type: "GET",
+            //     data : data2,
+            //     dataType : "json",
+            //
+            // }).success(function (data) {
+            //     console.log(data);
+            // });
 
             /* Ici on fait l'envoie ajax vers le controller  */
 
@@ -216,8 +236,12 @@ window.onload=(()=>{
             return true;
         }
 
-
     }
+
+
+
+
+
 
 });
 

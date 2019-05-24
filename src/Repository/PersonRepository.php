@@ -45,4 +45,14 @@ class PersonRepository extends \Doctrine\ORM\EntityRepository
         }
     }
 
+    public function getCustomer(User $user, $id){
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.user = :user')
+            ->andWhere('p.id =:id')
+            ->setParameter('user', $user->getId())
+            ->setParameter('id', $id);
+
+        return $qb->getQuery()->getResult();
+    }
+
 }

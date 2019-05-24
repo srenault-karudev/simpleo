@@ -13,6 +13,8 @@ use App\Entity\User;
 
 class InvoiceRepository extends \Doctrine\ORM\EntityRepository
 {
+
+
     public function getInvoices(User $user)
     {
         $qb = $this->createQueryBuilder('i')

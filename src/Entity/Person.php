@@ -31,6 +31,7 @@ abstract class Person
      */
     protected $id;
 
+
     /**
      * @var string
      *
@@ -356,6 +357,13 @@ abstract class Person
     }
 
 
+    /**
+     * @param int $id
+     */
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
 
 
 

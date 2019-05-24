@@ -49,4 +49,13 @@ class RecordRepository extends \Doctrine\ORM\EntityRepository
 
 
     }
+
+    public function getRecord($num){
+
+        $qb = $this->createQueryBuilder('r')
+            ->where('r.Num = :num')
+            ->setParameter('num', $num);
+
+        return $qb->getQuery()->getResult();
+    }
 }
