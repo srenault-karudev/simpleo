@@ -214,9 +214,26 @@
     box-shadow: 1px 1px 5px grey;
 }
 
+.confirmation_action_button_sale{
+    width:100%;
+    height: 70px;
+    margin-top: 10px;
+    padding:6px 6px 6px 6px;
+    border-radius:8px;
+    background:white;
+    font: 20px Arial;
+    color: #6f2190;
+    box-shadow: 1px 1px 5px grey;
+}
+
 .right_block{
     display: grid;
     grid-template-rows: 400px 300px 400px 230px;
+}
+
+.right_block_2{
+    display: grid;
+    grid-template-rows: 400px 400px 230px;
 }
 
 .right-one{
@@ -231,6 +248,14 @@
     padding-top: 30px;
 }
 
+.right-two-sale{
+    grid-row: 2;
+    margin-top: 10px;
+    text-align: center;
+    border-top:1px solid lightgray;
+    padding-top: 30px;
+}
+
 .right-tree{
     grid-row: 3;
     margin-top: 10px;
@@ -238,7 +263,12 @@
     border-top:1px solid lightgray;
     padding-top: 30px;
 }
-
+.right-tree-2{
+    grid-row: 3;
+    display: inline-block;
+    border-top:1px solid lightgray;
+    padding: 30px 30px 10px 30px;
+}
 .right-four{
     grid-row: 4;
     display: inline-block;
@@ -255,6 +285,18 @@
 }
 
 .confirmation_Def_action_button{
+    margin-top: 20px;
+    width:100%;
+    height: 70px;
+    padding:6px 6px 6px 6px;
+    border-radius:8px;
+    background: #6f2190;
+    font: 20px Arial;
+    color: white;
+    box-shadow: 1px 1px 5px grey;
+}
+
+.confirmation_Def_action_button_sale{
     margin-top: 20px;
     width:100%;
     height: 70px;

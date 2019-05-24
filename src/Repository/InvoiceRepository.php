@@ -21,4 +21,14 @@ class InvoiceRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('i.date', 'asc');
         return $qb->getQuery()->getResult();
     }
+
+    public function getInvoicesSales(User $user)
+    {
+        $qb = $this->createQueryBuilder('i')
+            ->where('i.user = :user')
+            ->setParameter('user', $user->getId())
+            ->andWhere('i.invoice_type = false')
+            ->orderBy('i.date', 'asc');
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -1,0 +1,59 @@
+{% block title %}{% endblock %}
+{% block head %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/facture-devis.css') }}">
+    {% endblock %}
+{% block content %}
+    {{ form_start(form2, {'attr': {'class': 'form-horizontal'}}) }}
+    <div class="right_block_2">
+        <div class="right-one scroll-two">
+            <table class="table-right">
+                <thead>
+                <th>Compte charge</th>
+                <th>Taux Tva</th>
+                <th>QTT</th>
+                <th>Tva</th>
+                <th>Montant Unit</th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+            {#{{ form_widget(form2.record_id, {'attr': {'class': 'input_amount_qtt form-control'}} ) }}#}
+
+        <div class="right-two-sale">
+            <p class="title_left"> QUI EST VOTRE CLIENT ?</p>
+            <div class="scroll-two col-sm-8">
+                <div class="funkyradio2 funkyradio">
+                    {% for child in form2.person_id %}
+                        <div class="funkyradio-warning-2 col-md-12">{{ form_widget(child) }} {{ form_label(child) }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <button type=button class="new_client" value="0">+</button>
+            </div>
+        </div>
+
+
+        <div class="right-tree-2">
+            {{ form_label(form2.invoice_date, null, { 'label': 'Date de la Facture :','label_attr': {'class': 'title_left col-md-5 control-label'} }) }}
+            <div class="col-md-5">
+                <div class="input-group">
+                                    <span class="input-group-addon"> <i
+                                                class="fa fa-calendar"> </i></span>
+                    {{ form_widget(form2.invoice_date, {'attr': {'class': 'js-datepicker form-control'}} ) }}
+                </div>
+
+            </div>
+            <div id="erreur_form_two" class="col-md-12" style="color: red; margin-top: 30px"></div>
+            <button type="button" class="confirmation_Def_action_button_sale">Je Valide Ma Facture Définitiveme</button>
+        </div>
+    </div>
+
+    {{ form_end(form2) }}
+{% endblock %}
+
+
