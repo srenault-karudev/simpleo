@@ -1,0 +1,107 @@
+{% block title %}{% endblock %}
+{% block head %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/facture-devis.css') }}">
+    {% endblock %}
+{% block content %}
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    <div class="left_block">
+        <div class="left_one">
+            <p class="title_left">De quelle nature est votre achat ?
+
+
+
+            <div class="form-error">
+            </div>
+            {% block datalist_widget %}
+                <input style="margin-top: 25px" class="form-control" list="records" name="record" id="recordsId">
+                <datalist id="records">
+                    <option class ="funkyradio-warning"  value= " {{ form_widget(form.record_id) }} "></option>
+
+                </datalist>
+            {% endblock %}
+
+            {#<div class="form-error">#}
+            {#</div>#}
+            {#<div class="scroll">#}
+            {#<div class="funkyradio">#}
+            {#{% for children in form.record_id %}#}
+            {#<div class="funkyradio-warning">{{ form_widget(children) }} {{ form_label(children) }}</div>#}
+            {#{% endfor %}#}
+            {#</div>#}
+            {#</div>#}
+
+
+        </div>
+        <div class="left_two">
+            <p class="title_left">Le taux de TVA ?</p>
+            <div class="funkyradio">
+                {% for child in form.tva %}
+                    <div class="funkyradio-warning">{{ form_widget(child) }} {{ form_label(child) }}</div>
+                {% endfor %}
+            </div>
+            <button type=button class="tva_button" value="0">+</button>
+        </div>
+
+        <div class="left_tree">
+
+            <div class="form_group">
+                <p class="title_left">Quantité</p>
+                {{ form_widget(form.quantity, {'attr': {'class': 'input_amount_qtt form-control'}} ) }}
+            </div>
+
+
+            <div class="form_group">
+                <p class="title_left">Montant Unitaire</p>
+                {{ form_widget(form.unit_amount, {'attr': {'class': ' input_amount form-control'}} ) }}
+            </div>
+            <div style="margin: -10px 0px 10px 0px; color: red; font-size: 10px;" id="erreur_form_number_one"></div>
+
+            <div class="form_group">
+                <p class="title_left">Montant TVA</p>
+                {{ form_widget(form.tva_amount, {'attr': {'class': ' input_amount form-control'}} ) }}
+            </div>
+            <div id="erreur_form_number_two" style="margin: -10px 0px 10px 0px; color: red; font-size: 10px;"></div>
+        </div>
+    </div>
+
+    <div class="left_four">
+        <div id="erreur_form" style="color: red"></div>
+        <button type="button" class="confirmation_action_button_sale">Je Valide Ma Saisie</button>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('build/js/sales.js') }}"></script>
+
+
+    {#<script>#}
+
+    {#$(document).on('click', "#search", function(){#}
+    {#var texte =  $("#value").val();#}
+    {#console.log(texte);#}
+    {#that = $(this);#}
+    {#$.ajax({#}
+    {#url:'{{ (path('new_invoice_buy')) }}',#}
+    {#type: "GET",#}
+    {#dataType: "json",#}
+    {#data: {#}
+    {#"value": ''+texte+''#}
+    {#},#}
+    {#async: true,#}
+    {#success: function (data)#}
+    {#{#}
+    {#console.log(data)#}
+
+    {#}#}
+    {#});#}
+    {#return false;#}
+
+    {#});#}
+    {#</script>#}
+
+{% endblock %}
+

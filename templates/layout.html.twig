@@ -109,8 +109,8 @@
                 <div class="dropdown">
                     <a class="nav-link">Ventes <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
-                        <a href="#" class="w3-bar-item w3-button">Ventes</a>
-                        <a href="#" class="w3-bar-item w3-button">Enregistrer une Vente</a>
+                        <a href="{{ path('index_journal_facture_vente') }}" class="w3-bar-item w3-button">Ventes</a>
+                        <a href="{{ path('new_invoice_sale') }}" class="w3-bar-item w3-button">Enregistrer une Vente</a>
                         <a href="#" class="w3-bar-item w3-button">Créer une Facture</a>
                     </div>
                 </div>
@@ -177,8 +177,6 @@
 {% endblock %}
 
 {% block javascripts %}
-
-    <script src="{{ asset('build/js/invoice.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

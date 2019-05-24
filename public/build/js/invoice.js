@@ -1,8 +1,5 @@
 window.onload=(()=>{
 
-    $paiement= $('#invoice_buy_record_id option:selected').val();
-    console.log($paiement);
-
     function automatOne() {
         var $e = $("#erreur_form_number_one");
         var $b = $("#erreur_form_number_two");
@@ -93,7 +90,7 @@ window.onload=(()=>{
         $action_buy_tva_amount=$("#action_buy_tva_amount").val();
         $registre=$('#recordsId').val();
         $tva=$('input[type=radio][name="action_buy[tva]"]:checked').attr('value');
-        if(($registre==undefined) || ($tva==undefined) || ($qtt=='') || ($action_buy_unit_amount=='') || ($action_buy_tva_amount=='') || (testIsNotANumber($action_buy_unit_amount)) || (testIsNotANumber($action_buy_tva_amount)) || ($action_buy_tva_amount<0) || ($action_buy_unit_amount<0) ){
+        if(($registre=="") || ($tva==undefined) || ($qtt=='') || ($action_buy_unit_amount=='') || ($action_buy_tva_amount=='') || (testIsNotANumber($action_buy_unit_amount)) || (testIsNotANumber($action_buy_tva_amount)) || ($action_buy_tva_amount<0) || ($action_buy_unit_amount<0) ){
             $b.text("! ERREUR DANS LE FORMULAIRE, Nous rappelons que tous les champs sont obligatoires").show();
             return false
         }else{
@@ -193,6 +190,29 @@ window.onload=(()=>{
         }
 
     }
+
+    $('.tva_button').click( function(){
+        var person = prompt("Nouvelle TVA", "");
+        $num=parseInt(person, 10);
+        if (person != null) {
+            if(isNaN($num)){
+                alert("attention ce n'est pas un nombre");
+            }else{
+                $('.asupprimer').remove();
+                var radio = document.createElement("div");
+                var lab =document.createElement("label");
+                lab.setAttribute("for", "action_buy_tva_5");
+                lab.className="required";
+                radio.className="funkyradio-warning asupprimer";
+                radio.innerHTML = "<input type='radio'  id='action_buy_tva_5' name='action_buy[tva]' required='required' value='"+$num+"'>";
+                lab.innerHTML=""+$num+"";
+                document
+                    .querySelector(".funkyradio")
+                    .appendChild(radio)
+                    .appendChild(lab);
+            }
+        }
+    });
 
 });
 
