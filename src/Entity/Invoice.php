@@ -100,8 +100,12 @@ class Invoice
      */
     private $paiement;
 
-
-
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="state_of_paiement", type="boolean")
+     */
+    private $stateOfPaiement;
 
 
 
@@ -269,6 +273,22 @@ class Invoice
             $ttcPrie += $qtte *$unitAmount+$data[3];
         }
         return $ttcPrie;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isStateOfPaiement(): bool
+    {
+        return $this->stateOfPaiement;
+    }
+
+    /**
+     * @param bool $stateOfPaiement
+     */
+    public function setStateOfPaiement(bool $stateOfPaiement)
+    {
+        $this->stateOfPaiement = $stateOfPaiement;
     }
 
 

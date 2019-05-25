@@ -34,28 +34,29 @@
                             <th>Vendeur</th>
                             <th>Prix HT</th>
                             <th>Prix TTC</th>
-                            <th>Statut</th>
+                            <th>Payé</th>
+                            <th>Actions</th>
+
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="text-align: center">
                         {% for invoice in properties %}
                             <tr>
-                                <td>{{ invoice.id }}</td>
+                                <td class="centerDiv">{{ invoice.id }}</td>
                                 <td>{{ invoice.date  |date("m/d/Y") }}</td>
                                 <td></td>
-                                <td>{{ invoice.getPriceHt() }}</td>
-                                <td>{{ invoice.getPriceTt() }}</td>
+                                <td>{{ invoice.getPriceHt() }} €</td>
+                                <td>{{ invoice.getPriceTt() }} €</td>
+                                <td></td>
                                 <td>
-
-                                    {#<a class="btn btn-default"#}
-                                       {#href="{{ path('form_customer', { 'id': customer.id }) }}"><em#}
-                                                {#class="fa fa-pencil"></em></a>#}
-                                    {#<a class="btn btn-default"#}
-                                       {#href="{{ path('customers_show', { 'id': customer.id }) }}"><em#}
-                                                {#class="fa fa-eye"></em></a>#}
-                                    {#<a class="btn btn-danger"#}
-                                       {#href="{{ path('customers_delete', { 'id': customer.id }) }}"><em#}
-                                                {#class="fa fa-trash"></em></a>#}
+                                    <a class="btn btn-default"
+                                       {#href="{{ path('customers_show', { 'id': customer.id }) }}"#}
+                                    ><em
+                                                class="fa fa-eye"></em></a>
+                                    <a class="btn btn-danger"
+                                       {#href="{{ path('customers_delete', { 'id': customer.id }) }}"#}
+                                    ><em
+                                                class="fa fa-trash"></em></a>
 
                                 </td>
                             </tr>
