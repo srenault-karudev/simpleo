@@ -150,6 +150,7 @@ class IndexInvoiceBuyController extends Controller
         foreach ($customerRepository as $cR) {
             $invoice->setClient($cR);
         }
+
         foreach ($paimentRepository as $pR) {
             $invoice->setPaiement($pR);
         }

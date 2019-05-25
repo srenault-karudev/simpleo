@@ -169,6 +169,21 @@ window.onload=(()=>{
 
         if (validation2(data2)){
             console.log("ok");
+
+            $.ajax({
+
+                url: Routing.generate(
+                    'ajaxInvoiceRouteSale',
+                    {
+
+                        'data': data2
+                    }),
+                type : 'GET',
+                dataType : 'json',
+            }).success(function (data) {
+                console.log(data);
+            });
+
         }
 
     });

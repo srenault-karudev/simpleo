@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Entity\Action;
+use App\Entity\Customer;
 use App\Entity\Invoice;
 use App\Entity\PropertySearch;
 use App\Entity\Record;
@@ -79,35 +80,86 @@ class IndexInvoiceSaleController extends Controller
 
     }
 
+
     /**
-     * @Route("/ajaxInvoiceBuyRoute", name="ajaxInvoiceBuyRoute")
-     * @Method({"POST"})
+     * @Route("/ajaxInvoiceSaleRoute", name="ajaxInvoiceRouteSale",options = {"expose" : true})
+     * @Method({"GET"})
      */
     public function firstAjaxAction(Request $request)
     {
-        if ($request->isXmlHttpRequest()) {
-            $t1 = $request->request->all(); // tableau des champs POST
-            //var_dump($t1);
-            // exit;
 
-            return new \Symfony\Component\HttpFoundation\JsonResponse($t1);
-        };
 
-        return $this->render('Facture_Vente/new_invoice_sale.html.twig');
+        dump($request);
+        $actions = $request->query->get('data')[0];
 
+        $em = $this->getDoctrine()->getManager();
+
+        $customerId = $request->query->get('data')[1];
+        $date_string = $request->query->get('data')[2];
+        $user = $this->getUser();
+
+
+        $customerRepository = $em->getRepository('App:Person')->getCustomer($this->getUser(), $customerId);
+
+
+
+
+        /* Enregistrement de la facture en base de donnée    */
+
+        $invoice = new Invoice();
+
+        $htPrice = $invoice->calcultHtPrice($actions);
+        $ttcPrice = $invoice->calculTtcPrice($actions);
+        $invoice->setUser($user);
+        $date = new \DateTime($date_string);
+        $invoice->setDate($date);
+        $invoice->setInvoiceType(false);
+        $invoice->setPriceHt($htPrice);
+        $invoice->setPriceTt($ttcPrice);
+        $customer = new Customer();
+        $customer->setUser($user);
+
+        foreach ($customerRepository as $cR) {
+            $invoice->setClient($cR);
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($invoice);
+        $em->flush();
+
+
+
+        /* Enregistrement de l'action qui regroupe tout les factures en base de donnée    */
+
+        foreach ($actions as $a) {
+            $regiser = $a[0];
+            $tva = $a[1];
+            $qtte = $a[2];
+            $amountTava = $a[3];
+            $unitAmount = $a[4];
+
+            $record = $em->getRepository('App:Record')->getRecord($regiser);
+
+            $action = new Action();
+            foreach ($record as $r) {
+                $action->setRecord($r);
+            }
+
+            $action->setTva($tva);
+            $action->setTvaAmount($amountTava);
+            $action->setQuantity($qtte);
+            $action->setUnitAmount($unitAmount);
+            $invoice->setPaiement(null);
+
+            $action->setInvoice($invoice);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($action);
+            $em->flush();
+        }
+
+
+
+        return $this->redirectToRoute('index_journal_facture_vente');
     }
-//    /**
-//     *
-//     *
-//     * @Route("/infos", name="customers_infos", options = {"expose" : true})
-//     * @Method("GET")
-//     * @return JsonResponse
-//     */
-//
-//    public function infoAction()
-//    {
-//        return new JsonResponse([
-//            'isCompany' => true,
-//        ]);
-//    }
 }

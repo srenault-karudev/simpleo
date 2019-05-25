@@ -17,9 +17,9 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col col-xs-6">
-                            <a href="{{ path('new_invoice_sale') }}">
+                            <a href="{{ path('new_invoice_buy') }}">
                                 <button  class="btn btn-success">
-                                    + Nouvelle Vente
+                                    + Nouvel Achat
                                 </button>
                             </a>
                         </div>
@@ -34,28 +34,35 @@
                             <th>Fournisseur</th>
                             <th>Prix HT</th>
                             <th>Prix TTC</th>
-                            <th>Statut</th>
+                            <th>Payé</th>
                             <th>Actions</th>
+
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="text-align: center">
                         {% for invoice in properties %}
                             <tr>
-                                <td>{{ invoice.id }}</td>
-                                <td>{{ invoice.invoice_date }}</td>
-                                <td>{{ invoice.interlocutor}}</td>
-                                <td>{{ invoice.ht_price }}</td>
-                                <td>{{ invoice.tt_price }}</td>
+                                <td class="centerDiv">{{ invoice.id }}</td>
+                                <td>{{ invoice.date  |date("m/d/Y") }}</td>
+                                <td>{{ invoice.client }}</td>
+                                <td>{{ invoice.getPriceHt() }} €</td>
+                                <td>{{ invoice.getPriceTt() }} €</td>
                                 <td>
+                                    {% if invoice.stateOfPaiement == false  %}
+                                        <img style="height: 25px" class="social-media" src="{{ asset('build/img/icone-croix-rouge-png-3.png') }}" alt="linkedin">
 
+                                    {% else %}
+                                        <img style="height: 20px" class="social-media" src="{{ asset('build/img/success_icon-icons.com_52365.png') }}" alt="linkedin">
+                                    {% endif %}
+                                </td>
+                                <td>
                                     <a class="btn btn-default"
-                                       href="{{ path('form_customer', { 'id': customer.id }) }}"><em
-                                                class="fa fa-pencil"></em></a>
-                                    <a class="btn btn-default"
-                                       href="{{ path('customers_show', { 'id': customer.id }) }}"><em
+                                       href="{{ path('invoice_show', { 'id': invoice.id }) }}"
+                                    ><em
                                                 class="fa fa-eye"></em></a>
                                     <a class="btn btn-danger"
-                                       href="{{ path('customers_delete', { 'id': customer.id }) }}"><em
+                                            {#href="{{ path('invoice_delete', { 'id': invoice.id }) }}"><em#}
+                                    ><em
                                                 class="fa fa-trash"></em></a>
 
                                 </td>
