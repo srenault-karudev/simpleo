@@ -9,11 +9,11 @@
         <div class="right-one scroll-two">
             <table class="table-right">
                 <thead>
-                <th>Compte charge</th>
-                <th>Taux Tva</th>
-                <th>QTT</th>
-                <th>Tva</th>
-                <th>Montant Unit</th>
+                <th class="title_left">Compte</th>
+                <th class="title_left" >Taux Tva</th>
+                <th class="title_left" >Quantité</th>
+                <th class="title_left" >Tva</th>
+                <th class="title_left" >M.unitaire</th>
                 </thead>
                 <tbody>
 
@@ -22,7 +22,7 @@
         </div>
         <div class="right-two">
 
-            <h5 class="title_left" style="text-align: center;margin-top: 10px ">Moyens de Paiment</h5>
+            <p class="title_left"> MOYEN DE PAIEMENT</p>
 
 
             <div class="form-error">
@@ -41,7 +41,7 @@
 
         <div class="right-tree">
             <p class="title_left"> QUI EST VOTRE FOURNISSEUR ?</p>
-            <div class="scroll-two col-sm-8">
+            <div class="scroll-two col-md-8">
                 <div class="funkyradio2 funkyradio">
                     {% for child in form2.person_id %}
                         <div class="funkyradio-warning-2 col-md-12">{{ form_widget(child) }} {{ form_label(child) }}</div>
@@ -65,7 +65,7 @@
 
             </div>
             <div id="erreur_form_two" class="col-md-12" style="color: red; margin-top: 30px"></div>
-            <button type="button" class="confirmation_Def_action_button">Je Valide Ma Facture Définitiveme</button>
+            <button type="button" class="confirmation_Def_action_button">Je Valide Ma Facture Définitivement</button>
         </div>
     </div>
 

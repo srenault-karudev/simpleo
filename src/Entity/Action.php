@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Finder\Comparator\NumberComparator;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -77,7 +78,7 @@ class Action
     private $unit_amount;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      * @var string
      */
     private $image;
@@ -189,28 +190,12 @@ class Action
         return $this;
     }
 
-    public function getRecord(): ?Record
+   
+
+
+    public function setImageFile(\Symfony\Component\HttpFoundation\File\File $imageFile = null): Action
     {
-        return $this->record;
-    }
-
-    public function setRecord(?Record $record): self
-    {
-        $this->record = $record;
-
-        // set (or unset) the owning side of the relation if necessary
-        $newAction = $record === null ? null : $this;
-        if ($newAction !== $record->getAction()) {
-            $record->setAction($newAction);
-        }
-
-        return $this;
-    }
-
-
-    public function setImageFile(\Symfony\Component\HttpFoundation\File\File $image = null)
-    {
-        $this->imageFile = $image;
+        $this->imageFile = $imageFile;
 
     }
 
@@ -227,6 +212,18 @@ class Action
     public function getImage()
     {
         return $this->image;
+    }
+
+    public function getRecord(): ?Record
+    {
+        return $this->record;
+    }
+
+    public function setRecord(?Record $record): self
+    {
+        $this->record = $record;
+
+        return $this;
     }
 
 

@@ -7,8 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Validator\Constraints\Date;
-use Vich\UploaderBundle\Entity\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 
 /**
@@ -16,7 +15,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="Invoice")
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
- * @Vich\Uploadable
  */
 class Invoice
 {
@@ -102,19 +100,12 @@ class Invoice
      */
     private $paiement;
 
-
     /**
-     * @ORM\Column(type="string", length=255)
-     * @var string
+     * @var boolean
+     *
+     * @ORM\Column(name="state_of_paiement", type="boolean")
      */
-    private $image;
-
-    /**
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
-     * @var File
-     */
-    private $imageFile;
-
+    private $stateOfPaiement = false;
 
 
 
@@ -258,36 +249,48 @@ class Invoice
         return $this;
     }
 
-    public function htPrice($qtte,$unitAmount){
+    public function calcultHtPrice($datas){
+        $htPrice = 0;
+        //return $qtte * $unitAmount;
 
-        return $qtte * $unitAmount;
+        foreach ($datas as $data){
+            $qtte = $data[2];
+            $unitAmount =  $data[4];
+
+            $htPrice += $qtte *$unitAmount;
+
+        }
+        return $htPrice;
     }
 
-    public function TtcPrice($htPrice,$tvaAmount){
-        return $htPrice + $tvaAmount;
+    public function calculTtcPrice($datas){
+        //return $htPrice + $tvaAmount;
+
+        $ttcPrie = 0;
+        foreach ($datas as $data){
+            $qtte = $data[2];
+            $unitAmount =  $data[4];
+            $ttcPrie += $qtte *$unitAmount+$data[3];
+        }
+        return $ttcPrie;
     }
 
-
-    public function setImageFile(\Symfony\Component\HttpFoundation\File\File $image = null)
+    /**
+     * @return bool
+     */
+    public function isStateOfPaiement(): bool
     {
-        $this->imageFile = $image;
-
+        return $this->stateOfPaiement;
     }
 
-    public function getImageFile()
+    /**
+     * @param bool $stateOfPaiement
+     */
+    public function setStateOfPaiement(bool $stateOfPaiement)
     {
-        return $this->imageFile;
+        $this->stateOfPaiement = $stateOfPaiement;
     }
 
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-
-    public function getImage()
-    {
-        return $this->image;
-    }
 
 }
 

@@ -41,7 +41,7 @@ class IndexInvoiceSaleController extends Controller
     public function index(PaginatorInterface $paginator, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $invoices = $em->getRepository('App:Invoice')->getInvoicesSales($this->getUser());;
+        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(),0);;
         $data = $paginator->paginate(
             $invoices,
             $request->query->getInt('page', 1),5

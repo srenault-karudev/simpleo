@@ -7,23 +7,23 @@
     {% if state == true %}
         {% include 'layout.html.twig' %}
         {% if formula == 'essai' %}
-            <div style="width: 700px; margin-left: auto; margin-right: auto"
+            <div style="width: 700px; margin-left: auto; margin-right: auto; margin-top: 10px"
                  class="alert alert-dismissible alert-info ">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 Vous êtes actuellement en période d'éssai, il vous reste <strong> {{ interval }} jours </strong>
                 d'utilisation
             </div>
         {% elseif formula == 'simple' %}
-            <div style="width: 490px; margin-left: auto; margin-right: auto"
+            <div style="width: 490px; margin-left: auto; margin-right: auto;margin-top: 10px"
                  class="alert alert-dismissible alert-info ">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                Vous bénéficié actuellement de la formule <strong> simple </strong>
+                Vous bénéficiez actuellement de la formule <strong> simple </strong>
             </div>
         {% elseif formula == 'complete' %}
-            <div style="width: 490px; margin-left: auto; margin-right: auto"
+            <div style="width: 490px; margin-left: auto; margin-right: auto;margin-top: 10px"
                  class="alert alert-dismissible alert-info ">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                Vous bénéficié actuellement de la formule <strong> complete </strong>
+                Vous bénéficiez actuellement de la formule <strong> complete </strong>
             </div>
         {% endif %}
         <div class="colonne1">
