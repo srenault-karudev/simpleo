@@ -31,7 +31,7 @@
                         <tr>
                             <th>Numero</th>
                             <th>Date</th>
-                            <th>Vendeur</th>
+                            <th>Fournisseur</th>
                             <th>Prix HT</th>
                             <th>Prix TTC</th>
                             <th>Payé</th>
@@ -44,17 +44,24 @@
                             <tr>
                                 <td class="centerDiv">{{ invoice.id }}</td>
                                 <td>{{ invoice.date  |date("m/d/Y") }}</td>
-                                <td></td>
+                                <td>{{ invoice.client }}</td>
                                 <td>{{ invoice.getPriceHt() }} €</td>
                                 <td>{{ invoice.getPriceTt() }} €</td>
-                                <td></td>
+                                <td>
+                                    {% if invoice.stateOfPaiement == false  %}
+                                        <img style="height: 25px" class="social-media" src="{{ asset('build/img/icone-croix-rouge-png-3.png') }}" alt="linkedin">
+
+                                    {% else %}
+                                            <img style="height: 20px" class="social-media" src="{{ asset('build/img/success_icon-icons.com_52365.png') }}" alt="linkedin">
+                                    {% endif %}
+                                </td>
                                 <td>
                                     <a class="btn btn-default"
-                                       {#href="{{ path('customers_show', { 'id': customer.id }) }}"#}
+                                       href="{{ path('invoice_show', { 'id': invoice.id }) }}"
                                     ><em
                                                 class="fa fa-eye"></em></a>
                                     <a class="btn btn-danger"
-                                       {#href="{{ path('customers_delete', { 'id': customer.id }) }}"#}
+                                       {#href="{{ path('invoice_delete', { 'id': invoice.id }) }}"><em#}
                                     ><em
                                                 class="fa fa-trash"></em></a>
 

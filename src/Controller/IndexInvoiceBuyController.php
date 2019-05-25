@@ -44,14 +44,13 @@ class IndexInvoiceBuyController extends Controller
     public function index(PaginatorInterface $paginator, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser());
-        dump($invoices);
+        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(),1);
         $data = $paginator->paginate(
             $invoices,
             $request->query->getInt('page', 1),5
         );
         $data->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
-//        return $this->render('Facture_Devis/index_invoice_buy.html.twig');
+
         return $this->render('Facture_Devis/index_invoice_buy.html.twig', array(
             'properties' => $data));
     }
@@ -68,12 +67,6 @@ class IndexInvoiceBuyController extends Controller
         $form = $this->createForm('App\Form\Action_buyType', $action);
         $form2 = $this->createForm('App\Form\Invoice_BuyType', $action);
 
-        //$em = $this->getDoctrine()->getManager();
-        //$records = $em->getRepository('App:Record')->getRecords();
-
-
-        //dump($request->query->get('value'));
-
 
         return $this->render('Facture_Devis/new_invoice_buy.html.twig', array(
             'form' => $form->createView(),
@@ -82,6 +75,36 @@ class IndexInvoiceBuyController extends Controller
 
 
     }
+
+
+    /**
+
+     * @Route("/show_invoice/{id}", name="invoice_show")
+     * @Method("GET")
+     */
+    public function show( Invoice $invoice){
+        return $this->render('Facture_Devis/show.html.twig',array(
+            'customer' => $invoice,
+        ));
+    }
+
+
+    /**
+     * .
+     *
+     * @Route("/invoice_delete{id}/delete", name="invoice_delete")
+     * Method({"GET"})
+     */
+    public function deleteAction(Request $request, Invoice $invoice)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($invoice->getActions());
+        $em->remove($invoice);
+        $em->flush();
+        return $this->redirectToRoute('index_journal_facture_achat');
+    }
+
 
     /**
      * @Route("/ajaxInvoiceBuyRoute", name="ajaxInvoiceBuyRoute",options = {"expose" : true})
@@ -145,10 +168,7 @@ class IndexInvoiceBuyController extends Controller
             $amountTava = $a[3];
             $unitAmount = $a[4];
 
-            dump($regiser);
-
             $record = $em->getRepository('App:Record')->getRecord($regiser);
-            dump($record);
 
             $action = new Action();
             foreach ($record as $r) {

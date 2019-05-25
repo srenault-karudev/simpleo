@@ -105,7 +105,7 @@ class Invoice
      *
      * @ORM\Column(name="state_of_paiement", type="boolean")
      */
-    private $stateOfPaiement;
+    private $stateOfPaiement = false;
 
 
 
