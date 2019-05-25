@@ -37,7 +37,7 @@
                             <th>Statut</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        {#<tbody>
                         {% for invoice in properties %}
                             <tr>
                                 <td>{{ invoice.id }}</td>
@@ -60,12 +60,12 @@
                                 </td>
                             </tr>
                         {% endfor %}
-                        </tbody>
+                        </tbody>#}
                     </table>
 
-                    <div style="text-align: center">
-                        {{ knp_pagination_render(properties) }}
-                    </div>
+                    {#<div style="text-align: center">#}
+                        {#{{ knp_pagination_render(properties) }}#}
+                    {#</div>#}
 
 
                 </div>

@@ -7,8 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Validator\Constraints\Date;
-use Vich\UploaderBundle\Entity\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 
 /**
@@ -16,7 +15,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="Invoice")
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
- * @Vich\Uploadable
  */
 class Invoice
 {
@@ -83,7 +81,7 @@ class Invoice
      * @var Collection
      *
      *
-     * @ORM\ManyToOne(targetEntity="Person", inversedBy="invoices",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Person", inversedBy="invoices")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="person_id", referencedColumnName="id")
      * })

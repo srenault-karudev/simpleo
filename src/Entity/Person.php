@@ -147,7 +147,7 @@ abstract class Person
      *
      * @ORM\OneToMany(targetEntity="Invoice", mappedBy="person")
      */
-    private $invoice;
+    private $invoices;
 
 
     /**
@@ -163,7 +163,8 @@ abstract class Person
     public function __construct()
     {
         $this->team = new ArrayCollection();
-        $this->invoice = new ArrayCollection();
+        $this->invoices = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -420,36 +421,7 @@ abstract class Person
     }
 
 
-    /**
-     * @return Collection|Invoice[]
-     */
-    public function getInvoice(): Collection
-    {
-        return $this->invoice;
-    }
 
-    public function addInvoice(Invoice $invoice): self
-    {
-        if (!$this->invoice->contains($invoice)) {
-            $this->invoice[] = $invoice;
-            $invoice->setPerson($this);
-        }
-
-        return $this;
-    }
-
-    public function removeInvoice(Invoice $invoice): self
-    {
-        if ($this->invoice->contains($invoice)) {
-            $this->invoice->removeElement($invoice);
-            // set the owning side to null (unless already changed)
-            if ($invoice->getPerson() === $this) {
-                $invoice->setPerson(null);
-            }
-        }
-
-        return $this;
-    }
 
 
     public function __toString(){
@@ -460,6 +432,37 @@ abstract class Person
             return (string)" 🏠 ".$this->getCompanyname();
 
         }
+    }
+
+    /**
+     * @return Collection|Invoice[]
+     */
+    public function getInvoices(): Collection
+    {
+        return $this->invoices;
+    }
+
+    public function addInvoice(Invoice $invoice): self
+    {
+        if (!$this->invoices->contains($invoice)) {
+            $this->invoices[] = $invoice;
+            $invoice->setPerson($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice): self
+    {
+        if ($this->invoices->contains($invoice)) {
+            $this->invoices->removeElement($invoice);
+            // set the owning side to null (unless already changed)
+            if ($invoice->getPerson() === $this) {
+                $invoice->setPerson(null);
+            }
+        }
+
+        return $this;
     }
 
 }

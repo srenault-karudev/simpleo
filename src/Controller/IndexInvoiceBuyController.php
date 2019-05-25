@@ -17,6 +17,7 @@ use App\Entity\Record;
 use App\Form\PropretySearchType;
 use Knp\Component\Pager\PaginatorInterface;
 use Stripe\Person;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
@@ -43,12 +44,14 @@ class IndexInvoiceBuyController extends Controller
     public function index(PaginatorInterface $paginator, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser());;
+        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser());
+        dump($invoices);
         $data = $paginator->paginate(
             $invoices,
             $request->query->getInt('page', 1),5
         );
         $data->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
+//        return $this->render('Facture_Devis/index_invoice_buy.html.twig');
         return $this->render('Facture_Devis/index_invoice_buy.html.twig', array(
             'properties' => $data));
     }
@@ -84,7 +87,7 @@ class IndexInvoiceBuyController extends Controller
      * @Route("/ajaxInvoiceBuyRoute", name="ajaxInvoiceBuyRoute",options = {"expose" : true})
      * @Method({"GET"})
      */
-    public function firstAjaxAction(Request $request, Action $action = null)
+    public function firstAjaxAction(Request $request)
     {
 
 
@@ -96,7 +99,7 @@ class IndexInvoiceBuyController extends Controller
         $paiementNum = $request->query->get('data')[1];
         $customerId = $request->query->get('data')[2];
         $date_string = $request->query->get('data')[3];
-        $file = $request->query->get('data')[4];
+        $fileString = $request->query->get('data')[4];
         $user = $this->getUser();
 
 
@@ -142,21 +145,25 @@ class IndexInvoiceBuyController extends Controller
             $amountTava = $a[3];
             $unitAmount = $a[4];
 
+            dump($regiser);
+
             $record = $em->getRepository('App:Record')->getRecord($regiser);
             dump($record);
 
+            $action = new Action();
             foreach ($record as $r) {
                 $action->setRecord($r);
             }
-
 
             $action->setTva($tva);
             $action->setTvaAmount($amountTava);
             $action->setQuantity($qtte);
             $action->setUnitAmount($unitAmount);
-            $action->setImageFile($file);
+           // $file = new File($file_string);
+           //$action->setImageFile($file);
+           //$action->setImage($fileString);
 
-            $action->setInvoice($invoice->getId());
+            $action->setInvoice($invoice);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($action);

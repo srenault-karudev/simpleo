@@ -89,7 +89,9 @@ window.onload=(()=>{
         $qtt=$("#action_buy_quantity").val();
         $action_buy_unit_amount=$("#action_buy_unit_amount").val();
         $action_buy_tva_amount=$("#action_buy_tva_amount").val();
-        $registre=$('#recordsId').val();
+       /// $registre=$('#recordsId').val();
+        $registre=$('input[type=radio][name="action_buy[record_id]"]:checked').attr('value');
+        console.log($registre);
         $tva=$('input[type=radio][name="action_buy[tva]"]:checked').attr('value');
         if(($registre==undefined) || ($tva==undefined) || ($qtt=='') || ($action_buy_unit_amount=='') || ($action_buy_tva_amount=='') || (testIsNotANumber($action_buy_unit_amount)) || (testIsNotANumber($action_buy_tva_amount)) || ($action_buy_tva_amount<0) || ($action_buy_unit_amount<0) ){
             $b.text("! ERREUR DANS LE FORMULAIRE, Nous rappelons que tous les champs sont obligatoires").show();
@@ -104,12 +106,12 @@ window.onload=(()=>{
 
     $('.confirmation_action_button').click( function(){
 
-        // $registre=$('input[type=radio][name="action_buy[record_id]"]:checked').attr('value');
-        // console.log('registre :' +$registre);
+        $registre=$('input[type=radio][name="action_buy[record_id]"]:checked').attr('value');
+         //console.log('registre :' +$registre);
         $qtt=$("#action_buy_quantity").val();
         $action_buy_unit_amount=$("#action_buy_unit_amount").val();
         $action_buy_tva_amount=$("#action_buy_tva_amount").val();
-        $registre=$('#recordsId').val();
+        //$registre=$('#recordsId').val();
         $tva=$('input[type=radio][name="action_buy[tva]"]:checked').attr('value');
         var data=new Array();
         data.push($registre);
