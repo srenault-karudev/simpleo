@@ -188,6 +188,7 @@ window.onload=(()=>{
 
     }
 
+
     $('.tva_button').click( function(){
         var person = prompt("Nouvelle TVA", "");
         $num=parseInt(person, 10);
@@ -198,10 +199,10 @@ window.onload=(()=>{
                 $('.asupprimer').remove();
                 var radio = document.createElement("div");
                 var lab =document.createElement("label");
-                lab.setAttribute("for", "action_buy_tva_5");
+                lab.setAttribute("for", "action_sale_tva_5");
                 lab.className="required";
                 radio.className="funkyradio-warning asupprimer";
-                radio.innerHTML = "<input type='radio'  id='action_buy_tva_5' name='action_buy[tva]' required='required' value='"+$num+"'>";
+                radio.innerHTML = "<input type='radio'  id='action_sale_tva_5' name='action_sale[tva]' required='required' value='"+$num+"'>";
                 lab.innerHTML=""+$num+"";
                 document
                     .querySelector(".funkyradio")
