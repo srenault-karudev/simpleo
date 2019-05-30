@@ -67,20 +67,12 @@ window.onload=(()=>{
     });
 
     $("#action_sale_unit_amount").keyup(function() {
-        var $t = $(this);
-        if (!$t.val()) {
-        } else {
             automatOne();
-        }
     }).keyup();
 
 
     $("#action_sale_tva_amount").keyup(function() {
-        var $t = $(this);
-        if (!$t.val()) {
-        } else {
             automatTwo()
-        }
     }).keyup();
 
     function validation(){
@@ -88,9 +80,9 @@ window.onload=(()=>{
         $qtt=$("#action_sale_quantity").val();
         $action_sale_unit_amount=$("#action_sale_unit_amount").val();
         $action_sale_tva_amount=$("#action_sale_tva_amount").val();
-        $registre=$('#recordsId').val();
+        $registre=$('input[type=radio][name="action_sale[record_id]"]:checked').attr('value');
         $tva=$('input[type=radio][name="action_sale[tva]"]:checked').attr('value');
-        if(($registre=="") || ($tva==undefined) || ($qtt=='') || ($action_sale_unit_amount=='') || ($action_sale_tva_amount=='') || (testIsNotANumber($action_sale_unit_amount)) || (testIsNotANumber($action_sale_tva_amount)) || ($action_sale_tva_amount<0) || ($action_sale_unit_amount<0) ){
+        if(($registre==undefined) || ($tva==undefined) || ($qtt=='') || ($action_sale_unit_amount=='') || ($action_sale_tva_amount=='') || (testIsNotANumber($action_sale_unit_amount)) || (testIsNotANumber($action_sale_tva_amount)) || ($action_sale_tva_amount<0) || ($action_sale_unit_amount<0) ){
             $b.text("! ERREUR DANS LE FORMULAIRE, Nous rappelons que tous les champs sont obligatoires").show();
             return false
         }else{
@@ -105,7 +97,7 @@ window.onload=(()=>{
         $qtt=$("#action_sale_quantity").val();
         $action_sale_unit_amount=$("#action_sale_unit_amount").val();
         $action_sale_tva_amount=$("#action_sale_tva_amount").val();
-        $registre=$('#recordsId').val();
+        $registre=$('input[type=radio][name="action_sale[record_id]"]:checked').attr('value');
         $tva=$('input[type=radio][name="action_sale[tva]"]:checked').attr('value');
         var data=new Array();
         data.push($registre);
@@ -189,6 +181,7 @@ window.onload=(()=>{
     }
 
 
+
     $('.tva_button').click( function(){
         var person = prompt("Nouvelle TVA", "");
         $num=parseInt(person, 10);
@@ -205,11 +198,24 @@ window.onload=(()=>{
                 radio.innerHTML = "<input type='radio'  id='action_sale_tva_5' name='action_sale[tva]' required='required' value='"+$num+"'>";
                 lab.innerHTML=""+$num+"";
                 document
-                    .querySelector(".funkyradio")
+                    .querySelector(".taux-tva-div")
                     .appendChild(radio)
                     .appendChild(lab);
             }
         }
     });
-});
 
+
+    $("#search").keyup(function() {
+        var myvar = $("#search").val().toUpperCase();
+        regexp = new RegExp(myvar, "g");
+        $('.records .funkyradio-warning > label ').each(function(){
+            if($(this).text().toUpperCase().match(regexp)){
+                $(this).show();
+            }else{
+                $(this).hide();
+            }
+        });
+    }).keyup();
+
+});

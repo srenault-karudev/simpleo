@@ -7,16 +7,17 @@
     <title>Title</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/dashboard.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/footer.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
     {% endblock %}
 </head>
 
-<footer class="w3-center  w3-padding-64">
-    <p class="goto-top w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Retour en haut de page</p>
+<footer class="w3-center  w3-padding-64 footer">
+    <a> <span>  <i   class="material-icons upup" style="font-size: 100px;"> keyboard_arrow_up </i></span></a>
     <div class="w3-xlarge w3-section">
         <i class="fa fa-facebook-official w3-hover-opacity"></i>
         <i class="fa fa-instagram w3-hover-opacity"></i>
@@ -52,7 +53,7 @@
                 }
             });
 
-            $(".goto-top").on('click', function () {
+            $(".upup").on('click', function () {
                 $("html, body").animate({scrollTop: 0}, 400);
             });
         });</script>

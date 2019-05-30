@@ -1,0 +1,32 @@
+.navColor {
+    background-image: linear-gradient(to right, rgb(141, 86, 139), rgb(102, 104, 210));
+}
+
+.Simpleo-logo{
+    width: 30%;
+}
+
+.Simpleo-logo:hover{
+    color: dimgrey;
+}
+
+.BoutonLogin{
+    margin-top: -140px;
+    float: right;
+}
+
+.headerNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+
+.nav-link{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}

@@ -1,112 +1,3 @@
-body {
-    min-width: 320px;
-}
-
-.liensFooter a{
-    text-decoration: none;
-}
-
-.liensFooter a:hover{
-    text-decoration: none;
-    color: white;
-}
-
-footer{
-    background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
-    color:white;
-}
-
-.achatsDropdown{
-    color: white;
-}
-
-.ventesDropdown{
-    color: white;
-}
-
-.achatsDropdown:hover{
-    color: rebeccapurple;
-    background-color: white;
-}
-
-.ventesDropdown:hover{
-    color: rebeccapurple;
-    background-color: white;
-}
-
-
-.navColor {
-    background-image: linear-gradient(to right, rgb(141, 86, 139), rgb(102, 104, 210));
-    color: white;
-}
-
-.Simpleo-logo{
-    width: 15%;
-}
-
-.headerNav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.active-link{
-    background-color: white;
-}
-
-.active-link a{
-    color: rebeccapurple;
-}
-
-.nav-item{
-    float: left;
-}
-
-.nav-link{
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.nav-item:hover{
-    background-color: white;
-    opacity: 1;
-    transition-duration: 0.2s;
-    color: rebeccapurple;
-}
-
-.nav-item:hover a{
-    color: rebeccapurple;
-}
-
-h1{
-    color: rebeccapurple;
-    font-family: 'Montserrat', sans-serif;
-}
-
-
-h2{
-    color: rebeccapurple;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 140%;
-}
-
-.smallhead{
-    font-size: 139.8%;
-}
-
-.w3-row-padding p{
-    text-align: center;
-    font-size: 130%;
-}
-
-.w3-row-padding{
-    position:relative;
-}
-
 
 .colonne1 {
     float:left;
@@ -140,29 +31,21 @@ h2{
     padding-bottom: 10px;
 }
 
-.bienvenue p {
-    color: white;
-    margin-right: 50px;
-    font-size: 200%;
-    font-family: 'Montserrat', sans-serif;
-    float: right;
-    margin-top: 25px;
-    margin-bottom: -10px;
-}
 
-li.nav-link a{
-    float: right;
-    right: 10px;
-    text-decoration: none;
-}
 
-.icon{
-    display: none;
-}
 
-.w3-animate-left{
-    animation-duration: 0.5s;
-}
+
+
+
+
+
+
+/* wtf jsp c quoi ca ################################################################################*/
+
+
+
+
+
 
 
 
@@ -195,82 +78,6 @@ li.nav-link a{
 }
 
 
-
-
-@media (max-width: 1024px ) {
-    .row1{
-        width: 70%;
-        margin-left: 15%;
-
-    }
-
-    .row2{
-        width: 70%;
-        margin-left: 15%;
-
-    }
-
-    .row3{
-        width: 70%;
-        margin-left: 15%;
-    }
-
-    .bienvenue p {
-        color: white;
-        font-size: 130%;
-        font-family: 'Montserrat', sans-serif;
-        float: right;
-        top: 10%;
-    }
-
-    .nav-link{
-        font-size: 80%;
-        display: none;
-    }
-
-
-    .icon{
-        float: left;
-        display: block;
-        margin-left: 20px;
-        margin-right: 20px;
-        font-size: 290%;
-        color: white;
-    }
-
-    .w3-sidebar{
-        background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
-        color: white;
-    }
-    .w3-sidebar a{
-        background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
-        color: white;
-    }
-    .w3-sidebar button{
-        background-image: linear-gradient(to right, rgb(141,86,130), rgb(102,104,210));
-        color: white;
-    }
-    .w3-bar-item{
-        text-decoration: none;
-    }
-    .w3-bar-item:hover{
-        color: rebeccapurple;
-        background-image: linear-gradient(to right, rgb(255,255,255), rgb(255,255,255));
-    }
-
-    .w3-bar-item.active-link-bar{
-        background-image: linear-gradient(to right, rgb(255,255,255), rgb(255,255,255));
-        color: rebeccapurple;
-    }
-
-    .dropdown-content{
-        width: 25%;
-    }
-
-    .bienvenue img{
-        display: none;
-    }
-}
 
 
 
@@ -313,3 +120,6 @@ li.nav-link a{
 
 
 }
+
+
+

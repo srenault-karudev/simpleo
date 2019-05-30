@@ -3,6 +3,11 @@
 {% block title %}{% endblock %}
 {% block head %}{% endblock %}
 {% block content %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/dashboard.css') }}">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    {% endblock %}
 
     {% if state == true %}
         {% include 'layout.html.twig' %}
@@ -29,10 +34,6 @@
         <div class="colonne1">
             <h1>Votre Tableau de Bord</h1>
             <br>
-        </div>
-
-        <div class="colonne2">
-            <button class="w3-button w3-round-xlarge w3-border w3-border-purple">Ajouter un indicateur</button>
         </div>
 
         <div class="w3-row-padding">

@@ -9,11 +9,11 @@
     <div class="left_block">
         <div class="left_one">
             <p class="title_left">De quelle nature est votre achat ?
-
+                <input type="text" id="search"  name="name" >
                 <div class="form-error">
                 </div>
                 <div class="scroll">
-                <div class="funkyradio">
+                <div class="funkyradio records">
                 {% for children in form.record_id %}
                 <div class="funkyradio-warning">{{ form_widget(children) }} {{ form_label(children) }}</div>
                 {% endfor %}
@@ -35,7 +35,7 @@
         </div>
         <div class="left_two">
             <p class="title_left">Le taux de TVA ?</p>
-            <div class="funkyradio">
+            <div class="funkyradio taux-tva-div">
                 {% for child in form.tva %}
                     <div class="funkyradio-warning">{{ form_widget(child) }} {{ form_label(child) }}</div>
                 {% endfor %}

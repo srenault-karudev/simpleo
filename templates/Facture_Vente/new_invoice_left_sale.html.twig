@@ -9,34 +9,33 @@
     <div class="left_block">
         <div class="left_one">
             <p class="title_left">De quelle nature est votre achat ?
-
-
-
+                <input type="text" id="search"  name="name" >
             <div class="form-error">
             </div>
-            {% block datalist_widget %}
-                <input style="margin-top: 25px" class="form-control" list="records" name="record" id="recordsId">
-                <datalist id="records">
-                    <option class ="funkyradio-warning"  value= " {{ form_widget(form.record_id) }} "></option>
+            <div class="scroll">
+                <div class="funkyradio records">
+                    {% for children in form.record_id %}
+                        <div class="funkyradio-warning">{{ form_widget(children) }} {{ form_label(children) }}</div>
+                    {% endfor %}
+                </div>
+            </div>
 
-                </datalist>
-            {% endblock %}
 
             {#<div class="form-error">#}
             {#</div>#}
-            {#<div class="scroll">#}
-            {#<div class="funkyradio">#}
-            {#{% for children in form.record_id %}#}
-            {#<div class="funkyradio-warning">{{ form_widget(children) }} {{ form_label(children) }}</div>#}
-            {#{% endfor %}#}
-            {#</div>#}
-            {#</div>#}
+            {#{% block datalist_widget %}#}
+            {#<input style="margin-top: 25px" class="form-control" list="records" name="record" id="recordsId">#}
+            {#<datalist id="records">#}
+            {#<option class ="funkyradio-warning"  value= " {{ form_widget(form.record_id) }} "></option>#}
+
+            {#</datalist>#}
+            {#{% endblock %}#}
 
 
         </div>
         <div class="left_two">
             <p class="title_left">Le taux de TVA ?</p>
-            <div class="funkyradio">
+            <div class="funkyradio taux-tva-div">
                 {% for child in form.tva %}
                     <div class="funkyradio-warning">{{ form_widget(child) }} {{ form_label(child) }}</div>
                 {% endfor %}

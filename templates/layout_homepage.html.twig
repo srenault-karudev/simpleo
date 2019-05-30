@@ -5,7 +5,7 @@
     <title>Title</title>
     {% block stylesheets %}
 
-        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/dashboard.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/headerMenu.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -33,6 +33,7 @@
                 <img src="http://37.187.127.4/images/Logo.png"
                      class="Simpleo-logo" alt="Simpleo logo">
             </a>
+            <li class="nav-link "><a class="BoutonLogin"  href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
         </ul>
 
         {#{% dump(app.user.formula) %}#}
@@ -42,13 +43,6 @@
             {#{% set formula  = formula %}#}
         {#{% endif %}#}
 
-        <ul class="headerNav">
-            {#{% if is_granted('ROLE_USER') and app.user is not null %}#}
-                {#<li class="nav-link BoutonLogout"><a href="{{ path('dashboard') }}">Mon Compte</a></li>#}
-            {#{% else %}#}
-                <li class="nav-link BoutonLogin"><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
-            {#{% endif %}#}
-        </ul>
     </div>
 </nav>
 
