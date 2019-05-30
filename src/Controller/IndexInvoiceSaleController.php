@@ -37,12 +37,16 @@ class IndexInvoiceSaleController extends Controller
 
 
     /**
-     * @Route("/index_journal_facture_vente", name="index_journal_facture_vente")
+     * @Route("/index_journal_facture_vente", name="index_journal_facture_vente",options = {"expose" : true})
+     * @Method({"GET"})
      */
     public function index(PaginatorInterface $paginator, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(),0);;
+        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(),0);
+
+
+
         $data = $paginator->paginate(
             $invoices,
             $request->query->getInt('page', 1),5
@@ -62,21 +66,18 @@ class IndexInvoiceSaleController extends Controller
         $form = $this->createForm('App\Form\Action_saleType', $action);
         $form2 = $this->createForm('App\Form\Invoice_SaleType', $action);
 
-        //$em = $this->getDoctrine()->getManager();
-        //$records = $em->getRepository('App:Record')->getRecords();
-
+        $em = $this->getDoctrine()->getManager();
+        $records = $em->getRepository('App:Record')->allRecords();
 
         //dump($request->query->get('value'));
 
 
         return $this->render('Facture_Vente/new_invoice_sale.html.twig',array(
             'form' => $form->createView(),
-            'form2'=> $form2->createView()
+            'form2'=> $form2->createView(),
+            'records'=>$records
+
         ));
-
-
-
-
 
     }
 
@@ -160,6 +161,8 @@ class IndexInvoiceSaleController extends Controller
 
 
 
-        return $this->redirectToRoute('index_journal_facture_vente');
+        return $this->json([]);
+
+
     }
 }

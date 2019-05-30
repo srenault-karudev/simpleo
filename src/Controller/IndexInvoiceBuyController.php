@@ -39,7 +39,9 @@ class IndexInvoiceBuyController extends Controller
 
 
     /**
-     * @Route("/index_journal_facture_achat", name="index_journal_facture_achat")
+     * @Route("/index_journal_facture_achat", name="index_journal_facture_achat",options = {"expose" : true})
+     * @Method({"GET"})
+     *
      */
     public function index(PaginatorInterface $paginator, Request $request)
     {
@@ -193,7 +195,7 @@ class IndexInvoiceBuyController extends Controller
 
 
 
-        return $this->redirectToRoute('index_journal_facture_achat');
+        return $this->json([]);
     }
 
 }

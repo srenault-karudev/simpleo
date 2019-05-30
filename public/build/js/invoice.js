@@ -90,9 +90,8 @@ window.onload=(()=>{
         $action_buy_tva_amount=$("#action_buy_tva_amount").val();
        /// $registre=$('#recordsId').val();
         $registre=$('input[type=radio][name="action_buy[record_id]"]:checked').attr('value');
-        console.log($registre);
         $tva=$('input[type=radio][name="action_buy[tva]"]:checked').attr('value');
-        if(($registre=="") || ($tva==undefined) || ($qtt=='') || ($action_buy_unit_amount=='') || ($action_buy_tva_amount=='') || (testIsNotANumber($action_buy_unit_amount)) || (testIsNotANumber($action_buy_tva_amount)) || ($action_buy_tva_amount<0) || ($action_buy_unit_amount<0) ){
+        if(($registre=="") ||($registre==undefined) || ($tva==undefined) || ($qtt=='') || ($action_buy_unit_amount=='') || ($action_buy_tva_amount=='') || (testIsNotANumber($action_buy_unit_amount)) || (testIsNotANumber($action_buy_tva_amount)) || ($action_buy_tva_amount<0) || ($action_buy_unit_amount<0) ){
             $b.text("! ERREUR DANS LE FORMULAIRE, Nous rappelons que tous les champs sont obligatoires").show();
             return false
         }else{
@@ -193,29 +192,8 @@ window.onload=(()=>{
                     dataType : 'json',
             }).success(function (data) {
                 console.log(data);
+                window.location = Routing.generate('index_journal_facture_achat');
             });
-
-            // $.ajax({
-            //
-            //     url: Routing.generate(
-            //         'index_journal_facture_achat', {}),
-            //     type: "GET",
-            //     data : data2,
-            //     dataType : "json",
-            //
-            // }).success(function (data) {
-            //     console.log(data);
-            // });
-
-            /* Ici on fait l'envoie ajax vers le controller  */
-
-            /*
-             voici comment recuperer le compte de charge de chaque logne
-
-            // console.log(data2[0].forEach(function (el) {
-            //     console.log(el[0]);
-            //
-            }));*/
 
         }
 
