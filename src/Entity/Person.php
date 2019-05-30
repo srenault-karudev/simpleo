@@ -5,11 +5,15 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * Person
  *
  * @ORM\Table(name="person")
+ * @Vich\Uploadable
  * @ORM\Entity(repositoryClass="App\Repository\PersonRepository")
 *  @ORM\InheritanceType("SINGLE_TABLE")
 *  @ORM\DiscriminatorColumn(name="type", type="string")
@@ -156,6 +160,36 @@ abstract class Person
      * @ORM\Column(name="person_type", type="string", length=255, nullable=true)
      */
     protected $personType;
+
+
+//    /**
+//     * @ORM\Column(type="string", length=255,nullable=true)
+//     * @var string
+//     */
+//    private $image;
+//
+//    /**
+//     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+//     * @var File
+//     */
+//    private $imageFile;
+//
+//    /**
+//     * @return File
+//     */
+//    public function getImageFile()
+//    {
+//        return $this->imageFile;
+//    }
+//
+//    /**
+//     * @param File $imageFile
+//     */
+//    public function setImageFile(File $imageFile)
+//    {
+//        $this->imageFile = $imageFile;
+//    }
+
 
     /**
      * Constructor
@@ -464,5 +498,17 @@ abstract class Person
 
         return $this;
     }
+
+//    public function getImage(): ?string
+//    {
+//        return $this->image;
+//    }
+//
+//    public function setImage(?string $image): self
+//    {
+//        $this->image = $image;
+//
+//        return $this;
+//    }
 
 }

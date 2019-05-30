@@ -45,6 +45,7 @@ class IndexInvoiceBuyController extends Controller
      */
     public function index(PaginatorInterface $paginator, Request $request)
     {
+      //  dump('App/public/uploads/images/products/Cv.pdf');
         $em = $this->getDoctrine()->getManager();
         $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(),1);
         $data = $paginator->paginate(
@@ -86,13 +87,12 @@ class IndexInvoiceBuyController extends Controller
      */
     public function show( Invoice $invoice){
         return $this->render('Facture_Devis/show.html.twig',array(
-            'customer' => $invoice,
+            'invoice' => $invoice,
         ));
     }
 
 
     /**
-     * .
      *
      * @Route("/invoice_delete{id}/delete", name="invoice_delete")
      * Method({"GET"})
@@ -182,9 +182,14 @@ class IndexInvoiceBuyController extends Controller
             $action->setTvaAmount($amountTava);
             $action->setQuantity($qtte);
             $action->setUnitAmount($unitAmount);
-           // $file = new File($file_string);
-           //$action->setImageFile($file);
-           //$action->setImage($fileString);
+
+
+
+
+//            $file = new File('App/public/uploads/images/products/AttestationDroit.pdf');
+//            //$action->setImage($fileString);
+//            $action->setImageFile($file);
+
 
             $action->setInvoice($invoice);
 

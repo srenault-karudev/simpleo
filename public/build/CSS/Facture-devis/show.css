@@ -1,0 +1,32 @@
+.gauche{
+
+
+
+
+    height: 300px;
+    width: 500px;
+    margin-top: 20px;
+    padding:6px 6px 6px 6px;
+    border-radius:8px;
+    background:white;
+
+
+    box-shadow: 1px 1px 5px grey;
+}
+
+.droite{
+
+    height: 300px;
+    width: 700px;
+    margin-top: 20px;
+    padding:6px 6px 6px 6px;
+    border-radius:8px;
+    background:white;
+
+
+    box-shadow: 1px 1px 5px grey;
+}
+
+.show{
+    display: inline-block;
+}

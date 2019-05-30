@@ -1,7 +1,81 @@
 {% extends 'layout.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/show.css') }}">
+{% endblock %}
+ {#{% set actions = invoice.actions %}#}
+                        {#{% dump(actions) %}#}
+
+                        {#{% for action in actions  %}#}
+
+                            {#<dt class="text-muted">Registre</dt>#}
+                            {#<dd>{{ action.record }}</dd>#}
+
+                        {#{% endfor %}#}
 
 {% block content %}
 
 
+    <body>
+    <div class="show">
 
+        <div class="gauche">
+            <legend style="text-align: center">Informations</legend>
+            <div class="row">
+                <!-- Start .row -->
+                <div class="col-md-12">
+                    <dl class="mt20">
+
+
+                        <div class="col-md-12">
+
+                            <dt class="text-muted">Moyen de Paiement : </dt>
+                            <dd>{{ invoice.paiement }}</dd>
+
+                            <dt class="text-muted">Fournisseur : </dt>
+                            <dd>{{ invoice.client }}</dd>
+
+                            <dt class="text-muted">Date de création : </dt>
+                            <dd>{{ invoice.date |date("m/d/Y")  }}</dd>
+
+                            <dt class="text-muted">Fichier : </dt>
+                            {#{% dump(customer.image) %}#}
+                            {#{% if customer.image is not null %}<a target="_blank" href="{{ vich_uploader_asset(customer, 'imageFile') }}"  />Fichier joint</a>{% endif %}</dd>#}
+
+
+                        </div>
+
+
+                    </dl>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="droite">
+            <legend style="text-align: center">Récapitulatif des actions</legend>
+
+
+                <table>
+
+                <thead>
+                <tr style="padding:20px;">
+                    <th>Numero</th>
+                    <th>Date</th>
+                    <th>Fournisseur</th>
+                    <th>Prix HT</th>
+                    <th>Prix TTC</th>
+                    <th>Payé</th>
+                    <th>Actions</th>
+
+                </tr>
+                </thead>    
+                </table>
+
+        </div>
+
+    </div>
+
+    </body>
+
+    {% include 'footer.html.twig' %}
 {% endblock %}

@@ -291,6 +291,11 @@ class Invoice
         $this->stateOfPaiement = $stateOfPaiement;
     }
 
+    public function getStateOfPaiement(): ?bool
+    {
+        return $this->stateOfPaiement;
+    }
+
 
 }
 

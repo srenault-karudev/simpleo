@@ -193,7 +193,7 @@ window.onload=(()=>{
                 dataType : 'json',
             }).success(function (data) {
                 console.log(data);
-                window.location = Routing.generate('index_journal_facture_vente');
+                    window.location = Routing.generate('index_journal_facture_vente');
             });
 
         }
