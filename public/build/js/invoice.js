@@ -262,6 +262,18 @@ window.onload=(()=>{
             });
     }).keyup();
 
+    $("#search-two").keyup(function() {
+        var myvartwo = $("#search-two").val().toUpperCase();
+        regexp = new RegExp(myvartwo, "g");
+        $('.interlocutor .funkyradio-warning-2 > label ').each(function(){
+            if($(this).text().toUpperCase().match(regexp)){
+                $(this).show();
+            }else{
+                $(this).hide();
+            }
+        });
+    }).keyup();
+
 
 });
 

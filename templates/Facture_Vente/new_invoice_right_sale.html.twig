@@ -25,8 +25,9 @@
 
         <div class="right-two-sale">
             <p class="title_left"> QUI EST VOTRE CLIENT ?</p>
+            <input type="text" id="search-two" class="col-md-8" name="name" >
             <div class="scroll-two col-sm-8">
-                <div class="funkyradio2 funkyradio">
+                <div class="funkyradio2 funkyradio interlocutor">
                     {% for child in form2.person_id %}
                         <div class="funkyradio-warning-2 col-md-12">{{ form_widget(child) }} {{ form_label(child) }}</div>
                     {% endfor %}
