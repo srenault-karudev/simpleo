@@ -1,24 +1,40 @@
+
+
 .gauche{
 
-
-
-
-    height: 300px;
-    width: 500px;
+    margin-left: 30px;
+    height: 250px;
+    width: 400px;
     margin-top: 20px;
     padding:6px 6px 6px 6px;
     border-radius:8px;
     background:white;
+    float: left;
 
 
     box-shadow: 1px 1px 5px grey;
 }
 
 .droite{
-
-    height: 300px;
-    width: 700px;
+    margin-right: 30px;
+    height: 400px;
+    width: 600px;
     margin-top: 20px;
+    padding:6px 6px 6px 6px;
+    border-radius:8px;
+    background:white;
+    float: right;
+
+
+    box-shadow: 1px 1px 5px grey;
+}
+
+
+.infos{
+
+    height: 120px;
+    width: 250px;
+
     padding:6px 6px 6px 6px;
     border-radius:8px;
     background:white;
@@ -28,5 +44,33 @@
 }
 
 .show{
-    display: inline-block;
+margin-top: 10px;
+}
+
+
+table {
+    border-collapse:collapse;
+    width:90%;
+}
+th, td {
+    border:1px solid black;
+    width:20%;
+
+}
+td {
+    text-align:center;
+}
+
+th{
+    color: purple;
+}
+legend {
+    margin:auto;
+    padding:10px!important;
+    font-weight:bold !important;
+    color: purple !important;
+}
+
+label{
+    color :purple;
 }

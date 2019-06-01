@@ -30,7 +30,8 @@
                         <thead>
                         <tr>
                             <th>Numero</th>
-                            <th>Date</th>
+                            <th>Date Facture</th>
+                            <th>Date de saisie</th>
                             <th>Fournisseur</th>
                             <th>Prix HT</th>
                             <th>Prix TTC</th>
@@ -43,7 +44,8 @@
                         {% for invoice in properties %}
                             <tr>
                                 <td class="centerDiv">{{ invoice.id }}</td>
-                                <td>{{ invoice.date  |date("m/d/Y") }}</td>
+                                <td>{{ invoice.date  |date("d/m/Y") }}</td>
+                                <td>{{ invoice.entryDate  |date("d/m/Y") }}</td>
                                 <td>{{ invoice.client }}</td>
                                 <td>{{ invoice.getPriceHt() }} €</td>
                                 <td>{{ invoice.getPriceTt() }} €</td>

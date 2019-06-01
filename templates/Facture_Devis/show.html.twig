@@ -1,16 +1,8 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheets %}
+    
     <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/show.css') }}">
 {% endblock %}
- {#{% set actions = invoice.actions %}#}
-                        {#{% dump(actions) %}#}
-
-                        {#{% for action in actions  %}#}
-
-                            {#<dt class="text-muted">Registre</dt>#}
-                            {#<dd>{{ action.record }}</dd>#}
-
-                        {#{% endfor %}#}
 
 {% block content %}
 
@@ -19,27 +11,49 @@
     <div class="show">
 
         <div class="gauche">
-            <legend style="text-align: center">Informations</legend>
+            <legend style="margin: auto">Informations</legend>
             <div class="row">
                 <!-- Start .row -->
                 <div class="col-md-12">
                     <dl class="mt20">
 
 
-                        <div class="col-md-12">
+                        <div style="margin-left: 50px">
 
-                            <dt class="text-muted">Moyen de Paiement : </dt>
-                            <dd>{{ invoice.paiement }}</dd>
 
-                            <dt class="text-muted">Fournisseur : </dt>
-                            <dd>{{ invoice.client }}</dd>
+                            <div class="form-group" style="padding: 7px;">
+                                <label class="col-md-3  control-label ">Fournisseur :</label>
+                                {{ invoice.client }}
+                            </div>
 
-                            <dt class="text-muted">Date de création : </dt>
-                            <dd>{{ invoice.date |date("m/d/Y")  }}</dd>
+                            <div class="form-group" style="padding: 7px;">
+                                <label class="col-md-3  control-label ">Date de Facture :</label>
+                                {{ invoice.date  |date("d/m/Y") }}
+                            </div>
 
-                            <dt class="text-muted">Fichier : </dt>
-                            {#{% dump(customer.image) %}#}
-                            {#{% if customer.image is not null %}<a target="_blank" href="{{ vich_uploader_asset(customer, 'imageFile') }}"  />Fichier joint</a>{% endif %}</dd>#}
+                            <div class="form-group" style="padding: 7px;">
+                                <label class="col-md-3  control-label ">Date de Saisie :</label>
+                                {{  invoice.entryDate  |date("d/m/Y") }}
+                            </div>
+
+
+
+                            <div class="form-group" style="padding: 7px;">
+                                <label class="col-md-3  control-label ">Moyen de Paiement :</label>
+                                {{  invoice.paiement }}
+                            </div>
+
+
+
+
+                            <div class="form-group" style="padding: 7px;">
+                                <label class="col-md-3  control-label ">Fichier :</label>
+
+                                {% if invoice.imageFile is not null %}<a target="_blank" href="{{ vich_uploader_asset(action, 'imageFile') }}"  />Fichier joint</a>
+                                {% else %}
+                                aucun fichier
+                                {% endif %}</dd>
+                            </div>
 
 
                         </div>
@@ -52,24 +66,79 @@
         </div>
 
         <div class="droite">
-            <legend style="text-align: center">Récapitulatif des actions</legend>
+            <legend>Récapitulatif des actions</legend>
+            {% set actions = invoice.actions %}
 
 
-                <table>
+            <table cellpadding="7" style="margin: auto; margin-top: 20px">
 
                 <thead>
-                <tr style="padding:20px;">
-                    <th>Numero</th>
-                    <th>Date</th>
-                    <th>Fournisseur</th>
-                    <th>Prix HT</th>
-                    <th>Prix TTC</th>
-                    <th>Payé</th>
-                    <th>Actions</th>
+                <tr>
+                    <th>Compte</th>
+                    <th>Taux Tva</th>
+                    <th>Quantité</th>
+                    <th>Tva</th>
+                    <th>M.unitaire</th>
+
 
                 </tr>
-                </thead>    
-                </table>
+                </thead>
+                <tbody>
+
+                {% for action in actions %}
+                    <tr>
+                        <td>
+                            {{ action.record.Num }}
+                        </td>
+                        <td>
+
+                            {{ action.tva }} %
+                        </td>
+                        <td>
+                            {{ action.quantity }}
+                        </td>
+                        <td>
+                            {{ action.getTvaAmount()}} €
+                        </td>
+                        <td>
+                            {{ action.getUnitAmount() }}
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <br>
+            <div class="infos" style="margin: auto; text-align: center">
+
+
+                <div class="form-group" style="padding: 7px;">
+                    <label class="col-md-3  control-label ">Prix HT :</label>
+                    {{ invoice.getPriceHt() }} €
+                </div>
+
+                <div class="form-group" style="padding: 7px;">
+                    <label class="col-md-3  control-label ">Prix HT :</label>
+                    {{ invoice.getPriceTt() }} €
+                </div>
+
+                <div class="form-group" style="padding: 7px;">
+                    <label class="col-md-3  control-label ">Payé :</label>
+                    {% if invoice.stateOfPaiement == false %}
+                        <img style="height: 25px" class="social-media"
+                             src="{{ asset('build/img/icone-croix-rouge-png-3.png') }}" alt="croix">
+
+                    {% else %}
+                        <img style="height: 20px" class="social-media"
+                             src="{{ asset('build/img/success_icon-icons.com_52365.png') }}" alt="success">
+                    {% endif %}
+                </div>
+
+
+            </div>
+
 
         </div>
 

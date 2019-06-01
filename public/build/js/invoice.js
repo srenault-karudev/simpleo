@@ -167,7 +167,7 @@ window.onload=(()=>{
         $paiement=$('input[type=radio][name="invoice_buy[record_id]"]:checked').attr('value');
         $client=$('input[type=radio][name="invoice_buy[person_id]"]:checked').attr('value');
         $date=$('#invoice_buy_invoice_date').val();
-        $file =$("#action_buy_imageFile").val();
+        $file =$("#invoice_buy_imageFile").val();
         var data2=new Array();
         data2.push(actions);
         data2.push($paiement);

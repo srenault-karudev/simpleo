@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Validator\Constraints\Date;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
 
 
 
@@ -15,6 +18,7 @@ use Symfony\Component\Validator\Constraints\Date;
  *
  * @ORM\Table(name="Invoice")
  * @ORM\Entity(repositoryClass="App\Repository\InvoiceRepository")
+ * @Vich\Uploadable
  */
 class Invoice
 {
@@ -33,6 +37,15 @@ class Invoice
      * @ORM\Column(name="invoice_date", type="date", nullable=false)
      */
     private $date;
+
+
+    /**
+     * @var Date
+     *
+     * @ORM\Column(name="entry_date", type="date", nullable=false)
+     */
+    private $entryDate;
+
 
     /**
      * @var boolean
@@ -108,11 +121,25 @@ class Invoice
     private $stateOfPaiement = false;
 
 
+    /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+
 
     public function __construct()
     {
         $this->user = new ArrayCollection();
         $this->actions = new ArrayCollection();
+        $this->entryDate = new \DateTime();
     }
 
     public function getId(): ?int
@@ -296,6 +323,43 @@ class Invoice
         return $this->stateOfPaiement;
     }
 
+
+    public function setImageFile(\Symfony\Component\HttpFoundation\File\File $imageFile = null): Action
+    {
+        $this->imageFile = $imageFile;
+
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @return Date
+     */
+    public function getEntryDate(): ?\DateTimeInterface
+    {
+        return $this->entryDate;
+    }
+
+    /**
+     * @param Date $entryDate
+     */
+    public function setEntryDate(Date $entryDate)
+    {
+        $this->entryDate = $entryDate;
+    }
 
 }
 
