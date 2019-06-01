@@ -33,15 +33,17 @@
                 <img src="http://37.187.127.4/images/Logo.png"
                      class="Simpleo-logo" alt="Simpleo logo">
             </a>
-            <li class="nav-link "><a class="BoutonLogin"  href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+            {% if app.user is not null %}
+                {% set formula = app.user.formula %}
+            {% endif %}
+            {% if app.user is null %}
+                <li class="nav-link "><a class="BoutonLogin" href="{{ path('fos_user_security_login') }}">SE
+                        CONNECTER</a></li>
+            {% else %}
+                <li class="nav-link "><a class="BoutonLogin" href="{{ path('dashboard', {'formula' : formula }) }}">MON
+                        COMPTE</a></li>
+            {% endif %}
         </ul>
-
-        {#{% dump(app.user.formula) %}#}
-        {#{%  if app.user.formula is not null %}#}
-            {#{% set formula  = app.user.formula %}#}
-        {#{% else %}#}
-            {#{% set formula  = formula %}#}
-        {#{% endif %}#}
 
     </div>
 </nav>

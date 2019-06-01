@@ -18,8 +18,11 @@
     background-color: white;
 }
 
+a{
+    text-decoration: none!important;
+}
 .active-link a{
-    color: rebeccapurple;
+    color: rebeccapurple !important;
 }
 
 .nav-item{
@@ -40,9 +43,9 @@
     transition-duration: 0.2s;
 }
 
-.nav-item:hover a{
-    color: rebeccapurple;
-    transition-duration: 0.2s;
+.nav-item:hover a {
+    color: rebeccapurple!important;
+    transition-duration: 0.2s!important;
 }
 
 h1{
@@ -75,9 +78,9 @@ h2{
 }
 
 li.nav-link a{
-    float: right;
-    right: 10px;
-    text-decoration: none;
+    float: right!important;
+    right: 10px!important;
+    text-decoration: none!important;
 }
 
 .icon{
@@ -194,6 +197,7 @@ li.nav-link a{
     .bienvenue img{
         display: none;
     }
+
 }
 
 

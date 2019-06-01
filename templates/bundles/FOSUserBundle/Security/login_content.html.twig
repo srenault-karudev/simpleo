@@ -11,9 +11,7 @@
 
 
 </head>
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+
 <body>
 <div class=" fadeInDown centerDiv">
     <div id="formContent">
@@ -21,37 +19,45 @@
 
         <!-- Icon -->
         <div class="fadeIn first">
-           <a href="{{ path('homepage') }}"> <img class ="logo" src="http://37.187.127.4/images/Logo.png" id="icon" alt="User Icon" /></a>
+            <a href="{{ path('homepage') }}"> <img class="logo" src="http://37.187.127.4/images/Logo.png" id="icon"
+                                                   alt="User Icon"/></a>
 
         </div>
 
         <!-- Login Form -->
         <form action="{{ path("fos_user_security_check") }}" method="post">
             {% if csrf_token %}
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
             {% endif %}
 
             {#<label for="username">{{ 'security.login.username'|trans }}</label>#}
-            <input class="fadeIn second" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" placeholder="Identifiant" />
+            <input class="fadeIn second" type="text" id="username" name="_username" value="{{ last_username }}"
+                   required="required" autocomplete="username" placeholder="Identifiant"/>
 
             {#<label for="password">{{ 'security.login.password'|trans }}</label>#}
-            <input class="fadeIn third" type="password" id="password" name="_password" required="required" autocomplete="current-password" placeholder="Mot de passe" />
+            <input class="fadeIn third" type="password" id="password" name="_password" required="required"
+                   autocomplete="current-password" placeholder="Mot de passe"/>
 
-            {#<div class="fadeIn fourth ">#}
-                {#<input type="checkbox" id="remember_me" name="_remember_me" value="on" />#}
-                {#<label class="remember" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>#}
 
-            {#</div>#}
-
-            <input class="fadeIn fourth" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            <input class="fadeIn fourth" type="submit" id="_submit" name="_submit"
+                   value="{{ 'security.login.submit'|trans }}"/>
         </form>
-        {#{{ dump(app.session.flashbag.all()) }};#}
+
+
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+
+        {% endif %}
+
+
         {% for type, messages in app.session.flashbag.all() %}
 
             {% for message in messages %}
-                <div class="flash-{{ type }} alert-{{ type }}">
+                <div class="alert alert-success" role="alert">
                     {% if message == "L'utilisateur a été créé avec succès." %}
-                    {{ message }}
+                        {{ message }}
                     {% endif %}
 
                 </div>

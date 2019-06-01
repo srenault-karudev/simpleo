@@ -99,30 +99,30 @@
 
 
 
-            <li class="nav-item active-link">
+            <li class="nav-item ">
                 <a class="nav-link" href="{{ path('dashboard', {'formula' : formula}) }}">Tableau de bord</a>
             </li>
 
 
-            <li class="nav-item achatsDropdown">
+            <li class="nav-item achatsDropdown {% if app.request.attributes.get('_route') == 'index_journal_facture_achat' %}active-link{% endif %} ">
                 <div class="dropdown">
-                    <a class="nav-link"> Achats <i class="fa fa-caret-down"></i></a>
+                    <a class="nav-link"style="color: white"> Achats <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
                         <a href="{{ path('index_journal_facture_achat') }}" id="achats" class="w3-bar-item w3-button ">Achats</a>
-                        <a href="{{ path('new_invoice_buy') }}" class="w3-bar-item w3-button enreAchats">Enregistrer un achat</a>
-                        <a href="" class="w3-bar-item w3-button">Journal</a>
+                        {#<a href="{{ path('new_invoice_buy') }}" class="w3-bar-item w3-button enreAchats">Enregistrer un achat</a>#}
+                        <a href="#" class="w3-bar-item w3-button">Journal</a>
                     </div>
                 </div>
             </li>
 
 
-            <li class="nav-item ventesDropdown">
+            <li class="nav-item ventesDropdown {% if app.request.attributes.get('_route') == 'index_journal_facture_vente' %}active-link{% endif %} " ">
                 <div class="dropdown">
-                    <a class="nav-link">Ventes <i class="fa fa-caret-down"></i></a>
+                    <a class="nav-link"style="color: white">Ventes <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
                         <a href="{{ path('index_journal_facture_vente') }}" class="w3-bar-item w3-button">Ventes</a>
-                        <a href="{{ path('new_invoice_sale') }}" class="w3-bar-item w3-button">Enregistrer une Vente</a>
-                        <a href="#" class="w3-bar-item w3-button">Créer une Facture</a>
+                        {#<a href="{{ path('new_invoice_sale') }}" class="w3-bar-item w3-button">Enregistrer une Vente</a>#}
+                        <a href="#" class="w3-bar-item w3-button">Journal</a>
                     </div>
                 </div>
             </li>
@@ -145,7 +145,7 @@
 
             <li style="float: right;margin-right: 20px" class="nav-item ">
                 <div class="dropdown">
-                    <a class="nav-link" href="#"><i class="fas fa-user"></i> Mon Compte<i
+                    <a class="nav-link" style="color: white"><i class="fas fa-user"></i> Mon Compte<i
                                 class="fa fa-caret-down" style='margin-left: 7px;'></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
                         <a class="w3-bar-item w3-button" href="{{ path('fos_user_profile_edit') }}">Profil</a>
@@ -154,7 +154,7 @@
                                 <a class="w3-bar-item w3-button"
                                    href="{{ path('company_form',{'id': app.user.company.id}) }}"><span
                                             class="txt">Mon entreprise</span></a>
-                                <a class="w3-bar-item w3-button" href="{{ path('choiceMode') }}">Changer de formule</a>
+                                <a class="w3-bar-item w3-button" href="{{ path('choiceMode') }}"> Formule</a>
                             {% endif %}
                         {% endif %}
                         <a class="w3-bar-item w3-button" href="{{ path('fos_user_security_logout') }}">Se

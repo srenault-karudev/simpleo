@@ -308,3 +308,11 @@ h1{
     border-radius: 4px;
     box-sizing: border-box;
 }
+
+a{
+    text-decoration: none;
+}
+
+h1{
+    color : purple;
+}
