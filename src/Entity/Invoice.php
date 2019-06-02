@@ -108,6 +108,13 @@ class Invoice
     private $stateOfPaiement = false;
 
 
+    /**
+     * @var Date
+     *
+     * @ORM\Column(name="paiment_date", type="date", nullable=false)
+     */
+    private $paiment_date;
+
 
     public function __construct()
     {
@@ -294,6 +301,18 @@ class Invoice
     public function getStateOfPaiement(): ?bool
     {
         return $this->stateOfPaiement;
+    }
+
+    public function getPaimentDate(): ?\DateTimeInterface
+    {
+        return $this->paiment_date;
+    }
+
+    public function setPaimentDate(\DateTimeInterface $paiment_date): self
+    {
+        $this->paiment_date = $paiment_date;
+
+        return $this;
     }
 
 
