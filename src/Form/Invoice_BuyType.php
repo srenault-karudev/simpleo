@@ -19,6 +19,8 @@ use MongoDB\Driver\Manager;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -53,6 +55,13 @@ class Invoice_BuyType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
             ))
+
+            ->add('imageFile', FileType::class,[
+                'required' => false,
+                'label' => 'Fichier'
+            ])
+
+
 
             ->add('invoice_date', DateType::class, array(
                 'required' => true,

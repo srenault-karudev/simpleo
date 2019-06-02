@@ -2,8 +2,6 @@ body {
     min-width: 320px;
 }
 
-
-
 .navColor {
     background-image: radial-gradient(circle, rgb(109,104,189), rgb(141,86,141), rgb(109,104,189));
 }
@@ -24,7 +22,7 @@ body {
 }
 
 .active-link a{
-    color: rebeccapurple !important;
+    color: rebeccapurple;
 }
 
 .nav-item{
@@ -51,15 +49,15 @@ body {
 }
 
 h1{
-   color: rebeccapurple !important;
-    font-family: 'Montserrat', sans-serif !important;
+   color: rebeccapurple;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
 h2{
-    color: rebeccapurple !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 140% !important;
+    color: rebeccapurple;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 140%;
 }
 
 .smallhead{
@@ -118,8 +116,8 @@ h2{
     margin-bottom: -10px;
 }
 
-li.nav-link a {
-    float: right ;
+li.nav-link a{
+    float: right;
     right: 10px;
     text-decoration: none;
 }

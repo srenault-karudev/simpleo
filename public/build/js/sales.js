@@ -1,5 +1,8 @@
 window.onload=(()=>{
 
+
+
+
     function automatOne() {
         var $e = $("#erreur_form_number_one");
         var $b = $("#erreur_form_number_two");
@@ -80,9 +83,11 @@ window.onload=(()=>{
         $qtt=$("#action_sale_quantity").val();
         $action_sale_unit_amount=$("#action_sale_unit_amount").val();
         $action_sale_tva_amount=$("#action_sale_tva_amount").val();
+
         $registre=$('input[type=radio][name="action_sale[record_id]"]:checked').attr('value');
         $tva=$('input[type=radio][name="action_sale[tva]"]:checked').attr('value');
         if(($registre==undefined) || ($tva==undefined) || ($qtt=='') || ($action_sale_unit_amount=='') || ($action_sale_tva_amount=='') || (testIsNotANumber($action_sale_unit_amount)) || (testIsNotANumber($action_sale_tva_amount)) || ($action_sale_tva_amount<0) || ($action_sale_unit_amount<0) ){
+
             $b.text("! ERREUR DANS LE FORMULAIRE, Nous rappelons que tous les champs sont obligatoires").show();
             return false
         }else{
@@ -94,10 +99,13 @@ window.onload=(()=>{
 
 
     $('.confirmation_action_button_sale').click( function(){
+
         $qtt=$("#action_sale_quantity").val();
         $action_sale_unit_amount=$("#action_sale_unit_amount").val();
         $action_sale_tva_amount=$("#action_sale_tva_amount").val();
+
         $registre=$('input[type=radio][name="action_sale[record_id]"]:checked').attr('value');
+
         $tva=$('input[type=radio][name="action_sale[tva]"]:checked').attr('value');
         var data=new Array();
         data.push($registre);
@@ -161,6 +169,22 @@ window.onload=(()=>{
 
         if (validation2(data2)){
             console.log("ok");
+
+            $.ajax({
+
+                url: Routing.generate(
+                    'ajaxInvoiceRouteSale',
+                    {
+
+                        'data': data2
+                    }),
+                type : 'GET',
+                dataType : 'json',
+            }).success(function (data) {
+                console.log(data);
+                    window.location = Routing.generate('index_journal_facture_vente');
+            });
+
         }
 
     });

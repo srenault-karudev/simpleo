@@ -39,10 +39,13 @@ class IndexInvoiceBuyController extends Controller
 
 
     /**
-     * @Route("/index_journal_facture_achat", name="index_journal_facture_achat")
+     * @Route("/index_journal_facture_achat", name="index_journal_facture_achat",options = {"expose" : true})
+     * @Method({"GET"})
+     *
      */
     public function index(PaginatorInterface $paginator, Request $request)
     {
+      //  dump('App/public/uploads/images/products/Cv.pdf');
         $em = $this->getDoctrine()->getManager();
         $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(),1);
         $data = $paginator->paginate(
@@ -84,13 +87,12 @@ class IndexInvoiceBuyController extends Controller
      */
     public function show( Invoice $invoice){
         return $this->render('Facture_Devis/show.html.twig',array(
-            'customer' => $invoice,
+            'invoice' => $invoice,
         ));
     }
 
 
     /**
-     * .
      *
      * @Route("/invoice_delete{id}/delete", name="invoice_delete")
      * Method({"GET"})
@@ -99,7 +101,6 @@ class IndexInvoiceBuyController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $em->remove($invoice->getActions());
         $em->remove($invoice);
         $em->flush();
         return $this->redirectToRoute('index_journal_facture_achat');
@@ -150,6 +151,7 @@ class IndexInvoiceBuyController extends Controller
         foreach ($customerRepository as $cR) {
             $invoice->setClient($cR);
         }
+
         foreach ($paimentRepository as $pR) {
             $invoice->setPaiement($pR);
         }
@@ -179,9 +181,14 @@ class IndexInvoiceBuyController extends Controller
             $action->setTvaAmount($amountTava);
             $action->setQuantity($qtte);
             $action->setUnitAmount($unitAmount);
-           // $file = new File($file_string);
-           //$action->setImageFile($file);
-           //$action->setImage($fileString);
+
+
+
+
+//            $file = new File('App/public/uploads/images/products/AttestationDroit.pdf');
+//            //$action->setImage($fileString);
+//            $action->setImageFile($file);
+
 
             $action->setInvoice($invoice);
 
@@ -192,7 +199,7 @@ class IndexInvoiceBuyController extends Controller
 
 
 
-        return $this->redirectToRoute('index_journal_facture_achat');
+        return $this->json([]);
     }
 
 }

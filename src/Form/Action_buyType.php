@@ -76,10 +76,7 @@ class Action_buyType extends AbstractType
 
             ))
 
-            ->add('imageFile', FileType::class,[
-                'required' => false,
-                'label' => 'Fichier'
-            ])
+
 
             ->add('unit_amount', NumberType::class, array(
                 'attr' => array(

@@ -47,6 +47,12 @@
                             <dt class="text-muted">N° TVA Intercommunautaire</dt>
                             <dd>{{ customer.numtva }}</dd>
                         {% endif %}
+                        <dt class="text-muted">Fichier</dt>
+                        <dd>
+
+                            {#{% dump(customer.image) %}#}
+                            {#{% if customer.image is not null %}<a target="_blank" href="{{ vich_uploader_asset(customer, 'imageFile') }}"  />Fichier joint</a>{% endif %}</dd>#}
+
 
                     </dl>
                 </div>

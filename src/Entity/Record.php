@@ -86,7 +86,7 @@ class Record
         return $this;
     }
 
-    public function getNom(): ?int
+    public function getNom(): ?string
     {
         return $this->Nom;
     }

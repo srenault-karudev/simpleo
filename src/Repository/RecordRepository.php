@@ -43,8 +43,6 @@ class RecordRepository extends \Doctrine\ORM\EntityRepository
                 ->orWhere('r.Num = 53')
                 ->orWhere('r.Num = 455');
 
-//                ->setParameter('banque', '512');
-
         }
 
 
@@ -55,6 +53,17 @@ class RecordRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('r')
             ->where('r.Num = :num')
             ->setParameter('num', $num);
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function allRecords(){
+
+        $qb = $this->createQueryBuilder('r')
+            ->where('r.Num like :firstValue')
+            ->orWhere('r.Num like :secondValue')
+            ->setParameter('firstValue', '6%')
+            ->setParameter('secondValue', '7%');
 
         return $qb->getQuery()->getResult();
     }

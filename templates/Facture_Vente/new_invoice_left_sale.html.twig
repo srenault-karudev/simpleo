@@ -1,14 +1,20 @@
+
 {% block title %}{% endblock %}
 {% block head %}{% endblock %}
-    {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/facture-devis.css') }}">
-    {% endblock %}
+
+   {% block stylesheets %}
+       <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/facture-devis.css') }}">
+       <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+       <link rel="stylesheet" href="/resources/demos/style.css">
+
+   {% endblock %}
 {% block content %}
 
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
     <div class="left_block">
         <div class="left_one">
             <p class="title_left">De quelle nature est votre achat ?
+
                 <input type="text" id="search"  name="name" >
             <div class="form-error">
             </div>
@@ -68,39 +74,21 @@
     <div class="left_four">
         <div id="erreur_form" style="color: red"></div>
         <button type="button" class="confirmation_action_button_sale">Je Valide Ma Saisie</button>
+
+
     </div>
+
     {{ form_end(form) }}
+
 
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('build/js/sales.js') }}"></script>
+    <script src="{{ asset('build/js/record.js') }}"></script>
+    <script async src="//code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
 
 
-    {#<script>#}
-
-    {#$(document).on('click', "#search", function(){#}
-    {#var texte =  $("#value").val();#}
-    {#console.log(texte);#}
-    {#that = $(this);#}
-    {#$.ajax({#}
-    {#url:'{{ (path('new_invoice_buy')) }}',#}
-    {#type: "GET",#}
-    {#dataType: "json",#}
-    {#data: {#}
-    {#"value": ''+texte+''#}
-    {#},#}
-    {#async: true,#}
-    {#success: function (data)#}
-    {#{#}
-    {#console.log(data)#}
-
-    {#}#}
-    {#});#}
-    {#return false;#}
-
-    {#});#}
-    {#</script>#}
 
 {% endblock %}
 
