@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col col-xs-6">
                             <a href="{{ path('new_invoice_buy') }}">
-                                <button  class="btn btn-success">
+                                <button class="btn btn-success">
                                     + Nouvel Achat
                                 </button>
                             </a>
@@ -50,22 +50,16 @@
                                 <td>{{ invoice.getPriceHt() }} €</td>
                                 <td>{{ invoice.getPriceTt() }} €</td>
                                 <td>
-                                    {% if invoice.stateOfPaiement == false  %}
-                                        <img style="height: 25px" class="social-media" src="{{ asset('build/img/icone-croix-rouge-png-3.png') }}" alt="linkedin">
-
-                                    {% else %}
-                                            <img style="height: 20px" class="social-media" src="{{ asset('build/img/success_icon-icons.com_52365.png') }}" alt="linkedin">
-                                    {% endif %}
+                                    <input id="idPaiement" type="checkbox">
                                 </td>
                                 <td>
                                     <a class="btn btn-default"
                                        href="{{ path('invoice_show', { 'id': invoice.id }) }}"
-                                    ><em
-                                                class="fa fa-eye"></em></a>
-                                    {#<a class="btn btn-default"#}
-                                       {#href="{{ path('invoice_file', { 'id': invoice.id }) }}">#}
-                                    {#<em#}
-                                                {#class="fa fa-file-pdf-o"></em></a>#}
+                                    ><em class="fa fa-eye"></em></a>
+                                    <a class="btn btn-danger"
+                                            href="{{ path('invoice_delete', { 'id': invoice.id }) }}">
+                                        <em class="fa fa-trash"></em></a>
+
 
                                 </td>
                             </tr>
@@ -83,6 +77,12 @@
         </div>
     </div>
     </body>
+    <script>
+
+        $("#idPaiement").change(function() {
+
+        });
+    </script>
 
     {% include 'footer.html.twig' %}
 {% endblock %}

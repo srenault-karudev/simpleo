@@ -4,6 +4,7 @@
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Customer/index.css') }}">
+
     <body>
 
     <div class="row">
@@ -30,7 +31,8 @@
                         <thead>
                         <tr>
                             <th>Numero</th>
-                            <th>Date</th>
+                            <th>Date Facture</th>
+                            <th>Date de saisie</th>
                             <th>Fournisseur</th>
                             <th>Prix HT</th>
                             <th>Prix TTC</th>
@@ -44,6 +46,7 @@
                             <tr>
                                 <td class="centerDiv">{{ invoice.id }}</td>
                                 <td>{{ invoice.date  |date("m/d/Y") }}</td>
+                                <td>{{ invoice.entryDate  |date("d/m/Y") }}</td>
                                 <td>{{ invoice.client }}</td>
                                 <td>{{ invoice.getPriceHt() }} €</td>
                                 <td>{{ invoice.getPriceTt() }} €</td>
@@ -61,9 +64,8 @@
                                     ><em
                                                 class="fa fa-eye"></em></a>
                                     <a class="btn btn-danger"
-                                            {#href="{{ path('invoice_delete', { 'id': invoice.id }) }}"><em#}
-                                    ><em
-                                                class="fa fa-trash"></em></a>
+                                       href="{{ path('invoice_sale_delete', { 'id': invoice.id }) }}">
+                                        <em class="fa fa-trash"></em></a>
 
                                 </td>
                             </tr>

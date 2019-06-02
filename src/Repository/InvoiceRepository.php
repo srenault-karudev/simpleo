@@ -22,7 +22,7 @@ class InvoiceRepository extends \Doctrine\ORM\EntityRepository
             ->andWhere('i.invoice_type = :type')
             ->setParameter('user', $user->getId())
             ->setParameter('type',$type)
-            ->orderBy('i.date', 'asc');
+            ->orderBy('i.date', 'DESC');
         return $qb->getQuery()->getResult();
     }
 

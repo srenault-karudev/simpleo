@@ -101,7 +101,6 @@ class IndexInvoiceBuyController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $em->remove($invoice->getActions());
         $em->remove($invoice);
         $em->flush();
         return $this->redirectToRoute('index_journal_facture_achat');

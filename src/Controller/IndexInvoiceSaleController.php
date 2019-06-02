@@ -83,6 +83,21 @@ class IndexInvoiceSaleController extends Controller
 
 
     /**
+     *
+     * @Route("/invoice_sale_delete{id}/delete", name="invoice_sale_delete")
+     * Method({"GET"})
+     */
+    public function deleteAction(Request $request, Invoice $invoice)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($invoice);
+        $em->flush();
+        return $this->redirectToRoute('index_journal_facture_vente');
+    }
+
+
+    /**
      * @Route("/ajaxInvoiceSaleRoute", name="ajaxInvoiceRouteSale",options = {"expose" : true})
      * @Method({"GET"})
      */

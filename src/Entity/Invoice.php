@@ -85,7 +85,7 @@ class Invoice
     /**
      * @var Collection
      *
-     * @ORM\OneToMany(targetEntity="Action", mappedBy="invoice")
+     * @ORM\OneToMany(targetEntity="Action", mappedBy="invoice",cascade={"persist", "remove"}, orphanRemoval=true))
      */
     private $actions;
 
@@ -132,6 +132,8 @@ class Invoice
      * @var File
      */
     private $imageFile;
+
+
 
 
 
