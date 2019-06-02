@@ -1,4 +1,4 @@
-{% include  'layout.html.twig' %}
+{% include 'layout.html.twig' %}
 
 {% block stylesheets %}
     
@@ -19,35 +19,35 @@
                     <dl class="mt20">
 
 
-                        <div style="margin-left: 50px">
+                        <div style="margin-left: 50px; margin-top: 12px">
 
 
-                            <div class="form-group" style="padding: 7px;">
-                                <label class="col-md-3  control-label ">Fournisseur :</label>
+                            <div class="form-group" >
+                                <label class=" control-label ">Fournisseur :</label>
                                 {{ invoice.client }}
                             </div>
 
-                            <div class="form-group" style="padding: 7px;">
-                                <label class="col-md-3  control-label ">Date de Facture :</label>
+                            <div class="form-group">
+                                <label class="  control-label ">Date de Facture :</label>
                                 {{ invoice.date  |date("d/m/Y") }}
                             </div>
 
-                            <div class="form-group" style="padding: 7px;">
-                                <label class="col-md-3  control-label ">Date de Saisie :</label>
+                            <div class="form-group" >
+                                <label class=" control-label ">Date de Saisie :</label>
                                 {{  invoice.entryDate  |date("d/m/Y") }}
                             </div>
 
                             {% if invoice.getInvoiceType() == true %}
-                            <div class="form-group" style="padding: 7px;">
-                                <label class="col-md-3  control-label ">Moyen de Paiement :</label>
+                            <div class="form-group" >
+                                <label class=" control-label ">Moyen de Paiement :</label>
                                 {{  invoice.paiement }}
                             </div>
                             {% endif %}
 
 
 
-                            <div class="form-group" style="padding: 7px;">
-                                <label class="col-md-3  control-label ">Fichier :</label>
+                            <div class="form-group">
+                                <label class=" control-label ">Fichier :</label>
 
                                 {% if invoice.imageFile is not null %}<a target="_blank" href="{{ vich_uploader_asset(action, 'imageFile') }}"  />Fichier joint</a>
                                 {% else %}
@@ -66,11 +66,11 @@
         </div>
 
         <div class="droite">
-            <legend>Récapitulatif des actions</legend>
+            <h3 style="margin-left:130px !important;">Récapitulatif des actions</h3>
             {% set actions = invoice.actions %}
 
 
-            <table cellpadding="7" style="margin: auto; margin-top: 20px">
+            <table cellpadding="7" style="margin: auto!important; margin-top: 20px!important">
 
                 <thead>
                 <tr>
@@ -114,18 +114,18 @@
             <div class="infos" style="margin: auto; text-align: center">
 
 
-                <div class="form-group" style="padding: 7px;">
-                    <label class="col-md-3  control-label ">Prix HT :</label>
+                <div class="form-group">
+                    <label class=" control-label ">Prix HT :</label>
                     {{ invoice.getPriceHt() }} €
                 </div>
 
-                <div class="form-group" style="padding: 7px;">
-                    <label class="col-md-3  control-label ">Prix TTC :</label>
+                <div class="form-group">
+                    <label class=" control-label ">Prix TTC :</label>
                     {{ invoice.getPriceTt() }} €
                 </div>
 
-                <div class="form-group" style="padding: 7px;">
-                    <label class="col-md-3  control-label ">Payé :</label>
+                <div class="form-group">
+                    <label class=" control-label ">Payé :</label>
                     {% if invoice.stateOfPaiement == false %}
                         <img style="height: 25px" class="social-media"
                              src="{{ asset('build/img/icone-croix-rouge-png-3.png') }}" alt="croix">

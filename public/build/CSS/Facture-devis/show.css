@@ -31,7 +31,7 @@
 
 
 .infos{
-
+    
     height: 120px!important;
     width: 250px!important;
     padding:6px 6px 6px 6px!important;
@@ -70,6 +70,13 @@ legend {
     color: purple !important;
 }
 
+
+h3   {
+    margin:auto;
+    padding:10px!important;
+    font-weight:bold !important;
+    color: purple !important;
+}
 label{
     color :purple!important;
 }
