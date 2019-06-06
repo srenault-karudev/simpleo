@@ -50,7 +50,11 @@
                                 <td>{{ invoice.getPriceHt() }} €</td>
                                 <td>{{ invoice.getPriceTt() }} €</td>
                                 <td>
-                                    <input id="idPaiement" type="checkbox">
+                                    {% if invoice.stateOfPaiement == true  %}
+                                        <input name="paiment[id]" id="idPaiement" type="checkbox" value="{{ invoice.id }}" checked>
+                                    {% else %}
+                                        <input name="paiment[id]" id="idPaiement" type="checkbox" value="{{ invoice.id }}">
+                                    {% endif %}
                                 </td>
                                 <td>
                                     <a class="btn btn-default"
@@ -77,12 +81,9 @@
         </div>
     </div>
     </body>
-    <script>
 
-        $("#idPaiement").change(function() {
+    <script src="{{ asset('build/js/Invoice/index.js') }}"></script>
 
-        });
-    </script>
 
     {% include 'footer.html.twig' %}
 {% endblock %}

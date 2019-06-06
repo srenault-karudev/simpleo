@@ -160,7 +160,6 @@ class IndexInvoiceBuyController extends Controller
         $em->flush();
 
 
-
         /* Enregistrement de l'action qui regroupe tout les factures en base de donnée    */
 
         foreach ($actions as $a) {
@@ -183,8 +182,6 @@ class IndexInvoiceBuyController extends Controller
             $action->setUnitAmount($unitAmount);
 
 
-
-
 //            $file = new File('App/public/uploads/images/products/AttestationDroit.pdf');
 //            //$action->setImage($fileString);
 //            $action->setImageFile($file);
@@ -198,6 +195,46 @@ class IndexInvoiceBuyController extends Controller
         }
 
 
+
+        return $this->json([]);
+    }
+
+
+    /**
+     * @Route("/indexAjaxAction", name="indexAjaxAction",options = {"expose" : true})
+     * @Method({"GET"})
+     */
+    public function indexAjaxAction(Request $request)
+    {
+
+        $invoiceId = $request->query->get('invoiceId');
+        $etat = $request->query->get('etat');
+
+        dump($invoiceId);
+        dump($etat);
+        $em = $this->getDoctrine()->getManager();
+
+
+        $invoice = $em->getRepository('App:Invoice')->find($invoiceId);
+
+        dump($invoice);
+        dump($invoice->isStateOfPaiement());
+
+        dump($etat);
+        if($etat == "false"){
+            $invoice->setStateOfPaiement(false);
+        }
+        else{
+            $invoice->setStateOfPaiement(true);
+        }
+
+
+         if (($invoice->isStateOfPaiement() == true)){
+             $invoice->setPaimentDate(new \DateTime());
+         }
+
+        $em->persist($invoice);
+        $em->flush();
 
         return $this->json([]);
     }
