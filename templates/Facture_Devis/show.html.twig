@@ -1,7 +1,7 @@
 {% include 'layout.html.twig' %}
 
 {% block stylesheets %}
-    
+
     <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/show.css') }}">
 {% endblock %}
 
@@ -22,7 +22,7 @@
                         <div style="margin-left: 50px; margin-top: 12px">
 
 
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <label class=" control-label ">Fournisseur :</label>
                                 {{ invoice.client }}
                             </div>
@@ -32,24 +32,38 @@
                                 {{ invoice.date  |date("d/m/Y") }}
                             </div>
 
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <label class=" control-label ">Date de Saisie :</label>
-                                {{  invoice.entryDate  |date("d/m/Y") }}
+                                {{ invoice.entryDate  |date("d/m/Y") }}
+                            </div>
+
+                            <div class="form-group">
+                                <label class=" control-label ">Date de Paiement :</label>
+                                {% if invoice.stateOfPaiement()  %}
+                                {{ invoice.getPaimentDate |date("d/m/Y") }}
+                                    {% else %}
+                                    en attente de paiement
+                                {% endif %}
                             </div>
 
                             {% if invoice.getInvoiceType() == true %}
-                            <div class="form-group" >
-                                <label class=" control-label ">Moyen de Paiement :</label>
-                                {{  invoice.paiement }}
-                            </div>
+                                <div class="form-group">
+                                    <label class=" control-label ">Moyen de Paiement :</label>
+                                    {% if invoice.paiement is not null %}
+                                        {{ invoice.paiement }}
+                                    {% else %}
+                                        non définis
+                                    {% endif %}
+                                </div>
                             {% endif %}
-
 
 
                             <div class="form-group">
                                 <label class=" control-label ">Fichier :</label>
 
-                                {% if invoice.imageFile is not null %}<a target="_blank" href="{{ vich_uploader_asset(action, 'imageFile') }}"  />Fichier joint</a>
+                                {% if invoice.imageFile is not null %}<a target="_blank"
+                                                                         href="{{ vich_uploader_asset(action, 'imageFile') }}"/>Fichier
+                                joint</a>
                                 {% else %}
                                 aucun fichier
                                 {% endif %}</dd>
@@ -98,7 +112,7 @@
                             {{ action.quantity }}
                         </td>
                         <td>
-                            {{ action.getTvaAmount()}} €
+                            {{ action.getTvaAmount() }} €
                         </td>
                         <td>
                             {{ action.getUnitAmount() }} €

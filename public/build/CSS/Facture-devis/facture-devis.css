@@ -191,10 +191,9 @@
 }
 
 #search-two{
-    margin: 20px auto 5px 30px;
+    margin: 20px auto 5px 80px;
     border-radius:8px;
     height: 40px;
-    width: 320px;
     box-shadow: 0px 0px 10px lightgrey;
 }
 

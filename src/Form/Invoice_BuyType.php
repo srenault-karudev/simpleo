@@ -37,7 +37,15 @@ class Invoice_BuyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
+        $choix = [
+            'oui' =>'oui',
+            'non' => 'non',
+
+        ];
+
         $builder
+
+
 
             ->add('record_id', EntityType::class, [
                 'class' => Record::class,
@@ -60,6 +68,13 @@ class Invoice_BuyType extends AbstractType
                 'required' => false,
                 'label' => 'Fichier'
             ])
+
+            ->add('paid', ChoiceType::class, array(
+                'choices' => $choix,
+                'expanded' => true,
+                'multiple' => false,
+                'mapped' => false
+            ))
 
 
 
