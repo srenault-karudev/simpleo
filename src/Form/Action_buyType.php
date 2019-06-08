@@ -16,6 +16,7 @@ use Doctrine\ORM\Mapping\Entity;
 use MongoDB\Driver\Manager;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -42,6 +43,10 @@ class Action_buyType extends AbstractType
             '10' => 10,
             '20' => 20
         ];
+
+
+
+
 
 
 
@@ -75,6 +80,7 @@ class Action_buyType extends AbstractType
                 )
 
             ))
+
 
 
 

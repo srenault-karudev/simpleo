@@ -22,15 +22,22 @@
         </div>
         <div class="right-two">
 
-            <p class="title_left"> MOYEN DE PAIEMENT</p>
 
 
-            <div class="form-error">
+
+
+            <div class="funkyradio col-md-5 ">
+                <p class="title_left"> AVEZ-VOUS PAYEZ VOTRE FACTURE ?</p>
+                {% for childPaid in form2.paid %}
+                    <div class="funkyradio-warning ">{{ form_widget(childPaid) }} {{ form_label(childPaid) }}</div>
+                {% endfor %}
             </div>
-            <div class="">
+
+            <div class="col-md-7" id="record_paiement" style="display: none">
+                <p class="title_left">QUEL EST VOTRE REGISTRE DE PAIEMENT ?</p>
                 <div class="funkyradio">
                     {% for children in form2.record_id %}
-                        <div class="funkyradio-warning col-md-8">{{ form_widget(children) }} {{ form_label(children) }}</div>
+                        <div class="funkyradio-warning col-md-12">{{ form_widget(children) }} {{ form_label(children) }}</div>
                     {% endfor %}
                 </div>
             </div>
@@ -41,18 +48,17 @@
 
         <div class="right-tree">
 
-            <p class="title_left"> QUI EST VOTRE FOURNISSEUR ?</p>
-            <input type="text" id="search-two" class="col-md-8" name="name" >
-            <div class="scroll-two col-md-8">
-                <div class="funkyradio2 funkyradio interlocutor">
-                    {% for child in form2.person_id %}
-                        <div class="funkyradio-warning-2 col-md-12">{{ form_widget(child) }} {{ form_label(child) }}</div>
-                    {% endfor %}
+            <p class="title_left" > QUI EST VOTRE FOURNISSEUR ?</p>
+
+                <input type="text" id="search-two" class="col-md-9" name="name" >
+                <div class="scroll-two col-md-10" style="margin-left: 60px;" >
+                    <div class="funkyradio2 funkyradio interlocutor">
+                        {% for child in form2.person_id %}
+                            <div class="funkyradio-warning-2 col-md-12">{{ form_widget(child) }} {{ form_label(child) }}</div>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
-                <button type=button class="new_client" value="0">+</button>
-            </div>
+
         </div>
 
 

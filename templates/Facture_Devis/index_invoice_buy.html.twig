@@ -11,6 +11,8 @@
         <div></div>
 
 
+
+
         <div style="margin-top: 50px;" class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default panel-table">
@@ -30,8 +32,9 @@
                         <thead>
                         <tr>
                             <th>Numero</th>
-                            <th>Date Facture</th>
+                            <th>Date de facture</th>
                             <th>Date de saisie</th>
+                            <th>Date de paiement</th>
                             <th>Fournisseur</th>
                             <th>Prix HT</th>
                             <th>Prix TTC</th>
@@ -46,14 +49,27 @@
                                 <td class="centerDiv">{{ invoice.id }}</td>
                                 <td>{{ invoice.date  |date("d/m/Y") }}</td>
                                 <td>{{ invoice.entryDate  |date("d/m/Y") }}</td>
+                                <td>
+                                {% if invoice.stateOfPaiement() == true %}
+                               {{ invoice.getPaimentDate()  |date("d/m/Y") }}
+                                    {% else %}
+                                        indéfinis
+                                {% endif %}
+                                </td>
                                 <td>{{ invoice.client }}</td>
                                 <td>{{ invoice.getPriceHt() }} €</td>
                                 <td>{{ invoice.getPriceTt() }} €</td>
                                 <td>
-                                    {% if invoice.stateOfPaiement == true  %}
-                                        <input name="paiment[id]" id="idPaiement" type="checkbox" value="{{ invoice.id }}" checked>
-                                    {% else %}
-                                        <input name="paiment[id]" id="idPaiement" type="checkbox" value="{{ invoice.id }}">
+                                    {% if invoice.stateOfPaiement == true or invoice.stateOfPaiement == 1 %}
+                                    <label class="switch">
+                                        <input disabled name="paiment[id]" id="idPaiement" type="checkbox" value="{{ invoice.id }}" checked >
+                                        <span class="slider round"></span>
+                                    </label>
+                                    {% elseif invoice.stateOfPaiement == 0 or  invoice.stateOfPaiement == false %}
+                                        <label class="switch">
+                                            <input name="paiment[id]" id="idPaiement" type="checkbox" value="{{ invoice.id }}" >
+                                            <span class="slider round"></span>
+                                        </label>
                                     {% endif %}
                                 </td>
                                 <td>

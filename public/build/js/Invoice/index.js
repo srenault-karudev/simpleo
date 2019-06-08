@@ -10,28 +10,47 @@ $(document).ready(function () {
 
             if (etat == true) {
 
-                alert("En cochant cette case, vous confirmez avoir payé la facutre " + idInvoice + '.')
+                //alert("En cochant cette case, vous confirmez avoir payé la facutre " + idInvoice + '.')      ;
+                var numRecord = prompt('Pour confirmer le paiement de la facture, \n' +
+                    'veuillez renseigner le  numéro du registre de paiement : \n' +
+                    '  455 : Associés - Comptes courants \n ' +
+                    ' 512 : Banque \n ' +
+                    ' 53 : caisse',
+                    "exmeple : 53");
 
-            } else {
-                alert("En décochant cette case, vous confirmez ne pas avoir payé la facutre " + idInvoice + ".")
+                console.log(numRecord);
+
+                if (numRecord != '455' && numRecord != '512' && numRecord != '53') {
+                    alert('Attention le numero de registre de paiement est incorrect')
+                    etat = false;
+
+                } else {
+
+                    $.ajax({
+                        url: Routing.generate(
+                            'indexAjaxAction',
+                            {
+                                'invoiceId': idInvoice,
+                                "etat": etat,
+                                "numRecord": numRecord
+                            }),
+                        type: 'GET',
+                        dataType: 'json'
+
+                    }).success(function (data) {
+                        console.log("envoyé")
+                    });
+
+
+                }
+                window.location = Routing.generate('index_journal_facture_achat');
+
+                console.log(idInvoice);
+                console.log(etat);
+
             }
 
-            $.ajax({
-                url: Routing.generate(
-                    'indexAjaxAction',
-                    {
-                        'invoiceId': idInvoice,
-                        "etat": etat
-                    }),
-                type: 'GET',
-                dataType: 'json'
 
-            }).success(function (data) {
-                console.log("envoyé")
-            });
-
-            console.log(idInvoice);
-            console.log(etat);
         });
 
 

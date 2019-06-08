@@ -45,12 +45,12 @@ class IndexInvoiceBuyController extends Controller
      */
     public function index(PaginatorInterface $paginator, Request $request)
     {
-      //  dump('App/public/uploads/images/products/Cv.pdf');
+        //  dump('App/public/uploads/images/products/Cv.pdf');
         $em = $this->getDoctrine()->getManager();
-        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(),1);
+        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(), 1);
         $data = $paginator->paginate(
             $invoices,
-            $request->query->getInt('page', 1),5
+            $request->query->getInt('page', 1), 5
         );
         $data->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
 
@@ -81,12 +81,12 @@ class IndexInvoiceBuyController extends Controller
 
 
     /**
-
      * @Route("/show_invoice/{id}", name="invoice_show")
      * @Method("GET")
      */
-    public function show( Invoice $invoice){
-        return $this->render('Facture_Devis/show.html.twig',array(
+    public function show(Invoice $invoice)
+    {
+        return $this->render('Facture_Devis/show.html.twig', array(
             'invoice' => $invoice,
         ));
     }
@@ -119,8 +119,6 @@ class IndexInvoiceBuyController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-
-        $paiementNum = $request->query->get('data')[1];
         $customerId = $request->query->get('data')[2];
         $date_string = $request->query->get('data')[3];
         $fileString = $request->query->get('data')[4];
@@ -128,9 +126,6 @@ class IndexInvoiceBuyController extends Controller
 
 
         $customerRepository = $em->getRepository('App:Person')->getCustomer($this->getUser(), $customerId);
-        $paimentRepository = $em->getRepository('App:Record')->getRecord($paiementNum);
-
-
 
 
         /* Enregistrement de la facture en base de donnée    */
@@ -152,13 +147,20 @@ class IndexInvoiceBuyController extends Controller
             $invoice->setClient($cR);
         }
 
-        foreach ($paimentRepository as $pR) {
-            $invoice->setPaiement($pR);
+        $paiementNum = $request->query->get('data')[1];
+
+        if ($paiementNum != null || $paiementNum != '') {
+            $invoice->setStateOfPaiement(true);
+            $invoice->setPaimentDate(new \DateTime());
+            $paimentRepository = $em->getRepository('App:Record')->getRecord($paiementNum);
+
+            foreach ($paimentRepository as $pR) {
+                $invoice->setPaiement($pR);
+            }
         }
-        $em = $this->getDoctrine()->getManager();
+
         $em->persist($invoice);
         $em->flush();
-
 
         /* Enregistrement de l'action qui regroupe tout les factures en base de donnée    */
 
@@ -189,11 +191,9 @@ class IndexInvoiceBuyController extends Controller
 
             $action->setInvoice($invoice);
 
-            $em = $this->getDoctrine()->getManager();
             $em->persist($action);
             $em->flush();
         }
-
 
 
         return $this->json([]);
@@ -209,29 +209,28 @@ class IndexInvoiceBuyController extends Controller
 
         $invoiceId = $request->query->get('invoiceId');
         $etat = $request->query->get('etat');
+        $numRecord = $request->get('numRecord');
 
-        dump($invoiceId);
-        dump($etat);
+
         $em = $this->getDoctrine()->getManager();
-
-
         $invoice = $em->getRepository('App:Invoice')->find($invoiceId);
 
-        dump($invoice);
-        dump($invoice->isStateOfPaiement());
 
-        dump($etat);
-        if($etat == "false"){
+        if ($etat == "false") {
             $invoice->setStateOfPaiement(false);
-        }
-        else{
+        } else {
             $invoice->setStateOfPaiement(true);
+            $paimentRepository = $em->getRepository('App:Record')->getRecord($numRecord);
+            foreach ($paimentRepository as $pR) {
+                $invoice->setPaiement($pR);
+            }
+
         }
 
 
-         if (($invoice->isStateOfPaiement() == true)){
-             $invoice->setPaimentDate(new \DateTime());
-         }
+        if (($invoice->isStateOfPaiement() == true)) {
+            $invoice->setPaimentDate(new \DateTime());
+        }
 
         $em->persist($invoice);
         $em->flush();
