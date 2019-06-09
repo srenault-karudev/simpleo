@@ -105,7 +105,6 @@ class IndexInvoiceSaleController extends Controller
     {
 
 
-        dump($request);
         $actions = $request->query->get('data')[0];
 
         $em = $this->getDoctrine()->getManager();
@@ -180,4 +179,44 @@ class IndexInvoiceSaleController extends Controller
 
 
     }
+
+
+    /**
+     * @Route("/indexSaleAjaxAction", name="indexSaleAjaxAction",options = {"expose" : true})
+     * @Method({"GET"})
+     */
+    public function indexSaleAjaxAction(Request $request)
+    {
+
+        $invoiceId = $request->query->get('invoiceId');
+        $etat = $request->query->get('etat');
+        $numRecord = $request->get('numRecord');
+
+
+        $em = $this->getDoctrine()->getManager();
+        $invoice = $em->getRepository('App:Invoice')->find($invoiceId);
+
+
+        if ($etat == "false") {
+            $invoice->setStateOfPaiement(false);
+        } else {
+            $invoice->setStateOfPaiement(true);
+            $paimentRepository = $em->getRepository('App:Record')->getRecord($numRecord);
+            foreach ($paimentRepository as $pR) {
+                $invoice->setPaiement($pR);
+            }
+
+        }
+
+
+        if (($invoice->isStateOfPaiement() == true)) {
+            $invoice->setPaimentDate(new \DateTime());
+        }
+
+        $em->persist($invoice);
+        $em->flush();
+
+        return $this->json([]);
+    }
+
 }

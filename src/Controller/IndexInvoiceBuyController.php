@@ -125,6 +125,9 @@ class IndexInvoiceBuyController extends Controller
         $user = $this->getUser();
 
 
+        dump($request->query->get('data')[5]);
+
+
         $customerRepository = $em->getRepository('App:Person')->getCustomer($this->getUser(), $customerId);
 
 

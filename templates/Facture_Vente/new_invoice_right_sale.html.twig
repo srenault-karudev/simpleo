@@ -24,18 +24,16 @@
             {#{{ form_widget(form2.record_id, {'attr': {'class': 'input_amount_qtt form-control'}} ) }}#}
 
         <div class="right-two-sale">
-            <p class="title_left"> QUI EST VOTRE CLIENT ?</p>
-            <input type="text" id="search-two" class="col-md-8" name="name" >
-            <div class="scroll-two col-sm-8">
+            <p class="title_left"> QUI EST VOTRE FOURNISSEUR ?</p>
+            <input type="text" id="search-two" class="col-md-9" name="name" >
+            <div class="scroll-two col-md-10" style="margin-left: 60px;" >
                 <div class="funkyradio2 funkyradio interlocutor">
                     {% for child in form2.person_id %}
                         <div class="funkyradio-warning-2 col-md-12">{{ form_widget(child) }} {{ form_label(child) }}</div>
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-sm-4">
-                <button type=button class="new_client" value="0">+</button>
-            </div>
+
         </div>
 
 
@@ -50,7 +48,7 @@
 
             </div>
             <div id="erreur_form_two" class="col-md-12" style="color: red; margin-top: 30px"></div>
-            <button type="button" class="confirmation_Def_action_button_sale">Je Valide Ma Facture Définitiveme</button>
+            <button type="button" class="confirmation_Def_action_button_sale">Je Valide Ma Facture Définitivement</button>
         </div>
     </div>
 
