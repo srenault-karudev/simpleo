@@ -143,10 +143,6 @@ class Invoice
     private $imageFile;
 
 
-
-
-
-
     public function __construct()
     {
         $this->user = new ArrayCollection();

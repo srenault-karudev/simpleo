@@ -1,6 +1,7 @@
 window.onload = (() => {
 
 
+
     $('#record_paiement').hide();
 
 
@@ -166,6 +167,8 @@ window.onload = (() => {
 
     $('.confirmation_Def_action_button').click(function () {
 
+
+
        var etatPaiement =  $('input[type=radio][name="invoice_buy[paid]"]:checked').attr('value');
 
         var actions = new Array();
@@ -179,10 +182,16 @@ window.onload = (() => {
             actions.push($ligne);
         });
 
+        var date = new Date();
+         date = date.getFullYear();
+
+
         $paiement = $('input[type=radio][name="invoice_buy[record_id]"]:checked').attr('value');
         $client = $('input[type=radio][name="invoice_buy[person_id]"]:checked').attr('value');
         $date = $('#invoice_buy_invoice_date').val();
         $file = $("#invoice_buy_imageFile").val();
+        $etat =  $('input[type=radio][name="invoice_buy[paid]"]:checked').attr('value');
+
         var data2 = new Array();
         data2.push(actions);
         if(etatPaiement == 'oui'){
@@ -194,6 +203,7 @@ window.onload = (() => {
         data2.push($client);
         data2.push($date);
         data2.push($file);
+        data2.push($etat);
 
         console.log(data2);
 
@@ -218,18 +228,20 @@ window.onload = (() => {
 
         }
 
+
     });
 
 
     function validation2(data) {
         var $b = $("#erreur_form_two");
-        if ((data[2] == undefined) || (data[3] == "") || (data[1] == undefined)) {
+        if ((data[2] == undefined) || (data[3] == "") || (data[6] == 'oui' && data[1] == undefined) ) {
             $b.text("Nous rappelons que tous les champs sont obligatoires").show();
             return false
         } else if (data[0].length == 0) {
             $b.text("Attention vous n'avez entré aucun achats").show();
             return false
         } else {
+            $b.text("Nous rappelons que tous les champs sont obligatoires").hide();
             return true;
         }
 

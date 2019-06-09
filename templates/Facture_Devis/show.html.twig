@@ -12,7 +12,7 @@
     <div class="show">
 
         <div class="gauche">
-            <legend style="margin: auto">Informations Facture n° {{ invoice.id }}</legend>
+            <legend class ="text-center"> Facture FR-{{ "now"|date("Y") }}-{{ invoice.id }}</legend>
             <div class="row">
                 <!-- Start .row -->
                 <div class="col-md-12">
@@ -46,7 +46,7 @@
                                 {% endif %}
                             </div>
 
-                            {% if invoice.getInvoiceType() == true %}
+
                                 <div class="form-group">
                                     <label class=" control-label ">Moyen de Paiement :</label>
                                     {% if invoice.paiement is not null %}
@@ -55,7 +55,6 @@
                                         non définis
                                     {% endif %}
                                 </div>
-                            {% endif %}
 
 
                             <div class="form-group">

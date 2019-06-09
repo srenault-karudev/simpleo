@@ -11,8 +11,6 @@
         <div></div>
 
 
-
-
         <div style="margin-top: 50px;" class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default panel-table">
@@ -46,7 +44,7 @@
                         <tbody style="text-align: center">
                         {% for invoice in properties %}
                             <tr>
-                                <td class="centerDiv">{{ invoice.id }}</td>
+                                <td class="centerDiv">FR-{{ "now"|date("Y") }}-{{ invoice.id }}</td>
                                 <td>{{ invoice.date  |date("d/m/Y") }}</td>
                                 <td>{{ invoice.entryDate  |date("d/m/Y") }}</td>
                                 <td>
