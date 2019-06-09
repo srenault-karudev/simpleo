@@ -12,29 +12,18 @@ namespace App\Repository;
 
 class RecordRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getRecords($boolean = false)
+    public function getRecords($val)
     {
-        if ($boolean == false) {
-
-
-            if (empty($_GET['value'])) {
-                return $qb = $this->createQueryBuilder('r')
-                    ->where('r.Num like :firstValue')
-                    ->orWhere('r.Num like :secondValue')
-                    ->setParameter('firstValue', '6%')
-                    ->setParameter('secondValue', '7%');
-
-            } else {
-                return $qb = $this->createQueryBuilder('r')
-                    ->where('r.Num like :firstValue')
-                    ->orWhere('r.Num like :secondValue')
-                    ->andWhere('r.Num like :value
-                  OR r.Format like :value
-                  OR r.Nom like :value')
-                    ->setParameter('firstValue', '6%')
-                    ->setParameter('secondValue', '7%')
-                    ->setParameter('value', '%' . $_GET['value'] . '%');
-            }
+        if ($val == 0) {
+            return $qb = $this->createQueryBuilder('r')
+                ->where('r.Num like :firstValue')
+                ->orWhere('r.Num like :secondValue')
+                ->setParameter('firstValue', '6%')
+                ->setParameter('secondValue', '7%');
+        }elseif ($val==1){
+            return $qb = $this->createQueryBuilder('r')
+                ->where('r.Num like :firstValue')
+                ->setParameter('firstValue', '7%');
         }
         else{
 
@@ -42,6 +31,8 @@ class RecordRepository extends \Doctrine\ORM\EntityRepository
                 ->where('r.Num = 512')
                 ->orWhere('r.Num = 53')
                 ->orWhere('r.Num = 455');
+
+//                ->setParameter('banque', '512');
 
         }
 
@@ -53,17 +44,6 @@ class RecordRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('r')
             ->where('r.Num = :num')
             ->setParameter('num', $num);
-
-        return $qb->getQuery()->getResult();
-    }
-
-    public function allRecords(){
-
-        $qb = $this->createQueryBuilder('r')
-            ->where('r.Num like :firstValue')
-            ->orWhere('r.Num like :secondValue')
-            ->setParameter('firstValue', '6%')
-            ->setParameter('secondValue', '7%');
 
         return $qb->getQuery()->getResult();
     }

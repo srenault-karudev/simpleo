@@ -8,10 +8,18 @@
 
 namespace App\Controller;
 
-
+use App\Entity\MyDate;
 use App\Entity\User;
+use App\Repository\ActionRepository;
+use http\Env\Response;
+use phpDocumentor\Reflection\DocBlock\Serializer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Intl\DateFormatter\IntlDateFormatter;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Validator\Constraints\DateTime;
 use Twig\Environment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -61,28 +69,88 @@ class DashboardController extends Controller
             $interval = $interval->format('%d');
 
         }
-//        if($formula == User::SIMPLE_ID){
-//          //  $user->setFormula($formula);
-//            $user->setState(true);
-//
-//        }
-//
-//        if($formula == User::COMPLETE_ID) {
-//           // $user->setFormula($formula);
-//            $user->setState(true);
-//        }
 
 
         $em = $this->getDoctrine()->getManager();
+        $monthData = array(
+            1 => 'Janvier',
+            2 => 'Février',
+            3 => 'Mars',
+            4 => 'Avril',
+            5 => 'Mai',
+            6 => 'Juin',
+            7 => 'Juillet',
+            8 => 'Août',
+            9 => 'Septembre',
+            10 => 'Octobre',
+            11 => 'Novembre',
+            12 => 'Décembre'
+        );
+        $today = new MyDate();
+        $month=$monthData[$today->getMonth()];
+        $year=$today->format('Y');
+        $lastMonth= $monthData[$today->getLastMonth()];
+        $lastMonthSpending= $em->getRepository('App:Action')->getLastMonthSpending($user);
+        $lastMonthTurnover=  $em->getRepository('App:Action')->getLastMonthTurnover($user);
+        $monthTurnover= $em->getRepository('App:Action')->getMonthTurnover($user);
+        $yearturnover =  $em->getRepository('App:Action')->getYearTurnover($user);
+        $numberofwaitinvoices =$em->getRepository('App:Action')->getWaitInvoices($user);
+        foreach ($lastMonthTurnover[0] as $key => $value){
+            if($key='lastmonthturnover'){
+                $valOne=$value;
+                foreach ($lastMonthSpending[0] as $key => $value){
+                    if($key='lastmonthspending'){
+                        $valTwo=$value;
+                    }
+                }
+            }
+        }
+        foreach ($monthTurnover[0] as $key => $value){
+            if($key='turnoverOfThisYear'){
+                $valTree=$value;
+            }
+        }
+        $evolution=round( ((($valTree/$valOne)-1)*100), 2 );
+        $lastmonthResult= $valOne-$valTwo;
+
         $em->persist($user);
         $em->flush();
 
 
+
+        $dataPoints = array(
+            array("label"=> "Education", "y"=> 284935),
+            array("label"=> "Entertainment", "y"=> 256548),
+            array("label"=> "Lifestyle", "y"=> 245214),
+            array("label"=> "Business", "y"=> 233464),
+            array("label"=> "Music & Audio", "y"=> 200285),
+            array("label"=> "Personalization", "y"=> 194422),
+            array("label"=> "Tools", "y"=> 180337),
+            array("label"=> "Books & Reference", "y"=> 172340),
+            array("label"=> "Travel & Local", "y"=> 118187),
+            array("label"=> "Puzzle", "y"=> 107530)
+        );
+
+        $mydata= json_encode($dataPoints, JSON_NUMERIC_CHECK);
+        dump($mydata);
         return $this->render('dashboard.html.twig', array(
+            'mydata'=>$mydata,
+            'month'=>$month,
+            'evolution' => $evolution,
+            'lastmonth' => $lastMonth,
+            'year' =>$year,
             'state' => $state,
             'interval' => $interval,
             'formula' => $formula,
-            'bool' => false
+            'bool' => false,
+            'infoGlobal' => array(
+                'lastmontresult' =>$lastmonthResult,
+                'monthturnover' => $monthTurnover,
+                'yearturnover' => $yearturnover,
+                'numberWaitInvoices' => $numberofwaitinvoices,
+                'lastmonthturnover' => $lastMonthTurnover,
+                'lastmonthspending' => $lastMonthSpending
+            )
         ));
 
     }

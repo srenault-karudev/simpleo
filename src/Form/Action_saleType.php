@@ -52,7 +52,7 @@ class Action_saleType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'query_builder' => function(RecordRepository $er){
-                    return $er->getRecords(false);
+                    return $er->getRecords(1);
                 }
 
             ])

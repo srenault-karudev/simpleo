@@ -41,31 +41,43 @@
             <div class="w3-third row1">
                 <div class="w3-card-4 row11">
                     <header class="w3-container">
-                        <h2 class="smallhead" >Chiffre d'affaires mensuel</h2>
+                        <h2 class="smallhead" >Chiffre d'affaires mensuel ( {{ month }} )</h2>
                     </header>
 
                     <div class="w3-container">
-                        <p>O €</p>
+                        {% if infoGlobal.monthturnover.0.turnoverOfThisMonth is null %}
+                            <p>0 €</p>
+                        {%  else  %}
+                           <p>{{ infoGlobal.monthturnover.0.turnoverOfThisMonth }} €</p>
+                        {%  endif  %}
                     </div>
                 </div>
 
                 <div class="w3-card-4 row12">
                     <header class="w3-container">
-                        <h2 class="smallhead">Chiffre d'affaires annuel</h2>
+                        <h2 class="smallhead">Chiffre d'affaires annuel ( {{ year }} )</h2>
                     </header>
 
                     <div class="w3-container">
-                        <p>99 897 €</p>
+                        {% if infoGlobal.yearturnover.0.turnoverOfThisYear is null %}
+                            <p>0 €</p>
+                        {%  else  %}
+                            <p>{{ infoGlobal.yearturnover.0.turnoverOfThisYear }} €</p>
+                        {%  endif  %}
                     </div>
                 </div>
 
                 <div class="w3-card-4 row13">
                     <header class="w3-container">
-                        <h2 class="smallhead">En attente de paiement : 6 factures</h2>
+                        <h2 class="smallhead">En attente de paiement : {{ infoGlobal.numberWaitInvoices.0.waitinvoices }} factures</h2>
                     </header>
 
                     <div class="w3-container">
-                        <p>2869 €</p>
+                    {% if infoGlobal.numberWaitInvoices.0.ttcprice is null %}
+                        <p>0 €</p>
+                    {%  else  %}
+                        <p>{{ infoGlobal.numberWaitInvoices.0.ttcprice }} €</p>
+                    {%  endif  %}
                     </div>
                 </div>
             </div>
@@ -77,8 +89,7 @@
                         <h2 style="color:purple ">Evolution du chiffre d'affaires</h2>
                     </div>
                     <br>
-                    <img src="http://37.187.127.4/images/capture1.png"
-                         style="width: 100%;padding-bottom: 98px;" class="Graphique-CA" alt="Evolution-CA">
+                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                 </div>
             </div>
 
@@ -87,32 +98,49 @@
                 <div class="w3-card-4">
 
                     <header class="w3-container">
-                        <h2 class="smallhead" >Dépenses du mois dernier</h2>
+                        <h2 class="smallhead" >Dépenses du mois dernier ( {{ lastmonth }} )</h2>
                     </header>
 
                     <div class="w3-container">
-                        <p>12 367 €</p>
+                        {% if infoGlobal.lastmonthspending.0.lastmonthspending is null %}
+                            <p>0 €</p>
+                        {%  else  %}
+                            <p>{{ infoGlobal.lastmonthspending.0.lastmonthspending }} €</p>
+                        {%  endif  %}
                     </div>
+
                     <header class="w3-container">
                         <h2 class="smallhead" >Chiffre d'affaires du mois dernier</h2>
                     </header>
 
                     <div class="w3-container">
-                        <p>47 694 €</p>
+                        {% if infoGlobal.lastmonthturnover.0.lastmonthturnover is null %}
+                            <p>0 €</p>
+                        {%  else  %}
+                            <p>{{ infoGlobal.lastmonthturnover.0.lastmonthturnover}} €</p>
+                        {%  endif  %}
                     </div>
                     <header class="w3-container">
-                        <h2 class="smallhead" >Résultat net du mois dernier</h2>
+                        <h2 class="smallhead" >Résultat net du mois dernier </h2>
                     </header>
 
                     <div class="w3-container">
-                        <p>35 327 €</p>
+                        {% if infoGlobal.lastmontresult is null %}
+                            <p>0 €</p>
+                        {%  else  %}
+                            <p>{{ infoGlobal.lastmontresult}} €</p>
+                        {%  endif  %}
                     </div>
                     <header class="w3-container">
-                        <h2 class="smallhead" >Evolution du chiffre d'affaires</h2>
+                        <h2 class="smallhead" >Evolution du chiffre d'affaires /Mois</h2>
                     </header>
 
                     <div class="w3-container">
-                        <p>44 %</p>
+                        {% if evolution is null %}
+                            <p>0 €</p>
+                        {%  else  %}
+                            <p>{{ evolution }} €</p>
+                        {%  endif  %}
                     </div>
 
                 </div>
@@ -124,6 +152,34 @@
         {{ include('dasboardOff.html.twig') }}
     {% endif %}
 {% endblock %}
+
+
+{% block extendJavascript %}
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+        window.onload = function() {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                theme: "light2",
+                title:{
+                    text: "Gold Reserves"
+                },
+                axisY: {
+                    title: "Gold Reserves (in tonnes)"
+                },
+                data: [{
+                    type: "column",
+                    yValueFormatString: "#,##0.## tonnes",
+                    dataPoints: {{ mydata }}
+        }]
+        });
+            chart.render();
+
+        }
+    </script>
+
+{% endblock extendJavascript %}
 
 
 
