@@ -100,6 +100,7 @@
 
 
             <li class="nav-item ">
+
                 <a class="nav-link" href="{{ path('dashboard', {'formula' : formula}) }}">Tableau de bord</a>
             </li>
 
@@ -145,7 +146,9 @@
 
             <li style="float: right;margin-right: 20px" class="nav-item ">
                 <div class="dropdown">
+
                     <a class="nav-link" style="color: white"><i class="fas fa-user"></i> Mon Compte<i
+
                                 class="fa fa-caret-down" style='margin-left: 7px;'></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
                         <a class="w3-bar-item w3-button" href="{{ path('fos_user_profile_edit') }}">Profil</a>
@@ -174,6 +177,11 @@
 {% endblock %}
 
 {% block javascripts %}
+
+
+    <script src="{{ asset('build/js/invoice.js') }}"></script>
+    <script src="{{ asset('build/js/devis.js') }}"></script>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

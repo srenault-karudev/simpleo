@@ -5,85 +5,165 @@
 {% block content %}
 
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/newcustomer.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/devis.css') }}">
 
     <body>
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
 
     <div style="margin-left: 15px;">
         <h1>Nouveau devis</h1>
         <br>
     </div>
 
-    <div class="w3-card" style="margin-left: 2%;margin-right: 2%; margin-bottom: 2%;">
-        <div class="w3-quarter" style="padding: 1%;">
-            <p>Client</p>
-            <input>
+    <div class="w3-card" style="margin-left: 2%;margin-right: 2%; margin-bottom:5%; padding-bottom: 7%;">
+        <div class="w3-col m3" style="padding: 1%;">
+            <div class="form-group" id="formIndividual">
+                {{ form_label(form.client, null, { 'label': 'Nom *','label_attr': {'class': ' spaceLeft col-sm-3 label-control lightForm'} }) }}
+                <div style="width: 50%; margin-left: 5%; margin-top: 10%;">
+                    {{ form_widget(form.client, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form.client) }}
+                </div>
+            </div>
         </div>
-        <div class="w3-quarter" style="padding: 1%; margin-left: -7%;">
-            <p>Date de création</p>
-            <input>
+        <div class="w3-col m3" style="padding: 1%; margin-left: -7%;">
+            <div class="form-group" id="formIndividual">
+                {{ form_label(form.dateCreation, null, { 'label': 'Date de création *','label_attr': {'class': ' label-control lightForm'} }) }}
+                <div style="width: 50%; margin-top: 1%;">
+                    {{ form_widget(form.dateCreation, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form.dateCreation) }}
+                </div>
+            </div>
         </div>
-        <div class="w3-quarter" style="padding: 1%; margin-left: -7%; margin-right: -6%;">
-            <p>Date d'expiration</p>
-            <input>
+        <div class="w3-col m3" style="padding: 1%; margin-left: -7%; margin-right: -6%;">
+            <div class="form-group" id="formIndividual">
+                {{ form_label(form.dateExpiration, null, { 'label': 'Date d\'expiration *','label_attr': {'class': ' label-control lightForm'} }) }}
+                <div style="width: 50%; margin-top: 1%;">
+                    {{ form_widget(form.dateExpiration, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form.dateExpiration) }}
+                </div>
+            </div>
         </div>
-        <div class="" style="padding: 1%;">
-            <p>Référence</p>
-            <input>
-        </div>
-    </div>
-
-    <div class="w3-card" style="margin-left: 2%;margin-right: 2%; margin-bottom: 5%;">
-        <div class="w3-quarter" style="padding: 1%;">
-            <p style="color: rgb(159,88,146);">Que vendez-vous ?</p>
-            <input>
-        </div>
-        <div class="w3-quarter" style="padding: 1%; margin-left: -7%;">
-            <p style="color: rgb(159,88,146);">Quel type de produit est-ce ?</p>
-            <input style="width: 75%;">
-        </div>
-        <div class="w3-quarter" style="padding: 1%; margin-left: -3%;">
-            <p style="color: rgb(159,88,146);">Quantité ?</p>
-            <input style="width: 20%;">
-        </div>
-        <div class="w3-quarter" style="padding: 1%; margin-left: -15%;">
-            <p style="color: rgb(159,88,146);">Prix HT</p>
-            <input style="width: 20%;">
-        </div>
-        <div class="w3-quarter" style="padding: 1%; margin-left: -15%;">
-            <p style="color: rgb(159,88,146);">Taux TVA</p>
-            <input style="width: 20%;">
-        </div>
-        <div class="w3-quarter" style="padding: 1%; margin-left: -15%; margin-right: -10%;">
-            <p style="color: rgb(159,88,146);">Remise</p>
-            <input style="width: 20%;">
-        </div>
-        <div class="" style="padding: 1%;">
-            <p style="color: rgb(159,88,146);">Montant TTC</p>
-            <input>
+        <div class="w3-col m3" style="padding: 1%;">
+            <div class="form-group" id="formIndividual">
+                {{ form_label(form.reference, null, { 'label': 'Référence *','label_attr': {'class': ' label-control lightForm'} }) }}
+                <div style="width: 70%; margin-top: 1%;">
+                    {{ form_widget(form.reference, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form.reference) }}
+                </div>
+            </div>
         </div>
     </div>
+    <div id="erreur_form1" style="color: red; margin-left: 2%; margin-bottom: 5%;"></div>
 
-    <div class="w3-card" style="margin-left: 2%;margin-right: 2%; margin-bottom: 10%;">
-        <div class="w3-quarter" style="padding: 1%;">
-            <p>Client</p>
-            <input>
+    {{ form_end(form) }}
+
+    {{ form_start(form2, {'attr': {'class': 'form-horizontal form2'}}) }}
+
+     <div class="w3-card" style="margin-left: 2%;margin-right: 2%; margin-bottom: 5%; padding-bottom: 7%;">
+        <div class="w3-col" style="padding: 1%; width: 270px;">
+            <div class="form-group" id="formIndividual"  style=" margin-left: 1%;">
+                {{ form_label(form2.article, null, { 'label': 'Que vendez-vous ? *','label_attr': {'class': 'label-control colorForm'} }) }}
+                <div>
+                    {{ form_widget(form2.article, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form2.article) }}
+                </div>
+            </div>
         </div>
-        <div class="w3-quarter" style="padding: 1%; margin-left: -7%;">
-            <p>Date de création</p>
-            <input>
+        <div class="w3-col" style="padding: 1%; margin-left: 2%; width: 270px;">
+            <div class="form-group" id="formIndividual">
+                {{ form_label(form2.record, null, { 'label': 'Quel type de produit est-ce ? *','label_attr': {'class': 'label-control colorForm'} }) }}
+                <div>
+                    {{ form_widget(form2.record, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form2.record) }}
+                </div>
+            </div>
         </div>
-        <div class="w3-quarter" style="padding: 1%; margin-left: -7%; margin-right: -6%;">
-            <p>Date d'expiration</p>
-            <input>
+        <div class="w3-col" style="padding: 1%; margin-left: 2%; width: 100px;">
+            <div class="form-group" id="formIndividual"  >
+                {{ form_label(form2.qtte, null, { 'label': 'Quantité *','label_attr': {'class': 'label-control colorForm'} }) }}
+                <div>
+                    {{ form_widget(form2.qtte, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form2.qtte) }}
+                </div>
+            </div>
         </div>
-        <div class="" style="padding: 1%;">
-            <p>Référence</p>
-            <input>
+        <div class="w3-col" style="padding: 1%; margin-left: 2%;width: 100px;">
+            <div class="form-group" id="formIndividual">
+                {{ form_label(form2.prixHT, null, { 'label': 'Prix HT *','label_attr': {'class': 'label-control colorForm'} }) }}
+                <div>
+                    {{ form_widget(form2.prixHT, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form2.prixHT) }}
+                </div>
+            </div>
+        </div>
+        <div class="w3-col" style="padding: 1%;margin-left: 2%; width: 100px;">
+            <div class="form-group" id="formIndividual">
+                {{ form_label(form2.tauxTVA, null, { 'label': '%TVA *','label_attr': {'class': 'label-control colorForm'} }) }}
+                <div>
+                    {{ form_widget(form2.tauxTVA, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form2.tauxTVA) }}
+                </div>
+            </div>
+        </div>
+        <div class="w3-col" style="padding: 1%;margin-left: 2%;width: 100px;">
+            <div class="form-group" id="formIndividual">
+                {{ form_label(form2.remise, null, { 'label': 'Remise *','label_attr': {'class': 'label-control colorForm'} }) }}
+                <div>
+                    {{ form_widget(form2.remise, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form2.remise) }}
+                </div>
+            </div>
+        </div>
+        <div class="w3-col" style="padding: 1%; margin-left: 2%; width: 120px;">
+            <div class="form-group" id="formIndividual">
+                {{ form_label(form2.montantTTC, null, { 'label': 'Montant TTC *','label_attr': {'class': 'label-control colorForm'} }) }}
+                <div>
+                    {{ form_widget(form2.montantTTC, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_errors(form2.montantTTC) }}
+                </div>
+            </div>
+        </div>
+         <div class="w3-col" style="padding: 1%; margin-left: 2%; width: 120px;">
+             <button type="button" class="action_button"><img class="tic" src="http://37.187.127.4/images/Tic.png"></button>
+         </div>
+    </div>
+    <div id="erreur_form2" style="color: red; margin-left: 2%; margin-bottom: 5%;"></div>
+    <div id="erreur_form_null" style="color: red; margin-left: 2%; margin-bottom: 5%;"></div>
+
+    <div class="w3-card" style="margin-bottom: 10%; margin-left: 2%;margin-right: 2%;">
+                    <table class="table-right" id="RecapDevis">
+                        <thead>
+                        <th>Article</th>
+                        <th>Type de Produit</th>
+                        <th>Quantité</th>
+                        <th>Prix HT</th>
+                        <th>Taux TVA</th>
+                        <th>Remise</th>
+                        <th>Montant TTC</th>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+
+        <div>
+
+            <button type="button" class="confirmation_devis_action_button">Je valide mon devis</button>
         </div>
     </div>
 
     </body>
+
+    {{ form_end(form2) }}
+
+<a href="{{ path('PDFGenerator') }}"><button type="button" class="generation_pdf">PDF</button> </a>
+
+    {% block extendJavascript %}
+        <script src="{{ asset('build/js/devis.js') }}"></script>
+    {% endblock extendJavascript %}
 
     {% include 'footer.html.twig' %}
 {% endblock %}

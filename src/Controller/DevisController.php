@@ -10,12 +10,14 @@ namespace App\Controller;
 
 
 use App\Entity\Devis;
+use App\Entity\DevisAction;
 use App\Entity\Person;
 use App\Entity\Provider;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -70,16 +72,20 @@ class DevisController extends Controller
 
         if($devis == null){
             $devis = new Devis();
-
         }
 
-        /*$devis->setPersonType('devis');
+        $devisAction = new DevisAction();
+
+
+        //$devis->setPersonType('devis');
 
         $devis->setUser($this->getUser());
         $form = $this->createForm('App\Form\DevisType',$devis);
+        $form2 = $this->createForm('App\Form\DevisActionType',$devisAction);
 
 
         $form->handleRequest($request);
+        $form2->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -88,10 +94,20 @@ class DevisController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('index_devis');
-        }*/
+        }
+
+         if ($form2->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($devis);
+            $em->flush();
+
+            return $this->redirectToRoute('index_devis');
+        }
 
         return $this->render('devis/form.html.twig', [
-            //'form' => $form->createView(),
+            'form' => $form->createView(),
+            'form2' => $form2->createView(),
         ]);
     }
 
