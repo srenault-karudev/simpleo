@@ -38,9 +38,9 @@ class DevisAction
     /**
      * @var string
      *
-     * @ORM\Column(name="vente", type="date", nullable=false)
+     * @ORM\Column(name="article", type="string", nullable=false)
      */
-    private $vente;
+    private $article;
 
     /**
      * @var Collection
@@ -94,17 +94,6 @@ class DevisAction
         return $this->id;
     }
 
-    public function getVente(): ?\DateTimeInterface
-    {
-        return $this->vente;
-    }
-
-    public function setVente(\DateTimeInterface $vente): self
-    {
-        $this->vente = $vente;
-
-        return $this;
-    }
 
     public function getQtte(): ?int
     {
@@ -186,6 +175,18 @@ class DevisAction
     public function setRecord(?Record $record): self
     {
         $this->record = $record;
+
+        return $this;
+    }
+
+    public function getArticle(): ?string
+    {
+        return $this->article;
+    }
+
+    public function setArticle(string $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }

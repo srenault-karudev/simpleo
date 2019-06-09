@@ -153,7 +153,7 @@ class Devis
     /**
      * @return \DateTime
      */
-    public function getDateCreation(): \DateTime
+    public function getDateCreation(): ?\DateTime
     {
         return $this->dateCreation;
     }
@@ -169,7 +169,7 @@ class Devis
     /**
      * @return \DateTime
      */
-    public function getDateExpiration(): \DateTime
+    public function getDateExpiration(): ?\DateTime
     {
         return $this->dateExpiration;
     }
@@ -185,7 +185,7 @@ class Devis
     /**
      * @return string
      */
-    public function getClient(): string
+    public function getClient(): ?string
     {
         return $this->client;
     }
@@ -201,7 +201,7 @@ class Devis
     /**
      * @return string
      */
-    public function getTelephone(): string
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
@@ -217,7 +217,7 @@ class Devis
     /**
      * @return string
      */
-    public function getEtat(): string
+    public function getEtat(): ?string
     {
         return $this->etat;
     }
@@ -233,7 +233,7 @@ class Devis
     /**
      * @return float
      */
-    public function getMontant(): float
+    public function getMontant(): ?float
     {
         return $this->montant;
     }
