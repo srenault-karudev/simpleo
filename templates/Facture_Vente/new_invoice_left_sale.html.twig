@@ -13,7 +13,7 @@
     {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
     <div class="left_block">
         <div class="left_one">
-            <p class="title_left">De quelle nature est votre achat ?
+            <p class="title_left">De quelle nature est votre vente ?
 
                 <input type="text" id="search"  name="name" >
             <div class="form-error">
@@ -51,6 +51,11 @@
 
         <div class="left_tree">
 
+            <div class="form_group" style="margin-top: 13px;">
+                <p class="title_left" >Article</p>
+                {{ form_widget(form.article, {'attr': {'class': 'form-control','id':'search'}} ) }}
+            </div>
+
             <div class="form_group">
                 <p class="title_left">Quantité</p>
                 {{ form_widget(form.quantity, {'attr': {'class': 'input_amount_qtt form-control'}} ) }}
@@ -69,6 +74,7 @@
             </div>
             <div id="erreur_form_number_two" style="margin: -10px 0px 10px 0px; color: red; font-size: 10px;"></div>
         </div>
+
     </div>
 
     <div class="left_four">

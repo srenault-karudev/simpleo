@@ -77,7 +77,12 @@ class Action
     private $unit_amount;
 
 
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="article", type="string", length=255, nullable=false)
+     */
+    private $article;
 
 
 
@@ -191,6 +196,23 @@ class Action
         $this->record = $record;
 
         return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getArticle(): string
+    {
+        return $this->article;
+    }
+
+    /**
+     * @param string $article
+     */
+    public function setArticle(string $article)
+    {
+        $this->article = $article;
     }
 
 

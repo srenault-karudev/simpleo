@@ -12,12 +12,14 @@ namespace App\Form;
 use App\Entity\Record;
 use App\Repository\InvoiceRepository;
 use App\Repository\RecordRepository;
+use Doctrine\DBAL\Types\TextType;
 use Doctrine\ORM\Mapping\Entity;
 use MongoDB\Driver\Manager;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -81,8 +83,11 @@ class Action_buyType extends AbstractType
 
             ))
 
-
-
+            ->add('article', \Symfony\Component\Form\Extension\Core\Type\TextType::class, array(
+                'attr' => array(
+                'required'=>false,
+                )
+            ))
 
             ->add('unit_amount', NumberType::class, array(
                 'attr' => array(
@@ -90,5 +95,7 @@ class Action_buyType extends AbstractType
                     'min' => '0'
                 )
             ));
+
+
     }
 }

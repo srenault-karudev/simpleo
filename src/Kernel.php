@@ -4,6 +4,7 @@ namespace App;
 
 use FOS\UserBundle\FOSUserBundle;
 use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
+use Knp\Bundle\SnappyBundle\KnpSnappyBundle;
 use Stripe\Stripe;
 use FOS\JsRoutingBundle\FOSJsRoutingBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -46,6 +47,9 @@ class Kernel extends BaseKernel
             new Stripe(),
             new FOSJsRoutingBundle(),
             new VichUploaderBundle(),
+            new KnpSnappyBundle(),
+
+
 
 
 

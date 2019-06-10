@@ -45,6 +45,13 @@
 
         <div class="left_tree">
 
+
+            <div class="form_group" style="margin-top: 13px;">
+                <p class="title_left" >Article</p>
+                {{ form_widget(form.article, {'attr': {'class': 'form-control','id':'search'}} ) }}
+            </div>
+
+
             <div class="form_group">
                 <p class="title_left">Quantité</p>
                 {{ form_widget(form.quantity, {'attr': {'class': 'input_amount_qtt form-control'}} ) }}

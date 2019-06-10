@@ -16,7 +16,7 @@ $(document).ready(function () {
                     '  455 : Associés - Comptes courants \n ' +
                     ' 512 : Banque \n ' +
                     ' 53 : caisse',
-                    "exmeple : 53");
+                    "exemple : 53");
 
                 console.log(numRecord);
 

@@ -15,6 +15,7 @@ use App\Entity\Invoice;
 use App\Entity\PropertySearch;
 use App\Entity\Record;
 use App\Form\PropretySearchType;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Component\Pager\PaginatorInterface;
 use Stripe\Person;
 use Symfony\Component\HttpFoundation\File\File;
@@ -124,6 +125,8 @@ class IndexInvoiceBuyController extends Controller
         $fileString = $request->query->get('data')[4];
         $user = $this->getUser();
 
+        $dueDate = new \DateTime($date_string);
+
 
 //        dump($request->query->get('data')[5]);
 
@@ -143,6 +146,8 @@ class IndexInvoiceBuyController extends Controller
         $invoice->setInvoiceType(true);
         $invoice->setPriceHt($htPrice);
         $invoice->setPriceTt($ttcPrice);
+        $invoice->setDueDate($dueDate->modify('+3 month')) ;
+
         $customer = new Customer();
         $customer->setUser($user);
 
@@ -169,10 +174,11 @@ class IndexInvoiceBuyController extends Controller
 
         foreach ($actions as $a) {
             $regiser = $a[0];
-            $tva = $a[1];
-            $qtte = $a[2];
-            $amountTava = $a[3];
-            $unitAmount = $a[4];
+            $article = $a[1];
+            $tva = $a[2];
+            $qtte = $a[3];
+            $amountTava = $a[4];
+            $unitAmount = $a[5];
 
             $record = $em->getRepository('App:Record')->getRecord($regiser);
 
@@ -181,6 +187,7 @@ class IndexInvoiceBuyController extends Controller
                 $action->setRecord($r);
             }
 
+            $action->setArticle($article);
             $action->setTva($tva);
             $action->setTvaAmount($amountTava);
             $action->setQuantity($qtte);
@@ -240,5 +247,8 @@ class IndexInvoiceBuyController extends Controller
 
         return $this->json([]);
     }
+
+
+
 
 }

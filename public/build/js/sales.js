@@ -86,7 +86,9 @@ window.onload=(()=>{
 
         $registre=$('input[type=radio][name="action_sale[record_id]"]:checked').attr('value');
         $tva=$('input[type=radio][name="action_sale[tva]"]:checked').attr('value');
-        if(($registre==undefined) || ($tva==undefined) || ($qtt=='') || ($action_sale_unit_amount=='') || ($action_sale_tva_amount=='') || (testIsNotANumber($action_sale_unit_amount)) || (testIsNotANumber($action_sale_tva_amount)) || ($action_sale_tva_amount<0) || ($action_sale_unit_amount<0) ){
+        var article = $('#action_sale_article').val();
+
+        if(($registre==undefined) || ($tva==undefined) || (article == '')||  ($qtt=='') || ($action_sale_unit_amount=='') || ($action_sale_tva_amount=='') || (testIsNotANumber($action_sale_unit_amount)) || (testIsNotANumber($action_sale_tva_amount)) || ($action_sale_tva_amount<0) || ($action_sale_unit_amount<0) ){
 
             $b.text("! ERREUR DANS LE FORMULAIRE, Nous rappelons que tous les champs sont obligatoires").show();
             return false
@@ -107,12 +109,14 @@ window.onload=(()=>{
         $registre=$('input[type=radio][name="action_sale[record_id]"]:checked').attr('value');
 
         $tva=$('input[type=radio][name="action_sale[tva]"]:checked').attr('value');
+        var article = $('#action_sale_article').val();
         var data=new Array();
         data.push($registre);
         data.push($tva);
         data.push($qtt);
         data.push($action_sale_tva_amount);
         data.push($action_sale_unit_amount);
+        data.push(article);
         if(validation()){
             setDataRight(data);
         }
@@ -123,6 +127,7 @@ window.onload=(()=>{
     function setDataRight(data){
         var tr = document.createElement("tr");
         tr.innerHTML = "<td class='registre'>"+data['0']+"</td>"
+            +"<td class='article'>"+data['5']+"</td>"
             +"<td class='taux-tva'>"+data['1']+"</td>"
             +"<td class='qtt-achat'>"+data['2']+"</td>"
             +"<td class='mont-tva'>"+data['3']+"</td>"
@@ -153,6 +158,7 @@ window.onload=(()=>{
         $('.table-right tbody > tr').each(function(){
             $ligne=new Array();
             $ligne.push($(this).find(".registre").html());
+            $ligne.push($(this).find(".article").html());
             $ligne.push($(this).find(".taux-tva").html());
             $ligne.push($(this).find(".qtt-achat").html());
             $ligne.push($(this).find(".mont-tva").html());

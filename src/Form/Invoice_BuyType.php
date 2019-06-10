@@ -77,13 +77,10 @@ class Invoice_BuyType extends AbstractType
             ))
 
 
-
             ->add('invoice_date', DateType::class, array(
                 'required' => true,
                 'widget' => 'single_text',
-                // prevents rendering it as type="date", to avoid HTML5 date pickers
                 'html5' => false,
-                // adds a class that can be selected in JavaScript
                 'attr' => ['class' => 'js-datepicker'],
             ));
     }
