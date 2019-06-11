@@ -186,6 +186,9 @@ class IndexInvoiceBuyController extends Controller
             $action->setQuantity($qtte);
             $action->setUnitAmount($unitAmount);
 
+            $action->setTotalAmountTtc();
+
+
 
 //            $file = new File('App/public/uploads/images/products/AttestationDroit.pdf');
 //            //$action->setImage($fileString);

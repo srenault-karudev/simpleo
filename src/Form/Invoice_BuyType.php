@@ -53,7 +53,7 @@ class Invoice_BuyType extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'query_builder' => function(RecordRepository $er){
-                    return $er->getRecords(true);
+                    return $er->getRecords(2);
                 }
 
             ])

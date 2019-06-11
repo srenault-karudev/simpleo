@@ -1,17 +1,17 @@
 .footer{
     background-image: linear-gradient(to right, rgb(141, 86, 139), rgb(102, 104, 210));
-    color: white!important;
+    color: white;
 
 }
 
 .footer p{
-    color: white!important;
+    color: white;
 }
 
 .material-icons{
-    color: white!important;
+    color: white;
 }
 
-.material-icons:hover{
+.upup:hover{
     color: purple;
 }

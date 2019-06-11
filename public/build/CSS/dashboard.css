@@ -53,16 +53,22 @@ h1{
     font-family: 'Montserrat', sans-serif;
 }
 
-
-h2{
-    color: rebeccapurple;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 140%;
+.euros{
+    margin-top: 10px;
 }
 
 .smallhead{
-    font-size: 139.8%;
-    color: #6f2190;
+    font-size: 120%;
+    color: rebeccapurple;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.smallhead2{
+    font-size: 150%;
+    color: rebeccapurple;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
 }
 
 .w3-row-padding p{
@@ -160,8 +166,6 @@ li.nav-link a{
     text-decoration: none;
     display: block;
 }
-
-
 
 
 @media (max-width: 1024px ) {

@@ -12,8 +12,7 @@ use Symfony\Component\Finder\Comparator\NumberComparator;
  * Action
  *
  * @ORM\Table(name="Action")
- * @ORM\Entity
- *
+ * @ORM\Entity(repositoryClass="App\Repository\ActionRepository")
  */
 class Action
 {
@@ -76,6 +75,13 @@ class Action
      */
     private $unit_amount;
 
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="total_amount_ttc", type="float", nullable=false)
+     */
+    private $total_amount_ttc;
 
 
 
@@ -190,6 +196,18 @@ class Action
     {
         $this->record = $record;
 
+        return $this;
+    }
+
+    public function getTotalAmountTtc(): ?float
+    {
+        return $this->total_amount_ttc;
+    }
+
+    public function setTotalAmountTtc(): self
+    {
+        $qtt=$this->getQuantity();
+        $this->total_amount_ttc = $qtt*$this->getUnitAmount()+$this->getTvaAmount();
         return $this;
     }
 

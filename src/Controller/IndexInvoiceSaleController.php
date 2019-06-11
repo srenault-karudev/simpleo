@@ -66,8 +66,6 @@ class IndexInvoiceSaleController extends Controller
         $form = $this->createForm('App\Form\Action_saleType', $action);
         $form2 = $this->createForm('App\Form\Invoice_SaleType', $action);
 
-        $em = $this->getDoctrine()->getManager();
-        $records = $em->getRepository('App:Record')->allRecords();
 
         //dump($request->query->get('value'));
 
@@ -75,7 +73,6 @@ class IndexInvoiceSaleController extends Controller
         return $this->render('Facture_Vente/new_invoice_sale.html.twig',array(
             'form' => $form->createView(),
             'form2'=> $form2->createView(),
-            'records'=>$records
 
         ));
 
@@ -164,6 +161,7 @@ class IndexInvoiceSaleController extends Controller
             $action->setTvaAmount($amountTava);
             $action->setQuantity($qtte);
             $action->setUnitAmount($unitAmount);
+            $action->setTotalAmountTtc();
             $invoice->setPaiement(null);
 
             $action->setInvoice($invoice);
