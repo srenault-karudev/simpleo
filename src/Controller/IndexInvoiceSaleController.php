@@ -229,12 +229,14 @@ class IndexInvoiceSaleController extends Controller
      * @Route("/generate_index_sale/{id}",name="generate_index_sale")
      * @Method({"GET"})
      */
-    public function generateRetroCommission(Invoice $invoice){
+    public function generatePdf(Invoice $invoice){
 
         $snappy = $this->container->get('knp_snappy.pdf');
+        $user = $this->getUser();
 
         $html = $this->renderView('pdf/facturePdf.html.twig', array(
             'invoice'  => $invoice,
+            'user'  => $user,
         ));
 
         return new Response(

@@ -38,6 +38,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            {{ form_label(form.imageFile, null, { 'label': 'Logo','label_attr': {'class': '  col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             {{ form_label(form.legalForm, null, { 'label': 'Forme juridique','label_attr': {'class': 'col-md-3 control-label'} }) }}
@@ -50,6 +57,13 @@
                             {{ form_label(form.siren, null, { 'label': 'Siren','label_attr': {'class': 'col-md-3 control-label'} }) }}
                             <div class="col-md-9">
                                 {{ form_widget(form.siren, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.siret, null, { 'label': 'Siret','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.siret, {'attr': {'class': 'form-control'}} ) }}
                             </div>
                         </div>
 
@@ -67,6 +81,42 @@
                                 {{ form_widget(form.declaration, {'attr': {'class': 'form-control'}} ) }}
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.mobilephone, null, { 'label': 'Télephone','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.mobilephone, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.adress, null, { 'label': 'Adresse','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.adress, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.postCode, null, { 'label': 'Code postal','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.postCode, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.city, null, { 'label': 'Ville','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.city, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(form.country, null, { 'label': 'Pays','label_attr': {'class': 'col-md-3 control-label'} }) }}
+                            <div class="col-md-9">
+                                {{ form_widget(form.country, {'attr': {'class': 'form-control'}} ) }}
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             {{ form_label(form.startDateSocialYear, null, { 'label': 'Début de votre exercice social','label_attr': {'class': 'col-md-3 control-label'} }) }}

@@ -19,6 +19,10 @@
                         <a>
                             <img style="width: 25%; margin-bottom: -110px; margin-top: 10px;"
                                  src="http://37.187.127.4/images/Logo.png" data-holder-rendered="true"/>
+
+                            {#img style="width: 25%; margin-bottom: -110px; margin-top: 10px;"#}
+                            {#src="../../public/uploads/images/products/icone-croix-rouge-png-3.png" data-holder-rendered="true"#}
+                            {#alt="logo"#}
                         </a>
                     </div>
 
@@ -47,23 +51,23 @@
                 <div class="row contacts">
                     <div class="col invoice-to">
                         <p>
-                        <h2 class="name">HEIWA SHOP</h2> <br>
-                        40 RUE DU SOUVENIR<br>
-                        77140 NEMOURS<br>
-                        France<br>
-                        <p> 07 66 57 69 05<br>
-                            grandbard@gmail.com
+                        <h2 class="name">{{ user.company.socialReason }}</h2> <br>
+                        {{ user.company.adress }}<br>
+                        {{ user.company.postCode }} {{ user.company.city }}<br>
+                        {{ user.company.country }}<br>
+                        <p> {{ user.company.mobilephone }}<br>
+                            {{ user.email }}
                         </p>
                         <p>
                             <strong>TVA N° : </strong> FR 90844955126 <br>
-                            <strong>N° Siret : </strong>
+                            <strong>N° Siret :  </strong> {{ user.company.siret }}
                         </p>
                         </p>
 
                     </div>
 
                 </div>
-                <table border="0" cellspacing="0" cellpadding="0">
+                <table border="0" cellpadding="7">
                     <thead>
                     <tr>
                         <th class="headerTable "><strong>Article</strong></th>
@@ -81,16 +85,16 @@
 
                         <td> {{ action.article }} </td>
 
-                        <td class="center">{{ action.getUnitAmount() }} €</td>
+                        <td class="center">{{ action.getUnitAmount() |number_format(2, '.', ',') }}</td>
 
                         <td class="center">{{ action.quantity }}</td>
 
-                        <td class="center">{{ action.tva }}%</td>
+                        <td class="center">TVA {{ action.tva|number_format(2, '.', ',') }}%</td>
 
                         <td class ="center">
                             {% set quantity =  action.quantity %}
                             {% set price =  action.getUnitAmount() %}
-                            {{ quantity * price }} €
+                            {{ (quantity * price)|number_format(2, '.', ',')  }}
                         </td>
 
                     </tr>
@@ -105,26 +109,26 @@
                         <tr>
                             <td colspan="2"></td>
                             <td colspan="2">Montant HT</td>
-                            <td>{{ invoice.getPriceHt() }} €</td>
+                            <td>{{ invoice.getPriceHt()|number_format(2, '.', ',') }} €</td>
                         </tr>
                         <tr>
                             <td colspan="2"></td>
                             <td colspan="2"><strong>Montant TVA</strong></td>
                             {% set montantTva = invoice.getPriceTt()- invoice.getPriceHt()%}
-                            <td><strong>{{ montantTva }} € </strong></td>
+                            <td><strong>{{ montantTva|number_format(2, '.', ',') }} € </strong></td>
                         </tr>
                         <tr>
                             <td colspan="2"></td>
                             <td colspan="2"><strong>Total</strong></td>
-                            <td><strong>{{ invoice.getPriceTt() }} € </strong></td>
+                            <td><strong>{{ invoice.getPriceTt()|number_format(2, '.', ',') }} € </strong></td>
                         </tr>
                         <tr>
                             <td colspan="2"></td>
                             <td colspan="2">Montant payé</td>
                             {% if invoice.getStateOfPaiement() == true %}
-                            <td>{{ invoice.getPriceTt() }} €</td>
+                            <td>{{ invoice.getPriceTt() |number_format(2, '.', ',')}} €</td>
                             {% else %}
-                                <td>0.00 €</td>
+                                <td>(0|number_format(2, '.', ',') €</td>
                             {% endif %}
                         </tr>
                         <tr>
