@@ -38,7 +38,7 @@
 
         <div class="w3-row-padding">
 
-            <div class="w3-third row1">
+            <div class="w3-quarter row1">
                 <div class="w3-card-4 row11">
                     <header class="w3-container">
                         <h2 class="smallhead" >Chiffre d'affaires mensuel ( {{ month }} )</h2>
@@ -80,28 +80,42 @@
                     {%  endif  %}
                     </div>
                 </div>
-            </div>
 
+                <div class="w3-card-4 row14">
+                    <header class="w3-container">
+                        <h2 class="smallhead" style="color: red">facture(s) à Payer : {{ infoGlobal.invoicetopay.0.invoicestopay }}</h2>
+                    </header>
 
-            <div class="w3-third row2">
-                <div class="w3-card-4">
-                    <div class="w3-container w3-center">
-                        <h2 style="color:purple ">Evolution du chiffre d'affaires</h2>
+                    <div class="w3-container">
+                        {% if infoGlobal.invoicetopay.0.ttcprice is null %}
+                            <p>0 €</p>
+                        {%  else  %}
+                            <p>{{ infoGlobal.invoicetopay.0.ttcprice }} €</p>
+                        {%  endif  %}
                     </div>
-                    <br>
-                    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
                 </div>
             </div>
 
 
-            <div class="w3-third row3">
+            <div class="w3-half row2">
+                <div class="w3-card-4">
+                    <div class="w3-container w3-center">
+                        <h2 class="smallhead2">Evolution du Chiffre d'Affaires de {{ year }} </h2>
+                    </div>
+                    <br>
+                    <canvas id="myChart" width="400" height="274"></canvas>
+                </div>
+            </div>
+
+
+            <div class="w3-quarter row3">
                 <div class="w3-card-4">
 
                     <header class="w3-container">
                         <h2 class="smallhead" >Dépenses du mois dernier ( {{ lastmonth }} )</h2>
                     </header>
 
-                    <div class="w3-container">
+                    <div class="w3-container euros">
                         {% if infoGlobal.lastmonthspending.0.lastmonthspending is null %}
                             <p>0 €</p>
                         {%  else  %}
@@ -113,7 +127,7 @@
                         <h2 class="smallhead" >Chiffre d'affaires du mois dernier</h2>
                     </header>
 
-                    <div class="w3-container">
+                    <div class="w3-container euros">
                         {% if infoGlobal.lastmonthturnover.0.lastmonthturnover is null %}
                             <p>0 €</p>
                         {%  else  %}
@@ -124,7 +138,7 @@
                         <h2 class="smallhead" >Résultat net du mois dernier </h2>
                     </header>
 
-                    <div class="w3-container">
+                    <div class="w3-container euros">
                         {% if infoGlobal.lastmontresult is null %}
                             <p>0 €</p>
                         {%  else  %}
@@ -132,14 +146,14 @@
                         {%  endif  %}
                     </div>
                     <header class="w3-container">
-                        <h2 class="smallhead" >Evolution du chiffre d'affaires /Mois</h2>
+                        <h2 class="smallhead" >Evolution du chiffre d'affaires</h2>
                     </header>
 
-                    <div class="w3-container">
+                    <div class="w3-container euros">
                         {% if evolution is null %}
-                            <p>0 €</p>
+                            <p>0%</p>
                         {%  else  %}
-                            <p>{{ evolution }} €</p>
+                            <p>{{ evolution }} %</p>
                         {%  endif  %}
                     </div>
 
@@ -155,30 +169,9 @@
 
 
 {% block extendJavascript %}
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script>
-        window.onload = function() {
-
-            var chart = new CanvasJS.Chart("chartContainer", {
-                animationEnabled: true,
-                theme: "light2",
-                title:{
-                    text: "Gold Reserves"
-                },
-                axisY: {
-                    title: "Gold Reserves (in tonnes)"
-                },
-                data: [{
-                    type: "column",
-                    yValueFormatString: "#,##0.## tonnes",
-                    dataPoints: {{ mydata }}
-        }]
-        });
-            chart.render();
-
-        }
-    </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{ asset('build/js/dashboard.js') }}"></script>
 {% endblock extendJavascript %}
 
 
