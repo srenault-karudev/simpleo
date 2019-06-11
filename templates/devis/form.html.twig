@@ -21,18 +21,19 @@
     <div class="w3-card" style="margin-left: 2%;margin-right: 2%; margin-bottom:5%; padding-bottom: 7%;">
         <div class="w3-col m3" style="padding: 1%;">
             <div class="form-group" id="formIndividual">
-                {{ form_label(form.client, null, { 'label': 'Nom *','label_attr': {'class': ' spaceLeft col-sm-3 label-control lightForm'} }) }}
+                {{ form_label(form.client, null, { 'label': 'Client *','label_attr': {'class': ' spaceLeft col-sm-3 label-control lightForm'} }) }}
                 <div style="width: 50%; margin-left: 5%; margin-top: 10%;">
                     {{ form_widget(form.client, {'attr': {'class': 'form-control'}} ) }}
                     {{ form_errors(form.client) }}
                 </div>
+
             </div>
         </div>
         <div class="w3-col m3" style="padding: 1%; margin-left: -7%;">
             <div class="form-group" id="formIndividual">
                 {{ form_label(form.dateCreation, null, { 'label': 'Date de création *','label_attr': {'class': ' label-control lightForm'} }) }}
                 <div style="width: 50%; margin-top: 1%;">
-                    {{ form_widget(form.dateCreation, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_widget(form.dateCreation, {'attr': {'class': 'js-datepicker form-control'}} ) }}
                     {{ form_errors(form.dateCreation) }}
                 </div>
             </div>
@@ -41,7 +42,7 @@
             <div class="form-group" id="formIndividual">
                 {{ form_label(form.dateExpiration, null, { 'label': 'Date d\'expiration *','label_attr': {'class': ' label-control lightForm'} }) }}
                 <div style="width: 50%; margin-top: 1%;">
-                    {{ form_widget(form.dateExpiration, {'attr': {'class': 'form-control'}} ) }}
+                    {{ form_widget(form.dateExpiration, {'attr': {'class': 'js-datepicker form-control'}} ) }}
                     {{ form_errors(form.dateExpiration) }}
                 </div>
             </div>
@@ -55,6 +56,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <div id="erreur_form1" style="color: red; margin-left: 2%; margin-bottom: 5%;"></div>
 
@@ -163,6 +165,7 @@
 
     {% block extendJavascript %}
         <script src="{{ asset('build/js/devis.js') }}"></script>
+
     {% endblock extendJavascript %}
 
     {% include 'footer.html.twig' %}

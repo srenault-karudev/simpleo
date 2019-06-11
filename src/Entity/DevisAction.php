@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * DevisAction
  *
  * @ORM\Table(name="devisAction")
+ * @ORM\Entity(repositoryClass="App\Repository\DevisRepository")
  * @ORM\Entity
  */
 

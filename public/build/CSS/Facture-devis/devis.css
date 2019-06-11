@@ -41,4 +41,6 @@
 
 .spaceLeft{
     margin-left: 3px;
+    margin-right: 1px;
+    padding-right: 1px;
 }

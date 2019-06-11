@@ -19,4 +19,5 @@ class DevisRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('user', $user->getId());
         return $qb->getQuery()->getResult();
     }
+
 }

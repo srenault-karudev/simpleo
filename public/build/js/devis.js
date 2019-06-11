@@ -4,13 +4,14 @@ window.onload= function() {
         var tmp=new Array();
         var $article=$("#devis_action_article").val();
         var $record=$("#devis_action_record").val();
+        var $recordTexte=$("#devis_action_record option:selected").text();
         var $qtte=$("#devis_action_qtte").val();
         var $prixHT=$("#devis_action_prixHT").val();
         var $tauxTVA=$("#devis_action_tauxTVA").val();
         var $remise=$("#devis_action_remise").val();
         var $montantTTC=$("#devis_action_montantTTC").val();
 
-        tmp.push($article, $record, $qtte, $prixHT, $tauxTVA, $remise, $montantTTC);
+        tmp.push($article, $recordTexte, $qtte, $prixHT, $tauxTVA, $remise, $montantTTC, $record);
 
         if(validationAction()){
             setData(tmp);
@@ -50,6 +51,21 @@ window.onload= function() {
 
         if(validation() && devisIsNotNull(tabFinal)){
             console.log("OK");
+
+            $.ajax({
+
+                url: Routing.generate(
+                    'ajaxDevis',
+                    {
+
+                        'data': tabFinal
+                    }),
+                type: 'GET',
+                dataType: 'json',
+            }).success(function (data) {
+                window.location = Routing.generate('index_devis');
+            });
+
         }
 
     });
@@ -59,7 +75,8 @@ window.onload= function() {
     function setData(tmp){
         var tr = document.createElement("tr");
         tr.innerHTML = "<td class='article'>"+tmp['0']+"</td>"
-            +"<td class='typeProduit'>"+tmp['1']+"</td>"
+            +"<td style='display: none' class='typeProduit'>"+tmp['7']+"</td>"
+            +"<td class='typeProduitTexte'>"+tmp['1']+"</td>"
             +"<td class='quantite'>"+tmp['2']+"</td>"
             +"<td class='prixHT'>"+tmp['3']+"</td>"
             +"<td class='tauxTVA'>"+tmp['4']+"</td>"
@@ -90,7 +107,7 @@ window.onload= function() {
     function validation(){
         var $erreur = $("#erreur_form1");
 
-        var $client=$("#devis_client").val();
+        var $client=$("#devis_client option:selected").val();
         var $dateCreation=$("#devis_dateCreation").val();
         var $dateExpiration=$("#devis_dateExpiration").val();
         var $reference=$("#devis_reference").val();

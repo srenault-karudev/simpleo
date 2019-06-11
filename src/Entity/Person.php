@@ -153,6 +153,13 @@ abstract class Person
      */
     private $invoices;
 
+    /**
+     * @var Collection
+     *
+     * @ORM\OneToMany(targetEntity="Devis", mappedBy="person")
+     */
+    private $deviss;
+
 
     /**
      * @var string
@@ -198,6 +205,8 @@ abstract class Person
     {
         $this->team = new ArrayCollection();
         $this->invoices = new ArrayCollection();
+        $this->devis = new ArrayCollection();
+        $this->deviss = new ArrayCollection();
 
     }
 
@@ -499,6 +508,38 @@ abstract class Person
         return $this;
     }
 
+    /**
+     * @return Collection|Devis[]
+     */
+    public function getDeviss(): Collection
+    {
+        return $this->deviss;
+    }
+
+    public function addDeviss(Devis $deviss): self
+    {
+        if (!$this->deviss->contains($deviss)) {
+            $this->deviss[] = $deviss;
+            $deviss->setPerson($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDeviss(Devis $deviss): self
+    {
+        if ($this->deviss->contains($deviss)) {
+            $this->deviss->removeElement($deviss);
+            // set the owning side to null (unless already changed)
+            if ($deviss->getPerson() === $this) {
+                $deviss->setPerson(null);
+            }
+        }
+
+        return $this;
+    }
+    
+    
 //    public function getImage(): ?string
 //    {
 //        return $this->image;
