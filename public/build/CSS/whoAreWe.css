@@ -1,11 +1,27 @@
 .wrapper{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr  ;
+    font-family: "Comic Sans MS";
+    padding:50px;
+
 
 
 }
+.man{
+    padding-left: 300px;
+    padding-top: 50px;
+}
+.laptop{
+    padding-left: 200px;
+    padding-top: 50px;
+
+}
+.invoice{
+    padding-left: 100px;
+    padding-top: 50px;
+
+}
 .element{
-    background-color: white;
     margin: 3px;
 }
 .template1{
@@ -27,9 +43,27 @@
 p{
     margin-top: 20px;
     text-align: center;
+    color:black;
+
+
+}
+.element1{
+    border-width:2px;
+    border-style: outset;
+    border-radius:10px;
+
+
+}
+.element2{
+    border-width:2px;
+    border-style: outset;
+    border-radius:10px;
+
 
 }
 h1{
     text-align: center;
+    font-family: "Comic Sans MS";
+
 
 }
