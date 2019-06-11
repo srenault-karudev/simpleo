@@ -9,7 +9,7 @@
 
 
     <body>
-    <div class="show">
+    <div style="margin-bottom: 450px;" class="show">
 
         <div class="gauche">
             <legend class ="text-center"> Facture FR-{{ "now"|date("Y") }}-{{ invoice.id }}</legend>
@@ -158,6 +158,9 @@
     </div>
 
     </body>
+    <footer>
+        {% include 'footer.html.twig' %}
+    </footer>
 
-    {% include 'footer.html.twig' %}
+
 {% endblock %}

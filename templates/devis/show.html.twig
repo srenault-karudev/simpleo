@@ -1,0 +1,145 @@
+{% include 'layout.html.twig' %}
+
+{% block stylesheets %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Devis/show.css') }}">
+{% endblock %}
+
+{% block content %}
+
+
+    <body>
+    <div class="show">
+
+        <div class="gauche">
+            <legend class="text-center"> Devis nº{{ devis.id }}</legend>
+            <div class="row">
+                <!-- Start .row -->
+                <div class="col-md-12">
+                    <dl class="mt20">
+
+
+                        <div style="margin-left: 50px; margin-top: 12px">
+
+
+                            <div class="form-group">
+                                <label class=" control-label ">Référence :</label>
+                                {{ devis.reference }}
+                            </div>
+
+                            <div class="form-group">
+                                <label class="  control-label ">Date de création :</label>
+                                {{ devis.dateCreation | date("d/m/Y") }}
+                            </div>
+
+                            <div class="form-group">
+                                <label class=" control-label ">Date d'échéance :</label>
+                                {{ devis.dateExpiration | date("d/m/Y") }}
+                            </div>
+
+                            <div class="form-group">
+                                <label class=" control-label ">Client :</label>
+                                {{ devis.client }}
+                            </div>
+
+                        </div>
+
+
+                    </dl>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="droite">
+            <h3 style="text-align: center;">Détails des produits</h3>
+            {% set actions = devis.devisActions %}
+
+
+            <table style="width: 100%; margin-top: 20px; ">
+
+                <thead>
+                <tr style="text-align: center;">
+                    <th>Produit</th>
+                    <th>Compte</th>
+                    <th>Quantité</th>
+                    <th>Prix HT</th>
+                    <th>Taux TVA</th>
+                    <th>Remise</th>
+                    <th>Montant TTC</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for action in actions %}
+                    <tr>
+                        <td>
+                            {{ action.article }}
+                        </td>
+                        <td>
+                            {{ action.record }}
+                        </td>
+                        <td>
+                            {{ action.qtte }}
+                        </td>
+                        <td>
+                            {{ action.prixHT }} €
+                        </td>
+                        <td>
+                            {{ action.tauxTVA }} €
+                        </td>
+                        <td>
+                            {{ action.remise }} €
+                        </td>
+                        <td>
+                            {{ action.montantTTC }} €
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <br>
+            <div class="infos" style="margin: auto; text-align: center">
+                {#
+                <div class="form-group">
+                    <label class=" control-label ">Total HT :</label>
+                    {{ devis.montantTTC() }} €
+                </div>
+
+                <div class="form-group">
+                    <label class=" control-label ">Total TTC :</label>
+                    {{ devis.montantTTC() }} €
+                </div>
+
+              <div class="form-group">
+                    <label class=" control-label ">Etat :</label>
+                    {% if invoice.stateOfPaiement == false %}
+                        <img style="height: 25px" class="social-media"
+                             src="{{ asset('build/img/icone-croix-rouge-png-3.png') }}" alt="croix">
+
+                    {% else %}
+                        <img style="height: 20px" class="social-media"
+                             src="{{ asset('build/img/success_icon-icons.com_52365.png') }}" alt="success">
+                    {% endif %}
+                </div>#}
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    </body>
+    <footer>
+        {% include 'footer.html.twig' %}
+    </footer>
+
+
+{% endblock %}

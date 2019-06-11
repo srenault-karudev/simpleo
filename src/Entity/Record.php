@@ -62,11 +62,20 @@ class Record
     private $invoices;
 
 
+    /**
+     * @var Collection
+     *
+     * @ORM\OnetoMany(targetEntity="DevisAction", mappedBy="record")
+     */
+    private $devisActions;
+    
+
     public function __construct()
     {
        
         $this->invoices = new ArrayCollection();
         $this->actions = new ArrayCollection();
+        $this->devisActions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -170,6 +179,38 @@ class Record
             // set the owning side to null (unless already changed)
             if ($action->getRecord() === $this) {
                 $action->setRecord(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection|DevisAction[]
+     */
+    public function getDevisActions(): Collection
+    {
+        return $this->devisActions;
+    }
+
+    public function addDevisAction(DevisAction $devisAction): self
+    {
+        if (!$this->devisActions->contains($devisAction)) {
+            $this->devisActions[] = $devisAction;
+            $devisAction->setRecord($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDevisAction(DevisAction $devisAction): self
+    {
+        if ($this->devisActions->contains($devisAction)) {
+            $this->devisActions->removeElement($devisAction);
+            // set the owning side to null (unless already changed)
+            if ($devisAction->getRecord() === $this) {
+                $devisAction->setRecord(null);
             }
         }
 

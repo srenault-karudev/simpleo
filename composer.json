@@ -8,6 +8,7 @@
         "friendsofsymfony/jsrouting-bundle": "^2.3",
         "friendsofsymfony/user-bundle": "~2.0",
         "knplabs/knp-paginator-bundle": "^3.0",
+        "knplabs/knp-snappy-bundle": "^1.6",
         "sensio/framework-extra-bundle": "^5.2",
         "stripe/stripe-php": "^6.34",
         "symfony/asset": "3.4.*",

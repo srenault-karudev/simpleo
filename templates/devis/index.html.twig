@@ -22,7 +22,7 @@
                             <a href="{{ path('form_devis') }}">
                                 <button class="btn btn-success">
                                     + Nouveau devis
-                                </button>
+                                </button></a>
                         </div>
                         {#<div class="col col-xs-6 text-right">#}
                         {#<button type="button-success" class="btn btn-sm btn-primary btn-create">Nouveau client</button>#}
@@ -40,6 +40,7 @@
                             <th>Téléphone</th>
                             <th>État</th>
                             <th>Montant</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -51,19 +52,19 @@
                                 <td>{{ devis.client }}</td>
                                 <td>{{ devis.telephone }}</td>
                                 <td>{{ devis.etat }}</td>
-                                <td>{{ devis.montant }}</td>
-
-                                  {#  <a class="btn btn-default"
-                                       href="{{ path('form_customer', { 'id': customer.id }) }}"><em
-                                                class="fa fa-pencil"></em></a>
+                                <td>{{ devis.montant }} €</td>
+                                <td class="action">
                                     <a class="btn btn-default"
-                                       href="{{ path('customers_show', { 'id': customer.id }) }}"><em
+                                       href="{{ path('devis_show', { 'id': devis.id }) }}"><em
                                                 class="fa fa-eye"></em></a>
+                                    <a class="btn btn-default"
+                                       href="{{ path('generate_pdf', { 'id': devis.id }) }}"><em
+                                                class="fa fa-file-pdf"></em></a>
                                     <a class="btn btn-danger"
-                                       href="{{ path('customers_delete', { 'id': customer.id }) }}"><em
-                                                class="fa fa-trash"></em></a> #}
-
+                                       href="{{ path('devis_delete', { 'id': devis.id }) }}"><em
+                                                class="fa fa-trash"></em></a>
                                 </td>
+
                             </tr>
                         {% endfor %}
                         </tbody>
