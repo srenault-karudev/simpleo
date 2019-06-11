@@ -173,17 +173,15 @@ class DashboardController extends Controller
                 foreach ($value as $k => $v){
                    if($k='turnover'){
                       if (is_null($v)){
-                            array_push($data,0);
+                           $data[$monthData[$i]]=0;
                       }else{
-                            array_push($data,$v);
+                          $data[$monthData[$i]]=$v;
                       }
                     }
                 }
             }
         }
         $mydata= json_encode($data);
-        dump($data);
-        dump($mydata);
         return $this->json($mydata);
     }
 }
