@@ -128,7 +128,9 @@
                             {% if invoice.getStateOfPaiement() == true %}
                             <td>{{ invoice.getPriceTt() |number_format(2, '.', ',')}} €</td>
                             {% else %}
+
                                 <td>0.00 €</td>
+
                             {% endif %}
                         </tr>
                         <tr>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/pdf/pdf.css') }}">
+
+    <title>Title</title>
+</head>
+<body>
+
+{% set customer = invoice.client %}
+
+<div class="row">
+
+<div style="margin-top: 30px">
+    <div style="text-align: center">
+
+        <strong>Livrer à</strong><br>
+        {{ customer }}<br>
+        {{ customer.adress }}<br>
+        {{customer.postcode  }} {{ customer.city }}
+
+    </div>
+
+    <div style="float: right; margin-top: -90px">
+
+        FACTURE <br>
+        <strong>Numéro facture </strong> : {{ invoice.id }} <br>
+        <strong>Date facture</strong> : {{ invoice.date |date("d/m/Y") }}
+
+    </div>
+</div>
+
+    <div style="margin-top:20px; margin-left: 15px;">
+        <p>
+            <strong>HEIWA SHOP</strong><br>
+            40 RUE DU SOUVENIR<br>
+            77140NEMOURS<br>
+            France
+        </p>
+
+        <p>
+            0766576905<br>
+            grandbarda@gmail.com<br>
+        </p>
+
+        <p>
+           <strong>TVA N° : </strong> FR 90844955126<br>
+            <strong>N° Siret</strong>
+        </p>
+    </div>
+
+
+
+    <table cellspacing="0"
+           width="100%">
+
+        <thead>
+        <tr style="text-align: center">
+            <th>Article</th>
+            <th>Qté/hres</th>
+            <th>Prix/taux</th>
+            <th>TVA(%)</th>
+            <th>Montant</th>
+        </tr>
+        </thead>
+        {% for action in invoice.actions %}
+
+            <td class="center">
+                article
+            </td>
+
+            <td class="center">
+                {{ action.quantity }}
+            </td>
+
+            <td class="center">
+                {{ action.getUnitAmount() }}
+            </td>
+
+            <td class="center">
+                {{ action.tva }}
+            </td>
+
+            <td>
+                {% set quantity =  action.quantity  %}
+                {% set price =  action.getUnitAmount() %}
+
+                 {{ quantity * price }}
+
+            </td>
+        {% endfor %}
+    </table>
+
+
+</div>
+
+</body>
+</html>
+
+
+
+
+

@@ -111,6 +111,8 @@ class IndexInvoiceSaleController extends Controller
         $user = $this->getUser();
 
 
+        $dueDate = new \DateTime($date_string);
+
         $customerRepository = $em->getRepository('App:Person')->getCustomer($this->getUser(), $customerId);
 
 
@@ -128,6 +130,8 @@ class IndexInvoiceSaleController extends Controller
         $invoice->setInvoiceType(false);
         $invoice->setPriceHt($htPrice);
         $invoice->setPriceTt($ttcPrice);
+
+        $invoice->setDueDate($dueDate->modify('+3 month')) ;
         $customer = new Customer();
         $customer->setUser($user);
 
@@ -145,10 +149,11 @@ class IndexInvoiceSaleController extends Controller
 
         foreach ($actions as $a) {
             $regiser = $a[0];
-            $tva = $a[1];
-            $qtte = $a[2];
-            $amountTava = $a[3];
-            $unitAmount = $a[4];
+            $article = $a[1];
+            $tva = $a[2];
+            $qtte = $a[3];
+            $amountTava = $a[4];
+            $unitAmount = $a[5];
 
             $record = $em->getRepository('App:Record')->getRecord($regiser);
 
@@ -157,6 +162,7 @@ class IndexInvoiceSaleController extends Controller
                 $action->setRecord($r);
             }
 
+            $action->setArticle($article);
             $action->setTva($tva);
             $action->setTvaAmount($amountTava);
             $action->setQuantity($qtte);
@@ -215,6 +221,31 @@ class IndexInvoiceSaleController extends Controller
         $em->flush();
 
         return $this->json([]);
+    }
+
+    /**
+     * @Route("/generate_index_sale/{id}",name="generate_index_sale")
+     * @Method({"GET"})
+     */
+    public function generatePdf(Invoice $invoice){
+
+        $snappy = $this->container->get('knp_snappy.pdf');
+        $user = $this->getUser();
+
+        $html = $this->renderView('pdf/facturePdf.html.twig', array(
+            'invoice'  => $invoice,
+            'user'  => $user,
+        ));
+
+        return new Response(
+            $snappy->getOutputFromHtml($html),
+            200,
+            array(
+                'Content-Type' => 'application/pdf',
+                'Content-Disposition' => 'attachement; filename="Facture_'.$invoice->getId(). '.pdf"' // inline for browser ou attachement for download
+            )
+        );
+
     }
 
 }

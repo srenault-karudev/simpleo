@@ -32,8 +32,9 @@
                         <tr>
                             <th>Numero</th>
                             <th>Date Facture</th>
-                            <th>Date de saisie</th>
-                            <th>Date de paiement</th>
+                            <th>Date saisie</th>
+                            <th>Date paiement</th>
+                            <th>Date d'échéance</th>
                             <th>Fournisseur</th>
                             <th>Prix HT</th>
                             <th>Prix TTC</th>
@@ -52,9 +53,10 @@
                                     {% if invoice.stateOfPaiement() == true %}
                                         {{ invoice.getPaimentDate()  |date("d/m/Y") }}
                                     {% else %}
-                                        indéfinis
+                                        indéfini
                                     {% endif %}
                                 </td>
+                                    <td>{{ invoice.getDueDate()  |date("d/m/Y") }}</td>
                                 <td>{{ invoice.client }}</td>
                                 <td>{{ invoice.getPriceHt() }} €</td>
                                 <td>{{ invoice.getPriceTt() }} €</td>
@@ -76,6 +78,11 @@
                                        href="{{ path('invoice_show', { 'id': invoice.id }) }}"
                                     ><em
                                                 class="fa fa-eye"></em></a>
+
+                                    <a class="btn btn-default"
+                                       href="{{ path('generate_index_sale', { 'id': invoice.id }) }}"
+                                    ><em class="fa fa-file-pdf-o"></em></a>
+
                                     <a class="btn btn-danger"
                                        href="{{ path('invoice_sale_delete', { 'id': invoice.id }) }}">
                                         <em class="fa fa-trash"></em></a>

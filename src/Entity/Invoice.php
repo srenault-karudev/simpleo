@@ -142,6 +142,17 @@ class Invoice
      */
     private $imageFile;
 
+    /**
+
+     * @var Date
+     *
+     * @ORM\Column(name="due_date", type="date", nullable=true)
+     */
+    private $due_date;
+
+
+
+
 
     public function __construct()
     {
@@ -289,8 +300,8 @@ class Invoice
         //return $qtte * $unitAmount;
 
         foreach ($datas as $data){
-            $qtte = $data[2];
-            $unitAmount =  $data[4];
+            $qtte = $data[3];
+            $unitAmount =  $data[5];
 
             $htPrice += $qtte *$unitAmount;
 
@@ -303,9 +314,9 @@ class Invoice
 
         $ttcPrie = 0;
         foreach ($datas as $data){
-            $qtte = $data[2];
-            $unitAmount =  $data[4];
-            $ttcPrie += $qtte *$unitAmount+$data[3];
+            $qtte = $data[3];
+            $unitAmount =  $data[5];
+            $ttcPrie += $qtte *$unitAmount+$data[4];
         }
         return $ttcPrie;
     }
@@ -383,5 +394,22 @@ class Invoice
         $this->entryDate = $entryDate;
     }
 
+
+    /**
+     *
+     */
+    public function getDueDate(): ?\DateTimeInterface
+    {
+        return $this->due_date;
+    }
+
+    /**
+     *
+     */
+    public function setDueDate(\DateTimeInterface $due_date): self
+    {
+        $this->due_date = $due_date;
+        return $this;
+    }
 }
 

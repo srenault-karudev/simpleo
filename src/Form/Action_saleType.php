@@ -76,6 +76,12 @@ class Action_saleType extends AbstractType
 
             ))
 
+            ->add('article', \Symfony\Component\Form\Extension\Core\Type\TextType::class, array(
+                'attr' => array(
+                    'required'=>false,
+                )
+            ))
+
 
             ->add('unit_amount', NumberType::class, array(
                 'attr' => array(

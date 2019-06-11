@@ -3,14 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * Company
  *
  * @ORM\Table(name="Company")
  * @ORM\Entity
+ *  @Vich\Uploadable
  */
-class   Company
+class Company
 {
     /**
      * @var integer
@@ -57,6 +60,21 @@ class   Company
      */
     private $siren;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="siret", type="integer", length=14, nullable=true)
+     */
+    private $siret;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mobilePhone", type="string", length=255, nullable=true)
+     */
+    private $mobilephone;
+
 
     /**
      * @var string
@@ -84,6 +102,80 @@ class   Company
      * @ORM\JoinColumn(name="id", referencedColumnName="id", nullable=false)
      */
     private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adress", type="string", length=255, nullable=true)
+     */
+    private $adress;
+
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="postcode", type="integer", length=255, nullable=true)
+     */
+    private $postcode;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255, nullable=true)
+     */
+    private $city;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255, nullable=true)
+     */
+    private $country;
+
+
+        /**
+     * @ORM\Column(type="string", length=255,nullable=true)
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File $imageFile
+     */
+    public function setImageFile(File $imageFile)
+    {
+        $this->imageFile = $imageFile;
+    }
+
+
+        public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
 
     /**
      * @return int
@@ -221,5 +313,99 @@ class   Company
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getPostcode(): ?int
+    {
+        return $this->postcode;
+    }
 
+    /**
+     * @param int $postcode
+     */
+    public function setPostcode(int $postcode): self
+    {
+        $this->postcode = $postcode;
+
+        return $this;
+    }
+
+    public function getAdress(): ?string
+    {
+        return $this->adress;
+    }
+
+    public function setAdress(string $adress): self
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     */
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSiret(): ?string
+    {
+        return $this->siret;
+    }
+
+    /**
+     * @param string $siret
+     */
+    public function setSiret(string $siret): self
+    {
+        $this->siret = $siret;
+
+        return $this;
+    }
+
+    public function getMobilephone(): ?string
+    {
+        return $this->mobilephone;
+    }
+
+    public function setMobilephone(string $mobilephone): self
+    {
+        $this->mobilephone = $mobilephone;
+
+        return $this;
+    }
 }

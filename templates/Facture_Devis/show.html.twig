@@ -9,7 +9,9 @@
 
 
     <body>
+
     <div style="margin-bottom: 450px;" class="show">
+
 
         <div class="gauche">
             <legend class ="text-center"> Facture FR-{{ "now"|date("Y") }}-{{ invoice.id }}</legend>
@@ -45,6 +47,13 @@
                                     en attente de paiement
                                 {% endif %}
                             </div>
+
+                            {% if invoice.getInvoiceType() == false %}
+                            <div class="form-group">
+                                <label class=" control-label ">Date d'échéance :</label>
+                                {{ invoice.getDueDate()  |date("d/m/Y") }}
+                            </div>
+                            {% endif %}
 
 
                                 <div class="form-group">
@@ -88,6 +97,7 @@
                 <thead>
                 <tr style="text-align: center">
                     <th>Compte</th>
+                    <th>Article</th>
                     <th>Taux Tva</th>
                     <th>Quantité</th>
                     <th>Tva</th>
@@ -104,7 +114,9 @@
                             {{ action.record.Num }}
                         </td>
                         <td>
-
+                            {{ action.article }}
+                        </td>
+                        <td>
                             {{ action.tva }} %
                         </td>
                         <td>

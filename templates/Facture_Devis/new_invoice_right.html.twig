@@ -10,6 +10,7 @@
             <table class="table-right">
                 <thead>
                 <th class="title_left">Compte</th>
+                <th class="title_left">Article</th>
                 <th class="title_left" >Taux Tva</th>
                 <th class="title_left" >Quantité</th>
                 <th class="title_left" >Tva</th>
@@ -27,7 +28,7 @@
 
 
             <div class="funkyradio col-md-5 ">
-                <p class="title_left"> AVEZ-VOUS PAYEZ VOTRE FACTURE ?</p>
+                <p class="title_left"> AVEZ-VOUS PAYÉ VOTRE FACTURE ?</p>
                 {% for childPaid in form2.paid %}
                     <div class="funkyradio-warning ">{{ form_widget(childPaid) }} {{ form_label(childPaid) }}</div>
                 {% endfor %}

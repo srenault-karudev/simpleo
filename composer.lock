@@ -5,10 +5,14 @@
         "This file is @generated automatically"
     ],
 <<<<<<< HEAD
+<<<<<<< HEAD
     "content-hash": "0d22cb123dc1ecddc4cb164c7cc999d5",
 =======
     "content-hash": "db4c72e765b57d1c114a98d31a67429d",
 >>>>>>> feature/ad
+=======
+    "content-hash": "db4c72e765b57d1c114a98d31a67429d",
+>>>>>>> feature/sr_pdf
     "packages": [
         {
             "name": "behat/transliterator",

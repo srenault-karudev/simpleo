@@ -1,4 +1,5 @@
 knp_snappy:
+
     pdf:
         enabled:    true
         binary:     /usr/bin/xvfb-run /usr/bin/wkhtmltopdf
@@ -7,3 +8,4 @@ knp_snappy:
         enabled:    true
         binary:     /usr/bin/xvfb-run /usr/bin/wkhtmltopdf
         options:    []
+
