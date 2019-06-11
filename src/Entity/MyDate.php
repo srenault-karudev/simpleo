@@ -8,12 +8,14 @@ use Symfony\Component\Validator\Constraints\DateTime;
 /**
  * Customer
  *
- * @ORM\Entity
+ *
  * @ORM\Table(name="customer")
 
  */
 class MyDate extends \DateTime
 {
+
+
     /**
      * Return Date in ISO8601 format
      *

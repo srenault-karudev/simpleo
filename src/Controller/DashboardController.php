@@ -113,7 +113,14 @@ class DashboardController extends Controller
                 $valTree=$value;
             }
         }
-        $evolution=round( ((($valTree/$valOne)-1)*100), 2 );
+
+        if($valOne != 0 ){
+            $evolution=round( ((($valTree/$valOne)-1)*100), 2 );
+        }
+        else{
+            $evolution= 0;
+        }
+
         $lastmonthResult= $valOne-$valTwo;
 
         $em->persist($user);

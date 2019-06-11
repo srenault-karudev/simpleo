@@ -46,9 +46,9 @@
 
                     <div class="w3-container">
                         {% if infoGlobal.monthturnover.0.turnoverOfThisMonth is null %}
-                            <p>0 €</p>
+                            <p>0.00 €</p>
                         {%  else  %}
-                           <p>{{ infoGlobal.monthturnover.0.turnoverOfThisMonth }} €</p>
+                           <p>{{ infoGlobal.monthturnover.0.turnoverOfThisMonth|number_format(2, '.', ',') }} €</p>
                         {%  endif  %}
                     </div>
                 </div>
@@ -60,9 +60,9 @@
 
                     <div class="w3-container">
                         {% if infoGlobal.yearturnover.0.turnoverOfThisYear is null %}
-                            <p>0 €</p>
+                            <p>0.00 €</p>
                         {%  else  %}
-                            <p>{{ infoGlobal.yearturnover.0.turnoverOfThisYear }} €</p>
+                            <p>{{ infoGlobal.yearturnover.0.turnoverOfThisYear|number_format(2, '.', ',') }} €</p>
                         {%  endif  %}
                     </div>
                 </div>
@@ -74,9 +74,9 @@
 
                     <div class="w3-container">
                     {% if infoGlobal.numberWaitInvoices.0.ttcprice is null %}
-                        <p>0 €</p>
+                        <p>0.00 €</p>
                     {%  else  %}
-                        <p>{{ infoGlobal.numberWaitInvoices.0.ttcprice }} €</p>
+                        <p>{{ infoGlobal.numberWaitInvoices.0.ttcprice|number_format(2, '.', ',') }} €</p>
                     {%  endif  %}
                     </div>
                 </div>
@@ -88,9 +88,9 @@
 
                     <div class="w3-container">
                         {% if infoGlobal.invoicetopay.0.ttcprice is null %}
-                            <p>0 €</p>
+                            <p>0.00 €</p>
                         {%  else  %}
-                            <p>{{ infoGlobal.invoicetopay.0.ttcprice }} €</p>
+                            <p>{{ infoGlobal.invoicetopay.0.ttcprice|number_format(2, '.', ',') }} €</p>
                         {%  endif  %}
                     </div>
                 </div>
@@ -117,9 +117,9 @@
 
                     <div class="w3-container euros">
                         {% if infoGlobal.lastmonthspending.0.lastmonthspending is null %}
-                            <p>0 €</p>
+                            <p>0.00 €</p>
                         {%  else  %}
-                            <p>{{ infoGlobal.lastmonthspending.0.lastmonthspending }} €</p>
+                            <p>{{ infoGlobal.lastmonthspending.0.lastmonthspending|number_format(2, '.', ',') }} €</p>
                         {%  endif  %}
                     </div>
 
@@ -129,9 +129,9 @@
 
                     <div class="w3-container euros">
                         {% if infoGlobal.lastmonthturnover.0.lastmonthturnover is null %}
-                            <p>0 €</p>
+                            <p>0.00 €</p>
                         {%  else  %}
-                            <p>{{ infoGlobal.lastmonthturnover.0.lastmonthturnover}} €</p>
+                            <p>{{ infoGlobal.lastmonthturnover.0.lastmonthturnover|number_format(2, '.', ',')}} €</p>
                         {%  endif  %}
                     </div>
                     <header class="w3-container">
@@ -140,9 +140,9 @@
 
                     <div class="w3-container euros">
                         {% if infoGlobal.lastmontresult is null %}
-                            <p>0 €</p>
+                            <p>0.00 €</p>
                         {%  else  %}
-                            <p>{{ infoGlobal.lastmontresult}} €</p>
+                            <p>{{ infoGlobal.lastmontresult|number_format(2, '.', ',')}} €</p>
                         {%  endif  %}
                     </div>
                     <header class="w3-container">
@@ -151,9 +151,9 @@
 
                     <div class="w3-container euros">
                         {% if evolution is null %}
-                            <p>0%</p>
+                            <p>0.00 %</p>
                         {%  else  %}
-                            <p>{{ evolution }} %</p>
+                            <p>{{ evolution|number_format(2, '.', ',') }} %</p>
                         {%  endif  %}
                     </div>
 
