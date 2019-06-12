@@ -18,6 +18,8 @@
               integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, user-scalable=no, maximum-scale=5.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
     {% endblock %}
 </head>
 
@@ -76,7 +78,8 @@
 
     <div class="bienvenue">
         <a href="{{ path('homepage') }}">
-            <img src="http://37.187.127.4/images/Logo.png" id="Simpleologo" class="Simpleo-logo"
+            <img src="http://37.187.127.4/images/Logo1.png" id="Simpleologo" class="Simpleo-logo"
+
                  alt="Simpleo"/>
         </a>
         <p class="bienvenue2">
@@ -105,7 +108,8 @@
             </li>
 
 
-            <li class="nav-item achatsDropdown {% if app.request.attributes.get('_route') == 'index_journal_facture_achat' %}active-link{% endif %} ">
+            <li class="nav-item achatsDropdown {% if (app.request.attributes.get('_route') == 'index_journal_facture_achat')  or
+                (app.request.attributes.get('_route') == 'new_invoice_buy') %}active-link{% endif %} ">
                 <div class="dropdown">
                     <a class="nav-link"style="color: white"> Achats <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
@@ -117,7 +121,8 @@
             </li>
 
 
-            <li class="nav-item ventesDropdown {% if app.request.attributes.get('_route') == 'index_journal_facture_vente' %}active-link{% endif %} " ">
+            <li class="nav-item ventesDropdown {% if (app.request.attributes.get('_route') == 'index_journal_facture_vente') or
+                (app.request.attributes.get('_route') == 'new_invoice_sale')  %}active-link{% endif %}  ">
                 <div class="dropdown">
                     <a class="nav-link"style="color: white">Ventes <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
@@ -130,19 +135,18 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('index_customer') }}">Clients</a>
+                <a class="nav-link" href="{{ path('index_customer') }}">Associés</a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('index_devis') }}">Devis</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('stockage') }}">Stockage</a>
-            </li>
+        {% if formula == 'complete' or formula == 'essai' %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('rapport') }}">Rapport</a>
             </li>
+            {% endif %}
 
             <li style="float: right;margin-right: 20px" class="nav-item ">
                 <div class="dropdown">
@@ -157,7 +161,7 @@
                                 <a class="w3-bar-item w3-button"
                                    href="{{ path('company_form',{'id': app.user.company.id}) }}"><span
                                             class="txt">Mon entreprise</span></a>
-                                <a class="w3-bar-item w3-button" href="{{ path('choiceMode') }}"> Formule</a>
+                                <a class="w3-bar-item w3-button" href="{{ path('choiceMode') }}"> Formules</a>
                             {% endif %}
                         {% endif %}
                         <a class="w3-bar-item w3-button" href="{{ path('fos_user_security_logout') }}">Se
@@ -184,12 +188,12 @@
 
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script>
     <script src="{{ asset('build/js/form.js') }}"></script>
 
     <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-
 
 
 

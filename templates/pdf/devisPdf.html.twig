@@ -34,18 +34,30 @@
                 <div class="row contacts">
                     <div class="col invoice-to">
                         <p>
-                        <h2 class="name">{{ user.company.socialReason }}</h2> <br>
-                        {#{{ user.company.adress }}<br>
-                        {{ user.company.postCode }} {{ user.company.city }}<br>
-                        {{ user.company.country }}<br>
-                        <p> {{ user.company.mobilephone }}<br>#}
+                        <h2 class="name">
+                            {% if user.company.socialReason is not null %}
+                                {{ user.company.socialReason }}
+                            {% endif %}
+                        </h2> <br>
+                        {% if user.company.adress is not null %}
+                            {{ user.company.adress }}
+                        {% endif %}<br>
+                        {% if user.company.postCode is not null %}
+                            {{ user.company.postCode }}
+                        {% endif %}
+                        {% if user.company.city is not null %}
+                            {{   user.company.city  }}
+                        {% endif %}
+                        <br>
+                        {% if user.company.country is not null %}
+                            {{   user.company.country }}
+                        {% endif %}<br>
+                        <p> {% if user.company.mobilephone is not null %}
+                                {{   user.company.mobilephone }}
+                            {% endif %}<br>
                             {{ user.email }}
                         </p>
                         <p>
-                            <strong>TVA N° : </strong> FR 90844955126 <br>
-                            {#<strong>N° Siret :  </strong> {{ user.company.siret }}#}
-                        </p>
-                        </p>
                     </div>
                 </div>
                 <table border="0" cellspacing="0" cellpadding="0">
@@ -71,7 +83,7 @@
                             {% set price =  action.prixHT %}
                             {% set tva =  action.tauxTVA %}
 
-                            {{ (quantity*price + quantity*price*(tva/100)) | number_format(2, '.', ',') }}
+                            {{ (quantity*price) | number_format(2, '.', ',') }}
                         </td>
                     </tr>
                     {% endfor %}
@@ -87,6 +99,11 @@
                             <td colspan="2"></td>
                             <td colspan="2">Montant TVA</td>
                             <td>{{ devis.montantTVA | number_format(2, '.', ',')}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">Montant Remise</td>
+                            <td>{{ (devis.montantRemise) | number_format(2, '.', ',') }}</td>
                         </tr>
                         <tr style="font-weight: bold">
                             <td colspan="2"></td>

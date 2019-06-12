@@ -12,7 +12,9 @@ namespace App\Controller;
 use App\Entity\Devis;
 use App\Entity\DevisAction;
 use App\Entity\Person;
+use App\Entity\PropertySearch;
 use App\Entity\Provider;
+use App\Form\PropretySearchType;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -45,6 +47,8 @@ class DevisController extends Controller
 //
         $em = $this->getDoctrine()->getManager();
         $devis = $em->getRepository('App:Devis')->getDevis($this->getUser());
+        $search= new PropertySearch();
+
 //        $query = $em->createQuery($devis);
 //
 //        $paginations  = $this->get('knp_paginator')->paginate(
@@ -52,14 +56,16 @@ class DevisController extends Controller
 //            $request->query->getInt('page', 1), /*page number*/
 //            10 /*limit per page*/
 //        );
-
+        $form=$this->createForm(PropretySearchType::class,$search);
         $properties = $paginator->paginate(
             $devis,
             $request->query->getInt('page', 1),5
         );
         $properties->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
         return $this->render('devis/index.html.twig', array(
-            'properties' => $properties
+            'properties' => $properties,
+            'form'=> $form->createView()
+
         ));
     }
 
@@ -127,7 +133,6 @@ class DevisController extends Controller
         $dateCreation = $request->query->get('data')[1];
         $dateExpiration = $request->query->get('data')[2];
         $actions = $request->query->get('data')[4];
-        $etat = "en attente";
 
         $em = $this->getDoctrine()->getManager();  /* Pour accéder à la base de données */
 
@@ -153,7 +158,6 @@ class DevisController extends Controller
         $dateExpiration2 = new \DateTime($dateExpiration);
         $devis->setDateExpiration($dateExpiration2);
 
-        $devis->setEtat($etat);
 
         $montantHT = $devis->calculTotalHT($actions);
         $devis->setMontantHT($montantHT);
@@ -163,6 +167,9 @@ class DevisController extends Controller
 
         $prixTTC = $devis->additionTTCs($actions);
         $devis->setMontant($prixTTC);
+
+        $montantRemise = $devis->calculMontantRemise($actions);
+        $devis->setMontantRemise($montantRemise);
 
 
         foreach ($customerRepository as $cR) {
@@ -266,5 +273,44 @@ class DevisController extends Controller
         );
 
     }
+
+    /**
+     * @Route("/indexDevisAjaxAction", name="indexDevisAjaxAction",options = {"expose" : true})
+     * @Method({"GET"})
+     */
+    public function indexAjaxAction(Request $request)
+    {
+
+        dump($request);
+
+        $devisId = $request->query->get('devisId');
+        $state = $request->query->get('state');
+
+
+
+        $em = $this->getDoctrine()->getManager();
+        $devis = $em->getRepository('App:Devis')->find($devisId);
+
+
+        if ($state == 1) {
+            $etat = "validé";
+        }
+       elseif ($state == 2){
+            $etat = "en attente";
+       }
+        elseif ($state == 3 ){
+            $etat = "refusé";
+        }
+
+        $devis->setEtat($etat);
+
+
+
+        $em->persist($devis);
+        $em->flush();
+
+        return $this->json([]);
+    }
+
 
 }

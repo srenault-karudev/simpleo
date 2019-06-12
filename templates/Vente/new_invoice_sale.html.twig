@@ -1,0 +1,21 @@
+{% include '/layout.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block head %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Facture-devis/facture-devis.css') }}">
+    {% endblock %}
+{% block content %}
+
+    <div class="main_new_invoice">
+        <div class="leftside">
+            {% include '/Vente/new_invoice_sale_left.html.twig' %}
+        </div>
+
+        <div class="rightside">
+            {% include '/Vente/new_invoice_sale_right.html.twig' %}
+        </div>
+    </div>
+
+    {% include '/footer.html.twig' %}
+{% endblock %}

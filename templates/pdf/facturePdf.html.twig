@@ -18,7 +18,8 @@
                     <div class="col">
                         <a>
                             <img style="width: 25%; margin-bottom: -110px; margin-top: 10px;"
-                                 src="http://37.187.127.4/images/Logo.png" data-holder-rendered="true"/>
+                                 {#src="http://37.187.127.4/images/Logo.png" data-holder-rendered="true"#}
+                            />
 
                             {#img style="width: 25%; margin-bottom: -110px; margin-top: 10px;"#}
                             {#src="../../public/uploads/images/products/icone-croix-rouge-png-3.png" data-holder-rendered="true"#}
@@ -51,16 +52,34 @@
                 <div class="row contacts">
                     <div class="col invoice-to">
                         <p>
-                        <h2 class="name">{{ user.company.socialReason }}</h2> <br>
-                        {{ user.company.adress }}<br>
-                        {{ user.company.postCode }} {{ user.company.city }}<br>
-                        {{ user.company.country }}<br>
-                        <p> {{ user.company.mobilephone }}<br>
+                        <h2 class="name">
+                            {% if user.company.socialReason is not null %}
+                            {{ user.company.socialReason }}
+                            {% endif %}
+                        </h2> <br>
+                        {% if user.company.adress is not null %}
+                            {{ user.company.adress }}
+                        {% endif %}<br>
+                        {% if user.company.postCode is not null %}
+                            {{ user.company.postCode }}
+                        {% endif %}
+                        {% if user.company.city is not null %}
+                            {{   user.company.city  }}
+                        {% endif %}
+                       <br>
+                        {% if user.company.country is not null %}
+                            {{   user.company.country }}
+                        {% endif %}<br>
+                        <p> {% if user.company.mobilephone is not null %}
+                                {{   user.company.mobilephone }}
+                            {% endif %}<br>
                             {{ user.email }}
                         </p>
                         <p>
                             <strong>TVA N° : </strong> FR 90844955126 <br>
-                            <strong>N° Siret :  </strong> {{ user.company.siret }}
+                            <strong>N° Siret :  </strong>  {% if user.company.siret is not null %}
+                                {{  user.company.siret  }}
+                            {% endif %}
                         </p>
                         </p>
 
@@ -135,11 +154,11 @@
                         </tr>
                         <tr>
                             <td colspan="2"></td>
-                            <td colspan="2" style="background-color: #907789"><strong>Montant à payer</strong></td>
+                            <td colspan="2" style="background-color: #aaa"><strong>Montant à payer</strong></td>
                             {% if invoice.getStateOfPaiement() == true %}
-                            <td style="background-color: #907789"><strong>0.00 €</strong></td>
+                            <td style="background-color: #aaa"><strong>0.00 €</strong></td>
                             {% else %}
-                                <td style="background-color: #907789"><strong>{{ invoice.getPriceTt() }} €</strong></td>
+                                <td style="background-color: #aaa"><strong>{{ invoice.getPriceTt() }} €</strong></td>
                             {% endif %}
                         </tr>
                     </div>

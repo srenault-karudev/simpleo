@@ -79,6 +79,14 @@ class User extends BaseUser
     private $formula;
 
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="state_trial_period", type="boolean")
+     */
+    private $stateTrialPeriod = false ;
+
+
 
     public function __construct()
     {
@@ -249,6 +257,23 @@ class User extends BaseUser
     public function getState(): ?bool
     {
         return $this->state;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function isStateTrialPeriod(): bool
+    {
+        return $this->stateTrialPeriod;
+    }
+
+    /**
+     * @param bool $stateTrialPeriod
+     */
+    public function setStateTrialPeriod(bool $stateTrialPeriod)
+    {
+        $this->stateTrialPeriod = $stateTrialPeriod;
     }
 
 

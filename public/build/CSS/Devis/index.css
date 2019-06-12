@@ -62,10 +62,29 @@ used to vertically center elements, may need modification if you're not using de
 
 th, .action{
     text-align: center;
+
 }
 
 #titre{
     margin-left: 15px;
+
+}
+
+
+
+#value{
+    padding: 5px;
+    width: 200px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.search{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 10px 0px 0px;
+
 }
 
 
@@ -146,4 +165,9 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+.bt{
+    height: 40px;
+
 }
