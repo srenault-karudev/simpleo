@@ -278,7 +278,8 @@ class Devis
 
         $totalHT = 0;
         foreach ($datas as $data){
-            $totalHT += $data[3];
+            //$totalHT += $data[3]*$data[2] + ($data[3]*$data[2]*($data[4]/100));
+            $totalHT += $data[3]*$data[2];
         }
         return $totalHT;
     }
