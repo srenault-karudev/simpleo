@@ -70,6 +70,55 @@ window.onload= function() {
 
     });
 
+    $("#devis_action_qtte").change(function () {
+        changeAllValue();
+    });
+    $("#devis_action_prixHT").change(function () {
+        changeAllValue();
+    });
+    $("#devis_action_tauxTVA").change(function () {
+        changeAllValue();
+    });
+    $("#devis_action_remise").change(function () {
+        changeAllValue();
+    });
+
+    function testIsNotANumber($var) {
+        if (isNaN($var) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function changeAllValue() {
+        var $e = $("#erreur_form_2");
+        var $tauxTVA=$("#devis_action_tauxTVA").val();
+        var $qtte=$("#devis_action_qtte").val();
+        var $prixHT=$("#devis_action_prixHT").val();
+        var $remise=$("#devis_action_remise").val();
+        var $test = testIsNotANumber($tauxTVA);
+        var $test2 = testIsNotANumber($qtte);
+        var $test3 = testIsNotANumber($prixHT);
+        var $test4 = testIsNotANumber($remise);
+        if (($test == true) || ($test2 == true) || ($test3 == true) || ($test4 == true) ){
+            $e.text("Un des champs contient une erreur. Veuillez vérifier.").show();
+        } else if (($tauxTVA < 0) || ($qtte < 0) || ($prixHT < 0) || ($remise < 0)){
+            $test = true;
+            $test2 = true;
+            $test3 = true;
+            $test4 = true;
+            $e.text("Veuillez entrer des valeurs positives.").show();
+        } else {
+            $e.hide();
+        }
+        if (($tauxTVA != '') && ($qtte != '') && ($prixHT != '') && ($test == false) && ($test2 == false) && ($test3 == false) && ($test4 == false)) {
+            $myres = $qtte * $prixHT;
+            $myres2 = $myres + $myres*($tauxTVA / 100);
+            $myres3 = $myres2 - $myres2*($remise/100);
+            $("#devis_action_montantTTC").val($myres3.toFixed(2));
+        }
+    }
 
 
     function setData(tmp){

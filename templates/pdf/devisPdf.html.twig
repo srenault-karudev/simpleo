@@ -70,7 +70,8 @@
                             {% set quantity =  action.qtte %}
                             {% set price =  action.prixHT %}
                             {% set tva =  action.tauxTVA %}
-                            {{ (quantity * price + price*(tva/100)) | number_format(2, '.', ',') }}
+
+                            {{ (quantity*price + quantity*price*(tva/100)) | number_format(2, '.', ',') }}
                         </td>
                     </tr>
                     {% endfor %}
