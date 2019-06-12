@@ -5,6 +5,7 @@
         "php": "^7.0.8",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-json": "*",
         "friendsofsymfony/user-bundle": "~2.0",
         "knplabs/knp-paginator-bundle": "^3.0",
         "knplabs/knp-snappy-bundle": "^1.6",
@@ -31,8 +32,7 @@
         "symfony/webpack-encore-bundle": "^1.0",
         "symfony/webpack-encore-pack": "^1.0",
         "symfony/yaml": "3.4.*",
-        "twbs/bootstrap": "4.2.1",
-        "ext-json": "*"
+        "twbs/bootstrap": "4.2.1"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
@@ -84,5 +84,5 @@
             "allow-contrib": false,
             "require": "3.4.*"
         }
-    },
+    }
 }
