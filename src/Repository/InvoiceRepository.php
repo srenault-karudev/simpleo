@@ -17,13 +17,36 @@ class InvoiceRepository extends \Doctrine\ORM\EntityRepository
 
     public function getInvoices(User $user,$type)
     {
-        $qb = $this->createQueryBuilder('i')
-            ->where('i.user = :user')
-            ->andWhere('i.invoice_type = :type')
-            ->setParameter('user', $user->getId())
-            ->setParameter('type',$type)
-            ->orderBy('i.date', 'DESC');
-        return $qb->getQuery()->getResult();
+        if (empty($_GET['value'])) {
+
+            $qb = $this->createQueryBuilder('i')
+                ->where('i.user = :user')
+                ->andWhere('i.invoice_type = :type')
+                ->setParameter('user', $user->getId())
+                ->setParameter('type', $type)
+                ->orderBy('i.date', 'DESC');
+            return $qb->getQuery()->getResult();
+        }
+        else {
+            $qb = $this->createQueryBuilder('p')
+                ->join('p.id', 'c', 'c.id = p.person_id')
+                ->addSelect('c')
+                ->where('p.date like :value 
+                OR p.id like :value
+                OR p.price_Ht like :value 
+                OR p.price_tt like :value 
+                OR p.paiment_date like :value 
+                OR p.entryDate like :value
+                OR p.client like :value
+                 ')
+                ->andWhere('p.user = :user')
+                ->andWhere('p.invoice_type = :type')
+                ->setParameter('user', $user->getId())
+                ->setParameter('type', $type)
+                ->orderBy('p.date', 'DESC')
+                ->setParameter('value', '%' . $_GET['value'] . '%');
+            return $qb->getQuery()->getResult();
+        }
     }
 
 //    public function getInvoicesSales(User $user)
