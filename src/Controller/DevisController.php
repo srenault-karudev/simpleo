@@ -168,6 +168,9 @@ class DevisController extends Controller
         $prixTTC = $devis->additionTTCs($actions);
         $devis->setMontant($prixTTC);
 
+        $montantRemise = $devis->calculMontantRemise($actions);
+        $devis->setMontantRemise($montantRemise);
+
 
         foreach ($customerRepository as $cR) {
             $devis->setClient($cR);

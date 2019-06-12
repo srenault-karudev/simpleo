@@ -142,10 +142,11 @@
                 <a class="nav-link" href="{{ path('index_devis') }}">Devis</a>
             </li>
 
-
+        {% if formula == 'complete' or formula == 'essai' %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('rapport') }}">Rapport</a>
             </li>
+            {% endif %}
 
             <li style="float: right;margin-right: 20px" class="nav-item ">
                 <div class="dropdown">

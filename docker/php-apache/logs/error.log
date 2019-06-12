@@ -261,4 +261,11 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
 [Wed Jun 12 14:24:28.544616 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
 [Wed Jun 12 14:24:28.544758 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+<<<<<<< HEAD
+>>>>>>> feature/ad
+=======
+[Wed Jun 12 16:40:26.988483 2019] [mpm_prefork:notice] [pid 1] AH00169: caught SIGTERM, shutting down
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.18.0.4. Set the 'ServerName' directive globally to suppress this message
+[Wed Jun 12 20:55:39.446060 2019] [mpm_prefork:notice] [pid 1] AH00163: Apache/2.4.25 (Debian) configured -- resuming normal operations
+[Wed Jun 12 20:55:39.446128 2019] [core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
 >>>>>>> feature/ad

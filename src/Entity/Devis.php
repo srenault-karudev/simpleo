@@ -96,6 +96,13 @@ class Devis
     /**
      * @var float
      *
+     * @ORM\Column(name="montantRemise", type="float", nullable=true)
+     */
+    private $montantRemise;
+
+    /**
+     * @var float
+     *
      * @ORM\Column(name="montantTVA", type="float", nullable=true)
      */
     private $montantTVA;
@@ -272,6 +279,15 @@ class Devis
         return $montantTVA;
     }
 
+    public function calculMontantRemise($datas){
+
+        $montantRemise = 0;
+        foreach ($datas as $data){
+            $montantRemise += ( ($data[2]*$data[3]) + ($data[2]*$data[3]*($data[4]/100)) ) * ($data[5]/100);
+        }
+        return $montantRemise;
+    }
+
 
     public function calculTotalHT($datas){
         //return $htPrice + $tvaAmount;
@@ -345,6 +361,18 @@ class Devis
     public function setMontantTVA(?float $montantTVA): self
     {
         $this->montantTVA = $montantTVA;
+
+        return $this;
+    }
+
+    public function getMontantRemise(): ?float
+    {
+        return $this->montantRemise;
+    }
+
+    public function setMontantRemise(?float $montantRemise): self
+    {
+        $this->montantRemise = $montantRemise;
 
         return $this;
     }

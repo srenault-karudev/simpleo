@@ -27,11 +27,7 @@ class PaymentController extends Controller
         $formula = $request->attributes->get('formula');
         $user = $this->getUser();
         $email = $user->getEmail();
-        $user->setFormula($formula);
-        $user->setState(true);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
+
 
 
         if ($request->isMethod('POST')) {
@@ -61,6 +57,11 @@ class PaymentController extends Controller
             $username = $user->getUsername();
             $formulaMail = $user->getFormula();
 
+            $user->setFormula($formula);
+            $user->setState(true);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
             $message = (new \Swift_Message('Abonnement Simpleo'))
                 ->setFrom($this->getParameter('mailer_sender'))

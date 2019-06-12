@@ -83,7 +83,7 @@
                             {% set price =  action.prixHT %}
                             {% set tva =  action.tauxTVA %}
 
-                            {{ (quantity*price + quantity*price*(tva/100)) | number_format(2, '.', ',') }}
+                            {{ (quantity*price) | number_format(2, '.', ',') }}
                         </td>
                     </tr>
                     {% endfor %}
@@ -99,6 +99,11 @@
                             <td colspan="2"></td>
                             <td colspan="2">Montant TVA</td>
                             <td>{{ devis.montantTVA | number_format(2, '.', ',')}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"></td>
+                            <td colspan="2">Montant Remise</td>
+                            <td>{{ (devis.montantRemise) | number_format(2, '.', ',') }}</td>
                         </tr>
                         <tr style="font-weight: bold">
                             <td colspan="2"></td>

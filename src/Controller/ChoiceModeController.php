@@ -24,7 +24,9 @@ class ChoiceModeController extends Controller
          $user = $this->getUser();
          $state = $user->isState();
 
-        return $this->render('choiceMode.html.twig',array("state" => $state));
+        $stateTrialPeriod = $user->isStateTrialPeriod();
+
+        return $this->render('choiceMode.html.twig',array("state" => $state,"stateTrialPeriod" =>$stateTrialPeriod));
     }
 
 }

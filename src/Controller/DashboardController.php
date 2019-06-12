@@ -41,9 +41,10 @@ class DashboardController extends Controller
 
     public function index(Request $request)
     {
-
+        $em = $this->getDoctrine()->getManager();
         $formula = $request->attributes->get('formula');
         $user = $this->getUser();
+
 
         $state = $user->isState();
         $user->setFormula($formula);
@@ -58,16 +59,20 @@ class DashboardController extends Controller
             $dateOfEndPeriod->format('Y-m-d');
             $today = new \DateTime();
             $today->format('Y-m-d');
+            $user->setStateTrialPeriod(true);
 
-            if ($today == $dateOfEndPeriod) {
+
+            $interval = date_diff($today, $dateOfEndPeriod);
+            $interval = $interval->format('%d');
+
+            if ($interval == 0) {
+
                 $user->setState(false);
 
             }
-            $em = $this->getDoctrine()->getManager();
+
             $em->persist($user);
             $em->flush();
-            $interval = date_diff($today, $dateOfEndPeriod);
-            $interval = $interval->format('%d');
 
         }
 
