@@ -14,10 +14,28 @@ class DevisRepository extends \Doctrine\ORM\EntityRepository
 {
     public function getDevis(User $user)
     {
-        $qb = $this->createQueryBuilder('p')
-            ->where('p.user = :user')
-            ->setParameter('user', $user->getId());
-        return $qb->getQuery()->getResult();
+        if (empty($_GET['value'])) {
+            $qb = $this->createQueryBuilder('p')
+                ->where('p.user = :user')
+                ->setParameter('user', $user->getId());
+            return $qb->getQuery()->getResult();
+        }
+        else {
+            $qb = $this->createQueryBuilder('p')
+                ->where('p.reference like :value
+                OR p.dateCreation like :value
+                OR p.dateExpiration like :value
+                OR p.client like :value
+                OR p.telephone like :value
+                OR p.etat like :value
+                Or p. montant like :value
+                ')
+                ->andWhere('p.user = :user')
+                ->setParameter('user', $user->getId())
+                ->setParameter('value', '%' . $_GET['value'] . '%');
+            return $qb->getQuery()->getResult();
+
+        }
     }
 
 }

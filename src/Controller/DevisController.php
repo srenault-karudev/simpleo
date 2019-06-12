@@ -12,7 +12,9 @@ namespace App\Controller;
 use App\Entity\Devis;
 use App\Entity\DevisAction;
 use App\Entity\Person;
+use App\Entity\PropertySearch;
 use App\Entity\Provider;
+use App\Form\PropretySearchType;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -45,6 +47,8 @@ class DevisController extends Controller
 //
         $em = $this->getDoctrine()->getManager();
         $devis = $em->getRepository('App:Devis')->getDevis($this->getUser());
+        $search= new PropertySearch();
+
 //        $query = $em->createQuery($devis);
 //
 //        $paginations  = $this->get('knp_paginator')->paginate(
@@ -52,14 +56,16 @@ class DevisController extends Controller
 //            $request->query->getInt('page', 1), /*page number*/
 //            10 /*limit per page*/
 //        );
-
+        $form=$this->createForm(PropretySearchType::class,$search);
         $properties = $paginator->paginate(
             $devis,
             $request->query->getInt('page', 1),5
         );
         $properties->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
         return $this->render('devis/index.html.twig', array(
-            'properties' => $properties
+            'properties' => $properties,
+            'form'=> $form->createView()
+
         ));
     }
 
