@@ -9,6 +9,7 @@
 namespace App\Form;
 
 
+use Doctrine\DBAL\Types\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -39,16 +40,16 @@ class CompanyType extends AbstractType
             ->add('adress', TextType::class,array(
                 'required' => true
             ))
-            ->add('siren', NumberType::class,array(
+            ->add('siren', \Symfony\Component\Form\Extension\Core\Type\IntegerType::class,array(
                 'required' => true
             ))
-            ->add('postCode', NumberType::class,array(
+            ->add('postCode', \Symfony\Component\Form\Extension\Core\Type\IntegerType::class,array(
                 'required' => true
             ))
             ->add('mobilephone', TextType::class,array(
                 'required' => true
             ))
-            ->add('siret', NumberType::class,array(
+            ->add('siret', \Symfony\Component\Form\Extension\Core\Type\IntegerType::class,array(
                 'required' => true
             ))
             ->add('city', TextType::class,array(
