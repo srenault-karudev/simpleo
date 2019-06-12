@@ -76,7 +76,7 @@
 
     <div class="bienvenue">
         <a href="{{ path('homepage') }}">
-            <img src="http://37.187.127.4/images/Logo.png" id="Simpleologo" class="Simpleo-logo"
+            <img src="http://37.187.127.4/images/Logo1.png" id="Simpleologo" class="Simpleo-logo"
                  alt="Simpleo"/>
         </a>
         <p class="bienvenue2">
@@ -105,7 +105,8 @@
             </li>
 
 
-            <li class="nav-item achatsDropdown {% if app.request.attributes.get('_route') == 'index_journal_facture_achat' %}active-link{% endif %} ">
+            <li class="nav-item achatsDropdown {% if (app.request.attributes.get('_route') == 'index_journal_facture_achat')  or
+                (app.request.attributes.get('_route') == 'new_invoice_buy') %}active-link{% endif %} ">
                 <div class="dropdown">
                     <a class="nav-link"style="color: white"> Achats <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
@@ -117,7 +118,8 @@
             </li>
 
 
-            <li class="nav-item ventesDropdown {% if app.request.attributes.get('_route') == 'index_journal_facture_vente' %}active-link{% endif %} " ">
+            <li class="nav-item ventesDropdown {% if (app.request.attributes.get('_route') == 'index_journal_facture_vente') or
+                (app.request.attributes.get('_route') == 'new_invoice_sale')  %}active-link{% endif %}  ">
                 <div class="dropdown">
                     <a class="nav-link"style="color: white">Ventes <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content w3-bar-block w3-border">
@@ -130,16 +132,14 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('index_customer') }}">Clients</a>
+                <a class="nav-link" href="{{ path('index_customer') }}">Associés</a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('index_devis') }}">Devis</a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('stockage') }}">Stockage</a>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('rapport') }}">Rapport</a>
             </li>
@@ -157,7 +157,7 @@
                                 <a class="w3-bar-item w3-button"
                                    href="{{ path('company_form',{'id': app.user.company.id}) }}"><span
                                             class="txt">Mon entreprise</span></a>
-                                <a class="w3-bar-item w3-button" href="{{ path('choiceMode') }}"> Formule</a>
+                                <a class="w3-bar-item w3-button" href="{{ path('choiceMode') }}"> Formules</a>
                             {% endif %}
                         {% endif %}
                         <a class="w3-bar-item w3-button" href="{{ path('fos_user_security_logout') }}">Se

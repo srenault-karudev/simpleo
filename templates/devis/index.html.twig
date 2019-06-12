@@ -6,14 +6,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/Devis/index.css') }}">
     <body>
 
-    <div style="margin-left: 15px;">
-        <h1>Tous vos devis</h1>
-        <br>
-    </div>
 
     <div class="row">
 
-        <div style="margin-bottom: 50px;" class="col-md-10 col-md-offset-1">
+
+
+        <div style="margin-top: 50px;" class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default panel-table">
                 <div class="panel-heading">
@@ -44,12 +42,26 @@
                         </thead>
                         <tbody>
                         {% for devis in properties %}
-                            <tr>
+                            <tr style="text-align: center">
                                 <td>{{ devis.reference}}</td>
                                 <td>{{ devis.dateCreation | date("d/m/Y")}}</td>
                                 <td>{{ devis.client }}</td>
                                 <td>{{ devis.telephone }}</td>
-                                <td>{{ devis.etat }}</td>
+                                <td>
+                                    {% if devis.etat is null %}
+                                        {% set etat = 'en attente' %}
+                                        {% else %}
+                                        {% set etat = devis.etat %}
+                                    {% endif %}
+                                        {{ etat }}
+
+                                        <button  style="margin-left: 10px;" name="state[id]" class="btn btn-default" value="{{devis.id}}">
+                                            <em class="fa fa-pencil"></em></button>
+
+
+
+                                </td>
+
                                 <td>{{ devis.montant }} €</td>
                                 <td class="action">
                                     <a class="btn btn-default"
@@ -79,6 +91,9 @@
     </div>
     </div>
     </body>
+
+    <script src="{{ asset('build/js/devis/index.js') }}"></script>
+
 
     {% include 'footer.html.twig' %}
 {% endblock %}

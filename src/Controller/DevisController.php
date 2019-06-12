@@ -127,7 +127,6 @@ class DevisController extends Controller
         $dateCreation = $request->query->get('data')[1];
         $dateExpiration = $request->query->get('data')[2];
         $actions = $request->query->get('data')[4];
-        $etat = "en attente";
 
         $em = $this->getDoctrine()->getManager();  /* Pour accéder à la base de données */
 
@@ -153,7 +152,6 @@ class DevisController extends Controller
         $dateExpiration2 = new \DateTime($dateExpiration);
         $devis->setDateExpiration($dateExpiration2);
 
-        $devis->setEtat($etat);
 
         $montantHT = $devis->calculTotalHT($actions);
         $devis->setMontantHT($montantHT);
@@ -266,5 +264,44 @@ class DevisController extends Controller
         );
 
     }
+
+    /**
+     * @Route("/indexDevisAjaxAction", name="indexDevisAjaxAction",options = {"expose" : true})
+     * @Method({"GET"})
+     */
+    public function indexAjaxAction(Request $request)
+    {
+
+        dump($request);
+
+        $devisId = $request->query->get('devisId');
+        $state = $request->query->get('state');
+
+
+
+        $em = $this->getDoctrine()->getManager();
+        $devis = $em->getRepository('App:Devis')->find($devisId);
+
+
+        if ($state == 1) {
+            $etat = "validé";
+        }
+       elseif ($state == 2){
+            $etat = "en attente";
+       }
+        elseif ($state == 3 ){
+            $etat = "refusé";
+        }
+
+        $devis->setEtat($etat);
+
+
+
+        $em->persist($devis);
+        $em->flush();
+
+        return $this->json([]);
+    }
+
 
 }
