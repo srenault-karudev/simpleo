@@ -5,7 +5,7 @@
     margin-bottom: 50px;
     height: 350px;
     border-radius: 20px;
-    background-color: lightgrey;
+    box-shadow: 1px 1px 5px grey;
     padding: 50px 50px 50px 50px;
 }
 

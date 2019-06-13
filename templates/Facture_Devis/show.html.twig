@@ -30,21 +30,21 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="  control-label ">Date de Facture :</label>
+                                <label class="  control-label ">Date de facture :</label>
                                 {{ invoice.date  |date("d/m/Y") }}
                             </div>
 
                             <div class="form-group">
-                                <label class=" control-label ">Date de Saisie :</label>
+                                <label class=" control-label ">Date de saisie :</label>
                                 {{ invoice.entryDate  |date("d/m/Y") }}
                             </div>
 
                             <div class="form-group">
-                                <label class=" control-label ">Date de Paiement :</label>
+                                <label class=" control-label ">Date de paiement :</label>
                                 {% if invoice.stateOfPaiement()  %}
                                 {{ invoice.getPaimentDate |date("d/m/Y") }}
                                     {% else %}
-                                    en attente de paiement
+                                    En attente de paiement
                                 {% endif %}
                             </div>
 
@@ -57,11 +57,11 @@
 
 
                                 <div class="form-group">
-                                    <label class=" control-label ">Moyen de Paiement :</label>
+                                    <label class=" control-label ">Moyen de paiement :</label>
                                     {% if invoice.paiement is not null %}
                                         {{ invoice.paiement }}
                                     {% else %}
-                                        non définis
+                                        Non définit
                                     {% endif %}
                                 </div>
 
@@ -69,11 +69,10 @@
                             <div class="form-group">
                                 <label class=" control-label ">Fichier :</label>
 
-                                {% if invoice.imageFile is not null %}<a target="_blank"
-                                                                         href="{{ vich_uploader_asset(action, 'imageFile') }}"/>Fichier
-                                joint</a>
+                                {% if invoice.imageFile is not null %}
+                                <a target="_blank" href="{{ vich_uploader_asset(action, 'imageFile') }}">Fichier joint</a>
                                 {% else %}
-                                aucun fichier
+                                Aucun fichier
                                 {% endif %}</dd>
                             </div>
 

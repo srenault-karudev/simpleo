@@ -10,7 +10,7 @@
 {% block content %}
 
     <div class="colonne1">
-        <h1>Générez vos Bilans Comptable</h1>
+        <h1 style="margin-left: 2%;">Générez vos bilans comptables</h1>
         <br>
     </div>
 
@@ -19,23 +19,24 @@
             <label>
                 <span class="custom-dropdown custom-dropdown--white">
                     <select class=" selectchoice custom-dropdown__select custom-dropdown__select--white">
-                        <option value="1">Bilan du Mois</option>
+                        <option value="1">Bilan du mois</option>
                         <option value="2">Bilan de l'année</option>
                     </select>
                 </span>
                 <br>
                 <div class="date">
-                    <label class="affiche">Mois</label>
-                    <input  class="affiche" type="text" id="month" name=""
+                    <label style="margin-right: 10px;"class="affiche">Mois</label>
+                    <input style="margin-right: 30px;" class="affiche" type="text" id="month" name=""
                             minlength="1" maxlength="2" >
-                    <label>Année</label>
+                    <label style="margin-right: 10px;">Année</label>
                     <input type="text" id="year" name=""
                            minlength="4" maxlength="4" >
                 </div>
                 <br>
             </label>
-            <button>Télécharger le Bilan</button>
         </form>
+            <a href="{{ path('generate_bilan') }}"><button>Télécharger le bilan</button></a>
+
 
     </div>
 

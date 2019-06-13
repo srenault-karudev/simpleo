@@ -2,6 +2,11 @@ legend{
     color: #6f2190;
 }
 
+.formCustomer{
+    box-shadow: 1px 1px 5px grey;
+    background-color: white;
+}
+
 .container{
 
     width: 60%;

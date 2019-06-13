@@ -38,8 +38,8 @@ class Invoice_BuyType extends AbstractType
     {
 
         $choix = [
-            'oui' =>'oui',
-            'non' => 'non',
+            'Oui' =>'oui',
+            'Non' => 'non',
 
         ];
 

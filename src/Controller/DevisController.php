@@ -276,6 +276,7 @@ class DevisController extends Controller
 
     }
 
+
     /**
      * @Route("/indexDevisAjaxAction", name="indexDevisAjaxAction",options = {"expose" : true})
      * @Method({"GET"})
@@ -295,13 +296,13 @@ class DevisController extends Controller
 
 
         if ($state == 1) {
-            $etat = "validé";
+            $etat = "Validé";
         }
        elseif ($state == 2){
-            $etat = "en attente";
+            $etat = "En attente";
        }
         elseif ($state == 3 ){
-            $etat = "refusé";
+            $etat = "Refusé";
         }
 
         $devis->setEtat($etat);
