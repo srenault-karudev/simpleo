@@ -21,10 +21,25 @@
                                 <button class="btn btn-success">
                                     + Nouveau devis
                                 </button></a>
+
                         </div>
                         {#<div class="col col-xs-6 text-right">#}
                         {#<button type="button-success" class="btn btn-sm btn-primary btn-create">Nouveau client</button>#}
                         {#</div>#}
+                        <div class="search">
+                            {{ form_start(form) }}
+                            <div class="form-row">
+                                <div class="col">
+                                    {{ form_row(form.value) }}
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary"> Rechercher</button>
+                                </div>
+
+                            </div>
+
+                            {{ form_end(form) }}
+                        </div>
                     </div>
                 </div>
                 <div class="panel-body">

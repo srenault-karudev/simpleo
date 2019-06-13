@@ -38,22 +38,23 @@ class IndexInvoiceSaleController extends Controller
 
     /**
      * @Route("/index_journal_facture_vente", name="index_journal_facture_vente",options = {"expose" : true})
-     * @Method({"GET"})
      */
     public function index(PaginatorInterface $paginator, Request $request)
     {
+        $search= new PropertySearch();
         $em = $this->getDoctrine()->getManager();
-        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(),0);
-
-
-
+        $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(),0);;
+        $form=$this->createForm(PropretySearchType::class,$search);
+        $form->handleRequest($request);
         $data = $paginator->paginate(
             $invoices,
             $request->query->getInt('page', 1),5
         );
         $data->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
         return $this->render('Facture_Vente/index_invoice_sale.html.twig', array(
-            'properties' => $data));
+            'properties' => $data,
+            'form'=> $form->createView()
+        ));
     }
 
     /**
@@ -67,11 +68,16 @@ class IndexInvoiceSaleController extends Controller
         $form2 = $this->createForm('App\Form\Invoice_SaleType', $action);
 
 
+        //$em = $this->getDoctrine()->getManager();
+        //$records = $em->getRepository('App:Record')->getRecords();
+
+
         //dump($request->query->get('value'));
 
 
         return $this->render('Facture_Vente/new_invoice_sale.html.twig',array(
             'form' => $form->createView(),
+
             'form2'=> $form2->createView(),
 
         ));
@@ -116,8 +122,6 @@ class IndexInvoiceSaleController extends Controller
         $customerRepository = $em->getRepository('App:Person')->getCustomer($this->getUser(), $customerId);
 
 
-
-
         /* Enregistrement de la facture en base de donnée    */
 
         $invoice = new Invoice();
@@ -131,7 +135,7 @@ class IndexInvoiceSaleController extends Controller
         $invoice->setPriceHt($htPrice);
         $invoice->setPriceTt($ttcPrice);
 
-        $invoice->setDueDate($dueDate->modify('+3 month')) ;
+        $invoice->setDueDate($dueDate->modify('+3 month'));
         $customer = new Customer();
         $customer->setUser($user);
 
@@ -142,7 +146,6 @@ class IndexInvoiceSaleController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($invoice);
         $em->flush();
-
 
 
         /* Enregistrement de l'action qui regroupe tout les factures en base de donnée    */
@@ -178,11 +181,9 @@ class IndexInvoiceSaleController extends Controller
         }
 
 
-
         return $this->json([]);
-
-
     }
+
 
 
     /**
@@ -223,6 +224,12 @@ class IndexInvoiceSaleController extends Controller
         return $this->json([]);
     }
 
+
+
+
+
+
+
     /**
      * @Route("/generate_index_sale/{id}",name="generate_index_sale")
      * @Method({"GET"})
@@ -247,5 +254,6 @@ class IndexInvoiceSaleController extends Controller
         );
 
     }
+
 
 }

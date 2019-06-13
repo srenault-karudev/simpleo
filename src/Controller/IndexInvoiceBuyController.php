@@ -49,6 +49,9 @@ class IndexInvoiceBuyController extends Controller
         //  dump('App/public/uploads/images/products/Cv.pdf');
         $em = $this->getDoctrine()->getManager();
         $invoices = $em->getRepository('App:Invoice')->getInvoices($this->getUser(), 1);
+        $search= new PropertySearch();
+        $form=$this->createForm(PropretySearchType::class,$search);
+        $form->handleRequest($request);
         $data = $paginator->paginate(
             $invoices,
             $request->query->getInt('page', 1), 5
@@ -56,7 +59,9 @@ class IndexInvoiceBuyController extends Controller
         $data->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
 
         return $this->render('Facture_Devis/index_invoice_buy.html.twig', array(
-            'properties' => $data));
+            'properties' => $data,
+            'form'=> $form->createView()
+            ));
     }
 
 

@@ -13,7 +13,6 @@ use App\Entity\Devis;
 use App\Entity\DevisAction;
 use App\Entity\Person;
 use App\Entity\PropertySearch;
-use App\Entity\Provider;
 use App\Form\PropretySearchType;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -50,6 +49,7 @@ class DevisController extends Controller
         $search= new PropertySearch();
 
 //        $query = $em->createQuery($devis);
+        $search= new PropertySearch();
 //
 //        $paginations  = $this->get('knp_paginator')->paginate(
 //            $query,
@@ -61,6 +61,8 @@ class DevisController extends Controller
             $devis,
             $request->query->getInt('page', 1),5
         );
+        $form=$this->createForm(PropretySearchType::class,$search);
+        $form->handleRequest($request);
         $properties->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
         return $this->render('devis/index.html.twig', array(
             'properties' => $properties,
