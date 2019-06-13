@@ -2,21 +2,48 @@
 
 {% block title %}{% endblock %}
 {% block head %}{% endblock %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('build/CSS/rapport.css') }}">
+    {% endblock %}
+
 {% block content %}
 
     <div class="colonne1">
-        <h1>Rapport (page à faire)</h1>
+        <h1>Générez vos Bilans Comptable</h1>
         <br>
     </div>
 
-    <div class="colonne2">
-        <button class="w3-button w3-round-xlarge w3-border w3-border-purple">Ajouter un indicateur</button>
-    </div>
-
-    <div class="w3-row-padding w3-center">
+    <div class="main">
+        <form>
+            <label>
+                <span class="custom-dropdown custom-dropdown--white">
+                    <select class=" selectchoice custom-dropdown__select custom-dropdown__select--white">
+                        <option value="1">Bilan du Mois</option>
+                        <option value="2">Bilan de l'année</option>
+                    </select>
+                </span>
+                <br>
+                <div class="date">
+                    <label class="affiche">Mois</label>
+                    <input  class="affiche" type="text" id="month" name=""
+                            minlength="1" maxlength="2" >
+                    <label>Année</label>
+                    <input type="text" id="year" name=""
+                           minlength="4" maxlength="4" >
+                </div>
+                <br>
+            </label>
+            <button>Télécharger le Bilan</button>
+        </form>
 
     </div>
 
 
     {% include 'footer.html.twig' %}
 {% endblock %}
+
+{% block extendJavascript %}
+    <script src="{{ asset('build/js/rapport.js') }}"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+{% endblock extendJavascript %}
