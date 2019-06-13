@@ -3,9 +3,9 @@
     margin: auto;
     text-align: center;
     margin-bottom: 50px;
-    height: 350px;
+    height: auto;
     border-radius: 20px;
-    background-color: lightgrey;
+    background-color: #e6ebf1;
     padding: 50px 50px 50px 50px;
 }
 
@@ -97,14 +97,11 @@
     }
 
 
-
-
-
     .date{
-        margin-top: 60px;
+        margin-top: 30px;
     }
 
-    #month{
+    .month{
         margin: auto auto 20px auto;
         border-radius: 8px;
         height: 50px;
@@ -112,7 +109,7 @@
         box-shadow: 0px 0px 10px lightgrey;
     }
 
-    #year{
+    .year{
         margin: auto auto 20px auto;
         border-radius: 8px;
         height: 50px;
@@ -130,5 +127,9 @@
         font: 20px Arial;
         color: white;
         box-shadow: 1px 1px 5px grey;
+    }
+
+    .affiche{
+        display: none;
     }
 }

@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use Symfony\Component\HttpFoundation\Request;
 use Twig\Environment;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,10 +28,24 @@ class RapportController extends Controller
      * @Route("/Rapport", name="rapport")
      */
 
-    public function index()
+    public function index(Request $request)
     {
+        $form = $this->createForm('App\Form\RapportType');
+        $form->handleRequest($request);
 
-        return $this->render('rapport.html.twig');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $month = $form->get('month')->getData();
+            $year = $form->get('year')->getData();
+            $choix= $form->get('choix')->getData();
+
+            dump($choix);
+            return $this->redirectToRoute('rapport');
+
+        }
+
+        return $this->render('rapport.html.twig', [
+            'form' => $form->createView(),
+        ]);
 
     }
 }

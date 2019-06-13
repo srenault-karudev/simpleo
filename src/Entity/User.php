@@ -276,6 +276,11 @@ class User extends BaseUser
         $this->stateTrialPeriod = $stateTrialPeriod;
     }
 
+    public function getStateTrialPeriod(): ?bool
+    {
+        return $this->stateTrialPeriod;
+    }
+
 
 }
 

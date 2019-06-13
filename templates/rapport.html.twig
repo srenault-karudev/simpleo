@@ -13,32 +13,22 @@
         <h1>Générez vos Bilans Comptable</h1>
         <br>
     </div>
-
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
     <div class="main">
-        <form>
             <label>
-                <span class="custom-dropdown custom-dropdown--white">
-                    <select class=" selectchoice custom-dropdown__select custom-dropdown__select--white">
-                        <option value="1">Bilan du Mois</option>
-                        <option value="2">Bilan de l'année</option>
-                    </select>
-                </span>
-                <br>
+                {{ form_widget(form.choix, {'attr': {'class': 'selectchoice form-control'}} ) }}
                 <div class="date">
-                    <label class="affiche">Mois</label>
-                    <input  class="affiche" type="text" id="month" name=""
-                            minlength="1" maxlength="2" >
+                    <p class="affiche">Mois</p>
+                    {{ form_widget(form.month, {'attr': {'class': ' affiche month form-control'}} ) }}
+                    <br>
                     <label>Année</label>
-                    <input type="text" id="year" name=""
-                           minlength="4" maxlength="4" >
+                    {{ form_widget(form.year, {'attr': {'class': ' year form-control'}} ) }}
                 </div>
                 <br>
             </label>
             <button>Télécharger le Bilan</button>
-        </form>
-
     </div>
-
+    {{ form_end(form) }}
 
     {% include 'footer.html.twig' %}
 {% endblock %}
