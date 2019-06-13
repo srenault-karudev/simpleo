@@ -8,16 +8,16 @@ $(document).ready(function () {
             console.log(devisId);
 
             var state = prompt('Pour modifier l\'état de la facture, \n ' +
-                'veuillez renseigner le numéro associé a un état : \n' +
-                '  1 : validé \n ' +
-                ' 2 : en attente \n ' +
-                ' 3 : refusé',
-                "exemple : 1");
+                'veuillez renseigner le numéro qui correspond à un des états suivants : \n' +
+                '  1 : Validé \n ' +
+                ' 2 : En attente \n ' +
+                ' 3 : Refusé',
+                "Exemple : 1");
 
             console.log(state);
 
             if (state != '1' && state != '2' && state != '3') {
-                alert('Attention le numero associé a un état est incorrect.');
+                alert('Attention, le numéro entré ne correspond à aucun état.');
             }
             else {
 

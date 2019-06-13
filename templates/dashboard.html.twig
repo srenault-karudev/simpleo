@@ -15,8 +15,8 @@
             <div style="width: 700px; margin-left: auto; margin-right: auto; margin-top: 10px"
                  class="alert alert-dismissible alert-info ">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                Vous êtes actuellement en période d'éssai, il vous reste <strong> {{ interval }} jours </strong>
-                d'utilisation
+                Vous êtes actuellement en période d'essai, il vous reste <strong> {{ interval }} jours </strong>
+                d'utilisation.
             </div>
         {% elseif formula == 'simple' %}
             <div style="width: 490px; margin-left: auto; margin-right: auto;margin-top: 10px"
@@ -28,7 +28,7 @@
             <div style="width: 490px; margin-left: auto; margin-right: auto;margin-top: 10px"
                  class="alert alert-dismissible alert-info ">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                Vous bénéficiez actuellement de la formule <strong> complete </strong>
+                Vous bénéficiez actuellement de la formule <strong> complète </strong>
             </div>
         {% endif %}
         <div class="colonne1" style="color: purple;">
@@ -69,7 +69,7 @@
 
                 <div class="w3-card-4 row13">
                     <header class="w3-container">
-                        <h2 class="smallhead">En attente de paiement : {{ infoGlobal.numberWaitInvoices.0.waitinvoices }} factures</h2>
+                        <h2 class="smallhead">En attente de paiement : {{ infoGlobal.numberWaitInvoices.0.waitinvoices }} facture(s)</h2>
                     </header>
 
                     <div class="w3-container">
@@ -83,7 +83,7 @@
 
                 <div class="w3-card-4 row14">
                     <header class="w3-container">
-                        <h2 class="smallhead" style="color: red">facture(s) à Payer : {{ infoGlobal.invoicetopay.0.invoicestopay }}</h2>
+                        <h2 class="smallhead" style="color: red">Facture(s) à payer : {{ infoGlobal.invoicetopay.0.invoicestopay }}</h2>
                     </header>
 
                     <div class="w3-container">
@@ -100,7 +100,7 @@
             <div class="w3-half row2">
                 <div class="w3-card-4">
                     <div class="w3-container w3-center">
-                        <h2 class="smallhead2">Evolution du Chiffre d'Affaires de {{ year }} </h2>
+                        <h2 class="smallhead2">Évolution du chiffre d'affaires de {{ year }} </h2>
                     </div>
                     <br>
                     <canvas id="myChart" width="400" height="274"></canvas>
@@ -146,7 +146,7 @@
                         {%  endif  %}
                     </div>
                     <header class="w3-container">
-                        <h2 class="smallhead" >Evolution du chiffre d'affaires</h2>
+                        <h2 class="smallhead" >Évolution du chiffre d'affaires</h2>
                     </header>
 
                     <div class="w3-container euros">

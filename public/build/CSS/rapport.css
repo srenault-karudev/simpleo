@@ -5,7 +5,8 @@
     margin-bottom: 50px;
     height: auto;
     border-radius: 20px;
-    background-color: #e6ebf1;
+
+    box-shadow: 1px 1px 5px grey;
     padding: 50px 50px 50px 50px;
 }
 

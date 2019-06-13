@@ -31,10 +31,10 @@ window.onload = (() => {
         let $my_action_buy_unit_amount = $("#action_buy_unit_amount").val();
         var $test = testIsNotANumber($my_action_buy_unit_amount);
         if ($test == true) {
-            $e.text("attention ce n'est pas un nombre").show();
+            $e.text("Attention, ce n'est pas un nombre.").show();
         } else if ($my_action_buy_unit_amount < 0) {
             $test = true;
-            $e.text("attention la valeur doit être supérieur à 0").show();
+            $e.text("Attention, la valeur doit être supérieure à 0.").show();
         } else {
             $e.hide();
             $b.hide();
@@ -53,10 +53,10 @@ window.onload = (() => {
         let $my_action_buy_tva_amount_two = $("#action_buy_tva_amount").val();
         var $test = testIsNotANumber($my_action_buy_tva_amount_two);
         if ($test == true) {
-            $b.text("attention ce n'est pas un nombre").show();
+            $b.text("Attention, ce n'est pas un nombre.").show();
         } else if ($my_action_buy_tva_amount_two < 0) {
             $test = true;
-            $b.text("attention la valeur doit être supérieur à 0").show();
+            $b.text("Attention, la valeur doit être supérieure à 0.").show();
         } else {
             $e.hide();
             $b.hide();
@@ -110,7 +110,7 @@ window.onload = (() => {
 
         if (($registre == undefined) || ($tva == undefined) || (article == '')||  ($qtt == '') || ($action_buy_unit_amount == '') || ($action_buy_tva_amount == '') || (testIsNotANumber($action_buy_unit_amount)) || (testIsNotANumber($action_buy_tva_amount)) || ($action_buy_tva_amount < 0) || ($action_buy_unit_amount < 0)) {
 
-            $b.text("! ERREUR DANS LE FORMULAIRE, Nous rappelons que tous les champs sont obligatoires").show();
+            $b.text("/!\\ Erreur dans le formulaire. Nous rappelons que tous les champs sont obligatoires").show();
             return false
         } else {
             $b.hide();
@@ -163,7 +163,7 @@ window.onload = (() => {
         .document
         .querySelector(".table-right tbody")
         .onclick = function (ev) {
-        if (window.confirm("Etes vous sur de supprimer cette dépense ?"))
+        if (window.confirm("Êtes vous sûr(e) de supprimer cette dépense ?"))
             this.removeChild(ev
                 .target
                 .parentNode
@@ -242,13 +242,13 @@ window.onload = (() => {
     function validation2(data) {
         var $b = $("#erreur_form_two");
         if ((data[2] == undefined) || (data[3] == "") || (data[6] == 'oui' && data[1] == undefined) ) {
-            $b.text("Nous rappelons que tous les champs sont obligatoires").show();
+            $b.text("Nous rappelons que tous les champs sont obligatoires.").show();
             return false
         } else if (data[0].length == 0) {
-            $b.text("Attention vous n'avez entré aucun achats").show();
+            $b.text("Attention, vous n'avez entré aucun achat").show();
             return false
         } else {
-            $b.text("Nous rappelons que tous les champs sont obligatoires").hide();
+            $b.text("Nous rappelons que tous les champs sont obligatoires.").hide();
             return true;
         }
 
@@ -259,7 +259,7 @@ window.onload = (() => {
         $num = parseInt(test, 10);
         if (test != null) {
             if (isNaN($num)) {
-                alert("attention ce n'est pas un nombre");
+                alert("Attention, ce n'est pas un nombre.");
             } else {
                 $('.asupprimer').remove();
                 var radio = document.createElement("div");

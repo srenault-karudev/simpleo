@@ -19,7 +19,7 @@
                         <div class="col col-xs-6">
                             <a href="{{ path('new_invoice_buy') }}">
                                 <button class="btn btn-success">
-                                    + Nouvel Achat
+                                    + Nouvel achat
                                 </button>
                             </a>
                         </div>
@@ -43,7 +43,7 @@
                     <table class="table table-striped table-bordered table-list">
                         <thead>
                         <tr>
-                            <th>Numero</th>
+                            <th>Numéro</th>
                             <th>Date facture</th>
                             <th>Date saisie</th>
                             <th>Date paiement</th>
@@ -66,7 +66,7 @@
                                 {% if invoice.stateOfPaiement() == true %}
                                {{ invoice.getPaimentDate()  |date("d/m/Y") }}
                                     {% else %}
-                                        indéfini
+                                        Non définie
                                 {% endif %}
                                 </td>
                                 <td>{{ invoice.getDueDate()  |date("d/m/Y") }}</td>
