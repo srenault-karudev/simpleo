@@ -22,14 +22,15 @@
             <fieldset>
 
 
-                {#<div  class="alert alert-dismissible alert-success col-md-6 col-md-offset-3 ">#}
-                    {#<h4>Abonnement reussis</h4>#}
-                    {#<a href ="{{path('dashboard', {'formula' : formula })}}"><button  style="margin-top: 20px;" type="submit" class="btn btn-primary btn-lg ">Accéder au site</button></a>#}
-
-                {#</div>#}
-
                 {% block body %}
-                    <div class="nav-space-checkout">
+
+
+                    <div>
+                        Veuillez appuyer sur le bouton ci-dessous<br>
+                        pour commencer le paiement.<br>
+                        <br>
+                    </div>
+                    <div  style="margin-left:290px"; class="nav-space-checkout">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-6">
