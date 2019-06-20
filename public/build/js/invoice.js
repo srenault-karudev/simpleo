@@ -197,6 +197,7 @@ window.onload = (() => {
         $client = $('input[type=radio][name="invoice_buy[person_id]"]:checked').attr('value');
         $date = $('#invoice_buy_invoice_date').val();
         $file = $("#invoice_buy_imageFile").val();
+        //$file = $("#invoice_buy_imageFile").get(0).files;
         $etat =  $('input[type=radio][name="invoice_buy[paid]"]:checked').attr('value');
 
         var data2 = new Array();

@@ -11,7 +11,11 @@
             <header>
                 <div class="row">
                     <div class="col">
-
+                        {% if user.company.image is not null  %}
+                        {% set image = user.company.image %}
+                            <img style="width: 240px; margin-bottom: -110px; margin-top: 10px;" src= {{"http://192.168.33.10/uploads/images/products/"~image  }}
+                            alt="logo" />
+                        {% endif %}
                     </div>
                     {% set customer = devis.client %}
                     <div style="text-align: center; margin-top: 40px">
