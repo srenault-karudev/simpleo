@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="invoice">
+    <div class="invoice overflow-auto">
+        <div style="min-width: 600px">
+            <header>
+                <div class="row">
+                    <div class="col">
+                    </div>
+                    <div style="text-align:center;margin-top: 40px;font-size: 25px">
+                        <strong>COMPTE DE RÉSULTAT SYNTHÉTIQUE</strong>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div style="margin-top: 75px;margin-bottom: 20px;">
+                    <strong>CHARGES (Hors Taxes)</strong>
+                </div>
+                <br>
+                <table>
+                    <tr>
+                        <th id="co1" headers="blank" class="headerBilan"><strong>CHARGES D'EXPLOITATION</strong></th>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="c1" headers="blank">Achats de marchandises</th>
+                        <td class="elementsTable2" headers="co1 c1">
+                            {% if informations.marchandisesBuy is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.marchandisesBuy|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft  elementsTable" id="p1"  headers="blank">Variation de stock (marchandises)</th>
+                        <td class="elementsTable2" headers="co1 p1">
+                            {% if informations.variationStockMarchandise is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.variationStockMarchandise|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft  elementsTable" id="e1"  headers="blank">Achats d'approvisionnement</th>
+                        <td class="elementsTable2" headers="co1 e1">
+                            {% if informations.supplyBuy is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.supplyBuy|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e1"  headers="blank">Variation de stock (approvisionnement)</th>
+                        <td class="elementsTable2" headers="co1 e1">
+                            {% if informations.stockVariationApprovisionnement is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.stockVariationApprovisionnement|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e1"  headers="blank">Autres charges externes</th>
+                        <td class="elementsTable2" headers="co1 e1">
+                            {% if informations.otherExterneExpences is null%}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.otherExterneExpences|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e1"  headers="blank">Impôts, taxes et versements assimilés</th>
+                        <td class="elementsTable2" headers="co1 e1">
+
+                            {% if informations.taxesVersementsAssimiles is null%}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.taxesVersementsAssimiles|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e1"  headers="blank">Rémunération du personnel</th>
+                        <td class="elementsTable2" headers="co1 e1">
+                            {% if informations.salariesExpences is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.salariesExpences|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e1"  headers="blank">Charges sociales</th>
+                        <td class="elementsTable2" headers="co1 e1">
+
+                            {% if informations.socialExpenses is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.socialExpenses|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e1"  headers="blank">Dotations aux amortissements</th>
+                        <td class="elementsTable2" headers="co1 e1">
+
+                            {% if informations.donationOfAmortissement is null%}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.donationOfAmortissement|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e1"  headers="blank">Dotations aux provisions</th>
+                        <td class="elementsTable2" headers="co1 e1">
+
+                            {% if informations.donationOfDotation is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.donationOfDotation|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e1"  headers="blank">Autres charges</th>
+                        <td class="elementsTable2" headers="co1 e1">
+
+                            {% if informations.othersCharges is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.othersCharges|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e1"  headers="blank">Charges financières</th>
+                        <td class="elementsTable2" headers="co1 e1">0€</td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft total elementsTable" id="e1"  headers="blank"><strong>TOTAL I</strong></th>
+                        <td class="elementsTable2" headers="co1 e1">
+
+                            {% if informations.totalOne is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.totalOne|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="hide" id="blank">&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th class="" id="co3" headers="blank"><strong>TOTAL DES CHARGES</strong></th>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="c2"  headers="blank">Charges exceptionnelles <strong>- II</strong></th>
+                        <td class="elementsTable2" headers="co3 c2">
+
+                            {% if informations.exceptionnelExpences is null%}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.exceptionnelExpences|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="p2" headers="blank">Impôts sur les bénéfices <strong>- III</strong></th>
+                        <td class="elementsTable2" headers="co3 p2">
+
+                            {% if informations.impotsOnBenef is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.impotsOnBenef|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft total elementsTable" id="e2" headers="blank"><strong>TOTAL DES CHARGES - I+II+III</strong></th>
+                        <td class="elementsTable2" headers="co3 e2">
+
+                            {% if informations.totalcharge is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.totalcharge|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th id="blank">&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th class="" id="co4" headers="blank"><strong>TOTAL GÉNÉRAL</strong></th>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e2" headers="blank">Bénéfice ou perte</th>
+                        <td class="elementsTable2" headers="co3 e2">0€</td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft total elementsTable" id="co4" headers="blank"><strong>TOTAL GÉNÉRAL</strong></th>
+                        <td class="elementsTable2" headers="co4 e2">0€</td>
+                    </tr>
+                </table>
+                <br>
+                <div style="margin-top: 75px; margin-bottom: 20px;">
+                    <strong>PRODUITS (Hors Taxes)</strong>
+                </div>
+                <br>
+                <table>
+                    <tr>
+                        <th id="co1" headers="blank" class=""><strong>PRODUITS D'EXPLOITATION</strong></th>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="c1" headers="blank">Ventes de  marchandises</th>
+                        <td class="elementsTable2" headers="co1 c1">
+                            {% if informations.marchandiseSale is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.marchandiseSale|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="c1" headers="blank">Production vendue (biens et services)</th>
+                        <td class="elementsTable2" headers="co1 c1">
+                            {% if informations.prodSale is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.prodSale|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="c1" headers="blank">Production stockée</th>
+                        <td class="elementsTable2" headers="co1 c1">
+                            {% if informations.prodstock is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.prodstock|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft  elementsTable" id="p1"  headers="blank">Production immobilisée</th>
+                        <td class="elementsTable2" headers="co1 p1">
+                            {% if informations.prodim is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.prodim|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft  elementsTable" id="e1"  headers="blank">Subventions d'exploitation</th>
+                        <td class="elementsTable2" headers="co1 e1">
+                            {% if informations.subexpl is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.subexpl|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft  elementsTable" id="e1"  headers="blank">Autres produits</th>
+                        <td class="elementsTable2" headers="co1 e1">
+                            {% if informations.otherproduct is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.otherproduct|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="e1"  headers="blank">Produits financiers</th>
+                        <td class="elementsTable2" headers="co1 e1">0€</td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft total elementsTable" id="e1"  headers="blank"><strong>TOTAL I</strong></th>
+                        <td class="elementsTable2" headers="co1 e1">
+                            {% if informations.total3 is null %}
+                                <p>0.00 €</p>
+                            {%  else  %}
+                                <p>{{ informations.total3|number_format(2, '.', ',') }} €</p>
+                            {%  endif  %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="hide" id="blank">&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th class="" id="co3" headers="blank"><strong>TOTAL DES PRODUITS</strong></th>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft elementsTable" id="c2"  headers="blank">Produits exceptionnels <strong>- II</strong></th>
+                        <td class="elementsTable2" headers="co3 c2">0€</td>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft total elementsTable" id="e2" headers="blank"><strong>TOTAL DES PRODUITS - I+II</strong></th>
+                        <td class="elementsTable2" headers="co3 e2">0€</td>
+                    </tr>
+                    <tr>
+                        <th id="blank">&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th class="" id="co4" headers="blank"><strong>TOTAL GÉNÉRAL</strong></th>
+                    </tr>
+                    <tr>
+                        <th class="alignLeft total elementsTable" id="co4" headers="blank"><strong>TOTAL GÉNÉRAL</strong></th>
+                        <td class="elementsTable2" headers="co4 e2">0€</td>
+                    </tr>
+                </table>
+            </main>
+        </div>
+    </div>
+</div>
+<style>
+    html{
+        font-family: "Helvetica", arial, sans-serif;
+    }
+    .total{
+        padding-left: 100px;
+    }
+    .hide{
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+    }
+    .invoice {
+        position: relative;
+        background-color: #FFF;
+        padding: 15px
+    }
+    .invoice header {
+        padding: 10px 0;
+        margin-bottom: 20px;
+        border-bottom: 1px solid rebeccapurple
+    }
+    .invoice table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 20px
+    }
+    .alignLeft{
+        text-align: left;
+    }
+    .headerBilan{
+        padding-right: 10px;
+    }
+    .elementsTable {
+        white-space: nowrap;
+        font-weight: 400;
+        font-size: 16px;
+        border: 1px solid #aaa;
+    }
+    .elementsTable2 {
+        border-top: 1px solid #aaa;
+        border-bottom: 1px solid #aaa;
+        border-right: 1px solid #aaa;
+    }
+</style>
+</body>
+</html>

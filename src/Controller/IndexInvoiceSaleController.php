@@ -171,6 +171,7 @@ class IndexInvoiceSaleController extends Controller
             $action->setQuantity($qtte);
             $action->setUnitAmount($unitAmount);
             $action->setTotalAmountTtc();
+            $action->setTotalAmountHt();
             $invoice->setPaiement(null);
 
             $action->setInvoice($invoice);

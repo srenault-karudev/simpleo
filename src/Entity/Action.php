@@ -84,6 +84,15 @@ class Action
      */
     private $total_amount_ttc;
 
+    /**
+
+     * @var float
+     *
+     * @ORM\Column(name="total_amount_ht", type="float", nullable=false)
+     */
+    private $total_amount_ht;
+
+
 
     /**
      * @var string
@@ -234,6 +243,18 @@ class Action
     public function setArticle(string $article)
     {
         $this->article = $article;
+    }
+
+    public function getTotalAmountHt(): ?float
+    {
+        return $this->total_amount_ht;
+    }
+
+    public function setTotalAmountHt(): self
+    {
+        $qtt=$this->getQuantity();
+        $this->total_amount_ht = $qtt*$this->getUnitAmount();
+        return $this;
     }
 
 

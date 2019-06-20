@@ -199,7 +199,7 @@ class IndexInvoiceBuyController extends Controller
             $action->setUnitAmount($unitAmount);
 
             $action->setTotalAmountTtc();
-
+            $action->setTotalAmountHt();
 
 
 //            $file = new File('App/public/uploads/images/products/AttestationDroit.pdf');

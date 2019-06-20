@@ -8,18 +8,19 @@
 
 }
 .man{
-    padding-left: 300px;
-    padding-top: 50px;
+    width: 5%;
+    margin: 30px;
+}
+
+.images{
+    text-align: center;
 }
 .laptop{
-    padding-left: 200px;
-    padding-top: 50px;
-
+    width: 6%;
+    margin: 30px;
 }
 .invoice{
-    padding-left: 100px;
-    padding-top: 50px;
-
+    width: 12%;
 }
 .element{
     margin: 3px;
@@ -51,19 +52,16 @@ p{
     border-width:2px;
     border-style: outset;
     border-radius:10px;
-
-
+    margin-right: 5px;
 }
 .element2{
     border-width:2px;
     border-style: outset;
     border-radius:10px;
-
+margin-left: 5px;
 
 }
 h1{
     text-align: center;
     font-family: "Comic Sans MS";
-
-
 }
