@@ -72,7 +72,8 @@ class CompanyType extends AbstractType
             ))
             ->add('imageFile', FileType::class,[
                 'required' => false,
-                'label' => 'Fichier'
+                'label' => 'Fichier',
+                'attr' => array('accept' => 'image/png')
             ])
 
             ->add('endDateSocialYear', DateType::class, array(

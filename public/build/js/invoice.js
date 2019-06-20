@@ -197,6 +197,7 @@ window.onload = (() => {
         $client = $('input[type=radio][name="invoice_buy[person_id]"]:checked').attr('value');
         $date = $('#invoice_buy_invoice_date').val();
         $file = $("#invoice_buy_imageFile").val();
+        //$file = $("#invoice_buy_imageFile").get(0).files;
         $etat =  $('input[type=radio][name="invoice_buy[paid]"]:checked').attr('value');
 
         var data2 = new Array();
@@ -230,7 +231,7 @@ window.onload = (() => {
                 type: 'GET',
                 dataType: 'json',
             }).success(function (data) {
-                window.location = Routing.generate('index_journal_facture_achat');
+                //window.location = Routing.generate('index_journal_facture_achat');
             });
 
         }

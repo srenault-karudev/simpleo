@@ -16,15 +16,11 @@
             <header>
                 <div class="row">
                     <div class="col">
-                        <a>
-                            <img style="width: 25%; margin-bottom: -110px; margin-top: 10px;"
-                                 {#src="http://37.187.127.4/images/Logo.png" data-holder-rendered="true"#}
-                            />
-
-                            {#img style="width: 25%; margin-bottom: -110px; margin-top: 10px;"#}
-                            {#src="../../public/uploads/images/products/icone-croix-rouge-png-3.png" data-holder-rendered="true"#}
-                            {#alt="logo"#}
-                        </a>
+                        {% set image = user.company.image %}
+                        {% if image is not null  %}
+                            <img style="width: 240px; margin-bottom: -110px; margin-top: 10px;" src= {{"http://192.168.33.10/uploads/images/products/"~image  }}
+                            alt="logo" />
+                        {% endif %}
                     </div>
 
                     {% set customer = invoice.client %}
