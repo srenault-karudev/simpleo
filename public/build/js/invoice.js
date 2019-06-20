@@ -231,7 +231,7 @@ window.onload = (() => {
                 type: 'GET',
                 dataType: 'json',
             }).success(function (data) {
-                //window.location = Routing.generate('index_journal_facture_achat');
+                window.location = Routing.generate('index_journal_facture_achat');
             });
 
         }
