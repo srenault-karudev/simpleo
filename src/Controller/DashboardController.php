@@ -102,7 +102,7 @@ class DashboardController extends Controller
         $yearturnover =  $em->getRepository('App:Action')->getYearTurnover($user);
         $numberofwaitinvoices =$em->getRepository('App:Action')->getWaitInvoices($user);
         $numberofinvoicestoPay =$em->getRepository('App:Action')->getInvoicesToPay($user);
-
+        $thismonthspendings =$em->getRepository('App:Action')->getThisMonthSpending($user);
         foreach ($lastMonthTurnover[0] as $key => $value){
             if($key='lastmonthturnover'){
                 $valOne=$value;
@@ -143,6 +143,7 @@ class DashboardController extends Controller
             'formula' => $formula,
             'bool' => false,
             'infoGlobal' => array(
+                'monthspendings'=>$thismonthspendings,
                 'invoicetopay'=>$numberofinvoicestoPay,
                 'lastmontresult' =>$lastmonthResult,
                 'monthturnover' => $monthTurnover,

@@ -53,6 +53,22 @@
                     </div>
                 </div>
 
+                <div class="w3-card-4 row11">
+                    <header class="w3-container">
+                        <h2 class="smallhead" >Dépenses du mois ( {{ month }} )</h2>
+                    </header>
+
+                    <div class="w3-container">
+                        {% if infoGlobal.monthspendings.0.monthspending is null %}
+                            <p>0.00 €</p>
+                        {%  else  %}
+                            <p>{{ infoGlobal.monthspendings.0.monthspending|number_format(2, '.', ',') }} €</p>
+                        {%  endif  %}
+                    </div>
+                </div>
+
+
+
                 <div class="w3-card-4 row12">
                     <header class="w3-container">
                         <h2 class="smallhead">Chiffre d'affaires annuel ( {{ year }} )</h2>
@@ -103,7 +119,7 @@
                         <h2 class="smallhead2">Évolution du chiffre d'affaires de {{ year }} </h2>
                     </div>
                     <br>
-                    <canvas id="myChart" width="400" height="274"></canvas>
+                    <canvas id="myChart" width="400" height="314"></canvas>
                 </div>
             </div>
 

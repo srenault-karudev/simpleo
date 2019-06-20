@@ -21,25 +21,17 @@ class   RapportType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $choices = [
-            'Année' => '0',
-            'Mois' => '1'
 
-        ];
+        $year=date('Y');
+
 
         $builder
-            ->add('choix', ChoiceType::class, array(
-                'choices' => $choices,
-                'expanded' => false,
-                'multiple' => false,
-            ))
-
-            ->add('month', \Symfony\Component\Form\Extension\Core\Type\TextType::class,[
-                    'required'   => false,
-            ])
-
-            ->add('year', \Symfony\Component\Form\Extension\Core\Type\TextType::class,[
-                'required'   => false,
+            ->add('year', \Symfony\Component\Form\Extension\Core\Type\IntegerType::class,[
+                'attr'=> array(
+                    'min' => 2000,
+                    'max' => $year,
+                ),
+                'required'=>true,
             ]);
 
 
