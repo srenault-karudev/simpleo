@@ -15,6 +15,7 @@ use FOS\UserBundle\FOSUserEvents;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 
 class RedirectAfterRegistrationSubscriber implements EventSubscriberInterface
@@ -28,8 +29,7 @@ class RedirectAfterRegistrationSubscriber implements EventSubscriberInterface
 
     public function onRegistrationSuccess(FormEvent $event)
     {
-
-
+        
         $url = $this->router->generate('fos_user_security_login');
         $response = new RedirectResponse($url);
         $event->setResponse($response);

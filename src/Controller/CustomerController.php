@@ -15,6 +15,7 @@ use App\Form\PropretySearchType;
 use App\Entity\Person;
 use App\Entity\PropertySearch;
 use App\Entity\Provider;
+use Doctrine\ORM\ORMException;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -39,61 +40,84 @@ class CustomerController extends Controller
      */
 
 
-
-    public function indexAction(PaginatorInterface $paginator,Request $request)
+    public function indexAction(PaginatorInterface $paginator, Request $request)
     {
 
 
 //
-       $em = $this->getDoctrine()->getManager();
-       $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
-       //dump($customers); die();
-       $search= new PropertySearch();
+        $em = $this->getDoctrine()->getManager();
+        $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
+        //dump($customers); die();
+        $search = new PropertySearch();
 
-//        $query = $em->createQuery($customers);
-//
-//        $paginations  = $this->get('knp_paginator')->paginate(
-//            $query,
-//            $request->query->getInt('page', 1), /*page number*/
-//            10 /*limit per page*/
-//        );
-
-        $form=$this->createForm(PropretySearchType::class,$search);
+        $form = $this->createForm(PropretySearchType::class, $search);
         $form->handleRequest($request);
         $properties = $paginator->paginate(
             $customers,
 
-            $request->query->getInt('page', 1),5
+            $request->query->getInt('page', 1), 5
         );
         $properties->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
         return $this->render('customer/index.html.twig', array(
             'properties' => $properties,
-            'form'=> $form->createView()
+            'form' => $form->createView(),
+            'error' => false,
         ));
     }
+
+    /**
+     * @Route("/index_customer_error", name="index_error_customer")
+     */
+
+    public function indexErrorAction(PaginatorInterface $paginator, Request $request)
+    {
+
+
+//
+        $em = $this->getDoctrine()->getManager();
+        $customers = $em->getRepository('App:Person')->getCustomers($this->getUser());
+        //dump($customers); die();
+        $search = new PropertySearch();
+
+        $form = $this->createForm(PropretySearchType::class, $search);
+        $form->handleRequest($request);
+        $properties = $paginator->paginate(
+            $customers,
+
+            $request->query->getInt('page', 1), 5
+        );
+        $properties->setTemplate('@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig');
+        return $this->render('customer/indexError.html.twig', array(
+            'properties' => $properties,
+            'form' => $form->createView(),
+        ));
+    }
+
+
+
 
     /**
      * @Route("/form_customer/{id}", name="form_customer",defaults={"id"=""})
      * @Method({"GET", "POST"})
      */
 
-    public function customerForm (Request $request,Customer $customer = null)
+    public function customerForm(Request $request, Customer $customer = null)
     {
 
-        if($customer == null){
+        if ($customer == null) {
             $customer = new Customer();
         }
 
-            //$request->request->get();
-            $customer->setPersonType('customer');
-            $customer->setUser($this->getUser());
+        //$request->request->get();
+        $customer->setPersonType('customer');
+        $customer->setUser($this->getUser());
 
-        $form = $this->createForm('App\Form\CustomerType',$customer);
+        $form = $this->createForm('App\Form\CustomerType', $customer);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-           // dump($request->request->get('custo'));
+            // dump($request->request->get('custo'));
             $em = $this->getDoctrine()->getManager();
             $em->persist($customer);
             $em->flush();
@@ -107,45 +131,16 @@ class CustomerController extends Controller
     }
 
 
-   /* public function customerCompanyForm (Request $request, CustomerCompany $customerCompany = null)
-    {
-        if($customerCompany == null){
-            $customerCompany = new CustomerCompany();
-        }
-
-        $customerCompany->setPersonType('customerCompany');
-
-        $customerCompany->setUser($this->getUser());
-
-        $formcompany = $this->createForm('App\Form\CustomerCompanyType', $customerCompany);
-
-        $formcompany->handleRequest($request);
-
-        if ($formcompany->isSubmitted() && $formcompany->isValid()) {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($customerCompany);
-            $em->flush();
-
-            return $this->redirectToRoute('index_customer');
-        }
-        return $this->render('customer/form.html.twig', [
-            'formcompany' => $formcompany->createView(),
-        ]);
-    }*/
-
-
     /**
-
-       * @Route("/show_customer/{id}", name="customers_show")
-        * @Method("GET")
-         */
-public function show(Customer $customer){
-        return $this->render('customer/show.html.twig',array(
+     * @Route("/show_customer/{id}", name="customers_show")
+     * @Method("GET")
+     */
+    public function show(Customer $customer)
+    {
+        return $this->render('customer/show.html.twig', array(
             'customer' => $customer,
         ));
-}
-
+    }
 
 
     /**
@@ -156,15 +151,25 @@ public function show(Customer $customer){
      */
     public function deleteAction(Request $request, Customer $customer)
     {
-       // $this->denyAccessUnlessGranted(Customer::DELETE,$customers);
+        // $this->denyAccessUnlessGranted(Customer::DELETE,$customers);
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($customer);
-        $em->flush();
-        return $this->redirectToRoute('index_customer');
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($customer);
+            $em->flush();
+            return $this->redirectToRoute('index_customer',array(
+            ));
+        } catch (ORMException $e) {
+            $this->get('session')->getFlashBag()->add('error', 'Vous ne pouvez pas supprimer un associé rattaché à une facture ou un devis.');
+        } catch (\Exception $e) {
+            $this->get('session')->getFlashBag()->add('error', 'Vous ne pouvez pas supprimer un associé rattaché à une facture ou un devis.');
+        }
+
+        return $this->redirectToRoute('index_error_customer', array(
+
+        ));
+
     }
-
-
 
 
 }
