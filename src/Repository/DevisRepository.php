@@ -22,9 +22,13 @@ class DevisRepository extends \Doctrine\ORM\EntityRepository
 
         } else {
             $qb = $this->createQueryBuilder('p')
+                ->leftJoin('App:Person','pers','with','pers.id=p.client')
                 ->where('
-                 p.id like :value
+                p.id like :value
                 OR p.reference like :value 
+                OR pers.lastname like :value
+                OR pers.firstname like :value
+                OR pers.companyname like :value
                 OR p.dateCreation like :value 
                 OR p.telephone like :value 
                 OR p.etat like :value 
