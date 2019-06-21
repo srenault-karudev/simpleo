@@ -220,7 +220,7 @@ abstract class Person
         return $this->lastname;
     }
 
-    public function setLastname(string $lastname): self
+    public function setLastname(string $lastname)
     {
         $this->lastname = $lastname;
 
@@ -232,7 +232,7 @@ abstract class Person
         return $this->firstname;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFirstname(string $firstname)
     {
         $this->firstname = $firstname;
 
