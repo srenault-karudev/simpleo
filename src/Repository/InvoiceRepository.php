@@ -28,20 +28,23 @@ class InvoiceRepository extends \Doctrine\ORM\EntityRepository
             return $qb->getQuery()->getResult();
         }
         else {
-            $qb = $this->createQueryBuilder('p')
-                ->where('p.date like :value 
-                OR p.id like :value
-                OR p.identifiant like :value
-                OR p.price_Ht like :value 
-                OR p.price_tt like :value 
-                OR p.paiment_date like :value 
-                OR p.entryDate like :value
+            $qb = $this->createQueryBuilder('i')
+                ->leftJoin('App:Person','p','with','p.id=i.client')
+                ->where('i.date like :value 
+                OR i.id like :value
+                OR p.lastname like :value
+                OR p.firstname like :value
+                OR i.identifiant like :value
+                OR i.price_Ht like :value 
+                OR i.price_tt like :value 
+                OR i.paiment_date like :value 
+                OR i.entryDate like :value
                  ')
-                ->andWhere('p.user = :user')
-                ->andWhere('p.invoice_type = :type')
+                ->andWhere('i.user = :user')
+                ->andWhere('i.invoice_type = :type')
                 ->setParameter('user', $user->getId())
                 ->setParameter('type', $type)
-                ->orderBy('p.date', 'DESC')
+                ->orderBy('i.date', 'DESC')
                 ->setParameter('value', '%' . $_GET['value'] . '%');
             return $qb->getQuery()->getResult();
         }
