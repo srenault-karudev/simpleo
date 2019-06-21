@@ -34,6 +34,7 @@ class InvoiceRepository extends \Doctrine\ORM\EntityRepository
                 OR i.id like :value
                 OR p.lastname like :value
                 OR p.firstname like :value
+                OR p.companyname like :value
                 OR i.identifiant like :value
                 OR i.price_Ht like :value 
                 OR i.price_tt like :value 
