@@ -31,6 +31,14 @@ class Invoice
      */
     private $id;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="identifiant", type="string", nullable=false)
+     */
+    private $identifiant;
+
     /**
      * @var Date
      *
@@ -411,5 +419,17 @@ class Invoice
         $this->due_date = $due_date;
         return $this;
     }
+
+    public function getIdentifiant(): ?string
+    {
+        return $this->identifiant;
+    }
+
+    public function setIdentifiant()
+    {
+        $val="FR-".date('Y')."-".$this->getId();
+        $this->identifiant =$val ;
+    }
+
 }
 

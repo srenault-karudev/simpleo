@@ -134,7 +134,7 @@ class IndexInvoiceSaleController extends Controller
         $invoice->setInvoiceType(false);
         $invoice->setPriceHt($htPrice);
         $invoice->setPriceTt($ttcPrice);
-
+        $invoice->setIdentifiant();
         $invoice->setDueDate($dueDate->modify('+3 month'));
         $customer = new Customer();
         $customer->setUser($user);
@@ -146,7 +146,6 @@ class IndexInvoiceSaleController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($invoice);
         $em->flush();
-
 
         /* Enregistrement de l'action qui regroupe tout les factures en base de donnée    */
 

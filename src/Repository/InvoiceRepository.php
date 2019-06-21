@@ -31,6 +31,7 @@ class InvoiceRepository extends \Doctrine\ORM\EntityRepository
             $qb = $this->createQueryBuilder('p')
                 ->where('p.date like :value 
                 OR p.id like :value
+                OR p.identifiant like :value
                 OR p.price_Ht like :value 
                 OR p.price_tt like :value 
                 OR p.paiment_date like :value 

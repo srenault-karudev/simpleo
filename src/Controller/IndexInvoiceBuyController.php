@@ -150,9 +150,9 @@ class IndexInvoiceBuyController extends Controller
         $invoice->setDate($date);
         $invoice->setInvoiceType(true);
         $invoice->setPriceHt($htPrice);
+        $invoice->setIdentifiant();
         $invoice->setPriceTt($ttcPrice);
         $invoice->setDueDate($dueDate->modify('+3 month')) ;
-
         $customer = new Customer();
         $customer->setUser($user);
 

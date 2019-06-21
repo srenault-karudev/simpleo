@@ -44,6 +44,7 @@
                         <thead>
                         <tr>
                             <th>Numéro</th>
+                            <th>ID</th>
                             <th>Date facture</th>
                             <th>Date saisie</th>
                             <th>Date paiement</th>
@@ -59,7 +60,8 @@
                         <tbody style="text-align: center">
                         {% for invoice in properties %}
                             <tr>
-                                <td class="centerDiv">FR-{{ "now"|date("Y") }}-{{ invoice.id }}</td>
+                                <td class="centerDiv">{{ invoice.identifiant }}{{ invoice.id }}</td>
+                                <td class="centerDiv">{{ invoice.id }}</td>
                                 <td>{{ invoice.date  |date("d/m/Y") }}</td>
                                 <td>{{ invoice.entryDate  |date("d/m/Y") }}</td>
                                 <td>
