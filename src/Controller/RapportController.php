@@ -107,8 +107,6 @@ class RapportController extends Controller
         array_push($myarrayTwo, $em->getRepository('App:Action')->getImpotsOnBenef($user,$year));
 
 
-
-
         array_push($array3, $em->getRepository('App:Action')->getMarchandiseSale($user,$year));
         array_push($array3, $em->getRepository('App:Action')->getProdSale($user,$year));
         array_push($array3, $em->getRepository('App:Action')->getProdStock($user,$year));
@@ -131,6 +129,7 @@ class RapportController extends Controller
 
         $arrayOfTwo= array();
         $totalTwo=0;
+
         foreach ($myarrayTwo as $key => $value){
             foreach($value[0] as $k => $v){
                 if($v != null){

@@ -161,9 +161,9 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=607000
-                AND r.num=6087000
-                AND r.num=6097000
+                AND (r.num =607
+                OR r.num =6087
+                OR r.num =6097)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -182,7 +182,7 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=603700
+                AND r.num =6037
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -202,11 +202,11 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=601000
-                AND r.num=602000
-                AND r.num=608100
-                AND r.num=609100
-                AND r.num=609200
+                AND (r.num = 601
+                OR r.num = 602
+                OR r.num = 6081
+                OR r.num = 6091
+                OR r.num =6092)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -225,13 +225,14 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=603100
-                AND r.num=603200
+                AND (r.num = 6031
+                OR r.num = 6032)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
                 AND YEAR(i.paiment_date)=".$year."
                 ";
+
         $stmt = $this->getEntityManager()->getConnection()->prepare($query);
         $stmt->execute([]);
         return $stmt->fetchAll();
@@ -244,16 +245,16 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=604000
-                AND r.num=606000
-                AND r.num=605000
-                AND r.num=608400
-                AND r.num=608500
-                AND r.num=608600
-                AND r.num=609400
-                AND r.num=609500
-                AND r.num=610000
-                AND r.num=620000
+                AND (r.num = 604
+                OR r.num =606
+                OR r.num =605
+                OR r.num =6084
+                OR r.num =6085
+                OR r.num =6086
+                OR r.num =6094
+                OR r.num =6095
+                OR r.num =61
+                OR r.num =62)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -271,7 +272,7 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=630000
+                AND r.num =63
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -289,9 +290,9 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=641000
-                AND r.num=644000
-                AND r.num=648000
+                AND (r.num =641
+                OR r.num =644
+                OR r.num =648)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -309,10 +310,10 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=645000
-                AND r.num=646000
-                AND r.num=647000
-                AND r.num=648000
+                AND (r.num =645
+                OR r.num =646
+                OR r.num =647
+                OR  r.num =648)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -330,8 +331,8 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=681100
-                AND r.num=681200
+                AND (r.num =6811
+                OR r.num =6812)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -349,9 +350,9 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=681600
-                AND r.num=681700
-                AND r.num=681500
+                AND (r.num =6816
+                OR r.num =6817
+                OR r.num =6815)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -370,7 +371,7 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=650000
+                AND r.num =65
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -387,13 +388,13 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=686000
-                AND r.num=661000
-                AND r.num=664000
-                AND r.num=665000
-                AND r.num=668000
-                AND r.num=666000
-                AND r.num=667000
+                AND (r.num =686
+                OR r.num =661
+                OR r.num =664
+                OR r.num =665
+                OR r.num = 668
+                OR r.num=666
+                OR r.num=667)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -411,12 +412,12 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=695000
-                AND r.num=697000
-                AND r.num=689000
-                AND r.num=698000
-                AND r.num=699000
-                AND r.num=789000
+                AND (r.num=695
+                OR r.num=697
+                OR r.num=689
+                OR r.num=698
+                OR r.num=699
+                OR r.num=789)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -434,10 +435,10 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=671000
-                AND r.num=675000
-                AND r.num=678000
-                AND r.num=687000
+                AND (r.num=671
+                OR r.num=675
+                OR r.num=678
+                OR r.num=687)
                 AND i.invoice_type = true
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -455,8 +456,8 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=707000
-                AND r.num=709700
+                AND (r.num=707
+                OR r.num=7097)
                 AND i.invoice_type = false
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -475,15 +476,15 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=701000
-                AND r.num=702000
-                AND r.num=703000
-                AND r.num=704000
-                AND r.num=705000
-                AND r.num=706000
-                AND r.num=707000
-                AND r.num=708000
-                AND r.num=709000
+                AND (r.num=701000
+                OR r.num=702
+                OR r.num=703
+                OR r.num=704
+                OR r.num=705
+                OR r.num=706
+                OR r.num=707
+                OR r.num=708
+                OR r.num=709)
                 AND i.invoice_type = false
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -501,7 +502,7 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=713000
+                AND r.num=713
                 AND i.invoice_type = false
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -521,8 +522,8 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=720000
-                AND r.num=730000
+                AND (r.num=72
+                OR r.num=73)
                 AND i.invoice_type = false
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -541,7 +542,7 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=740000
+                AND r.num=74
                 AND i.invoice_type = false
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
@@ -559,7 +560,7 @@ class ActionRepository extends \Doctrine\ORM\EntityRepository
                 JOIN record as r
                 WHERE a.invoice_id = i.id
                 AND a.record_id=r.id
-                AND r.num=750000
+                AND r.num=75
                 AND i.invoice_type = false
                 AND i.state_of_paiement = true
                 AND i.user_id=".$user->getId()."
